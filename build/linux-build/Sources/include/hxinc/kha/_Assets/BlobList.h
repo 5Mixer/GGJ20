@@ -49,29 +49,41 @@ class HXCPP_CLASS_ATTRIBUTES BlobList_obj : public hx::Object
 		 ::kha::internal::BytesBlob get(::String name);
 		::Dynamic get_dyn();
 
-		 ::kha::internal::BytesBlob body1_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_body1_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_ase=_hx_v; }
-		::String body1_aseName;
-		inline ::String _hx_set_body1_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return body1_aseName=_hx_v; }
-		 ::Dynamic body1_aseDescription;
-		inline  ::Dynamic _hx_set_body1_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_aseDescription=_hx_v; }
-		void body1_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic body1_aseLoad_dyn();
+		 ::kha::internal::BytesBlob bodyRight_ase;
+		inline  ::kha::internal::BytesBlob _hx_set_bodyRight_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyRight_ase=_hx_v; }
+		::String bodyRight_aseName;
+		inline ::String _hx_set_bodyRight_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return bodyRight_aseName=_hx_v; }
+		 ::Dynamic bodyRight_aseDescription;
+		inline  ::Dynamic _hx_set_bodyRight_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyRight_aseDescription=_hx_v; }
+		void bodyRight_aseLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic bodyRight_aseLoad_dyn();
 
-		void body1_aseUnload();
-		::Dynamic body1_aseUnload_dyn();
+		void bodyRight_aseUnload();
+		::Dynamic bodyRight_aseUnload_dyn();
 
-		 ::kha::internal::BytesBlob body1_json;
-		inline  ::kha::internal::BytesBlob _hx_set_body1_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_json=_hx_v; }
-		::String body1_jsonName;
-		inline ::String _hx_set_body1_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return body1_jsonName=_hx_v; }
-		 ::Dynamic body1_jsonDescription;
-		inline  ::Dynamic _hx_set_body1_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_jsonDescription=_hx_v; }
-		void body1_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic body1_jsonLoad_dyn();
+		 ::kha::internal::BytesBlob chest_ase;
+		inline  ::kha::internal::BytesBlob _hx_set_chest_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return chest_ase=_hx_v; }
+		::String chest_aseName;
+		inline ::String _hx_set_chest_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return chest_aseName=_hx_v; }
+		 ::Dynamic chest_aseDescription;
+		inline  ::Dynamic _hx_set_chest_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return chest_aseDescription=_hx_v; }
+		void chest_aseLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic chest_aseLoad_dyn();
 
-		void body1_jsonUnload();
-		::Dynamic body1_jsonUnload_dyn();
+		void chest_aseUnload();
+		::Dynamic chest_aseUnload_dyn();
+
+		 ::kha::internal::BytesBlob heads_ase;
+		inline  ::kha::internal::BytesBlob _hx_set_heads_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return heads_ase=_hx_v; }
+		::String heads_aseName;
+		inline ::String _hx_set_heads_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return heads_aseName=_hx_v; }
+		 ::Dynamic heads_aseDescription;
+		inline  ::Dynamic _hx_set_heads_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return heads_aseDescription=_hx_v; }
+		void heads_aseLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic heads_aseLoad_dyn();
+
+		void heads_aseUnload();
+		::Dynamic heads_aseUnload_dyn();
 
 		::Array< ::String > names;
 		inline ::Array< ::String > _hx_set_names(hx::StackContext *_hx_ctx,::Array< ::String > _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return names=_hx_v; }

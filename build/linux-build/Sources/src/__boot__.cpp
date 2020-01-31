@@ -25,6 +25,18 @@
 #ifndef INCLUDED_game_BodyPart
 #include <hxinc/game/BodyPart.h>
 #endif
+#ifndef INCLUDED_game_LegPart
+#include <hxinc/game/LegPart.h>
+#endif
+#ifndef INCLUDED_game_ArmPart
+#include <hxinc/game/ArmPart.h>
+#endif
+#ifndef INCLUDED_game_ChestPart
+#include <hxinc/game/ChestPart.h>
+#endif
+#ifndef INCLUDED_game_HeadPart
+#include <hxinc/game/HeadPart.h>
+#endif
 #ifndef INCLUDED_bonsai_input_InputEvent
 #include <hxinc/bonsai/input/InputEvent.h>
 #endif
@@ -598,8 +610,8 @@
 #ifndef INCLUDED_game_BodyPartParticles
 #include <hxinc/game/BodyPartParticles.h>
 #endif
-#ifndef INCLUDED_game_BodyParticle
-#include <hxinc/game/BodyParticle.h>
+#ifndef INCLUDED_game_Body
+#include <hxinc/game/Body.h>
 #endif
 #ifndef INCLUDED_cpp_vm_Gc
 #include <hxinc/cpp/vm/Gc.h>
@@ -667,6 +679,10 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::io::Error_obj::__register();
 ::haxe::io::Encoding_obj::__register();
 ::game::BodyPart_obj::__register();
+::game::LegPart_obj::__register();
+::game::ArmPart_obj::__register();
+::game::ChestPart_obj::__register();
+::game::HeadPart_obj::__register();
 ::bonsai::input::InputEvent_obj::__register();
 ::zui::Zui_obj::__register();
 ::zui::Themes_obj::__register();
@@ -858,7 +874,7 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::IMap_obj::__register();
 ::game::World_obj::__register();
 ::game::BodyPartParticles_obj::__register();
-::game::BodyParticle_obj::__register();
+::game::Body_obj::__register();
 ::cpp::vm::Gc_obj::__register();
 ::bonsai::scene::Scene_obj::__register();
 ::bonsai::render::Transformation_obj::__register();
@@ -884,6 +900,10 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::io::Error_obj::__boot();
 ::haxe::io::Encoding_obj::__boot();
 ::game::BodyPart_obj::__boot();
+::game::LegPart_obj::__boot();
+::game::ArmPart_obj::__boot();
+::game::ChestPart_obj::__boot();
+::game::HeadPart_obj::__boot();
 ::bonsai::input::InputEvent_obj::__boot();
 ::haxe::Log_obj::__boot();
 ::InputBindings_obj::__boot();

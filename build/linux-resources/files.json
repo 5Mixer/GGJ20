@@ -71,21 +71,21 @@
 			"type": "font"
 		},
 		{
-			"name": "body1",
+			"name": "bodyRight",
 			"files": [
-				"body1.k"
+				"bodyRight.k"
 			],
 			"file_sizes": [
 				1
 			],
 			"type": "image",
 			"original_width": 32,
-			"original_height": 128
+			"original_height": 224
 		},
 		{
-			"name": "body1_ase",
+			"name": "bodyRight_ase",
 			"files": [
-				"body1.ase"
+				"bodyRight.ase"
 			],
 			"file_sizes": [
 				1
@@ -93,9 +93,43 @@
 			"type": "blob"
 		},
 		{
-			"name": "body1_json",
+			"name": "chest",
 			"files": [
-				"body1.json"
+				"chest.k"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "image",
+			"original_width": 32,
+			"original_height": 32
+		},
+		{
+			"name": "chest_ase",
+			"files": [
+				"chest.ase"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "blob"
+		},
+		{
+			"name": "heads",
+			"files": [
+				"heads.k"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "image",
+			"original_width": 32,
+			"original_height": 96
+		},
+		{
+			"name": "heads_ase",
+			"files": [
+				"heads.ase"
 			],
 			"file_sizes": [
 				1

@@ -61,6 +61,9 @@ class HXCPP_CLASS_ATTRIBUTES Type_obj : public hx::Object
 		static  ::Dynamic createEnum(hx::Class e,::String constr,::cpp::VirtualArray params);
 		static ::Dynamic createEnum_dyn();
 
+		static  ::Dynamic createEnumIndex(hx::Class e,int index,::cpp::VirtualArray params);
+		static ::Dynamic createEnumIndex_dyn();
+
 		static ::Array< ::String > getInstanceFields(hx::Class c);
 		static ::Dynamic getInstanceFields_dyn();
 

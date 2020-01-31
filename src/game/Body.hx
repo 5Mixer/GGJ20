@@ -26,19 +26,19 @@ class Body extends bonsai.entity.Entity{
 	public var rightLeg:LegPart;
 
 	var headLayers:Map<HeadPart,Int> = [
-		HeadPart.NaturalHead => 0
+		HeadPart.NaturalHead => 1
 	];
 	var chestLayers:Map<ChestPart,Int> = [
 		ChestPart.NaturalChest => 0
 	];
 	var armLayers:Map<ArmPart,Int> = [
-		ArmPart.NaturalArm => 0,
-		ArmPart.Knife => 0,
-		ArmPart.Sword => 0,
-		ArmPart.Axe => 0
+		ArmPart.NaturalArm => 3,
+		ArmPart.Knife => 4,
+		ArmPart.Sword => 5,
+		ArmPart.Axe => 6
 	];
 	var legLayers:Map<LegPart,Int> = [
-		LegPart.NaturalLeg => 0,
+		LegPart.NaturalLeg => 2,
 		LegPart.Boots => 0
 	];
 	
@@ -47,17 +47,17 @@ class Body extends bonsai.entity.Entity{
 	override public function new () {
 		super();
 
-		position = new kha.math.Vector2();
+		position = new kha.math.Vector2(30, 50);
 
 		chest = ChestPart.NaturalChest;
 		head = HeadPart.NaturalHead;
-		leftArm = ArmPart.NaturalArm;
-		rightArm = ArmPart.NaturalArm;
+		leftArm = ArmPart.Axe;
+		rightArm = ArmPart.Sword;
 		leftLeg = LegPart.NaturalLeg;
 		rightLeg = LegPart.NaturalLeg;
 
 		this.animatedSprite = new bonsai.render.AnimatedSprite();
-		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.body1, 32, 32), frames: [0] });
+		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyRight, 32, 32), frames: [0] });
 		this.animatedSprite.play("idle");
 	}
 	override public function render (graphics:kha.graphics2.Graphics) {
@@ -75,7 +75,7 @@ class Body extends bonsai.entity.Entity{
 		animatedSprite.render(graphics, position.x, position.y);
 		
 		animatedSprite.drawLayers = [legLayers[rightLeg]];
-		animatedSprite.render(graphics, position.x + 7, position.y);
+		animatedSprite.render(graphics, position.x + 3, position.y);
 		
 		animatedSprite.drawLayers = [armLayers[leftArm]];
 		animatedSprite.render(graphics, position.x, position.y);

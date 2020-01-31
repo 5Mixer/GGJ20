@@ -19,9 +19,6 @@
 #ifndef INCLUDED_game_BodyPartParticles
 #include <hxinc/game/BodyPartParticles.h>
 #endif
-#ifndef INCLUDED_game_BodyParticle
-#include <hxinc/game/BodyParticle.h>
-#endif
 #ifndef INCLUDED_haxe_IMap
 #include <hxinc/haxe/IMap.h>
 #endif
@@ -54,8 +51,8 @@ HX_DEFINE_STACK_FRAME(_hx_pos_5303e04f8781ebf0_14_new,"game.BodyPartParticles","
 static const int _hx_array_data_f830815c_1[] = {
 	(int)0,
 };
-HX_LOCAL_STACK_FRAME(_hx_pos_5303e04f8781ebf0_26_update,"game.BodyPartParticles","update",0x67537edb,"game.BodyPartParticles.update","game/BodyPartParticles.hx",26,0xf8f46963)
-HX_LOCAL_STACK_FRAME(_hx_pos_5303e04f8781ebf0_39_render,"game.BodyPartParticles","render",0xe5776428,"game.BodyPartParticles.render","game/BodyPartParticles.hx",39,0xf8f46963)
+HX_LOCAL_STACK_FRAME(_hx_pos_5303e04f8781ebf0_27_update,"game.BodyPartParticles","update",0x67537edb,"game.BodyPartParticles.update","game/BodyPartParticles.hx",27,0xf8f46963)
+HX_LOCAL_STACK_FRAME(_hx_pos_5303e04f8781ebf0_40_render,"game.BodyPartParticles","render",0xe5776428,"game.BodyPartParticles.render","game/BodyPartParticles.hx",40,0xf8f46963)
 namespace game{
 
 void BodyPartParticles_obj::__construct(){
@@ -65,13 +62,14 @@ HXLINE(  16)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSp
 HXLINE(  17)		 ::bonsai::render::AnimatedSprite _hx_tmp = this->animatedSprite;
 HXDLIN(  17)		_hx_tmp->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_f830815c_1,1))
-            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->body1,32,32))));
-HXLINE(  18)		 ::haxe::ds::EnumValueMap _g =  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX );
-HXDLIN(  18)		_g->set(::game::BodyPart_obj::Body_dyn(),0);
-HXDLIN(  18)		_g->set(::game::BodyPart_obj::Head_dyn(),1);
-HXDLIN(  18)		_g->set(::game::BodyPart_obj::Leg_dyn(),2);
-HXDLIN(  18)		_g->set(::game::BodyPart_obj::Arm_dyn(),3);
-HXDLIN(  18)		this->_hx_set_bodyPartToLayer(HX_CTX, _g);
+            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyRight,32,32))));
+HXLINE(  18)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
+HXLINE(  19)		 ::haxe::ds::EnumValueMap _g =  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX );
+HXDLIN(  19)		_g->set(::game::BodyPart_obj::Body_dyn(),0);
+HXDLIN(  19)		_g->set(::game::BodyPart_obj::Head_dyn(),1);
+HXDLIN(  19)		_g->set(::game::BodyPart_obj::Leg_dyn(),2);
+HXDLIN(  19)		_g->set(::game::BodyPart_obj::Arm_dyn(),3);
+HXDLIN(  19)		this->_hx_set_bodyPartToLayer(HX_CTX, _g);
             	}
 
 Dynamic BodyPartParticles_obj::__CreateEmpty() { return new BodyPartParticles_obj; }
@@ -98,24 +96,24 @@ bool BodyPartParticles_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void BodyPartParticles_obj::update(Float delta){
-            	HX_STACKFRAME(&_hx_pos_5303e04f8781ebf0_26_update)
-HXLINE(  27)		this->super::update(delta);
-HXLINE(  28)		{
-HXLINE(  28)			int _g = 0;
-HXDLIN(  28)			::Array< ::Dynamic> _g1 = this->members;
-HXDLIN(  28)			while((_g < _g1->length)){
-HXLINE(  28)				 ::game::BodyParticle particle = _g1->__get(_g).StaticCast<  ::game::BodyParticle >();
-HXDLIN(  28)				_g = (_g + 1);
-HXLINE(  29)				if ((particle->z > 0)) {
-HXLINE(  30)					 ::game::BodyParticle particle1 = particle;
-HXDLIN(  30)					particle1->vz = (particle1->vz + delta);
-HXLINE(  31)					 ::game::BodyParticle particle2 = particle;
-HXDLIN(  31)					particle2->z = (particle2->z - particle->vz);
+            	HX_STACKFRAME(&_hx_pos_5303e04f8781ebf0_27_update)
+HXLINE(  28)		this->super::update(delta);
+HXLINE(  29)		{
+HXLINE(  29)			int _g = 0;
+HXDLIN(  29)			::Array< ::Dynamic> _g1 = this->members;
+HXDLIN(  29)			while((_g < _g1->length)){
+HXLINE(  29)				 ::Dynamic particle = _g1->__get(_g);
+HXDLIN(  29)				_g = (_g + 1);
+HXLINE(  30)				if (hx::IsGreaterEq( particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic),0 )) {
+HXLINE(  31)					 ::Dynamic particle1 = particle;
+HXDLIN(  31)					particle1->__SetField(HX_("vz",44,67,00,00),(particle1->__Field(HX_("vz",44,67,00,00),hx::paccDynamic) + (( (Float)(10) ) * delta)),hx::paccDynamic);
+HXLINE(  32)					 ::Dynamic particle2 = particle;
+HXDLIN(  32)					particle2->__SetField(HX_("z",7a,00,00,00),(( (Float)(particle2->__Field(HX_("z",7a,00,00,00),hx::paccDynamic)) ) - ( (Float)(particle->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) )),hx::paccDynamic);
             				}
             				else {
-HXLINE(  33)					 ::game::BodyParticle particle3 = particle;
-HXDLIN(  33)					particle3->vz = (particle3->vz * ((Float)-.4));
-HXLINE(  34)					particle->z = ( (Float)(0) );
+HXLINE(  34)					 ::Dynamic particle3 = particle;
+HXDLIN(  34)					particle3->__SetField(HX_("vz",44,67,00,00),(( (Float)(particle3->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) ) * ((Float)-.4)),hx::paccDynamic);
+HXLINE(  35)					particle->__SetField(HX_("z",7a,00,00,00),0,hx::paccDynamic);
             				}
             			}
             		}
@@ -123,17 +121,17 @@ HXLINE(  34)					particle->z = ( (Float)(0) );
 
 
 void BodyPartParticles_obj::render( ::kha::graphics2::Graphics graphics){
-            	HX_GC_STACKFRAME(&_hx_pos_5303e04f8781ebf0_39_render)
-HXLINE(  40)		this->super::render(graphics);
-HXLINE(  42)		{
-HXLINE(  42)			int _g = 0;
-HXDLIN(  42)			::Array< ::Dynamic> _g1 = this->members;
-HXDLIN(  42)			while((_g < _g1->length)){
-HXLINE(  42)				 ::game::BodyParticle particle = _g1->__get(_g).StaticCast<  ::game::BodyParticle >();
-HXDLIN(  42)				_g = (_g + 1);
-HXLINE(  43)				 ::Dynamic _hx_tmp = this->bodyPartToLayer->get(particle->part);
-HXDLIN(  43)				this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp));
-HXLINE(  44)				this->animatedSprite->render(graphics,( (float)(particle->x) ),( (float)((particle->y - particle->z)) ));
+            	HX_GC_STACKFRAME(&_hx_pos_5303e04f8781ebf0_40_render)
+HXLINE(  41)		this->super::render(graphics);
+HXLINE(  43)		{
+HXLINE(  43)			int _g = 0;
+HXDLIN(  43)			::Array< ::Dynamic> _g1 = this->members;
+HXDLIN(  43)			while((_g < _g1->length)){
+HXLINE(  43)				 ::Dynamic particle = _g1->__get(_g);
+HXDLIN(  43)				_g = (_g + 1);
+HXLINE(  44)				 ::Dynamic _hx_tmp = this->bodyPartToLayer->get( ::Dynamic(particle->__Field(HX_("part",f3,e3,51,4a),hx::paccDynamic)));
+HXDLIN(  44)				this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp));
+HXLINE(  45)				this->animatedSprite->render(graphics,( (float)(particle->__Field(HX_("x",78,00,00,00),hx::paccDynamic)) ),( (float)((( (Float)(particle->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) ) - ( (Float)(particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic)) ))) ));
             			}
             		}
             	}

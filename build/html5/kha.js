@@ -736,31 +736,31 @@ var game_LegPart = $hxEnums["game.LegPart"] = { __ename__ : true, __constructs__
 };
 var game_Body = $hxClasses["game.Body"] = function() {
 	var _g = new haxe_ds_EnumValueMap();
-	_g.set(game_LegPart.NaturalLeg,0);
+	_g.set(game_LegPart.NaturalLeg,2);
 	_g.set(game_LegPart.Boots,0);
 	this.legLayers = _g;
 	var _g1 = new haxe_ds_EnumValueMap();
-	_g1.set(game_ArmPart.NaturalArm,0);
-	_g1.set(game_ArmPart.Knife,0);
-	_g1.set(game_ArmPart.Sword,0);
-	_g1.set(game_ArmPart.Axe,0);
+	_g1.set(game_ArmPart.NaturalArm,3);
+	_g1.set(game_ArmPart.Knife,4);
+	_g1.set(game_ArmPart.Sword,5);
+	_g1.set(game_ArmPart.Axe,6);
 	this.armLayers = _g1;
 	var _g2 = new haxe_ds_EnumValueMap();
 	_g2.set(game_ChestPart.NaturalChest,0);
 	this.chestLayers = _g2;
 	var _g3 = new haxe_ds_EnumValueMap();
-	_g3.set(game_HeadPart.NaturalHead,0);
+	_g3.set(game_HeadPart.NaturalHead,1);
 	this.headLayers = _g3;
 	bonsai_entity_Entity.call(this);
-	this.position = new kha_math_Vector2();
+	this.position = new kha_math_Vector2(30,50);
 	this.chest = game_ChestPart.NaturalChest;
 	this.head = game_HeadPart.NaturalHead;
-	this.leftArm = game_ArmPart.NaturalArm;
-	this.rightArm = game_ArmPart.NaturalArm;
+	this.leftArm = game_ArmPart.Axe;
+	this.rightArm = game_ArmPart.Sword;
 	this.leftLeg = game_LegPart.NaturalLeg;
 	this.rightLeg = game_LegPart.NaturalLeg;
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
-	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.body1,32,32), frames : [0]});
+	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyRight,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
 };
 game_Body.__name__ = true;
@@ -793,7 +793,7 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 		this.animatedSprite.render(graphics,this.position.x,this.position.y);
 		var tmp3 = this.legLayers.get(this.rightLeg);
 		this.animatedSprite.drawLayers = [tmp3];
-		this.animatedSprite.render(graphics,this.position.x + 7,this.position.y);
+		this.animatedSprite.render(graphics,this.position.x + 3,this.position.y);
 		var tmp4 = this.armLayers.get(this.leftArm);
 		this.animatedSprite.drawLayers = [tmp4];
 		this.animatedSprite.render(graphics,this.position.x,this.position.y);
@@ -812,7 +812,7 @@ var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs
 var game_BodyPartParticles = $hxClasses["game.BodyPartParticles"] = function() {
 	bonsai_entity_ParticleSystem.call(this,400);
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
-	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.body1,32,32), frames : [0]});
+	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyRight,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
 	var _g = new haxe_ds_EnumValueMap();
 	_g.set(game_BodyPart.Body,0);
@@ -2636,27 +2636,57 @@ js_lib__$ArrayBuffer_ArrayBufferCompat.sliceImpl = function(begin,end) {
 	return resultArray.buffer;
 };
 var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
-	this.names = ["body1"];
-	this.body1Description = { name : "body1", original_height : 128, file_sizes : [284], original_width : 32, files : ["body1.png"], type : "image"};
-	this.body1Name = "body1";
-	this.body1 = null;
+	this.names = ["bodyRight","chest","heads"];
+	this.headsDescription = { name : "heads", original_height : 96, file_sizes : [220], original_width : 32, files : ["heads.png"], type : "image"};
+	this.headsName = "heads";
+	this.heads = null;
+	this.chestDescription = { name : "chest", original_height : 32, file_sizes : [153], original_width : 32, files : ["chest.png"], type : "image"};
+	this.chestName = "chest";
+	this.chest = null;
+	this.bodyRightDescription = { name : "bodyRight", original_height : 224, file_sizes : [510], original_width : 32, files : ["bodyRight.png"], type : "image"};
+	this.bodyRightName = "bodyRight";
+	this.bodyRight = null;
 };
 kha__$Assets_ImageList.__name__ = true;
 kha__$Assets_ImageList.prototype = {
 	get: function(name) {
 		return Reflect.field(this,name);
 	}
-	,body1: null
-	,body1Name: null
-	,body1Description: null
-	,body1Load: function(done,failure) {
-		kha_Assets.loadImage("body1",function(image) {
+	,bodyRight: null
+	,bodyRightName: null
+	,bodyRightDescription: null
+	,bodyRightLoad: function(done,failure) {
+		kha_Assets.loadImage("bodyRight",function(image) {
 			done();
-		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 126, className : "kha._Assets.ImageList", methodName : "body1Load"});
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 126, className : "kha._Assets.ImageList", methodName : "bodyRightLoad"});
 	}
-	,body1Unload: function() {
-		this.body1.unload();
-		this.body1 = null;
+	,bodyRightUnload: function() {
+		this.bodyRight.unload();
+		this.bodyRight = null;
+	}
+	,chest: null
+	,chestName: null
+	,chestDescription: null
+	,chestLoad: function(done,failure) {
+		kha_Assets.loadImage("chest",function(image) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 126, className : "kha._Assets.ImageList", methodName : "chestLoad"});
+	}
+	,chestUnload: function() {
+		this.chest.unload();
+		this.chest = null;
+	}
+	,heads: null
+	,headsName: null
+	,headsDescription: null
+	,headsLoad: function(done,failure) {
+		kha_Assets.loadImage("heads",function(image) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 126, className : "kha._Assets.ImageList", methodName : "headsLoad"});
+	}
+	,headsUnload: function() {
+		this.heads.unload();
+		this.heads = null;
 	}
 	,names: null
 	,__class__: kha__$Assets_ImageList
@@ -2673,42 +2703,57 @@ kha__$Assets_SoundList.prototype = {
 	,__class__: kha__$Assets_SoundList
 };
 var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
-	this.names = ["body1_ase","body1_json"];
-	this.body1_jsonDescription = { name : "body1_json", file_sizes : [748], files : ["body1.json"], type : "blob"};
-	this.body1_jsonName = "body1_json";
-	this.body1_json = null;
-	this.body1_aseDescription = { name : "body1_ase", file_sizes : [915], files : ["body1.ase"], type : "blob"};
-	this.body1_aseName = "body1_ase";
-	this.body1_ase = null;
+	this.names = ["bodyRight_ase","chest_ase","heads_ase"];
+	this.heads_aseDescription = { name : "heads_ase", file_sizes : [762], files : ["heads.ase"], type : "blob"};
+	this.heads_aseName = "heads_ase";
+	this.heads_ase = null;
+	this.chest_aseDescription = { name : "chest_ase", file_sizes : [617], files : ["chest.ase"], type : "blob"};
+	this.chest_aseName = "chest_ase";
+	this.chest_ase = null;
+	this.bodyRight_aseDescription = { name : "bodyRight_ase", file_sizes : [1154], files : ["bodyRight.ase"], type : "blob"};
+	this.bodyRight_aseName = "bodyRight_ase";
+	this.bodyRight_ase = null;
 };
 kha__$Assets_BlobList.__name__ = true;
 kha__$Assets_BlobList.prototype = {
 	get: function(name) {
 		return Reflect.field(this,name);
 	}
-	,body1_ase: null
-	,body1_aseName: null
-	,body1_aseDescription: null
-	,body1_aseLoad: function(done,failure) {
-		kha_Assets.loadBlob("body1_ase",function(blob) {
+	,bodyRight_ase: null
+	,bodyRight_aseName: null
+	,bodyRight_aseDescription: null
+	,bodyRight_aseLoad: function(done,failure) {
+		kha_Assets.loadBlob("bodyRight_ase",function(blob) {
 			done();
-		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "body1_aseLoad"});
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "bodyRight_aseLoad"});
 	}
-	,body1_aseUnload: function() {
-		this.body1_ase.unload();
-		this.body1_ase = null;
+	,bodyRight_aseUnload: function() {
+		this.bodyRight_ase.unload();
+		this.bodyRight_ase = null;
 	}
-	,body1_json: null
-	,body1_jsonName: null
-	,body1_jsonDescription: null
-	,body1_jsonLoad: function(done,failure) {
-		kha_Assets.loadBlob("body1_json",function(blob) {
+	,chest_ase: null
+	,chest_aseName: null
+	,chest_aseDescription: null
+	,chest_aseLoad: function(done,failure) {
+		kha_Assets.loadBlob("chest_ase",function(blob) {
 			done();
-		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "body1_jsonLoad"});
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "chest_aseLoad"});
 	}
-	,body1_jsonUnload: function() {
-		this.body1_json.unload();
-		this.body1_json = null;
+	,chest_aseUnload: function() {
+		this.chest_ase.unload();
+		this.chest_ase = null;
+	}
+	,heads_ase: null
+	,heads_aseName: null
+	,heads_aseDescription: null
+	,heads_aseLoad: function(done,failure) {
+		kha_Assets.loadBlob("heads_ase",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "heads_aseLoad"});
+	}
+	,heads_aseUnload: function() {
+		this.heads_ase.unload();
+		this.heads_ase = null;
 	}
 	,names: null
 	,__class__: kha__$Assets_BlobList

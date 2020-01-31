@@ -138,13 +138,23 @@
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/cpp/vm/Gc.h">
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/ArmPart.h">
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Body.h">
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/BodyPart.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/BodyPartParticles.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/BodyParticle.h">
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/ChestPart.h">
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Goblin.h">
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/HeadPart.h">
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/LegPart.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Level1.h">
 		</Unit>
@@ -644,6 +654,12 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/cpp/vm/Gc.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/ArmPart.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Body.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/BodyPart.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -653,7 +669,16 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/BodyParticle.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/ChestPart.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Goblin.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/HeadPart.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/LegPart.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Level1.cpp">
