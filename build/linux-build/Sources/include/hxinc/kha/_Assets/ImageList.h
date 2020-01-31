@@ -50,17 +50,17 @@ class HXCPP_CLASS_ATTRIBUTES ImageList_obj : public hx::Object
 		 ::kha::Image get(::String name);
 		::Dynamic get_dyn();
 
-		 ::kha::Image bodyRight;
-		inline  ::kha::Image _hx_set_bodyRight(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyRight=_hx_v; }
-		::String bodyRightName;
-		inline ::String _hx_set_bodyRightName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return bodyRightName=_hx_v; }
-		 ::Dynamic bodyRightDescription;
-		inline  ::Dynamic _hx_set_bodyRightDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyRightDescription=_hx_v; }
-		void bodyRightLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic bodyRightLoad_dyn();
+		 ::kha::Image bodyParts;
+		inline  ::kha::Image _hx_set_bodyParts(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParts=_hx_v; }
+		::String bodyPartsName;
+		inline ::String _hx_set_bodyPartsName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return bodyPartsName=_hx_v; }
+		 ::Dynamic bodyPartsDescription;
+		inline  ::Dynamic _hx_set_bodyPartsDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyPartsDescription=_hx_v; }
+		void bodyPartsLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic bodyPartsLoad_dyn();
 
-		void bodyRightUnload();
-		::Dynamic bodyRightUnload_dyn();
+		void bodyPartsUnload();
+		::Dynamic bodyPartsUnload_dyn();
 
 		 ::kha::Image chest;
 		inline  ::kha::Image _hx_set_chest(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return chest=_hx_v; }

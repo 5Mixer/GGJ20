@@ -48,8 +48,9 @@ class Engine {
 		this.currentScene.render(g);
 		g.end();
 
-		g.opacity = 1;
 		debugInterface.begin(g);
+		g.opacity = 1.;
+		/*
 		if (debugInterface.window(zui.Id.handle(), 0, 0, framebuffer.width, 300, false)) {
 			if (debugInterface.panel(Id.handle({selected: true}), "Terminal")) {
 				debugInterface.indent();
@@ -61,6 +62,7 @@ class Engine {
 		}
 
 		debugInterface.end();
+		*/
 	}
 
 }

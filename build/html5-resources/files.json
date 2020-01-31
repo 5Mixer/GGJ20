@@ -71,24 +71,34 @@
 			"type": "font"
 		},
 		{
-			"name": "bodyRight",
+			"name": "bodyParts",
 			"files": [
-				"bodyRight.png"
+				"bodyParts.png"
 			],
 			"file_sizes": [
-				510
+				709
 			],
 			"type": "image",
 			"original_width": 32,
-			"original_height": 224
+			"original_height": 320
 		},
 		{
-			"name": "bodyRight_ase",
+			"name": "bodyParts_ase",
 			"files": [
-				"bodyRight.ase"
+				"bodyParts.ase"
 			],
 			"file_sizes": [
-				1154
+				1484
+			],
+			"type": "blob"
+		},
+		{
+			"name": "bodyParts_json",
+			"files": [
+				"bodyParts.json"
+			],
+			"file_sizes": [
+				1113
 			],
 			"type": "blob"
 		},

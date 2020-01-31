@@ -213,13 +213,6 @@ Type.createEnum = function(e,constr,params) {
 	}
 	return f;
 };
-Type.createEnumIndex = function(e,index,params) {
-	var c = e.__constructs__[index];
-	if(c == null) {
-		throw new js__$Boot_HaxeError(index + " is not a valid enum constructor index");
-	}
-	return Type.createEnum(e,c,params);
-};
 Type.getInstanceFields = function(c) {
 	var a = [];
 	for(var i in c.prototype) a.push(i);
@@ -315,18 +308,8 @@ bonsai_Engine.prototype = {
 		g.begin();
 		this.currentScene.render(g);
 		g.end();
-		g.set_opacity(1);
 		this.debugInterface.begin(g);
-		if(this.debugInterface.window(zui_Handle.global.nest(0,null),0,0,framebuffer.get_width(),300,false)) {
-			if(this.debugInterface.panel(zui_Handle.global.nest(1,{ selected : true}),"Terminal")) {
-				this.debugInterface.indent();
-				this.debugInterface.text("Output of the log goes here");
-				zui_Ext.textArea(this.debugInterface,zui_Handle.global.nest(2,null));
-				this.debugInterface.textInput(zui_Handle.global.nest(3,{ text : "Out"}),"Input");
-				this.debugInterface.button("Go");
-			}
-		}
-		this.debugInterface.end();
+		g.set_opacity(1.);
 	}
 	,__class__: bonsai_Engine
 };
@@ -718,8 +701,11 @@ bonsai_scene_Scene.prototype = {
 	}
 	,__class__: bonsai_scene_Scene
 };
-var game_HeadPart = $hxEnums["game.HeadPart"] = { __ename__ : true, __constructs__ : ["NaturalHead"]
-	,NaturalHead: {_hx_index:0,__enum__:"game.HeadPart",toString:$estr}
+var game_HeadPart = $hxEnums["game.HeadPart"] = { __ename__ : true, __constructs__ : ["NaturalHeadRight","NaturalHeadLeft","NaturalHeadDown","NaturalHeadUp"]
+	,NaturalHeadRight: {_hx_index:0,__enum__:"game.HeadPart",toString:$estr}
+	,NaturalHeadLeft: {_hx_index:1,__enum__:"game.HeadPart",toString:$estr}
+	,NaturalHeadDown: {_hx_index:2,__enum__:"game.HeadPart",toString:$estr}
+	,NaturalHeadUp: {_hx_index:3,__enum__:"game.HeadPart",toString:$estr}
 };
 var game_ChestPart = $hxEnums["game.ChestPart"] = { __ename__ : true, __constructs__ : ["NaturalChest"]
 	,NaturalChest: {_hx_index:0,__enum__:"game.ChestPart",toString:$estr}
@@ -736,31 +722,34 @@ var game_LegPart = $hxEnums["game.LegPart"] = { __ename__ : true, __constructs__
 };
 var game_Body = $hxClasses["game.Body"] = function() {
 	var _g = new haxe_ds_EnumValueMap();
-	_g.set(game_LegPart.NaturalLeg,2);
-	_g.set(game_LegPart.Boots,0);
+	_g.set(game_LegPart.NaturalLeg,5);
+	_g.set(game_LegPart.Boots,10);
 	this.legLayers = _g;
 	var _g1 = new haxe_ds_EnumValueMap();
-	_g1.set(game_ArmPart.NaturalArm,3);
-	_g1.set(game_ArmPart.Knife,4);
-	_g1.set(game_ArmPart.Sword,5);
-	_g1.set(game_ArmPart.Axe,6);
+	_g1.set(game_ArmPart.NaturalArm,6);
+	_g1.set(game_ArmPart.Knife,7);
+	_g1.set(game_ArmPart.Sword,8);
+	_g1.set(game_ArmPart.Axe,9);
 	this.armLayers = _g1;
 	var _g2 = new haxe_ds_EnumValueMap();
 	_g2.set(game_ChestPart.NaturalChest,0);
 	this.chestLayers = _g2;
 	var _g3 = new haxe_ds_EnumValueMap();
-	_g3.set(game_HeadPart.NaturalHead,1);
+	_g3.set(game_HeadPart.NaturalHeadRight,1);
+	_g3.set(game_HeadPart.NaturalHeadLeft,2);
+	_g3.set(game_HeadPart.NaturalHeadDown,3);
+	_g3.set(game_HeadPart.NaturalHeadUp,4);
 	this.headLayers = _g3;
 	bonsai_entity_Entity.call(this);
-	this.position = new kha_math_Vector2(30,50);
+	this.position = new kha_math_Vector2(220 * Math.random(),160 * Math.random());
 	this.chest = game_ChestPart.NaturalChest;
-	this.head = game_HeadPart.NaturalHead;
-	this.leftArm = game_ArmPart.Axe;
+	this.head = game_HeadPart.NaturalHeadDown;
+	this.leftArm = game_ArmPart.Knife;
 	this.rightArm = game_ArmPart.Sword;
 	this.leftLeg = game_LegPart.NaturalLeg;
 	this.rightLeg = game_LegPart.NaturalLeg;
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
-	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyRight,32,32), frames : [0]});
+	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
 };
 game_Body.__name__ = true;
@@ -779,7 +768,7 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 	,animatedSprite: null
 	,render: function(graphics) {
 		if(this.chest == null || this.head == null || this.leftLeg == null || this.rightLeg == null || this.leftArm == null || this.rightArm == null) {
-			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 65, className : "game.Body", methodName : "render"});
+			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 71, className : "game.Body", methodName : "render"});
 			return;
 		}
 		var tmp = this.chestLayers.get(this.chest);
@@ -801,24 +790,66 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 		this.animatedSprite.drawLayers = [tmp5];
 		this.animatedSprite.render(graphics,this.position.x + 7,this.position.y);
 	}
+	,getHeadDrop: function() {
+		return game_BodyPart.NaturalHead;
+	}
+	,getChestDrop: function() {
+		return game_BodyPart.NaturalChest;
+	}
+	,getLeftArmDrop: function() {
+		var _g = new haxe_ds_EnumValueMap();
+		_g.set(game_ArmPart.NaturalArm,game_BodyPart.NaturalArm);
+		_g.set(game_ArmPart.Axe,game_BodyPart.Axe);
+		_g.set(game_ArmPart.Sword,game_BodyPart.Sword);
+		_g.set(game_ArmPart.Knife,game_BodyPart.Knife);
+		return _g.get(this.leftArm);
+	}
+	,getRightArmDrop: function() {
+		var _g = new haxe_ds_EnumValueMap();
+		_g.set(game_ArmPart.NaturalArm,game_BodyPart.NaturalArm);
+		_g.set(game_ArmPart.Axe,game_BodyPart.Axe);
+		_g.set(game_ArmPart.Sword,game_BodyPart.Sword);
+		_g.set(game_ArmPart.Knife,game_BodyPart.Knife);
+		return _g.get(this.rightArm);
+	}
+	,getLeftLegDrop: function() {
+		var _g = new haxe_ds_EnumValueMap();
+		_g.set(game_LegPart.NaturalLeg,game_BodyPart.NaturalLeg);
+		_g.set(game_LegPart.Boots,game_BodyPart.Boots);
+		return _g.get(this.leftLeg);
+	}
+	,getRightLegDrop: function() {
+		var _g = new haxe_ds_EnumValueMap();
+		_g.set(game_LegPart.NaturalLeg,game_BodyPart.NaturalLeg);
+		_g.set(game_LegPart.Boots,game_BodyPart.Boots);
+		return _g.get(this.rightLeg);
+	}
 	,__class__: game_Body
 });
-var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs__ : ["Head","Body","Arm","Leg"]
-	,Head: {_hx_index:0,__enum__:"game.BodyPart",toString:$estr}
-	,Body: {_hx_index:1,__enum__:"game.BodyPart",toString:$estr}
-	,Arm: {_hx_index:2,__enum__:"game.BodyPart",toString:$estr}
-	,Leg: {_hx_index:3,__enum__:"game.BodyPart",toString:$estr}
+var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs__ : ["NaturalHead","NaturalChest","NaturalArm","NaturalLeg","Boots","Axe","Sword","Knife"]
+	,NaturalHead: {_hx_index:0,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalChest: {_hx_index:1,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalArm: {_hx_index:2,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalLeg: {_hx_index:3,__enum__:"game.BodyPart",toString:$estr}
+	,Boots: {_hx_index:4,__enum__:"game.BodyPart",toString:$estr}
+	,Axe: {_hx_index:5,__enum__:"game.BodyPart",toString:$estr}
+	,Sword: {_hx_index:6,__enum__:"game.BodyPart",toString:$estr}
+	,Knife: {_hx_index:7,__enum__:"game.BodyPart",toString:$estr}
 };
 var game_BodyPartParticles = $hxClasses["game.BodyPartParticles"] = function() {
 	bonsai_entity_ParticleSystem.call(this,400);
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
-	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyRight,32,32), frames : [0]});
+	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
 	var _g = new haxe_ds_EnumValueMap();
-	_g.set(game_BodyPart.Body,0);
-	_g.set(game_BodyPart.Head,1);
-	_g.set(game_BodyPart.Leg,2);
-	_g.set(game_BodyPart.Arm,3);
+	_g.set(game_BodyPart.NaturalChest,0);
+	_g.set(game_BodyPart.NaturalHead,3);
+	_g.set(game_BodyPart.NaturalLeg,5);
+	_g.set(game_BodyPart.NaturalArm,6);
+	_g.set(game_BodyPart.Axe,9);
+	_g.set(game_BodyPart.Sword,8);
+	_g.set(game_BodyPart.Knife,7);
+	_g.set(game_BodyPart.Boots,10);
 	this.bodyPartToLayer = _g;
 };
 game_BodyPartParticles.__name__ = true;
@@ -833,12 +864,22 @@ game_BodyPartParticles.prototype = $extend(bonsai_entity_ParticleSystem.prototyp
 		while(_g < _g1.length) {
 			var particle = _g1[_g];
 			++_g;
+			if(Math.abs(particle.vz) < .1 && particle.z < 1 && Math.abs(particle.vx) < .1) {
+				particle.vz = 0;
+				particle.vx = 0;
+				particle.z = 0;
+				particle.x = Math.round(particle.x);
+				particle.y = Math.round(particle.y);
+				continue;
+			}
 			if(particle.z >= 0) {
 				particle.vz += 10 * delta;
 				particle.z -= particle.vz;
+				particle.x += particle.vx;
 			} else {
 				particle.vz *= -.4;
 				particle.z = 0;
+				particle.vx *= .6;
 			}
 		}
 	}
@@ -857,14 +898,31 @@ game_BodyPartParticles.prototype = $extend(bonsai_entity_ParticleSystem.prototyp
 	,__class__: game_BodyPartParticles
 });
 var game_World = $hxClasses["game.World"] = function(engine) {
+	var _g = new haxe_ds_EnumValueMap();
+	_g.set(game_BodyPart.NaturalHead,21);
+	_g.set(game_BodyPart.NaturalChest,10);
+	_g.set(game_BodyPart.NaturalLeg,0);
+	_g.set(game_BodyPart.NaturalArm,14);
+	_g.set(game_BodyPart.Boots,0);
+	_g.set(game_BodyPart.Axe,1);
+	_g.set(game_BodyPart.Sword,2);
+	_g.set(game_BodyPart.Knife,9);
+	this.zOffset = _g;
 	this.f = 0;
+	this.bodies = [];
 	bonsai_scene_Scene.call(this,"World Scene",engine);
 	this.transformation = new bonsai_render_Transformation();
 	this.transformation.scale = new kha_math_Vector2(3,3);
 	this.bodyParticleSystem = new game_BodyPartParticles();
-	this.bodyParticleSystem.poolMaximum = 5;
+	this.bodyParticleSystem.poolMaximum = 1200;
 	this.add(this.bodyParticleSystem);
-	this.add(new game_Body());
+	var _g1 = 0;
+	while(_g1 < 200) {
+		var i = _g1++;
+		var body = new game_Body();
+		this.add(body);
+		this.bodies.push(body);
+	}
 };
 game_World.__name__ = true;
 game_World.__super__ = bonsai_scene_Scene;
@@ -873,18 +931,50 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 	,bodyParticleSystem: null
 	,bodyAnimatedSprite: null
 	,bodySpriteMap: null
+	,bodies: null
 	,f: null
 	,update: function(dt) {
 		this.f++;
 		bonsai_scene_Scene.prototype.update.call(this,dt);
-		if(this.f % 40 == 0) {
-			this.bodyParticleSystem.spawnParticle({ x : Math.random() * 230, y : Math.random() * 230, z : 16, vz : -.7, part : Type.createEnumIndex(game_BodyPart,Math.floor(Math.random() * 4),null)});
+		if(this.f > 100) {
+			var _g = 0;
+			var _g1 = this.bodies;
+			while(_g < _g1.length) {
+				var body = _g1[_g];
+				++_g;
+				if(Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < this.f - 100) {
+					this.explodeBody(body);
+				}
+			}
 		}
+		this.bodyParticleSystem.members.sort(function(a,b) {
+			if(a.y - b.y > 0) {
+				return 1;
+			} else {
+				return -1;
+			}
+		});
 	}
 	,render: function(g) {
 		this.transformation.apply(g);
 		bonsai_scene_Scene.prototype.render.call(this,g);
 		this.transformation.finish(g);
+	}
+	,zOffset: null
+	,explodeBody: function(body) {
+		var offset = 0;
+		var vz = -1 * Math.random() - 2;
+		if(body == null) {
+			return;
+		}
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getHeadDrop()), z : offset + this.zOffset.get(body.getHeadDrop()), vx : Math.random() - .5, vz : vz, part : body.getHeadDrop()});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getChestDrop()), z : offset + this.zOffset.get(body.getChestDrop()), vz : vz, vx : Math.random() - .5, part : body.getChestDrop()});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getLeftArmDrop()), z : offset + this.zOffset.get(body.getLeftArmDrop()), vz : vz, vx : Math.random() - .5, part : body.getLeftArmDrop()});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getRightArmDrop()), z : offset + this.zOffset.get(body.getRightArmDrop()), vz : vz, vx : Math.random() - .5, part : body.getRightArmDrop()});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getLeftLegDrop()), z : offset + this.zOffset.get(body.getLeftLegDrop()), vz : vz, vx : Math.random() - .5, part : body.getLeftLegDrop()});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getRightLegDrop()), z : offset + this.zOffset.get(body.getRightLegDrop()), vz : vz, vx : Math.random() - .5, part : body.getRightLegDrop()});
+		HxOverrides.remove(this.bodies,body);
+		this.remove(body);
 	}
 	,__class__: game_World
 });
@@ -2636,33 +2726,33 @@ js_lib__$ArrayBuffer_ArrayBufferCompat.sliceImpl = function(begin,end) {
 	return resultArray.buffer;
 };
 var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
-	this.names = ["bodyRight","chest","heads"];
+	this.names = ["bodyParts","chest","heads"];
 	this.headsDescription = { name : "heads", original_height : 96, file_sizes : [220], original_width : 32, files : ["heads.png"], type : "image"};
 	this.headsName = "heads";
 	this.heads = null;
 	this.chestDescription = { name : "chest", original_height : 32, file_sizes : [153], original_width : 32, files : ["chest.png"], type : "image"};
 	this.chestName = "chest";
 	this.chest = null;
-	this.bodyRightDescription = { name : "bodyRight", original_height : 224, file_sizes : [510], original_width : 32, files : ["bodyRight.png"], type : "image"};
-	this.bodyRightName = "bodyRight";
-	this.bodyRight = null;
+	this.bodyPartsDescription = { name : "bodyParts", original_height : 320, file_sizes : [709], original_width : 32, files : ["bodyParts.png"], type : "image"};
+	this.bodyPartsName = "bodyParts";
+	this.bodyParts = null;
 };
 kha__$Assets_ImageList.__name__ = true;
 kha__$Assets_ImageList.prototype = {
 	get: function(name) {
 		return Reflect.field(this,name);
 	}
-	,bodyRight: null
-	,bodyRightName: null
-	,bodyRightDescription: null
-	,bodyRightLoad: function(done,failure) {
-		kha_Assets.loadImage("bodyRight",function(image) {
+	,bodyParts: null
+	,bodyPartsName: null
+	,bodyPartsDescription: null
+	,bodyPartsLoad: function(done,failure) {
+		kha_Assets.loadImage("bodyParts",function(image) {
 			done();
-		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 126, className : "kha._Assets.ImageList", methodName : "bodyRightLoad"});
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 126, className : "kha._Assets.ImageList", methodName : "bodyPartsLoad"});
 	}
-	,bodyRightUnload: function() {
-		this.bodyRight.unload();
-		this.bodyRight = null;
+	,bodyPartsUnload: function() {
+		this.bodyParts.unload();
+		this.bodyParts = null;
 	}
 	,chest: null
 	,chestName: null
@@ -2703,33 +2793,48 @@ kha__$Assets_SoundList.prototype = {
 	,__class__: kha__$Assets_SoundList
 };
 var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
-	this.names = ["bodyRight_ase","chest_ase","heads_ase"];
+	this.names = ["bodyParts_ase","bodyParts_json","chest_ase","heads_ase"];
 	this.heads_aseDescription = { name : "heads_ase", file_sizes : [762], files : ["heads.ase"], type : "blob"};
 	this.heads_aseName = "heads_ase";
 	this.heads_ase = null;
 	this.chest_aseDescription = { name : "chest_ase", file_sizes : [617], files : ["chest.ase"], type : "blob"};
 	this.chest_aseName = "chest_ase";
 	this.chest_ase = null;
-	this.bodyRight_aseDescription = { name : "bodyRight_ase", file_sizes : [1154], files : ["bodyRight.ase"], type : "blob"};
-	this.bodyRight_aseName = "bodyRight_ase";
-	this.bodyRight_ase = null;
+	this.bodyParts_jsonDescription = { name : "bodyParts_json", file_sizes : [1113], files : ["bodyParts.json"], type : "blob"};
+	this.bodyParts_jsonName = "bodyParts_json";
+	this.bodyParts_json = null;
+	this.bodyParts_aseDescription = { name : "bodyParts_ase", file_sizes : [1484], files : ["bodyParts.ase"], type : "blob"};
+	this.bodyParts_aseName = "bodyParts_ase";
+	this.bodyParts_ase = null;
 };
 kha__$Assets_BlobList.__name__ = true;
 kha__$Assets_BlobList.prototype = {
 	get: function(name) {
 		return Reflect.field(this,name);
 	}
-	,bodyRight_ase: null
-	,bodyRight_aseName: null
-	,bodyRight_aseDescription: null
-	,bodyRight_aseLoad: function(done,failure) {
-		kha_Assets.loadBlob("bodyRight_ase",function(blob) {
+	,bodyParts_ase: null
+	,bodyParts_aseName: null
+	,bodyParts_aseDescription: null
+	,bodyParts_aseLoad: function(done,failure) {
+		kha_Assets.loadBlob("bodyParts_ase",function(blob) {
 			done();
-		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "bodyRight_aseLoad"});
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "bodyParts_aseLoad"});
 	}
-	,bodyRight_aseUnload: function() {
-		this.bodyRight_ase.unload();
-		this.bodyRight_ase = null;
+	,bodyParts_aseUnload: function() {
+		this.bodyParts_ase.unload();
+		this.bodyParts_ase = null;
+	}
+	,bodyParts_json: null
+	,bodyParts_jsonName: null
+	,bodyParts_jsonDescription: null
+	,bodyParts_jsonLoad: function(done,failure) {
+		kha_Assets.loadBlob("bodyParts_json",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "bodyParts_jsonLoad"});
+	}
+	,bodyParts_jsonUnload: function() {
+		this.bodyParts_json.unload();
+		this.bodyParts_json = null;
 	}
 	,chest_ase: null
 	,chest_aseName: null
@@ -23421,1059 +23526,6 @@ kha_vr_TimeWarpParms.prototype = {
 	,RightOverlay: null
 	,__class__: kha_vr_TimeWarpParms
 };
-var zui_Ext = $hxClasses["zui.Ext"] = function() { };
-zui_Ext.__name__ = true;
-zui_Ext.floatInput = function(ui,handle,label,align) {
-	if(align == null) {
-		align = 0;
-	}
-	if(label == null) {
-		label = "";
-	}
-	handle.text = handle.value == null ? "null" : "" + handle.value;
-	var text = ui.textInput(handle,label,align);
-	handle.value = parseFloat(text);
-	return handle.value;
-};
-zui_Ext.keyInput = function(ui,handle,label,align) {
-	if(align == null) {
-		align = 0;
-	}
-	if(label == null) {
-		label = "";
-	}
-	if(!ui.isVisible(ui.t.ELEMENT_H * ui.ops.scaleFactor)) {
-		ui.endElement();
-		return handle.value | 0;
-	}
-	var hover = ui.getHover();
-	if(hover && zui_Zui.onTextHover != null) {
-		zui_Zui.onTextHover();
-	}
-	ui.g.set_color(hover ? ui.t.ACCENT_HOVER_COL : ui.t.ACCENT_COL);
-	var g = ui.g;
-	var fill = ui.t.FILL_ACCENT_BG;
-	var x = ui._x + ui.buttonOffsetY;
-	var y = ui._y + ui.buttonOffsetY;
-	var w = ui._w - ui.buttonOffsetY * 2;
-	var h = ui.t.BUTTON_H * ui.ops.scaleFactor;
-	var strength = 0.0;
-	if(strength == 0.0) {
-		strength = 1;
-	}
-	if(!ui.enabled) {
-		ui.fadeColor();
-	}
-	if(fill) {
-		g.fillRect(x,y - 1,w,h + 1);
-	} else {
-		g.drawRect(x,y,w,h,strength);
-	}
-	var startEdit = ui.getReleased() || ui.tabPressed;
-	if(ui.textSelectedHandle != handle && startEdit) {
-		ui.startTextEdit(handle);
-	}
-	if(ui.textSelectedHandle == handle) {
-		zui_Ext.listenToKey(ui,handle);
-	} else {
-		handle.changed = false;
-	}
-	if(label != "") {
-		ui.g.set_color(ui.t.LABEL_COL);
-		var labelAlign = align == 2 ? 0 : 2;
-		var xOffset = labelAlign == 0 ? 7 : 0;
-		ui.drawString(ui.g,label,xOffset,0,labelAlign);
-	}
-	handle.text = zui_Ext.keycodeToString(handle.value | 0);
-	ui.g.set_color(ui.t.TEXT_COL);
-	if(ui.textSelectedHandle != handle) {
-		ui.drawString(ui.g,handle.text,null,0,align);
-	} else {
-		ui.drawString(ui.g,ui.textSelected,null,0,align);
-	}
-	ui.endElement();
-	return handle.value | 0;
-};
-zui_Ext.listenToKey = function(ui,handle) {
-	if(ui.isKeyDown) {
-		handle.value = ui.key;
-		handle.changed = ui.changed = true;
-		ui.textSelectedHandle = null;
-		ui.isTyping = false;
-		if(kha_input_Keyboard.get() != null) {
-			kha_input_Keyboard.get().hide();
-		}
-	} else {
-		ui.textSelected = "Press a key...";
-	}
-};
-zui_Ext.list = function(ui,handle,ar,opts) {
-	var selected = 0;
-	if(opts == null) {
-		opts = { };
-	}
-	var addCb = opts.addCb != null ? opts.addCb : function(name) {
-		ar.push(name);
-	};
-	var removeCb = opts.removeCb != null ? opts.removeCb : function(i) {
-		ar.splice(i,1);
-	};
-	var getNameCb = opts.getNameCb != null ? opts.getNameCb : function(i1) {
-		return ar[i1];
-	};
-	var setNameCb = opts.setNameCb != null ? opts.setNameCb : function(i2,name1) {
-		ar[i2] = name1;
-	};
-	var getLabelCb = opts.getLabelCb != null ? opts.getLabelCb : function(i3) {
-		return "";
-	};
-	var itemDrawCb = opts.itemDrawCb;
-	var showRadio = opts.showRadio != null && opts.showRadio;
-	var editable = opts.editable != null ? opts.editable : true;
-	var showAdd = opts.showAdd != null ? opts.showAdd : true;
-	var addLabel = opts.addLabel != null ? opts.addLabel : "Add";
-	var i4 = 0;
-	while(i4 < ar.length) {
-		if(showRadio) {
-			ui.row([0.12,0.68,0.2]);
-			if(ui.radio(handle.nest(0),i4,"")) {
-				selected = i4;
-			}
-		} else {
-			ui.row([0.8,0.2]);
-		}
-		var itemHandle = handle.nest(i4);
-		itemHandle.text = getNameCb(i4);
-		if(editable) {
-			setNameCb(i4,ui.textInput(itemHandle,getLabelCb(i4)));
-		} else {
-			ui.text(getNameCb(i4));
-		}
-		if(ui.button("X")) {
-			removeCb(i4);
-		} else {
-			++i4;
-		}
-		if(itemDrawCb != null) {
-			itemDrawCb(itemHandle.nest(i4),i4 - 1);
-		}
-	}
-	if(showAdd && ui.button(addLabel)) {
-		addCb("untitled");
-	}
-	return selected;
-};
-zui_Ext.panelList = function(ui,handle,ar,addCb,removeCb,getNameCb,setNameCb,itemDrawCb,editable,showAdd,addLabel) {
-	if(addLabel == null) {
-		addLabel = "Add";
-	}
-	if(showAdd == null) {
-		showAdd = true;
-	}
-	if(editable == null) {
-		editable = true;
-	}
-	if(addCb == null) {
-		addCb = function(name) {
-			ar.push(name);
-		};
-	}
-	if(removeCb == null) {
-		removeCb = function(i) {
-			ar.splice(i,1);
-		};
-	}
-	if(getNameCb == null) {
-		getNameCb = function(i1) {
-			return ar[i1];
-		};
-	}
-	if(setNameCb == null) {
-		setNameCb = function(i2,name1) {
-			ar[i2] = name1;
-		};
-	}
-	var i3 = 0;
-	while(i3 < ar.length) {
-		ui.row([0.12,0.68,0.2]);
-		var expanded = ui.panel(handle.nest(i3),"");
-		var itemHandle = handle.nest(i3);
-		if(editable) {
-			setNameCb(i3,ui.textInput(itemHandle,getNameCb(i3)));
-		} else {
-			ui.text(getNameCb(i3));
-		}
-		if(ui.button("X")) {
-			removeCb(i3);
-		} else {
-			++i3;
-		}
-		if(itemDrawCb != null && expanded) {
-			itemDrawCb(itemHandle.nest(i3),i3 - 1);
-		}
-	}
-	if(showAdd && ui.button(addLabel)) {
-		addCb("untitled");
-	}
-};
-zui_Ext.colorField = function(ui,handle,alpha) {
-	if(alpha == null) {
-		alpha = false;
-	}
-	ui.g.set_color(handle.color);
-	var g = ui.g;
-	var x = ui._x + 2;
-	var y = ui._y;
-	var w = ui._w - 4;
-	var h = ui.t.BUTTON_H * ui.ops.scaleFactor;
-	var strength = 0.0;
-	if(strength == 0.0) {
-		strength = 1;
-	}
-	if(!ui.enabled) {
-		ui.fadeColor();
-	}
-	g.fillRect(x,y - 1,w,h + 1);
-	ui.g.set_color(ui.getHover() ? ui.t.ACCENT_HOVER_COL : ui.t.ACCENT_COL);
-	var g1 = ui.g;
-	var x1 = ui._x + 2;
-	var y1 = ui._y;
-	var w1 = ui._w - 4;
-	var h1 = ui.t.BUTTON_H * ui.ops.scaleFactor;
-	var strength1 = 1.0;
-	if(strength1 == null) {
-		strength1 = 0.0;
-	}
-	if(strength1 == 0.0) {
-		strength1 = 1;
-	}
-	if(!ui.enabled) {
-		ui.fadeColor();
-	}
-	g1.drawRect(x1,y1,w1,h1,strength1);
-	if(ui.getStarted()) {
-		zui_Popup.showCustom(new zui_Zui(ui.ops),function(ui1) {
-			zui_Ext.colorWheel(ui1,handle,alpha);
-		},ui.inputX | 0,ui.inputY | 0,200,500);
-	}
-	ui.endElement();
-	return handle.color;
-};
-zui_Ext.colorPicker = function(ui,handle,alpha) {
-	if(alpha == null) {
-		alpha = false;
-	}
-	var r = ui.slider(handle.nest(0,{ value : ((handle.color & 16711680) >>> 16) * 0.00392156862745098}),"R",0,1,true);
-	var g = ui.slider(handle.nest(1,{ value : ((handle.color & 65280) >>> 8) * 0.00392156862745098}),"G",0,1,true);
-	var b = ui.slider(handle.nest(2,{ value : (handle.color & 255) * 0.00392156862745098}),"B",0,1,true);
-	var a = (handle.color >>> 24) * 0.00392156862745098;
-	if(alpha) {
-		a = ui.slider(handle.nest(3,{ value : a}),"A",0,1,true);
-	}
-	var col = kha__$Color_Color_$Impl_$.fromFloats(r,g,b,a);
-	ui.text("",2,col);
-	return col;
-};
-zui_Ext.initPath = function(handle,systemId) {
-	handle.text = systemId == "Windows" ? "C:\\Users" : "/";
-};
-zui_Ext.fileBrowser = function(ui,handle,foldersOnly) {
-	if(foldersOnly == null) {
-		foldersOnly = false;
-	}
-	var sep = "/";
-	var files = [];
-	var userAgent = navigator.userAgent.toLowerCase();
-	if(userAgent.indexOf(" electron/") > -1) {
-		if(handle.text == "") {
-			var pp = window.process.platform;
-			var systemId = pp == "win32" ? "Windows" : pp == "darwin" ? "OSX" : "Linux";
-			zui_Ext.initPath(handle,systemId);
-		}
-		try {
-			files = require("fs").readdirSync(handle.text);
-		} catch( e ) {
-			var e1 = ((e) instanceof js__$Boot_HaxeError) ? e.val : e;
-		}
-	}
-	var i1 = handle.text.indexOf("/");
-	var i2 = handle.text.indexOf("\\");
-	var nested = i1 > -1 && handle.text.length - 1 > i1 || i2 > -1 && handle.text.length - 1 > i2;
-	handle.changed = false;
-	if(nested && ui.button("..",0)) {
-		handle.changed = ui.changed = true;
-		handle.text = handle.text.substring(0,handle.text.lastIndexOf(sep));
-		if(handle.text.length == 2 && handle.text.charAt(1) == ":") {
-			handle.text += sep;
-		}
-	}
-	var _g = 0;
-	while(_g < files.length) {
-		var f = files[_g];
-		++_g;
-		if(f == "" || f.charAt(0) == ".") {
-			continue;
-		}
-		if(ui.button(f,0)) {
-			handle.changed = ui.changed = true;
-			if(handle.text.charAt(handle.text.length - 1) != sep) {
-				handle.text += sep;
-			}
-			handle.text += f;
-		}
-	}
-	return handle.text;
-};
-zui_Ext.inlineRadio = function(ui,handle,texts,align) {
-	if(align == null) {
-		align = 1;
-	}
-	if(!ui.isVisible(ui.t.ELEMENT_H * ui.ops.scaleFactor)) {
-		ui.endElement();
-		return handle.position;
-	}
-	if(ui.getReleased()) {
-		if(++handle.position >= texts.length) {
-			handle.position = 0;
-		}
-		handle.changed = ui.changed = true;
-	} else {
-		handle.changed = false;
-	}
-	var hover = ui.getHover();
-	zui_Ext.drawInlineRadio(ui,texts[handle.position],hover,align);
-	ui.endElement();
-	return handle.position;
-};
-zui_Ext.drawInlineRadio = function(ui,text,hover,align) {
-	if(align == null) {
-		align = 1;
-	}
-	if(hover) {
-		ui.g.set_color(ui.t.ACCENT_HOVER_COL);
-		ui.g.fillRect(ui._x + ui.buttonOffsetY,ui._y + ui.buttonOffsetY,ui._w - ui.buttonOffsetY * 2,ui.t.BUTTON_H * ui.ops.scaleFactor);
-	} else {
-		ui.g.set_color(ui.t.ACCENT_COL);
-		if(!ui.enabled) {
-			ui.fadeColor();
-		}
-		ui.g.drawRect(ui._x + ui.buttonOffsetY,ui._y + ui.buttonOffsetY,ui._w - ui.buttonOffsetY * 2,ui.t.BUTTON_H * ui.ops.scaleFactor);
-	}
-	ui.g.set_color(ui.t.TEXT_COL);
-	ui.drawString(ui.g,text,ui.t.TEXT_OFFSET * ui.ops.scaleFactor,0,align);
-};
-zui_Ext.colorWheel = function(ui,handle,alpha,w,rowAlign,colorPreview) {
-	if(colorPreview == null) {
-		colorPreview = true;
-	}
-	if(rowAlign == null) {
-		rowAlign = false;
-	}
-	if(alpha == null) {
-		alpha = false;
-	}
-	if(w == null) {
-		w = ui._w;
-	}
-	zui_Ext.rgbToHsv(((handle.color & 16711680) >>> 16) * 0.00392156862745098,((handle.color & 65280) >>> 8) * 0.00392156862745098,(handle.color & 255) * 0.00392156862745098,zui_Ext.ar);
-	var chue = zui_Ext.ar[0];
-	var csat = zui_Ext.ar[1];
-	var cval = zui_Ext.ar[2];
-	var calpha = (handle.color >>> 24) * 0.00392156862745098;
-	var px = ui._x;
-	var py = ui._y;
-	var scroll = ui.currentWindow != null && ui.currentWindow.scrollEnabled;
-	if(!scroll) {
-		w -= ui.t.SCROLL_W * ui.ops.scaleFactor | 0;
-		px += (ui.t.SCROLL_W * ui.ops.scaleFactor | 0) / 2;
-	}
-	ui.image(ui.ops.color_wheel,kha__$Color_Color_$Impl_$.fromFloats(cval,cval,cval));
-	var ph = ui._y - py;
-	var ox = px + w / 2;
-	var oy = py + ph / 2;
-	var cw = w * 0.7;
-	var cwh = cw / 2;
-	var cx = ox;
-	var cy = oy + csat * cwh;
-	var theta = chue * (Math.PI * 2.0);
-	var cx2 = Math.cos(theta) * (cx - ox) - Math.sin(theta) * (cy - oy) + ox;
-	var cy2 = Math.sin(theta) * (cx - ox) + Math.cos(theta) * (cy - oy) + oy;
-	cx = cx2;
-	cy = cy2;
-	ui.g.set_color(-16777216);
-	ui.g.fillRect(cx - 3 * ui.ops.scaleFactor,cy - 3 * ui.ops.scaleFactor,6 * ui.ops.scaleFactor,6 * ui.ops.scaleFactor);
-	ui.g.set_color(-1);
-	ui.g.fillRect(cx - 2 * ui.ops.scaleFactor,cy - 2 * ui.ops.scaleFactor,4 * ui.ops.scaleFactor,4 * ui.ops.scaleFactor);
-	if(rowAlign) {
-		if(alpha) {
-			ui.row([0.333333333333333315,0.333333333333333315,0.333333333333333315]);
-		} else {
-			ui.row([0.5,0.5]);
-		}
-	}
-	var valHandle = handle.nest(0);
-	valHandle.value = Math.round(cval * 100) / 100;
-	cval = ui.slider(valHandle,"Value",0.0,1.0,true);
-	if(valHandle.changed) {
-		handle.changed = ui.changed = true;
-	} else {
-		handle.changed = false;
-	}
-	if(alpha) {
-		var alphaHandle = handle.nest(1,{ value : Math.round(calpha * 100) / 100});
-		calpha = ui.slider(alphaHandle,"Alpha",0.0,1.0,true);
-		if(alphaHandle.changed) {
-			handle.changed = ui.changed = true;
-		}
-	}
-	var gx = ox + ui._windowX;
-	var gy = oy + ui._windowY;
-	if(ui.inputStarted && ui.getInputInRect(gx - cwh,gy - cwh,cw,cw)) {
-		zui_Ext.wheelSelectedHande = handle;
-	}
-	if(ui.inputReleased) {
-		zui_Ext.wheelSelectedHande = null;
-	}
-	if(ui.inputDown && zui_Ext.wheelSelectedHande == handle) {
-		var vx = gx - ui.inputX;
-		var vy = gy - ui.inputY;
-		csat = Math.min(Math.sqrt(vx * vx + vy * vy),cwh) / cwh;
-		var angle = Math.atan2(ui.inputX - gx,ui.inputY - gy);
-		if(angle < 0) {
-			angle = Math.PI + (Math.PI - Math.abs(angle));
-		}
-		angle = Math.PI * 2 - angle;
-		chue = angle / (Math.PI * 2);
-		handle.changed = ui.changed = true;
-	}
-	zui_Ext.hsvToRgb(chue,csat,cval,zui_Ext.ar);
-	handle.color = kha__$Color_Color_$Impl_$.fromFloats(zui_Ext.ar[0],zui_Ext.ar[1],zui_Ext.ar[2],calpha);
-	if(colorPreview) {
-		ui.text("",2,handle.color);
-	}
-	return handle.color;
-};
-zui_Ext.textArea = function(ui,handle,align) {
-	if(align == null) {
-		align = 0;
-	}
-	var lines = handle.text.split("\n");
-	var selected = ui.textSelectedHandle == handle;
-	var cursorStartX = ui.cursorX;
-	var keyPressed = selected && ui.isKeyPressed;
-	ui.highlightOnSelect = false;
-	ui.tabSwitchEnabled = false;
-	ui.g.set_color(ui.t.SEPARATOR_COL);
-	var g = ui.g;
-	var x = ui._x + ui.buttonOffsetY;
-	var y = ui._y + ui.buttonOffsetY;
-	var w = ui._w - ui.buttonOffsetY * 2;
-	var h = lines.length * (ui.t.ELEMENT_H * ui.ops.scaleFactor) - ui.buttonOffsetY * 2;
-	var strength = 0.0;
-	if(strength == 0.0) {
-		strength = 1;
-	}
-	if(!ui.enabled) {
-		ui.fadeColor();
-	}
-	g.fillRect(x,y - 1,w,h + 1);
-	var _g = 0;
-	var _g1 = lines.length;
-	while(_g < _g1) {
-		var i = _g++;
-		if(!selected && ui.getHover() || selected && i == handle.position) {
-			handle.position = i;
-			handle.text = lines[i];
-			ui.textInput(handle,"",align);
-			if(keyPressed && ui.key != 13) {
-				lines[i] = ui.textSelected;
-			}
-		} else {
-			ui.text(lines[i],align);
-		}
-		ui._y -= ui.t.ELEMENT_OFFSET * ui.ops.scaleFactor;
-	}
-	ui._y += ui.t.ELEMENT_OFFSET * ui.ops.scaleFactor;
-	if(keyPressed) {
-		if(ui.key == 40 && handle.position < lines.length - 1) {
-			handle.position++;
-		}
-		if(ui.key == 38 && handle.position > 0) {
-			handle.position--;
-		}
-		if(ui.key == 13) {
-			handle.position++;
-			lines.splice(handle.position,0,HxOverrides.substr(lines[handle.position - 1],ui.cursorX,null));
-			lines[handle.position - 1] = HxOverrides.substr(lines[handle.position - 1],0,ui.cursorX);
-			ui.startTextEdit(handle);
-			ui.cursorX = ui.highlightAnchor = 0;
-		}
-		if(ui.key == 8 && cursorStartX == 0 && handle.position > 0) {
-			handle.position--;
-			ui.cursorX = ui.highlightAnchor = lines[handle.position].length;
-			lines[handle.position] += lines[handle.position + 1];
-			lines.splice(handle.position + 1,1);
-		}
-		ui.textSelected = lines[handle.position];
-	}
-	ui.highlightOnSelect = true;
-	ui.tabSwitchEnabled = true;
-	handle.text = lines.join("\n");
-	return handle.text;
-};
-zui_Ext.keycodeToString = function(keycode) {
-	switch(keycode) {
-	case -1:
-		return "None";
-	case 0:
-		return "Unknown";
-	case 1:
-		return "Back";
-	case 3:
-		return "Cancel";
-	case 6:
-		return "Help";
-	case 8:
-		return "Backspace";
-	case 9:
-		return "Tab";
-	case 12:
-		return "Clear";
-	case 13:
-		return "Return";
-	case 16:
-		return "Shift";
-	case 17:
-		return "Ctrl";
-	case 18:
-		return "Alt";
-	case 19:
-		return "Pause";
-	case 20:
-		return "CapsLock";
-	case 21:
-		return "Kana";
-	case 22:
-		return "Eisu";
-	case 23:
-		return "Junja";
-	case 24:
-		return "Final";
-	case 25:
-		return "Hanja";
-	case 27:
-		return "Esc";
-	case 28:
-		return "Convert";
-	case 29:
-		return "NonConvert";
-	case 30:
-		return "Accept";
-	case 31:
-		return "ModeChange";
-	case 32:
-		return "Space";
-	case 33:
-		return "PageUp";
-	case 34:
-		return "PageDown";
-	case 35:
-		return "End";
-	case 36:
-		return "Home";
-	case 37:
-		return "Left";
-	case 38:
-		return "Up";
-	case 39:
-		return "Right";
-	case 40:
-		return "Down";
-	case 41:
-		return "Select";
-	case 42:
-		return "Print";
-	case 43:
-		return "Execute";
-	case 44:
-		return "PrintScreen";
-	case 45:
-		return "Insert";
-	case 46:
-		return "Delete";
-	case 58:
-		return "Colon";
-	case 59:
-		return "Semicolon";
-	case 60:
-		return "LessThan";
-	case 61:
-		return "Equals";
-	case 62:
-		return "GreaterThan";
-	case 63:
-		return "QuestionMark";
-	case 64:
-		return "At";
-	case 91:
-		return "Win";
-	case 93:
-		return "ContextMenu";
-	case 95:
-		return "Sleep";
-	case 96:
-		return "Numpad0";
-	case 97:
-		return "Numpad1";
-	case 98:
-		return "Numpad2";
-	case 99:
-		return "Numpad3";
-	case 100:
-		return "Numpad4";
-	case 101:
-		return "Numpad5";
-	case 102:
-		return "Numpad6";
-	case 103:
-		return "Numpad7";
-	case 104:
-		return "Numpad8";
-	case 105:
-		return "Numpad9";
-	case 106:
-		return "Multiply";
-	case 107:
-		return "Add";
-	case 108:
-		return "Separator";
-	case 109:
-		return "Subtract";
-	case 110:
-		return "Decimal";
-	case 111:
-		return "Divide";
-	case 112:
-		return "F1";
-	case 113:
-		return "F2";
-	case 114:
-		return "F3";
-	case 115:
-		return "F4";
-	case 116:
-		return "F5";
-	case 117:
-		return "F6";
-	case 118:
-		return "F7";
-	case 119:
-		return "F8";
-	case 120:
-		return "F9";
-	case 121:
-		return "F10";
-	case 122:
-		return "F11";
-	case 123:
-		return "F12";
-	case 124:
-		return "F13";
-	case 125:
-		return "F14";
-	case 126:
-		return "F15";
-	case 127:
-		return "F16";
-	case 128:
-		return "F17";
-	case 129:
-		return "F18";
-	case 130:
-		return "F19";
-	case 131:
-		return "F20";
-	case 132:
-		return "F21";
-	case 133:
-		return "F22";
-	case 134:
-		return "F23";
-	case 135:
-		return "F24";
-	case 144:
-		return "NumLock";
-	case 145:
-		return "ScrollLock";
-	case 146:
-		return "WinOemFjJisho";
-	case 147:
-		return "WinOemFjMasshou";
-	case 148:
-		return "WinOemFjTouroku";
-	case 149:
-		return "WinOemFjLoya";
-	case 150:
-		return "WinOemFjRoya";
-	case 160:
-		return "Circumflex";
-	case 161:
-		return "Exclamation";
-	case 162:
-		return "DoubleQuote";
-	case 163:
-		return "Hash";
-	case 164:
-		return "Dollar";
-	case 165:
-		return "Percent";
-	case 166:
-		return "Ampersand";
-	case 167:
-		return "Underscore";
-	case 168:
-		return "OpenParen";
-	case 169:
-		return "CloseParen";
-	case 170:
-		return "Asterisk";
-	case 171:
-		return "Plus";
-	case 172:
-		return "Pipe";
-	case 173:
-		return "HyphenMinus";
-	case 174:
-		return "OpenCurlyBracket";
-	case 175:
-		return "CloseCurlyBracket";
-	case 176:
-		return "Tilde";
-	case 181:
-		return "VolumeMute";
-	case 182:
-		return "VolumeDown";
-	case 183:
-		return "VolumeUp";
-	case 188:
-		return "Comma";
-	case 190:
-		return "Period";
-	case 191:
-		return "Slash";
-	case 192:
-		return "BackQuote";
-	case 219:
-		return "OpenBracket";
-	case 220:
-		return "BackSlash";
-	case 221:
-		return "CloseBracket";
-	case 222:
-		return "Quote";
-	case 224:
-		return "Meta";
-	case 225:
-		return "AltGr";
-	case 227:
-		return "WinIcoHelp";
-	case 228:
-		return "WinIco00";
-	case 230:
-		return "WinIcoClear";
-	case 233:
-		return "WinOemReset";
-	case 234:
-		return "WinOemJump";
-	case 235:
-		return "WinOemPA1";
-	case 236:
-		return "WinOemPA2";
-	case 237:
-		return "WinOemPA3";
-	case 238:
-		return "WinOemWSCTRL";
-	case 239:
-		return "WinOemCUSEL";
-	case 240:
-		return "WinOemATTN";
-	case 241:
-		return "WinOemFinish";
-	case 242:
-		return "WinOemCopy";
-	case 243:
-		return "WinOemAuto";
-	case 244:
-		return "WinOemENLW";
-	case 245:
-		return "WinOemBackTab";
-	case 246:
-		return "ATTN";
-	case 247:
-		return "CRSEL";
-	case 248:
-		return "EXSEL";
-	case 249:
-		return "EREOF";
-	case 250:
-		return "Play";
-	case 251:
-		return "Zoom";
-	case 253:
-		return "PA1";
-	case 254:
-		return "WinOemClear";
-	}
-	return String.fromCodePoint(keycode);
-};
-zui_Ext.dist = function(x1,y1,x2,y2) {
-	var vx = x1 - x2;
-	var vy = y1 - y2;
-	return Math.sqrt(vx * vx + vy * vy);
-};
-zui_Ext.fract = function(f) {
-	return f - (f | 0);
-};
-zui_Ext.mix = function(x,y,a) {
-	return x * (1.0 - a) + y * a;
-};
-zui_Ext.clamp = function(x,minVal,maxVal) {
-	return Math.min(Math.max(x,minVal),maxVal);
-};
-zui_Ext.step = function(edge,x) {
-	if(x < edge) {
-		return 0.0;
-	} else {
-		return 1.0;
-	}
-};
-zui_Ext.hsvToRgb = function(cR,cG,cB,out) {
-	var f = cR + 1.0;
-	var px = Math.abs((f - (f | 0)) * 6.0 - 3.0);
-	var f1 = cR + 0.66666666666666663;
-	var py = Math.abs((f1 - (f1 | 0)) * 6.0 - 3.0);
-	var f2 = cR + 0.333333333333333315;
-	var pz = Math.abs((f2 - (f2 | 0)) * 6.0 - 3.0);
-	out[0] = cB * (1.0 - cG + Math.min(Math.max(px - 1.0,0.0),1.0) * cG);
-	out[1] = cB * (1.0 - cG + Math.min(Math.max(py - 1.0,0.0),1.0) * cG);
-	out[2] = cB * (1.0 - cG + Math.min(Math.max(pz - 1.0,0.0),1.0) * cG);
-};
-zui_Ext.rgbToHsv = function(cR,cG,cB,out) {
-	var a = cG < cB ? 0.0 : 1.0;
-	var px = cB * (1.0 - a) + cG * a;
-	var a1 = cG < cB ? 0.0 : 1.0;
-	var py = cG * (1.0 - a1) + cB * a1;
-	var a2 = cG < cB ? 0.0 : 1.0;
-	var pz = -1.0 * (1.0 - a2) + 0.0 * a2;
-	var a3 = cG < cB ? 0.0 : 1.0;
-	var pw = 0.66666666666666663 * (1.0 - a3) + -0.333333333333333315 * a3;
-	var a4 = cR < px ? 0.0 : 1.0;
-	var qx = px * (1.0 - a4) + cR * a4;
-	var a5 = cR < px ? 0.0 : 1.0;
-	var qy = py * (1.0 - a5) + py * a5;
-	var a6 = cR < px ? 0.0 : 1.0;
-	var qz = pw * (1.0 - a6) + pz * a6;
-	var a7 = cR < px ? 0.0 : 1.0;
-	var qw = cR * (1.0 - a7) + px * a7;
-	var d = qx - Math.min(qw,qy);
-	out[0] = Math.abs(qz + (qw - qy) / (6.0 * d + 1.0e-10));
-	out[1] = d / (qx + 1.0e-10);
-	out[2] = qx;
-};
-var zui_Id = $hxClasses["zui.Id"] = function() { };
-zui_Id.__name__ = true;
-var zui_Handle = $hxClasses["zui.Handle"] = function(ops) {
-	this.changed = false;
-	this.dragY = 0;
-	this.dragX = 0;
-	this.dragEnabled = false;
-	this.lastMaxY = 0.0;
-	this.lastMaxX = 0.0;
-	this.layout = 0;
-	this.scrollEnabled = false;
-	this.scrollOffset = 0.0;
-	this.redraws = 2;
-	this.texture = null;
-	this.text = "";
-	this.value = 0.0;
-	this.color = -1;
-	this.position = 0;
-	this.selected = false;
-	if(ops != null) {
-		if(ops.selected != null) {
-			this.selected = ops.selected;
-		}
-		if(ops.position != null) {
-			this.position = ops.position;
-		}
-		if(ops.value != null) {
-			this.value = ops.value;
-		}
-		if(ops.text != null) {
-			this.text = ops.text;
-		}
-		if(ops.color != null) {
-			this.color = ops.color;
-		}
-		if(ops.layout != null) {
-			this.layout = ops.layout;
-		}
-	}
-};
-zui_Handle.__name__ = true;
-zui_Handle.prototype = {
-	selected: null
-	,position: null
-	,color: null
-	,value: null
-	,text: null
-	,texture: null
-	,redraws: null
-	,scrollOffset: null
-	,scrollEnabled: null
-	,layout: null
-	,lastMaxX: null
-	,lastMaxY: null
-	,dragEnabled: null
-	,dragX: null
-	,dragY: null
-	,changed: null
-	,children: null
-	,nest: function(i,ops) {
-		if(this.children == null) {
-			this.children = new haxe_ds_IntMap();
-		}
-		var c = this.children.h[i];
-		if(c == null) {
-			c = new zui_Handle(ops);
-			this.children.h[i] = c;
-		}
-		return c;
-	}
-	,unnest: function(i) {
-		if(this.children != null) {
-			this.children.remove(i);
-		}
-	}
-	,__class__: zui_Handle
-};
-var zui_Popup = $hxClasses["zui.Popup"] = function() { };
-zui_Popup.__name__ = true;
-zui_Popup.render = function(g) {
-	if(zui_Popup.boxCommands == null) {
-		zui_Popup.ui.begin(g);
-		if(zui_Popup.ui.window(zui_Popup.hwnd,zui_Popup.modalX,zui_Popup.modalY,zui_Popup.modalW,zui_Popup.modalH)) {
-			zui_Popup.drawTitle(g);
-			var _g = 0;
-			var _g1 = zui_Popup.boxText.split("\n");
-			while(_g < _g1.length) {
-				var line = _g1[_g];
-				++_g;
-				zui_Popup.ui.text(line);
-			}
-			zui_Popup.ui._y = zui_Popup.ui._h - zui_Popup.ui.t.BUTTON_H - 10;
-			zui_Popup.ui.row([0.333333333333333315,0.333333333333333315,0.333333333333333315]);
-			zui_Popup.ui.endElement();
-			if(zui_Popup.ui.button("OK")) {
-				zui_Popup.show = false;
-			}
-		}
-		zui_Popup.ui.end();
-	} else {
-		zui_Popup.ui.begin(g);
-		if(zui_Popup.ui.window(zui_Popup.hwnd,zui_Popup.modalX,zui_Popup.modalY,zui_Popup.modalW,zui_Popup.modalH)) {
-			zui_Popup.drawTitle(g);
-			zui_Popup.ui._y += 10;
-			zui_Popup.boxCommands(zui_Popup.ui);
-		}
-		zui_Popup.ui.end();
-	}
-};
-zui_Popup.drawTitle = function(g) {
-	if(zui_Popup.boxTitle != "") {
-		g.set_color(zui_Popup.ui.t.SEPARATOR_COL);
-		var _this = zui_Popup.ui;
-		var x = zui_Popup.ui._x;
-		var y = zui_Popup.ui._y;
-		var w = zui_Popup.ui._w;
-		var h = zui_Popup.ui.t.BUTTON_H;
-		var strength = 0.0;
-		if(strength == 0.0) {
-			strength = 1;
-		}
-		if(!_this.enabled) {
-			_this.fadeColor();
-		}
-		g.fillRect(x,y - 1,w,h + 1);
-		g.set_color(zui_Popup.ui.t.TEXT_COL);
-		zui_Popup.ui.text(zui_Popup.boxTitle);
-	}
-};
-zui_Popup.update = function() {
-	var inUse = zui_Popup.ui.comboSelectedHandle != null;
-	if(zui_Popup.ui.inputStarted && !inUse) {
-		if(zui_Popup.ui.inputX < zui_Popup.modalX || zui_Popup.ui.inputX > zui_Popup.modalX + zui_Popup.modalW || zui_Popup.ui.inputY < zui_Popup.modalY || zui_Popup.ui.inputY > zui_Popup.modalY + zui_Popup.modalH) {
-			zui_Popup.show = false;
-		}
-	}
-};
-zui_Popup.showMessage = function(ui,title,text) {
-	zui_Popup.ui = ui;
-	zui_Popup.init();
-	zui_Popup.boxTitle = title;
-	zui_Popup.boxText = text;
-	zui_Popup.boxCommands = null;
-};
-zui_Popup.showCustom = function(ui,commands,mx,my,mw,mh) {
-	if(mh == null) {
-		mh = 160;
-	}
-	if(mw == null) {
-		mw = 400;
-	}
-	if(my == null) {
-		my = -1;
-	}
-	if(mx == null) {
-		mx = -1;
-	}
-	zui_Popup.ui = ui;
-	zui_Popup.init(mx,my,mw,mh);
-	zui_Popup.boxTitle = "";
-	zui_Popup.boxText = "";
-	zui_Popup.boxCommands = commands;
-};
-zui_Popup.init = function(mx,my,mw,mh) {
-	if(mh == null) {
-		mh = 160;
-	}
-	if(mw == null) {
-		mw = 400;
-	}
-	if(my == null) {
-		my = -1;
-	}
-	if(mx == null) {
-		mx = -1;
-	}
-	var appW = kha_System.windowWidth();
-	var appH = kha_System.windowHeight();
-	zui_Popup.modalX = mx;
-	zui_Popup.modalY = my;
-	zui_Popup.modalW = mw * zui_Popup.ui.ops.scaleFactor | 0;
-	zui_Popup.modalH = mh * zui_Popup.ui.ops.scaleFactor | 0;
-	if(mx == -1) {
-		zui_Popup.modalX = appW / 2 - zui_Popup.modalW / 2 | 0;
-	}
-	if(my == -1) {
-		zui_Popup.modalY = appH / 2 - zui_Popup.modalH / 2 | 0;
-	}
-	zui_Popup.modalX = Math.max(0,Math.min(zui_Popup.modalX,appW - zui_Popup.modalW)) | 0;
-	zui_Popup.modalY = Math.max(0,Math.min(zui_Popup.modalY,appH - zui_Popup.modalH)) | 0;
-	zui_Popup.hwnd.dragX = 0;
-	zui_Popup.hwnd.dragY = 0;
-	zui_Popup.show = true;
-};
 var zui_Themes = $hxClasses["zui.Themes"] = function() { };
 zui_Themes.__name__ = true;
 var zui_Zui = $hxClasses["zui.Zui"] = function(ops) {
@@ -26347,6 +25399,81 @@ zui_Zui.prototype = {
 	}
 	,__class__: zui_Zui
 };
+var zui_Handle = $hxClasses["zui.Handle"] = function(ops) {
+	this.changed = false;
+	this.dragY = 0;
+	this.dragX = 0;
+	this.dragEnabled = false;
+	this.lastMaxY = 0.0;
+	this.lastMaxX = 0.0;
+	this.layout = 0;
+	this.scrollEnabled = false;
+	this.scrollOffset = 0.0;
+	this.redraws = 2;
+	this.texture = null;
+	this.text = "";
+	this.value = 0.0;
+	this.color = -1;
+	this.position = 0;
+	this.selected = false;
+	if(ops != null) {
+		if(ops.selected != null) {
+			this.selected = ops.selected;
+		}
+		if(ops.position != null) {
+			this.position = ops.position;
+		}
+		if(ops.value != null) {
+			this.value = ops.value;
+		}
+		if(ops.text != null) {
+			this.text = ops.text;
+		}
+		if(ops.color != null) {
+			this.color = ops.color;
+		}
+		if(ops.layout != null) {
+			this.layout = ops.layout;
+		}
+	}
+};
+zui_Handle.__name__ = true;
+zui_Handle.prototype = {
+	selected: null
+	,position: null
+	,color: null
+	,value: null
+	,text: null
+	,texture: null
+	,redraws: null
+	,scrollOffset: null
+	,scrollEnabled: null
+	,layout: null
+	,lastMaxX: null
+	,lastMaxY: null
+	,dragEnabled: null
+	,dragX: null
+	,dragY: null
+	,changed: null
+	,children: null
+	,nest: function(i,ops) {
+		if(this.children == null) {
+			this.children = new haxe_ds_IntMap();
+		}
+		var c = this.children.h[i];
+		if(c == null) {
+			c = new zui_Handle(ops);
+			this.children.h[i] = c;
+		}
+		return c;
+	}
+	,unnest: function(i) {
+		if(this.children != null) {
+			this.children.remove(i);
+		}
+	}
+	,__class__: zui_Handle
+};
 function $getIterator(o) { if( o instanceof Array ) return HxOverrides.iter(o); else return o.iterator(); }
 function $bind(o,m) { if( m == null ) return null; if( m.__id__ == null ) m.__id__ = $global.$haxeUID++; var f; if( o.hx__closures__ == null ) o.hx__closures__ = {}; else f = o.hx__closures__[m.__id__]; if( f == null ) { f = m.bind(o); o.hx__closures__[m.__id__] = f; } return f; }
 $global.$haxeUID |= 0;
@@ -26616,28 +25743,6 @@ kha_netsync_Session.RPC_SERVER = 0;
 kha_netsync_Session.RPC_ALL = 1;
 kha_netsync_SyncBuilder.nextId = 0;
 kha_netsync_SyncBuilder.objects = [];
-zui_Ext.dataPath = "";
-zui_Ext.lastPath = "";
-zui_Ext.kx = 1.0;
-zui_Ext.ky = 0.66666666666666663;
-zui_Ext.kz = 0.333333333333333315;
-zui_Ext.kw = 3.0;
-zui_Ext.ar = [0.0,0.0,0.0];
-zui_Ext.Kx = 0.0;
-zui_Ext.Ky = -0.333333333333333315;
-zui_Ext.Kz = 0.66666666666666663;
-zui_Ext.Kw = -1.0;
-zui_Ext.e = 1.0e-10;
-zui_Id.i = 0;
-zui_Handle.global = new zui_Handle();
-zui_Popup.show = false;
-zui_Popup.hwnd = new zui_Handle();
-zui_Popup.boxTitle = "";
-zui_Popup.boxText = "";
-zui_Popup.modalX = 0;
-zui_Popup.modalY = 0;
-zui_Popup.modalW = 400;
-zui_Popup.modalH = 160;
 zui_Themes.dark = { NAME : "Default Dark", FONT_SIZE : 13, ELEMENT_W : 100, ELEMENT_H : 24, ELEMENT_OFFSET : 4, ARROW_SIZE : 5, BUTTON_H : 22, CHECK_SIZE : 15, CHECK_SELECT_SIZE : 8, SCROLL_W : 6, TEXT_OFFSET : 8, TAB_W : 12, FILL_WINDOW_BG : false, FILL_BUTTON_BG : true, FILL_ACCENT_BG : false, WINDOW_BG_COL : -13421773, WINDOW_TINT_COL : -1, ACCENT_COL : -12303292, ACCENT_HOVER_COL : -11974327, ACCENT_SELECT_COL : -10461088, BUTTON_COL : -12171706, BUTTON_TEXT_COL : -1513499, BUTTON_HOVER_COL : -11974327, BUTTON_PRESSED_COL : -15000805, TEXT_COL : -1513499, LABEL_COL : -3618616, SEPARATOR_COL : -14211289, HIGHLIGHT_COL : -14656100, CONTEXT_COL : -14540254};
 zui_Themes.light = { NAME : "Default Light", FONT_SIZE : 26, ELEMENT_W : 200, ELEMENT_H : 48, ELEMENT_OFFSET : 8, ARROW_SIZE : 10, BUTTON_H : 44, CHECK_SIZE : 30, CHECK_SELECT_SIZE : 16, SCROLL_W : 12, TEXT_OFFSET : 16, TAB_W : 24, FILL_WINDOW_BG : false, FILL_BUTTON_BG : true, FILL_ACCENT_BG : false, WINDOW_BG_COL : -1052689, WINDOW_TINT_COL : -14540254, ACCENT_COL : -1118482, ACCENT_HOVER_COL : -4473925, ACCENT_SELECT_COL : -5592406, BUTTON_COL : -3355444, BUTTON_TEXT_COL : -14540254, BUTTON_HOVER_COL : -5000269, BUTTON_PRESSED_COL : -5131855, TEXT_COL : -6710887, LABEL_COL : -5592406, SEPARATOR_COL : -6710887, HIGHLIGHT_COL : -14656100, CONTEXT_COL : -5592406};
 zui_Zui.alwaysRedrawWindow = true;
@@ -26650,4 +25755,5 @@ zui_Zui.isCopy = false;
 zui_Zui.isPaste = false;
 zui_Zui.copyFrame = 0;
 zui_Zui.comboFirst = true;
+zui_Handle.global = new zui_Handle();
 Main.main();

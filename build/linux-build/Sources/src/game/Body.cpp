@@ -85,18 +85,18 @@ HXLINE(  28)		 ::haxe::ds::EnumValueMap _g3 =  ::haxe::ds::EnumValueMap_obj::__a
 HXDLIN(  28)		_g3->set(::game::HeadPart_obj::NaturalHead_dyn(),1);
 HXDLIN(  28)		this->_hx_set_headLayers(HX_CTX, _g3);
 HXLINE(  48)		super::__construct();
-HXLINE(  50)		this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,null(),null()));
+HXLINE(  50)		this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,30,50));
 HXLINE(  52)		this->_hx_set_chest(HX_CTX, ::game::ChestPart_obj::NaturalChest_dyn());
 HXLINE(  53)		this->_hx_set_head(HX_CTX, ::game::HeadPart_obj::NaturalHead_dyn());
-HXLINE(  54)		this->_hx_set_leftArm(HX_CTX, ::game::ArmPart_obj::NaturalArm_dyn());
-HXLINE(  55)		this->_hx_set_rightArm(HX_CTX, ::game::ArmPart_obj::NaturalArm_dyn());
+HXLINE(  54)		this->_hx_set_leftArm(HX_CTX, ::game::ArmPart_obj::Axe_dyn());
+HXLINE(  55)		this->_hx_set_rightArm(HX_CTX, ::game::ArmPart_obj::Sword_dyn());
 HXLINE(  56)		this->_hx_set_leftLeg(HX_CTX, ::game::LegPart_obj::NaturalLeg_dyn());
 HXLINE(  57)		this->_hx_set_rightLeg(HX_CTX, ::game::LegPart_obj::NaturalLeg_dyn());
 HXLINE(  59)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
 HXLINE(  60)		 ::bonsai::render::AnimatedSprite _hx_tmp = this->animatedSprite;
 HXDLIN(  60)		_hx_tmp->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_4a50d4be_1,1))
-            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyRight,32,32))));
+            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts,32,32))));
 HXLINE(  61)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
             	}
 
@@ -171,7 +171,7 @@ HXDLIN(  74)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int 
 HXLINE(  75)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
 HXLINE(  77)		 ::Dynamic _hx_tmp8 = this->legLayers->get(this->rightLeg);
 HXDLIN(  77)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp8));
-HXLINE(  78)		this->animatedSprite->render(graphics,( (float)((this->position->x + 7)) ),( (float)(this->position->y) ));
+HXLINE(  78)		this->animatedSprite->render(graphics,( (float)((this->position->x + 3)) ),( (float)(this->position->y) ));
 HXLINE(  80)		 ::Dynamic _hx_tmp9 = this->armLayers->get(this->leftArm);
 HXDLIN(  80)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp9));
 HXLINE(  81)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));

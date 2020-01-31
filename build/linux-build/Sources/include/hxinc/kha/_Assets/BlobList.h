@@ -49,17 +49,29 @@ class HXCPP_CLASS_ATTRIBUTES BlobList_obj : public hx::Object
 		 ::kha::internal::BytesBlob get(::String name);
 		::Dynamic get_dyn();
 
-		 ::kha::internal::BytesBlob bodyRight_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_bodyRight_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyRight_ase=_hx_v; }
-		::String bodyRight_aseName;
-		inline ::String _hx_set_bodyRight_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return bodyRight_aseName=_hx_v; }
-		 ::Dynamic bodyRight_aseDescription;
-		inline  ::Dynamic _hx_set_bodyRight_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyRight_aseDescription=_hx_v; }
-		void bodyRight_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic bodyRight_aseLoad_dyn();
+		 ::kha::internal::BytesBlob bodyParts_ase;
+		inline  ::kha::internal::BytesBlob _hx_set_bodyParts_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParts_ase=_hx_v; }
+		::String bodyParts_aseName;
+		inline ::String _hx_set_bodyParts_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return bodyParts_aseName=_hx_v; }
+		 ::Dynamic bodyParts_aseDescription;
+		inline  ::Dynamic _hx_set_bodyParts_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParts_aseDescription=_hx_v; }
+		void bodyParts_aseLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic bodyParts_aseLoad_dyn();
 
-		void bodyRight_aseUnload();
-		::Dynamic bodyRight_aseUnload_dyn();
+		void bodyParts_aseUnload();
+		::Dynamic bodyParts_aseUnload_dyn();
+
+		 ::kha::internal::BytesBlob bodyParts_json;
+		inline  ::kha::internal::BytesBlob _hx_set_bodyParts_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParts_json=_hx_v; }
+		::String bodyParts_jsonName;
+		inline ::String _hx_set_bodyParts_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return bodyParts_jsonName=_hx_v; }
+		 ::Dynamic bodyParts_jsonDescription;
+		inline  ::Dynamic _hx_set_bodyParts_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParts_jsonDescription=_hx_v; }
+		void bodyParts_jsonLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic bodyParts_jsonLoad_dyn();
+
+		void bodyParts_jsonUnload();
+		::Dynamic bodyParts_jsonUnload_dyn();
 
 		 ::kha::internal::BytesBlob chest_ase;
 		inline  ::kha::internal::BytesBlob _hx_set_chest_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return chest_ase=_hx_v; }

@@ -62,7 +62,7 @@ HXLINE(  16)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSp
 HXLINE(  17)		 ::bonsai::render::AnimatedSprite _hx_tmp = this->animatedSprite;
 HXDLIN(  17)		_hx_tmp->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_f830815c_1,1))
-            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyRight,32,32))));
+            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts,32,32))));
 HXLINE(  18)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
 HXLINE(  19)		 ::haxe::ds::EnumValueMap _g =  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX );
 HXDLIN(  19)		_g->set(::game::BodyPart_obj::Body_dyn(),0);
