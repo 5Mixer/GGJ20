@@ -16,8 +16,12 @@ HX_DECLARE_CLASS2(bonsai,render,AnimatedSprite)
 HX_DECLARE_CLASS2(bonsai,render,SpriteMap)
 HX_DECLARE_CLASS2(bonsai,render,Transformation)
 HX_DECLARE_CLASS2(bonsai,scene,Scene)
+HX_DECLARE_CLASS1(game,Body)
 HX_DECLARE_CLASS1(game,BodyPartParticles)
 HX_DECLARE_CLASS1(game,World)
+HX_DECLARE_CLASS1(haxe,IMap)
+HX_DECLARE_CLASS2(haxe,ds,BalancedTree)
+HX_DECLARE_CLASS2(haxe,ds,EnumValueMap)
 HX_DECLARE_CLASS2(kha,graphics2,Graphics)
 
 namespace game{
@@ -63,10 +67,17 @@ class HXCPP_CLASS_ATTRIBUTES World_obj : public  ::bonsai::scene::Scene_obj
 		inline  ::bonsai::render::AnimatedSprite _hx_set_bodyAnimatedSprite(hx::StackContext *_hx_ctx, ::bonsai::render::AnimatedSprite _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyAnimatedSprite=_hx_v; }
 		 ::bonsai::render::SpriteMap bodySpriteMap;
 		inline  ::bonsai::render::SpriteMap _hx_set_bodySpriteMap(hx::StackContext *_hx_ctx, ::bonsai::render::SpriteMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodySpriteMap=_hx_v; }
+		::Array< ::Dynamic> bodies;
+		inline ::Array< ::Dynamic> _hx_set_bodies(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodies=_hx_v; }
 		int f;
 		void update(Float dt);
 
 		void render( ::kha::graphics2::Graphics g);
+
+		 ::haxe::ds::EnumValueMap zOffset;
+		inline  ::haxe::ds::EnumValueMap _hx_set_zOffset(hx::StackContext *_hx_ctx, ::haxe::ds::EnumValueMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return zOffset=_hx_v; }
+		void explodeBody( ::game::Body body);
+		::Dynamic explodeBody_dyn();
 
 };
 

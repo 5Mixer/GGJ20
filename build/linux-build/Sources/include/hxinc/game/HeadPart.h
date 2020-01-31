@@ -24,8 +24,14 @@ class HeadPart_obj : public hx::EnumBase_obj
 		::String GetEnumName( ) const { return HX_("game.HeadPart",4f,e1,73,ad); }
 		::String __ToString() const { return HX_("HeadPart.",7b,a3,a1,f2) + _hx_tag; }
 
-		static ::game::HeadPart NaturalHead;
-		static inline ::game::HeadPart NaturalHead_dyn() { return NaturalHead; }
+		static ::game::HeadPart NaturalHeadDown;
+		static inline ::game::HeadPart NaturalHeadDown_dyn() { return NaturalHeadDown; }
+		static ::game::HeadPart NaturalHeadLeft;
+		static inline ::game::HeadPart NaturalHeadLeft_dyn() { return NaturalHeadLeft; }
+		static ::game::HeadPart NaturalHeadRight;
+		static inline ::game::HeadPart NaturalHeadRight_dyn() { return NaturalHeadRight; }
+		static ::game::HeadPart NaturalHeadUp;
+		static inline ::game::HeadPart NaturalHeadUp_dyn() { return NaturalHeadUp; }
 };
 
 } // end namespace game

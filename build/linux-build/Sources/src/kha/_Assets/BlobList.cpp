@@ -19,75 +19,135 @@
 
 HX_DEFINE_STACK_FRAME(_hx_pos_37d7e3a43e386237_31_new,"kha._Assets.BlobList","new",0xb2850123,"kha._Assets.BlobList.new","kha/Assets.hx",31,0x66f27110)
 static const ::String _hx_array_data_cac733b1_1[] = {
-	HX_("bodyParts_ase",52,e6,71,63),HX_("bodyParts_json",29,96,2a,a6),HX_("chest_ase",75,df,6c,3c),HX_("heads_ase",07,bd,75,76),
+	HX_("bodyParts2_ase",88,7d,cf,b5),HX_("bodyParts2_json",33,4e,b1,65),HX_("bodyParts_ase",52,e6,71,63),HX_("bodyParts_json",29,96,2a,a6),HX_("map_tmx",7c,32,46,39),HX_("tiles_ase",39,e8,57,6e),HX_("tiles_json",62,3e,86,24),HX_("tiles_tsx",1f,53,66,6e),
 };
 static const ::String _hx_array_data_cac733b1_2[] = {
-	HX_("heads.ase",98,48,12,56),
+	HX_("tiles.tsx",b0,de,02,4e),
 };
 static const int _hx_array_data_cac733b1_3[] = {
 	(int)1,
 };
 static const ::String _hx_array_data_cac733b1_4[] = {
-	HX_("chest.ase",06,6b,09,1c),
+	HX_("tiles.json",b1,d1,e3,ed),
 };
 static const int _hx_array_data_cac733b1_5[] = {
 	(int)1,
 };
 static const ::String _hx_array_data_cac733b1_6[] = {
-	HX_("bodyParts.json",78,29,88,6f),
+	HX_("tiles.ase",ca,73,f4,4d),
 };
 static const int _hx_array_data_cac733b1_7[] = {
 	(int)1,
 };
 static const ::String _hx_array_data_cac733b1_8[] = {
-	HX_("bodyParts.ase",e3,71,0e,43),
+	HX_("map.tmx",0d,be,e2,18),
 };
 static const int _hx_array_data_cac733b1_9[] = {
 	(int)1,
 };
+static const ::String _hx_array_data_cac733b1_10[] = {
+	HX_("bodyParts.json",78,29,88,6f),
+};
+static const int _hx_array_data_cac733b1_11[] = {
+	(int)1,
+};
+static const ::String _hx_array_data_cac733b1_12[] = {
+	HX_("bodyParts.ase",e3,71,0e,43),
+};
+static const int _hx_array_data_cac733b1_13[] = {
+	(int)1,
+};
+static const ::String _hx_array_data_cac733b1_14[] = {
+	HX_("bodyParts2.json",82,e1,0e,2f),
+};
+static const int _hx_array_data_cac733b1_15[] = {
+	(int)1,
+};
+static const ::String _hx_array_data_cac733b1_16[] = {
+	HX_("bodyParts2.ase",19,09,6c,95),
+};
+static const int _hx_array_data_cac733b1_17[] = {
+	(int)1,
+};
 HX_LOCAL_STACK_FRAME(_hx_pos_37d7e3a43e386237_37_get,"kha._Assets.BlobList","get",0xb27fb159,"kha._Assets.BlobList.get","kha/Assets.hx",37,0x66f27110)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_bodyParts2_aseLoad,"kha._Assets.BlobList","bodyParts2_aseLoad",0x0f35ca6b,"kha._Assets.BlobList.bodyParts2_aseLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_bodyParts2_aseUnload,"kha._Assets.BlobList","bodyParts2_aseUnload",0xad2b2c84,"kha._Assets.BlobList.bodyParts2_aseUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_bodyParts2_jsonLoad,"kha._Assets.BlobList","bodyParts2_jsonLoad",0xbebad0bc,"kha._Assets.BlobList.bodyParts2_jsonLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_bodyParts2_jsonUnload,"kha._Assets.BlobList","bodyParts2_jsonUnload",0x0cbb2915,"kha._Assets.BlobList.bodyParts2_jsonUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_bodyParts_aseLoad,"kha._Assets.BlobList","bodyParts_aseLoad",0x72591d9b,"kha._Assets.BlobList.bodyParts_aseLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_bodyParts_aseUnload,"kha._Assets.BlobList","bodyParts_aseUnload",0x9e2dabb4,"kha._Assets.BlobList.bodyParts_aseUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_bodyParts_jsonLoad,"kha._Assets.BlobList","bodyParts_jsonLoad",0x1a80478c,"kha._Assets.BlobList.bodyParts_jsonLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_bodyParts_jsonUnload,"kha._Assets.BlobList","bodyParts_jsonUnload",0xfde7f3e5,"kha._Assets.BlobList.bodyParts_jsonUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_chest_aseLoad,"kha._Assets.BlobList","chest_aseLoad",0x6533e6be,"kha._Assets.BlobList.chest_aseLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_chest_aseUnload,"kha._Assets.BlobList","chest_aseUnload",0x14274397,"kha._Assets.BlobList.chest_aseUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_heads_aseLoad,"kha._Assets.BlobList","heads_aseLoad",0xe1eff550,"kha._Assets.BlobList.heads_aseLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_heads_aseUnload,"kha._Assets.BlobList","heads_aseUnload",0x42f19aa9,"kha._Assets.BlobList.heads_aseUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_map_tmxLoad,"kha._Assets.BlobList","map_tmxLoad",0xb24c1285,"kha._Assets.BlobList.map_tmxLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_map_tmxUnload,"kha._Assets.BlobList","map_tmxUnload",0xf8772f1e,"kha._Assets.BlobList.map_tmxUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_tiles_aseLoad,"kha._Assets.BlobList","tiles_aseLoad",0x77cca182,"kha._Assets.BlobList.tiles_aseLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_tiles_aseUnload,"kha._Assets.BlobList","tiles_aseUnload",0x8a77375b,"kha._Assets.BlobList.tiles_aseUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_tiles_jsonLoad,"kha._Assets.BlobList","tiles_jsonLoad",0xda202dc5,"kha._Assets.BlobList.tiles_jsonLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_tiles_jsonUnload,"kha._Assets.BlobList","tiles_jsonUnload",0xd1f89a5e,"kha._Assets.BlobList.tiles_jsonUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_134_tiles_tsxLoad,"kha._Assets.BlobList","tiles_tsxLoad",0x7e817768,"kha._Assets.BlobList.tiles_tsxLoad","kha/internal/AssetsBuilder.hx",134,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_89b6f8aff09b9782_176_tiles_tsxUnload,"kha._Assets.BlobList","tiles_tsxUnload",0x4879d2c1,"kha._Assets.BlobList.tiles_tsxUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 namespace kha{
 namespace _Assets{
 
 void BlobList_obj::__construct(){
             	HX_GC_STACKFRAME(&_hx_pos_37d7e3a43e386237_31_new)
-HXLINE( 191)		this->_hx_set_names(HX_CTX, ::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_1,4));
-HXLINE( 118)		this->_hx_set_heads_aseDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
+HXLINE( 191)		this->_hx_set_names(HX_CTX, ::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_1,8));
+HXLINE( 118)		this->_hx_set_tiles_tsxDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
             			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_2,1))
             			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_3,1))
-            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("heads_ase",07,bd,75,76))
+            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("tiles_tsx",1f,53,66,6e))
             			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
-HXLINE( 110)		this->_hx_set_heads_aseName(HX_CTX, HX_("heads_ase",07,bd,75,76));
-HXLINE(  85)		this->_hx_set_heads_ase(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_chest_aseDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
+HXLINE( 110)		this->_hx_set_tiles_tsxName(HX_CTX, HX_("tiles_tsx",1f,53,66,6e));
+HXLINE(  85)		this->_hx_set_tiles_tsx(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_tiles_jsonDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
             			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_4,1))
             			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_5,1))
-            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("chest_ase",75,df,6c,3c))
+            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("tiles_json",62,3e,86,24))
             			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
-HXLINE( 110)		this->_hx_set_chest_aseName(HX_CTX, HX_("chest_ase",75,df,6c,3c));
-HXLINE(  85)		this->_hx_set_chest_ase(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_bodyParts_jsonDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
+HXLINE( 110)		this->_hx_set_tiles_jsonName(HX_CTX, HX_("tiles_json",62,3e,86,24));
+HXLINE(  85)		this->_hx_set_tiles_json(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_tiles_aseDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
             			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_6,1))
             			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_7,1))
+            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("tiles_ase",39,e8,57,6e))
+            			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
+HXLINE( 110)		this->_hx_set_tiles_aseName(HX_CTX, HX_("tiles_ase",39,e8,57,6e));
+HXLINE(  85)		this->_hx_set_tiles_ase(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_map_tmxDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
+            			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_8,1))
+            			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_9,1))
+            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("map_tmx",7c,32,46,39))
+            			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
+HXLINE( 110)		this->_hx_set_map_tmxName(HX_CTX, HX_("map_tmx",7c,32,46,39));
+HXLINE(  85)		this->_hx_set_map_tmx(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_bodyParts_jsonDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
+            			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_10,1))
+            			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_11,1))
             			->setFixed(2,HX_("name",4b,72,ff,48),HX_("bodyParts_json",29,96,2a,a6))
             			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
 HXLINE( 110)		this->_hx_set_bodyParts_jsonName(HX_CTX, HX_("bodyParts_json",29,96,2a,a6));
 HXLINE(  85)		this->_hx_set_bodyParts_json(HX_CTX, null());
 HXLINE( 118)		this->_hx_set_bodyParts_aseDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
-            			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_8,1))
-            			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_9,1))
+            			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_12,1))
+            			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_13,1))
             			->setFixed(2,HX_("name",4b,72,ff,48),HX_("bodyParts_ase",52,e6,71,63))
             			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
 HXLINE( 110)		this->_hx_set_bodyParts_aseName(HX_CTX, HX_("bodyParts_ase",52,e6,71,63));
 HXLINE(  85)		this->_hx_set_bodyParts_ase(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_bodyParts2_jsonDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
+            			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_14,1))
+            			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_15,1))
+            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("bodyParts2_json",33,4e,b1,65))
+            			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
+HXLINE( 110)		this->_hx_set_bodyParts2_jsonName(HX_CTX, HX_("bodyParts2_json",33,4e,b1,65));
+HXLINE(  85)		this->_hx_set_bodyParts2_json(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_bodyParts2_aseDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(4)
+            			->setFixed(0,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_cac733b1_16,1))
+            			->setFixed(1,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_cac733b1_17,1))
+            			->setFixed(2,HX_("name",4b,72,ff,48),HX_("bodyParts2_ase",88,7d,cf,b5))
+            			->setFixed(3,HX_("type",ba,f2,08,4d),HX_("blob",5d,3d,19,41))));
+HXLINE( 110)		this->_hx_set_bodyParts2_aseName(HX_CTX, HX_("bodyParts2_ase",88,7d,cf,b5));
+HXLINE(  85)		this->_hx_set_bodyParts2_ase(HX_CTX, null());
             	}
 
 Dynamic BlobList_obj::__CreateEmpty() { return new BlobList_obj; }
@@ -112,6 +172,54 @@ HXDLIN(  37)		return ( ( ::kha::internal::BytesBlob)(::Reflect_obj::field(hx::Ob
 
 
 HX_DEFINE_DYNAMIC_FUNC1(BlobList_obj,get,return )
+
+void BlobList_obj::bodyParts2_aseLoad( ::Dynamic done, ::Dynamic failure){
+            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
+            		void _hx_run( ::kha::internal::BytesBlob blob){
+            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_bodyParts2_aseLoad)
+HXDLIN( 134)			done();
+            		}
+            		HX_END_LOCAL_FUNC1((void))
+
+            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_bodyParts2_aseLoad)
+HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("bodyParts2_ase",88,7d,cf,b5), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("bodyParts2_aseLoad",ce,a7,e1,e0)));
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,bodyParts2_aseLoad,(void))
+
+void BlobList_obj::bodyParts2_aseUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_bodyParts2_aseUnload)
+HXLINE( 177)		this->bodyParts2_ase->unload();
+HXLINE( 178)		this->_hx_set_bodyParts2_ase(HX_CTX, null());
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,bodyParts2_aseUnload,(void))
+
+void BlobList_obj::bodyParts2_jsonLoad( ::Dynamic done, ::Dynamic failure){
+            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
+            		void _hx_run( ::kha::internal::BytesBlob blob){
+            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_bodyParts2_jsonLoad)
+HXDLIN( 134)			done();
+            		}
+            		HX_END_LOCAL_FUNC1((void))
+
+            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_bodyParts2_jsonLoad)
+HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("bodyParts2_json",33,4e,b1,65), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("bodyParts2_jsonLoad",f9,a9,70,63)));
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,bodyParts2_jsonLoad,(void))
+
+void BlobList_obj::bodyParts2_jsonUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_bodyParts2_jsonUnload)
+HXLINE( 177)		this->bodyParts2_json->unload();
+HXLINE( 178)		this->_hx_set_bodyParts2_json(HX_CTX, null());
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,bodyParts2_jsonUnload,(void))
 
 void BlobList_obj::bodyParts_aseLoad( ::Dynamic done, ::Dynamic failure){
             		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
@@ -161,53 +269,101 @@ HXLINE( 178)		this->_hx_set_bodyParts_json(HX_CTX, null());
 
 HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,bodyParts_jsonUnload,(void))
 
-void BlobList_obj::chest_aseLoad( ::Dynamic done, ::Dynamic failure){
+void BlobList_obj::map_tmxLoad( ::Dynamic done, ::Dynamic failure){
             		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
             		void _hx_run( ::kha::internal::BytesBlob blob){
-            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_chest_aseLoad)
+            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_map_tmxLoad)
 HXDLIN( 134)			done();
             		}
             		HX_END_LOCAL_FUNC1((void))
 
-            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_chest_aseLoad)
-HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("chest_ase",75,df,6c,3c), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("chest_aseLoad",3b,04,3b,ce)));
+            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_map_tmxLoad)
+HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("map_tmx",7c,32,46,39), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("map_tmxLoad",c2,e6,87,f5)));
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,chest_aseLoad,(void))
+HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,map_tmxLoad,(void))
 
-void BlobList_obj::chest_aseUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_chest_aseUnload)
-HXLINE( 177)		this->chest_ase->unload();
-HXLINE( 178)		this->_hx_set_chest_ase(HX_CTX, null());
+void BlobList_obj::map_tmxUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_map_tmxUnload)
+HXLINE( 177)		this->map_tmx->unload();
+HXLINE( 178)		this->_hx_set_map_tmx(HX_CTX, null());
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,chest_aseUnload,(void))
+HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,map_tmxUnload,(void))
 
-void BlobList_obj::heads_aseLoad( ::Dynamic done, ::Dynamic failure){
+void BlobList_obj::tiles_aseLoad( ::Dynamic done, ::Dynamic failure){
             		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
             		void _hx_run( ::kha::internal::BytesBlob blob){
-            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_heads_aseLoad)
+            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_tiles_aseLoad)
 HXDLIN( 134)			done();
             		}
             		HX_END_LOCAL_FUNC1((void))
 
-            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_heads_aseLoad)
-HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("heads_ase",07,bd,75,76), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("heads_aseLoad",cd,12,f7,4a)));
+            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_tiles_aseLoad)
+HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("tiles_ase",39,e8,57,6e), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("tiles_aseLoad",ff,be,d3,e0)));
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,heads_aseLoad,(void))
+HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,tiles_aseLoad,(void))
 
-void BlobList_obj::heads_aseUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_heads_aseUnload)
-HXLINE( 177)		this->heads_ase->unload();
-HXLINE( 178)		this->_hx_set_heads_ase(HX_CTX, null());
+void BlobList_obj::tiles_aseUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_tiles_aseUnload)
+HXLINE( 177)		this->tiles_ase->unload();
+HXLINE( 178)		this->_hx_set_tiles_ase(HX_CTX, null());
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,heads_aseUnload,(void))
+HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,tiles_aseUnload,(void))
+
+void BlobList_obj::tiles_jsonLoad( ::Dynamic done, ::Dynamic failure){
+            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
+            		void _hx_run( ::kha::internal::BytesBlob blob){
+            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_tiles_jsonLoad)
+HXDLIN( 134)			done();
+            		}
+            		HX_END_LOCAL_FUNC1((void))
+
+            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_tiles_jsonLoad)
+HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("tiles_json",62,3e,86,24), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("tiles_jsonLoad",a8,dd,52,57)));
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,tiles_jsonLoad,(void))
+
+void BlobList_obj::tiles_jsonUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_tiles_jsonUnload)
+HXLINE( 177)		this->tiles_json->unload();
+HXLINE( 178)		this->_hx_set_tiles_json(HX_CTX, null());
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,tiles_jsonUnload,(void))
+
+void BlobList_obj::tiles_tsxLoad( ::Dynamic done, ::Dynamic failure){
+            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
+            		void _hx_run( ::kha::internal::BytesBlob blob){
+            			HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_tiles_tsxLoad)
+HXDLIN( 134)			done();
+            		}
+            		HX_END_LOCAL_FUNC1((void))
+
+            	HX_STACKFRAME(&_hx_pos_89b6f8aff09b9782_134_tiles_tsxLoad)
+HXDLIN( 134)		::kha::Assets_obj::loadBlob(HX_("tiles_tsx",1f,53,66,6e), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),134,HX_("kha._Assets.BlobList",b1,33,c7,ca),HX_("tiles_tsxLoad",e5,94,88,e7)));
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC2(BlobList_obj,tiles_tsxLoad,(void))
+
+void BlobList_obj::tiles_tsxUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_89b6f8aff09b9782_176_tiles_tsxUnload)
+HXLINE( 177)		this->tiles_tsx->unload();
+HXLINE( 178)		this->_hx_set_tiles_tsx(HX_CTX, null());
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC0(BlobList_obj,tiles_tsxUnload,(void))
 
 
 hx::ObjectPtr< BlobList_obj > BlobList_obj::__new() {
@@ -230,36 +386,60 @@ BlobList_obj::BlobList_obj()
 void BlobList_obj::__Mark(HX_MARK_PARAMS)
 {
 	HX_MARK_BEGIN_CLASS(BlobList);
+	HX_MARK_MEMBER_NAME(bodyParts2_ase,"bodyParts2_ase");
+	HX_MARK_MEMBER_NAME(bodyParts2_aseName,"bodyParts2_aseName");
+	HX_MARK_MEMBER_NAME(bodyParts2_aseDescription,"bodyParts2_aseDescription");
+	HX_MARK_MEMBER_NAME(bodyParts2_json,"bodyParts2_json");
+	HX_MARK_MEMBER_NAME(bodyParts2_jsonName,"bodyParts2_jsonName");
+	HX_MARK_MEMBER_NAME(bodyParts2_jsonDescription,"bodyParts2_jsonDescription");
 	HX_MARK_MEMBER_NAME(bodyParts_ase,"bodyParts_ase");
 	HX_MARK_MEMBER_NAME(bodyParts_aseName,"bodyParts_aseName");
 	HX_MARK_MEMBER_NAME(bodyParts_aseDescription,"bodyParts_aseDescription");
 	HX_MARK_MEMBER_NAME(bodyParts_json,"bodyParts_json");
 	HX_MARK_MEMBER_NAME(bodyParts_jsonName,"bodyParts_jsonName");
 	HX_MARK_MEMBER_NAME(bodyParts_jsonDescription,"bodyParts_jsonDescription");
-	HX_MARK_MEMBER_NAME(chest_ase,"chest_ase");
-	HX_MARK_MEMBER_NAME(chest_aseName,"chest_aseName");
-	HX_MARK_MEMBER_NAME(chest_aseDescription,"chest_aseDescription");
-	HX_MARK_MEMBER_NAME(heads_ase,"heads_ase");
-	HX_MARK_MEMBER_NAME(heads_aseName,"heads_aseName");
-	HX_MARK_MEMBER_NAME(heads_aseDescription,"heads_aseDescription");
+	HX_MARK_MEMBER_NAME(map_tmx,"map_tmx");
+	HX_MARK_MEMBER_NAME(map_tmxName,"map_tmxName");
+	HX_MARK_MEMBER_NAME(map_tmxDescription,"map_tmxDescription");
+	HX_MARK_MEMBER_NAME(tiles_ase,"tiles_ase");
+	HX_MARK_MEMBER_NAME(tiles_aseName,"tiles_aseName");
+	HX_MARK_MEMBER_NAME(tiles_aseDescription,"tiles_aseDescription");
+	HX_MARK_MEMBER_NAME(tiles_json,"tiles_json");
+	HX_MARK_MEMBER_NAME(tiles_jsonName,"tiles_jsonName");
+	HX_MARK_MEMBER_NAME(tiles_jsonDescription,"tiles_jsonDescription");
+	HX_MARK_MEMBER_NAME(tiles_tsx,"tiles_tsx");
+	HX_MARK_MEMBER_NAME(tiles_tsxName,"tiles_tsxName");
+	HX_MARK_MEMBER_NAME(tiles_tsxDescription,"tiles_tsxDescription");
 	HX_MARK_MEMBER_NAME(names,"names");
 	HX_MARK_END_CLASS();
 }
 
 void BlobList_obj::__Visit(HX_VISIT_PARAMS)
 {
+	HX_VISIT_MEMBER_NAME(bodyParts2_ase,"bodyParts2_ase");
+	HX_VISIT_MEMBER_NAME(bodyParts2_aseName,"bodyParts2_aseName");
+	HX_VISIT_MEMBER_NAME(bodyParts2_aseDescription,"bodyParts2_aseDescription");
+	HX_VISIT_MEMBER_NAME(bodyParts2_json,"bodyParts2_json");
+	HX_VISIT_MEMBER_NAME(bodyParts2_jsonName,"bodyParts2_jsonName");
+	HX_VISIT_MEMBER_NAME(bodyParts2_jsonDescription,"bodyParts2_jsonDescription");
 	HX_VISIT_MEMBER_NAME(bodyParts_ase,"bodyParts_ase");
 	HX_VISIT_MEMBER_NAME(bodyParts_aseName,"bodyParts_aseName");
 	HX_VISIT_MEMBER_NAME(bodyParts_aseDescription,"bodyParts_aseDescription");
 	HX_VISIT_MEMBER_NAME(bodyParts_json,"bodyParts_json");
 	HX_VISIT_MEMBER_NAME(bodyParts_jsonName,"bodyParts_jsonName");
 	HX_VISIT_MEMBER_NAME(bodyParts_jsonDescription,"bodyParts_jsonDescription");
-	HX_VISIT_MEMBER_NAME(chest_ase,"chest_ase");
-	HX_VISIT_MEMBER_NAME(chest_aseName,"chest_aseName");
-	HX_VISIT_MEMBER_NAME(chest_aseDescription,"chest_aseDescription");
-	HX_VISIT_MEMBER_NAME(heads_ase,"heads_ase");
-	HX_VISIT_MEMBER_NAME(heads_aseName,"heads_aseName");
-	HX_VISIT_MEMBER_NAME(heads_aseDescription,"heads_aseDescription");
+	HX_VISIT_MEMBER_NAME(map_tmx,"map_tmx");
+	HX_VISIT_MEMBER_NAME(map_tmxName,"map_tmxName");
+	HX_VISIT_MEMBER_NAME(map_tmxDescription,"map_tmxDescription");
+	HX_VISIT_MEMBER_NAME(tiles_ase,"tiles_ase");
+	HX_VISIT_MEMBER_NAME(tiles_aseName,"tiles_aseName");
+	HX_VISIT_MEMBER_NAME(tiles_aseDescription,"tiles_aseDescription");
+	HX_VISIT_MEMBER_NAME(tiles_json,"tiles_json");
+	HX_VISIT_MEMBER_NAME(tiles_jsonName,"tiles_jsonName");
+	HX_VISIT_MEMBER_NAME(tiles_jsonDescription,"tiles_jsonDescription");
+	HX_VISIT_MEMBER_NAME(tiles_tsx,"tiles_tsx");
+	HX_VISIT_MEMBER_NAME(tiles_tsxName,"tiles_tsxName");
+	HX_VISIT_MEMBER_NAME(tiles_tsxDescription,"tiles_tsxDescription");
 	HX_VISIT_MEMBER_NAME(names,"names");
 }
 
@@ -272,45 +452,77 @@ hx::Val BlobList_obj::__Field(const ::String &inName,hx::PropertyAccess inCallPr
 	case 5:
 		if (HX_FIELD_EQ(inName,"names") ) { return hx::Val( names ); }
 		break;
+	case 7:
+		if (HX_FIELD_EQ(inName,"map_tmx") ) { return hx::Val( map_tmx ); }
+		break;
 	case 9:
-		if (HX_FIELD_EQ(inName,"chest_ase") ) { return hx::Val( chest_ase ); }
-		if (HX_FIELD_EQ(inName,"heads_ase") ) { return hx::Val( heads_ase ); }
+		if (HX_FIELD_EQ(inName,"tiles_ase") ) { return hx::Val( tiles_ase ); }
+		if (HX_FIELD_EQ(inName,"tiles_tsx") ) { return hx::Val( tiles_tsx ); }
+		break;
+	case 10:
+		if (HX_FIELD_EQ(inName,"tiles_json") ) { return hx::Val( tiles_json ); }
+		break;
+	case 11:
+		if (HX_FIELD_EQ(inName,"map_tmxName") ) { return hx::Val( map_tmxName ); }
+		if (HX_FIELD_EQ(inName,"map_tmxLoad") ) { return hx::Val( map_tmxLoad_dyn() ); }
 		break;
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodyParts_ase") ) { return hx::Val( bodyParts_ase ); }
-		if (HX_FIELD_EQ(inName,"chest_aseName") ) { return hx::Val( chest_aseName ); }
-		if (HX_FIELD_EQ(inName,"chest_aseLoad") ) { return hx::Val( chest_aseLoad_dyn() ); }
-		if (HX_FIELD_EQ(inName,"heads_aseName") ) { return hx::Val( heads_aseName ); }
-		if (HX_FIELD_EQ(inName,"heads_aseLoad") ) { return hx::Val( heads_aseLoad_dyn() ); }
+		if (HX_FIELD_EQ(inName,"map_tmxUnload") ) { return hx::Val( map_tmxUnload_dyn() ); }
+		if (HX_FIELD_EQ(inName,"tiles_aseName") ) { return hx::Val( tiles_aseName ); }
+		if (HX_FIELD_EQ(inName,"tiles_aseLoad") ) { return hx::Val( tiles_aseLoad_dyn() ); }
+		if (HX_FIELD_EQ(inName,"tiles_tsxName") ) { return hx::Val( tiles_tsxName ); }
+		if (HX_FIELD_EQ(inName,"tiles_tsxLoad") ) { return hx::Val( tiles_tsxLoad_dyn() ); }
 		break;
 	case 14:
+		if (HX_FIELD_EQ(inName,"bodyParts2_ase") ) { return hx::Val( bodyParts2_ase ); }
 		if (HX_FIELD_EQ(inName,"bodyParts_json") ) { return hx::Val( bodyParts_json ); }
+		if (HX_FIELD_EQ(inName,"tiles_jsonName") ) { return hx::Val( tiles_jsonName ); }
+		if (HX_FIELD_EQ(inName,"tiles_jsonLoad") ) { return hx::Val( tiles_jsonLoad_dyn() ); }
 		break;
 	case 15:
-		if (HX_FIELD_EQ(inName,"chest_aseUnload") ) { return hx::Val( chest_aseUnload_dyn() ); }
-		if (HX_FIELD_EQ(inName,"heads_aseUnload") ) { return hx::Val( heads_aseUnload_dyn() ); }
+		if (HX_FIELD_EQ(inName,"bodyParts2_json") ) { return hx::Val( bodyParts2_json ); }
+		if (HX_FIELD_EQ(inName,"tiles_aseUnload") ) { return hx::Val( tiles_aseUnload_dyn() ); }
+		if (HX_FIELD_EQ(inName,"tiles_tsxUnload") ) { return hx::Val( tiles_tsxUnload_dyn() ); }
+		break;
+	case 16:
+		if (HX_FIELD_EQ(inName,"tiles_jsonUnload") ) { return hx::Val( tiles_jsonUnload_dyn() ); }
 		break;
 	case 17:
 		if (HX_FIELD_EQ(inName,"bodyParts_aseName") ) { return hx::Val( bodyParts_aseName ); }
 		if (HX_FIELD_EQ(inName,"bodyParts_aseLoad") ) { return hx::Val( bodyParts_aseLoad_dyn() ); }
 		break;
 	case 18:
+		if (HX_FIELD_EQ(inName,"bodyParts2_aseName") ) { return hx::Val( bodyParts2_aseName ); }
+		if (HX_FIELD_EQ(inName,"bodyParts2_aseLoad") ) { return hx::Val( bodyParts2_aseLoad_dyn() ); }
 		if (HX_FIELD_EQ(inName,"bodyParts_jsonName") ) { return hx::Val( bodyParts_jsonName ); }
 		if (HX_FIELD_EQ(inName,"bodyParts_jsonLoad") ) { return hx::Val( bodyParts_jsonLoad_dyn() ); }
+		if (HX_FIELD_EQ(inName,"map_tmxDescription") ) { return hx::Val( map_tmxDescription ); }
 		break;
 	case 19:
+		if (HX_FIELD_EQ(inName,"bodyParts2_jsonName") ) { return hx::Val( bodyParts2_jsonName ); }
+		if (HX_FIELD_EQ(inName,"bodyParts2_jsonLoad") ) { return hx::Val( bodyParts2_jsonLoad_dyn() ); }
 		if (HX_FIELD_EQ(inName,"bodyParts_aseUnload") ) { return hx::Val( bodyParts_aseUnload_dyn() ); }
 		break;
 	case 20:
+		if (HX_FIELD_EQ(inName,"bodyParts2_aseUnload") ) { return hx::Val( bodyParts2_aseUnload_dyn() ); }
 		if (HX_FIELD_EQ(inName,"bodyParts_jsonUnload") ) { return hx::Val( bodyParts_jsonUnload_dyn() ); }
-		if (HX_FIELD_EQ(inName,"chest_aseDescription") ) { return hx::Val( chest_aseDescription ); }
-		if (HX_FIELD_EQ(inName,"heads_aseDescription") ) { return hx::Val( heads_aseDescription ); }
+		if (HX_FIELD_EQ(inName,"tiles_aseDescription") ) { return hx::Val( tiles_aseDescription ); }
+		if (HX_FIELD_EQ(inName,"tiles_tsxDescription") ) { return hx::Val( tiles_tsxDescription ); }
+		break;
+	case 21:
+		if (HX_FIELD_EQ(inName,"bodyParts2_jsonUnload") ) { return hx::Val( bodyParts2_jsonUnload_dyn() ); }
+		if (HX_FIELD_EQ(inName,"tiles_jsonDescription") ) { return hx::Val( tiles_jsonDescription ); }
 		break;
 	case 24:
 		if (HX_FIELD_EQ(inName,"bodyParts_aseDescription") ) { return hx::Val( bodyParts_aseDescription ); }
 		break;
 	case 25:
+		if (HX_FIELD_EQ(inName,"bodyParts2_aseDescription") ) { return hx::Val( bodyParts2_aseDescription ); }
 		if (HX_FIELD_EQ(inName,"bodyParts_jsonDescription") ) { return hx::Val( bodyParts_jsonDescription ); }
+		break;
+	case 26:
+		if (HX_FIELD_EQ(inName,"bodyParts2_jsonDescription") ) { return hx::Val( bodyParts2_jsonDescription ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -321,69 +533,119 @@ hx::Val BlobList_obj::__SetField(const ::String &inName,const hx::Val &inValue,h
 	case 5:
 		if (HX_FIELD_EQ(inName,"names") ) { _hx_set_names(HX_CTX_GET,inValue.Cast< ::Array< ::String > >()); return inValue; }
 		break;
+	case 7:
+		if (HX_FIELD_EQ(inName,"map_tmx") ) { _hx_set_map_tmx(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
+		break;
 	case 9:
-		if (HX_FIELD_EQ(inName,"chest_ase") ) { _hx_set_chest_ase(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"heads_ase") ) { _hx_set_heads_ase(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles_ase") ) { _hx_set_tiles_ase(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles_tsx") ) { _hx_set_tiles_tsx(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
+		break;
+	case 10:
+		if (HX_FIELD_EQ(inName,"tiles_json") ) { _hx_set_tiles_json(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
+		break;
+	case 11:
+		if (HX_FIELD_EQ(inName,"map_tmxName") ) { _hx_set_map_tmxName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		break;
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodyParts_ase") ) { _hx_set_bodyParts_ase(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"chest_aseName") ) { _hx_set_chest_aseName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"heads_aseName") ) { _hx_set_heads_aseName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles_aseName") ) { _hx_set_tiles_aseName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles_tsxName") ) { _hx_set_tiles_tsxName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		break;
 	case 14:
+		if (HX_FIELD_EQ(inName,"bodyParts2_ase") ) { _hx_set_bodyParts2_ase(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"bodyParts_json") ) { _hx_set_bodyParts_json(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles_jsonName") ) { _hx_set_tiles_jsonName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		break;
+	case 15:
+		if (HX_FIELD_EQ(inName,"bodyParts2_json") ) { _hx_set_bodyParts2_json(HX_CTX_GET,inValue.Cast<  ::kha::internal::BytesBlob >()); return inValue; }
 		break;
 	case 17:
 		if (HX_FIELD_EQ(inName,"bodyParts_aseName") ) { _hx_set_bodyParts_aseName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		break;
 	case 18:
+		if (HX_FIELD_EQ(inName,"bodyParts2_aseName") ) { _hx_set_bodyParts2_aseName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"bodyParts_jsonName") ) { _hx_set_bodyParts_jsonName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"map_tmxDescription") ) { _hx_set_map_tmxDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		break;
+	case 19:
+		if (HX_FIELD_EQ(inName,"bodyParts2_jsonName") ) { _hx_set_bodyParts2_jsonName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		break;
 	case 20:
-		if (HX_FIELD_EQ(inName,"chest_aseDescription") ) { _hx_set_chest_aseDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"heads_aseDescription") ) { _hx_set_heads_aseDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles_aseDescription") ) { _hx_set_tiles_aseDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles_tsxDescription") ) { _hx_set_tiles_tsxDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		break;
+	case 21:
+		if (HX_FIELD_EQ(inName,"tiles_jsonDescription") ) { _hx_set_tiles_jsonDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 		break;
 	case 24:
 		if (HX_FIELD_EQ(inName,"bodyParts_aseDescription") ) { _hx_set_bodyParts_aseDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 		break;
 	case 25:
+		if (HX_FIELD_EQ(inName,"bodyParts2_aseDescription") ) { _hx_set_bodyParts2_aseDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"bodyParts_jsonDescription") ) { _hx_set_bodyParts_jsonDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		break;
+	case 26:
+		if (HX_FIELD_EQ(inName,"bodyParts2_jsonDescription") ) { _hx_set_bodyParts2_jsonDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
 
 void BlobList_obj::__GetFields(Array< ::String> &outFields)
 {
+	outFields->push(HX_("bodyParts2_ase",88,7d,cf,b5));
+	outFields->push(HX_("bodyParts2_aseName",f3,7f,29,e2));
+	outFields->push(HX_("bodyParts2_aseDescription",54,80,19,b8));
+	outFields->push(HX_("bodyParts2_json",33,4e,b1,65));
+	outFields->push(HX_("bodyParts2_jsonName",1e,82,b8,64));
+	outFields->push(HX_("bodyParts2_jsonDescription",89,e9,c7,35));
 	outFields->push(HX_("bodyParts_ase",52,e6,71,63));
 	outFields->push(HX_("bodyParts_aseName",bd,15,11,04));
 	outFields->push(HX_("bodyParts_aseDescription",ca,97,4c,2f));
 	outFields->push(HX_("bodyParts_json",29,96,2a,a6));
 	outFields->push(HX_("bodyParts_jsonName",14,fd,73,ed));
 	outFields->push(HX_("bodyParts_jsonDescription",53,59,49,0b));
-	outFields->push(HX_("chest_ase",75,df,6c,3c));
-	outFields->push(HX_("chest_aseName",60,dc,82,cf));
-	outFields->push(HX_("chest_aseDescription",87,3b,5e,93));
-	outFields->push(HX_("heads_ase",07,bd,75,76));
-	outFields->push(HX_("heads_aseName",f2,ea,3e,4c));
-	outFields->push(HX_("heads_aseDescription",35,03,25,c7));
+	outFields->push(HX_("map_tmx",7c,32,46,39));
+	outFields->push(HX_("map_tmxName",e7,be,cf,f6));
+	outFields->push(HX_("map_tmxDescription",e0,c7,eb,df));
+	outFields->push(HX_("tiles_ase",39,e8,57,6e));
+	outFields->push(HX_("tiles_aseName",24,97,1b,e2));
+	outFields->push(HX_("tiles_aseDescription",43,21,50,f5));
+	outFields->push(HX_("tiles_json",62,3e,86,24));
+	outFields->push(HX_("tiles_jsonName",cd,b5,9a,58));
+	outFields->push(HX_("tiles_jsonDescription",ba,19,5e,88));
+	outFields->push(HX_("tiles_tsx",1f,53,66,6e));
+	outFields->push(HX_("tiles_tsxName",0a,6d,d0,e8));
+	outFields->push(HX_("tiles_tsxDescription",1d,74,62,49));
 	outFields->push(HX_("names",c8,8f,84,96));
 	super::__GetFields(outFields);
 };
 
 #ifdef HXCPP_SCRIPTABLE
 static hx::StorageInfo BlobList_obj_sMemberStorageInfo[] = {
+	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,bodyParts2_ase),HX_("bodyParts2_ase",88,7d,cf,b5)},
+	{hx::fsString,(int)offsetof(BlobList_obj,bodyParts2_aseName),HX_("bodyParts2_aseName",f3,7f,29,e2)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,bodyParts2_aseDescription),HX_("bodyParts2_aseDescription",54,80,19,b8)},
+	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,bodyParts2_json),HX_("bodyParts2_json",33,4e,b1,65)},
+	{hx::fsString,(int)offsetof(BlobList_obj,bodyParts2_jsonName),HX_("bodyParts2_jsonName",1e,82,b8,64)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,bodyParts2_jsonDescription),HX_("bodyParts2_jsonDescription",89,e9,c7,35)},
 	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,bodyParts_ase),HX_("bodyParts_ase",52,e6,71,63)},
 	{hx::fsString,(int)offsetof(BlobList_obj,bodyParts_aseName),HX_("bodyParts_aseName",bd,15,11,04)},
 	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,bodyParts_aseDescription),HX_("bodyParts_aseDescription",ca,97,4c,2f)},
 	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,bodyParts_json),HX_("bodyParts_json",29,96,2a,a6)},
 	{hx::fsString,(int)offsetof(BlobList_obj,bodyParts_jsonName),HX_("bodyParts_jsonName",14,fd,73,ed)},
 	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,bodyParts_jsonDescription),HX_("bodyParts_jsonDescription",53,59,49,0b)},
-	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,chest_ase),HX_("chest_ase",75,df,6c,3c)},
-	{hx::fsString,(int)offsetof(BlobList_obj,chest_aseName),HX_("chest_aseName",60,dc,82,cf)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,chest_aseDescription),HX_("chest_aseDescription",87,3b,5e,93)},
-	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,heads_ase),HX_("heads_ase",07,bd,75,76)},
-	{hx::fsString,(int)offsetof(BlobList_obj,heads_aseName),HX_("heads_aseName",f2,ea,3e,4c)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,heads_aseDescription),HX_("heads_aseDescription",35,03,25,c7)},
+	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,map_tmx),HX_("map_tmx",7c,32,46,39)},
+	{hx::fsString,(int)offsetof(BlobList_obj,map_tmxName),HX_("map_tmxName",e7,be,cf,f6)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,map_tmxDescription),HX_("map_tmxDescription",e0,c7,eb,df)},
+	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,tiles_ase),HX_("tiles_ase",39,e8,57,6e)},
+	{hx::fsString,(int)offsetof(BlobList_obj,tiles_aseName),HX_("tiles_aseName",24,97,1b,e2)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,tiles_aseDescription),HX_("tiles_aseDescription",43,21,50,f5)},
+	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,tiles_json),HX_("tiles_json",62,3e,86,24)},
+	{hx::fsString,(int)offsetof(BlobList_obj,tiles_jsonName),HX_("tiles_jsonName",cd,b5,9a,58)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,tiles_jsonDescription),HX_("tiles_jsonDescription",ba,19,5e,88)},
+	{hx::fsObject /*  ::kha::internal::BytesBlob */ ,(int)offsetof(BlobList_obj,tiles_tsx),HX_("tiles_tsx",1f,53,66,6e)},
+	{hx::fsString,(int)offsetof(BlobList_obj,tiles_tsxName),HX_("tiles_tsxName",0a,6d,d0,e8)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(BlobList_obj,tiles_tsxDescription),HX_("tiles_tsxDescription",1d,74,62,49)},
 	{hx::fsObject /* ::Array< ::String > */ ,(int)offsetof(BlobList_obj,names),HX_("names",c8,8f,84,96)},
 	{ hx::fsUnknown, 0, null()}
 };
@@ -392,6 +654,16 @@ static hx::StaticInfo *BlobList_obj_sStaticStorageInfo = 0;
 
 static ::String BlobList_obj_sMemberFields[] = {
 	HX_("get",96,80,4e,00),
+	HX_("bodyParts2_ase",88,7d,cf,b5),
+	HX_("bodyParts2_aseName",f3,7f,29,e2),
+	HX_("bodyParts2_aseDescription",54,80,19,b8),
+	HX_("bodyParts2_aseLoad",ce,a7,e1,e0),
+	HX_("bodyParts2_aseUnload",a7,68,93,27),
+	HX_("bodyParts2_json",33,4e,b1,65),
+	HX_("bodyParts2_jsonName",1e,82,b8,64),
+	HX_("bodyParts2_jsonDescription",89,e9,c7,35),
+	HX_("bodyParts2_jsonLoad",f9,a9,70,63),
+	HX_("bodyParts2_jsonUnload",92,8b,87,ad),
 	HX_("bodyParts_ase",52,e6,71,63),
 	HX_("bodyParts_aseName",bd,15,11,04),
 	HX_("bodyParts_aseDescription",ca,97,4c,2f),
@@ -402,16 +674,26 @@ static ::String BlobList_obj_sMemberFields[] = {
 	HX_("bodyParts_jsonDescription",53,59,49,0b),
 	HX_("bodyParts_jsonLoad",ef,24,2c,ec),
 	HX_("bodyParts_jsonUnload",08,30,50,78),
-	HX_("chest_ase",75,df,6c,3c),
-	HX_("chest_aseName",60,dc,82,cf),
-	HX_("chest_aseDescription",87,3b,5e,93),
-	HX_("chest_aseLoad",3b,04,3b,ce),
-	HX_("chest_aseUnload",54,7a,4e,23),
-	HX_("heads_ase",07,bd,75,76),
-	HX_("heads_aseName",f2,ea,3e,4c),
-	HX_("heads_aseDescription",35,03,25,c7),
-	HX_("heads_aseLoad",cd,12,f7,4a),
-	HX_("heads_aseUnload",66,d1,18,52),
+	HX_("map_tmx",7c,32,46,39),
+	HX_("map_tmxName",e7,be,cf,f6),
+	HX_("map_tmxDescription",e0,c7,eb,df),
+	HX_("map_tmxLoad",c2,e6,87,f5),
+	HX_("map_tmxUnload",9b,4c,7e,61),
+	HX_("tiles_ase",39,e8,57,6e),
+	HX_("tiles_aseName",24,97,1b,e2),
+	HX_("tiles_aseDescription",43,21,50,f5),
+	HX_("tiles_aseLoad",ff,be,d3,e0),
+	HX_("tiles_aseUnload",18,6e,9e,99),
+	HX_("tiles_json",62,3e,86,24),
+	HX_("tiles_jsonName",cd,b5,9a,58),
+	HX_("tiles_jsonDescription",ba,19,5e,88),
+	HX_("tiles_jsonLoad",a8,dd,52,57),
+	HX_("tiles_jsonUnload",01,49,21,05),
+	HX_("tiles_tsx",1f,53,66,6e),
+	HX_("tiles_tsxName",0a,6d,d0,e8),
+	HX_("tiles_tsxDescription",1d,74,62,49),
+	HX_("tiles_tsxLoad",e5,94,88,e7),
+	HX_("tiles_tsxUnload",7e,09,a1,57),
 	HX_("names",c8,8f,84,96),
 	::String(null()) };
 

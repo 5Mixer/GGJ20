@@ -6,20 +6,32 @@
 #endif
 namespace game{
 
-::game::BodyPart BodyPart_obj::Arm;
+::game::BodyPart BodyPart_obj::Axe;
 
-::game::BodyPart BodyPart_obj::Body;
+::game::BodyPart BodyPart_obj::Boots;
 
-::game::BodyPart BodyPart_obj::Head;
+::game::BodyPart BodyPart_obj::Knife;
 
-::game::BodyPart BodyPart_obj::Leg;
+::game::BodyPart BodyPart_obj::NaturalArm;
+
+::game::BodyPart BodyPart_obj::NaturalChest;
+
+::game::BodyPart BodyPart_obj::NaturalHead;
+
+::game::BodyPart BodyPart_obj::NaturalLeg;
+
+::game::BodyPart BodyPart_obj::Sword;
 
 bool BodyPart_obj::__GetStatic(const ::String &inName, ::Dynamic &outValue, hx::PropertyAccess inCallProp)
 {
-	if (inName==HX_("Arm",3c,b6,31,00)) { outValue = BodyPart_obj::Arm; return true; }
-	if (inName==HX_("Body",c2,a6,f4,2b)) { outValue = BodyPart_obj::Body; return true; }
-	if (inName==HX_("Head",40,55,e4,2f)) { outValue = BodyPart_obj::Head; return true; }
-	if (inName==HX_("Leg",ae,03,3a,00)) { outValue = BodyPart_obj::Leg; return true; }
+	if (inName==HX_("Axe",6e,bb,31,00)) { outValue = BodyPart_obj::Axe; return true; }
+	if (inName==HX_("Boots",e1,97,25,4a)) { outValue = BodyPart_obj::Boots; return true; }
+	if (inName==HX_("Knife",05,00,13,78)) { outValue = BodyPart_obj::Knife; return true; }
+	if (inName==HX_("NaturalArm",13,74,76,26)) { outValue = BodyPart_obj::NaturalArm; return true; }
+	if (inName==HX_("NaturalChest",38,38,35,a8)) { outValue = BodyPart_obj::NaturalChest; return true; }
+	if (inName==HX_("NaturalHead",89,b3,c5,85)) { outValue = BodyPart_obj::NaturalHead; return true; }
+	if (inName==HX_("NaturalLeg",85,c1,7e,26)) { outValue = BodyPart_obj::NaturalLeg; return true; }
+	if (inName==HX_("Sword",9d,27,3f,19)) { outValue = BodyPart_obj::Sword; return true; }
 	return super::__GetStatic(inName, outValue, inCallProp);
 }
 
@@ -27,36 +39,52 @@ HX_DEFINE_CREATE_ENUM(BodyPart_obj)
 
 int BodyPart_obj::__FindIndex(::String inName)
 {
-	if (inName==HX_("Arm",3c,b6,31,00)) return 2;
-	if (inName==HX_("Body",c2,a6,f4,2b)) return 1;
-	if (inName==HX_("Head",40,55,e4,2f)) return 0;
-	if (inName==HX_("Leg",ae,03,3a,00)) return 3;
+	if (inName==HX_("Axe",6e,bb,31,00)) return 5;
+	if (inName==HX_("Boots",e1,97,25,4a)) return 4;
+	if (inName==HX_("Knife",05,00,13,78)) return 7;
+	if (inName==HX_("NaturalArm",13,74,76,26)) return 2;
+	if (inName==HX_("NaturalChest",38,38,35,a8)) return 1;
+	if (inName==HX_("NaturalHead",89,b3,c5,85)) return 0;
+	if (inName==HX_("NaturalLeg",85,c1,7e,26)) return 3;
+	if (inName==HX_("Sword",9d,27,3f,19)) return 6;
 	return super::__FindIndex(inName);
 }
 
 int BodyPart_obj::__FindArgCount(::String inName)
 {
-	if (inName==HX_("Arm",3c,b6,31,00)) return 0;
-	if (inName==HX_("Body",c2,a6,f4,2b)) return 0;
-	if (inName==HX_("Head",40,55,e4,2f)) return 0;
-	if (inName==HX_("Leg",ae,03,3a,00)) return 0;
+	if (inName==HX_("Axe",6e,bb,31,00)) return 0;
+	if (inName==HX_("Boots",e1,97,25,4a)) return 0;
+	if (inName==HX_("Knife",05,00,13,78)) return 0;
+	if (inName==HX_("NaturalArm",13,74,76,26)) return 0;
+	if (inName==HX_("NaturalChest",38,38,35,a8)) return 0;
+	if (inName==HX_("NaturalHead",89,b3,c5,85)) return 0;
+	if (inName==HX_("NaturalLeg",85,c1,7e,26)) return 0;
+	if (inName==HX_("Sword",9d,27,3f,19)) return 0;
 	return super::__FindArgCount(inName);
 }
 
 hx::Val BodyPart_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
 {
-	if (inName==HX_("Arm",3c,b6,31,00)) return Arm;
-	if (inName==HX_("Body",c2,a6,f4,2b)) return Body;
-	if (inName==HX_("Head",40,55,e4,2f)) return Head;
-	if (inName==HX_("Leg",ae,03,3a,00)) return Leg;
+	if (inName==HX_("Axe",6e,bb,31,00)) return Axe;
+	if (inName==HX_("Boots",e1,97,25,4a)) return Boots;
+	if (inName==HX_("Knife",05,00,13,78)) return Knife;
+	if (inName==HX_("NaturalArm",13,74,76,26)) return NaturalArm;
+	if (inName==HX_("NaturalChest",38,38,35,a8)) return NaturalChest;
+	if (inName==HX_("NaturalHead",89,b3,c5,85)) return NaturalHead;
+	if (inName==HX_("NaturalLeg",85,c1,7e,26)) return NaturalLeg;
+	if (inName==HX_("Sword",9d,27,3f,19)) return Sword;
 	return super::__Field(inName,inCallProp);
 }
 
 static ::String BodyPart_obj_sStaticFields[] = {
-	HX_("Head",40,55,e4,2f),
-	HX_("Body",c2,a6,f4,2b),
-	HX_("Arm",3c,b6,31,00),
-	HX_("Leg",ae,03,3a,00),
+	HX_("NaturalHead",89,b3,c5,85),
+	HX_("NaturalChest",38,38,35,a8),
+	HX_("NaturalArm",13,74,76,26),
+	HX_("NaturalLeg",85,c1,7e,26),
+	HX_("Boots",e1,97,25,4a),
+	HX_("Axe",6e,bb,31,00),
+	HX_("Sword",9d,27,3f,19),
+	HX_("Knife",05,00,13,78),
 	::String(null())
 };
 
@@ -82,10 +110,14 @@ hx::Static(__mClass) = hx::_hx_RegisterClass(HX_("game.BodyPart",d1,1b,98,40), h
 
 void BodyPart_obj::__boot()
 {
-Arm = hx::CreateConstEnum< BodyPart_obj >(HX_("Arm",3c,b6,31,00),2);
-Body = hx::CreateConstEnum< BodyPart_obj >(HX_("Body",c2,a6,f4,2b),1);
-Head = hx::CreateConstEnum< BodyPart_obj >(HX_("Head",40,55,e4,2f),0);
-Leg = hx::CreateConstEnum< BodyPart_obj >(HX_("Leg",ae,03,3a,00),3);
+Axe = hx::CreateConstEnum< BodyPart_obj >(HX_("Axe",6e,bb,31,00),5);
+Boots = hx::CreateConstEnum< BodyPart_obj >(HX_("Boots",e1,97,25,4a),4);
+Knife = hx::CreateConstEnum< BodyPart_obj >(HX_("Knife",05,00,13,78),7);
+NaturalArm = hx::CreateConstEnum< BodyPart_obj >(HX_("NaturalArm",13,74,76,26),2);
+NaturalChest = hx::CreateConstEnum< BodyPart_obj >(HX_("NaturalChest",38,38,35,a8),1);
+NaturalHead = hx::CreateConstEnum< BodyPart_obj >(HX_("NaturalHead",89,b3,c5,85),0);
+NaturalLeg = hx::CreateConstEnum< BodyPart_obj >(HX_("NaturalLeg",85,c1,7e,26),3);
+Sword = hx::CreateConstEnum< BodyPart_obj >(HX_("Sword",9d,27,3f,19),6);
 }
 
 

@@ -83,6 +83,38 @@
 			"original_height": 320
 		},
 		{
+			"name": "bodyParts2",
+			"files": [
+				"bodyParts2.k"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "image",
+			"original_width": 32,
+			"original_height": 352
+		},
+		{
+			"name": "bodyParts2_ase",
+			"files": [
+				"bodyParts2.ase"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "blob"
+		},
+		{
+			"name": "bodyParts2_json",
+			"files": [
+				"bodyParts2.json"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "blob"
+		},
+		{
 			"name": "bodyParts_ase",
 			"files": [
 				"bodyParts.ase"
@@ -103,43 +135,9 @@
 			"type": "blob"
 		},
 		{
-			"name": "chest",
+			"name": "map_tmx",
 			"files": [
-				"chest.k"
-			],
-			"file_sizes": [
-				1
-			],
-			"type": "image",
-			"original_width": 32,
-			"original_height": 32
-		},
-		{
-			"name": "chest_ase",
-			"files": [
-				"chest.ase"
-			],
-			"file_sizes": [
-				1
-			],
-			"type": "blob"
-		},
-		{
-			"name": "heads",
-			"files": [
-				"heads.k"
-			],
-			"file_sizes": [
-				1
-			],
-			"type": "image",
-			"original_width": 32,
-			"original_height": 96
-		},
-		{
-			"name": "heads_ase",
-			"files": [
-				"heads.ase"
+				"map.tmx"
 			],
 			"file_sizes": [
 				1
@@ -544,6 +542,48 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "tiles",
+			"files": [
+				"tiles.k"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "image",
+			"original_width": 40,
+			"original_height": 4
+		},
+		{
+			"name": "tiles_ase",
+			"files": [
+				"tiles.ase"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "blob"
+		},
+		{
+			"name": "tiles_json",
+			"files": [
+				"tiles.json"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "blob"
+		},
+		{
+			"name": "tiles_tsx",
+			"files": [
+				"tiles.tsx"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "blob"
 		}
 	]
 }

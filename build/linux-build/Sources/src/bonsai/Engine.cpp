@@ -49,12 +49,6 @@
 #ifndef INCLUDED_kha_graphics2_Graphics
 #include <hxinc/kha/graphics2/Graphics.h>
 #endif
-#ifndef INCLUDED_zui_Ext
-#include <hxinc/zui/Ext.h>
-#endif
-#ifndef INCLUDED_zui_Handle
-#include <hxinc/zui/Handle.h>
-#endif
 #ifndef INCLUDED_zui_Zui
 #include <hxinc/zui/Zui.h>
 #endif
@@ -151,25 +145,8 @@ HXLINE(  46)		 ::kha::graphics2::Graphics g = framebuffer->get_g2();
 HXLINE(  47)		g->begin(null(),null());
 HXLINE(  48)		this->currentScene->render(g);
 HXLINE(  49)		g->end();
-HXLINE(  51)		g->set_opacity(( (Float)(1) ));
-HXLINE(  52)		this->debugInterface->begin(g);
-HXLINE(  53)		 ::zui::Zui _hx_tmp = this->debugInterface;
-HXDLIN(  53)		 ::zui::Handle _hx_tmp1 = ::zui::Handle_obj::global->nest(0,null());
-HXDLIN(  53)		if (_hx_tmp->window(_hx_tmp1,0,0,framebuffer->get_width(),300,false)) {
-HXLINE(  54)			 ::zui::Zui _hx_tmp2 = this->debugInterface;
-HXDLIN(  54)			if (_hx_tmp2->panel(::zui::Handle_obj::global->nest(1, ::Dynamic(hx::Anon_obj::Create(1)
-            				->setFixed(0,HX_("selected",5b,2a,6d,b1),true))),HX_("Terminal",9c,dd,9c,c9),null())) {
-HXLINE(  55)				this->debugInterface->indent();
-HXLINE(  56)				this->debugInterface->text(HX_("Output of the log goes here",45,1b,94,f3),null(),null());
-HXLINE(  57)				 ::zui::Zui _hx_tmp3 = this->debugInterface;
-HXDLIN(  57)				::zui::Ext_obj::textArea(_hx_tmp3,::zui::Handle_obj::global->nest(2,null()),null());
-HXLINE(  58)				 ::zui::Zui _hx_tmp4 = this->debugInterface;
-HXDLIN(  58)				_hx_tmp4->textInput(::zui::Handle_obj::global->nest(3, ::Dynamic(hx::Anon_obj::Create(1)
-            					->setFixed(0,HX_("text",ad,cc,f9,4c),HX_("Out",6e,58,3c,00)))),HX_("Input",ea,33,4b,51),null());
-HXLINE(  59)				this->debugInterface->button(HX_("Go",48,3e,00,00),null(),null());
-            			}
-            		}
-HXLINE(  63)		this->debugInterface->end(null());
+HXLINE(  51)		this->debugInterface->begin(g);
+HXLINE(  52)		g->set_opacity(((Float)1.));
             	}
 
 

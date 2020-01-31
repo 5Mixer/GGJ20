@@ -12,8 +12,6 @@
 #endif
 
 HX_LOCAL_STACK_FRAME(_hx_pos_dd25ba4a139d3c0c_38_stat,"sys.FileSystem","stat",0xa630df16,"sys.FileSystem.stat","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/sys/FileSystem.hx",38,0x41fbd0b3)
-HX_LOCAL_STACK_FRAME(_hx_pos_dd25ba4a139d3c0c_75_isDirectory,"sys.FileSystem","isDirectory",0x6c577a21,"sys.FileSystem.isDirectory","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/sys/FileSystem.hx",75,0x41fbd0b3)
-HX_LOCAL_STACK_FRAME(_hx_pos_dd25ba4a139d3c0c_101_readDirectory,"sys.FileSystem","readDirectory",0x0619f8b5,"sys.FileSystem.readDirectory","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/sys/FileSystem.hx",101,0x41fbd0b3)
 namespace sys{
 
 void FileSystem_obj::__construct() { }
@@ -80,41 +78,6 @@ HXLINE(  57)		return s2;
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC1(FileSystem_obj,stat,return )
 
-bool FileSystem_obj::isDirectory(::String path){
-            	HX_STACKFRAME(&_hx_pos_dd25ba4a139d3c0c_75_isDirectory)
-HXDLIN(  75)		::String _hx_tmp;
-HXDLIN(  75)		bool _hx_tmp1;
-HXDLIN(  75)		if (hx::IsEq( path.charCodeAt(1),58 )) {
-HXDLIN(  75)			_hx_tmp1 = (path.length <= 3);
-            		}
-            		else {
-HXDLIN(  75)			_hx_tmp1 = false;
-            		}
-HXDLIN(  75)		if (_hx_tmp1) {
-HXDLIN(  75)			_hx_tmp = ::haxe::io::Path_obj::addTrailingSlash(path);
-            		}
-            		else {
-HXDLIN(  75)			if ((path == HX_("/",2f,00,00,00))) {
-HXDLIN(  75)				_hx_tmp = HX_("/",2f,00,00,00);
-            			}
-            			else {
-HXDLIN(  75)				_hx_tmp = ::haxe::io::Path_obj::removeTrailingSlashes(path);
-            			}
-            		}
-HXDLIN(  75)		return (_hx_std_sys_file_type(_hx_tmp) == HX_("dir",4d,3d,4c,00));
-            	}
-
-
-STATIC_HX_DEFINE_DYNAMIC_FUNC1(FileSystem_obj,isDirectory,return )
-
-::Array< ::String > FileSystem_obj::readDirectory(::String path){
-            	HX_STACKFRAME(&_hx_pos_dd25ba4a139d3c0c_101_readDirectory)
-HXDLIN( 101)		return _hx_std_sys_read_dir(path);
-            	}
-
-
-STATIC_HX_DEFINE_DYNAMIC_FUNC1(FileSystem_obj,readDirectory,return )
-
 
 FileSystem_obj::FileSystem_obj()
 {
@@ -125,12 +88,6 @@ bool FileSystem_obj::__GetStatic(const ::String &inName, Dynamic &outValue, hx::
 	switch(inName.length) {
 	case 4:
 		if (HX_FIELD_EQ(inName,"stat") ) { outValue = stat_dyn(); return true; }
-		break;
-	case 11:
-		if (HX_FIELD_EQ(inName,"isDirectory") ) { outValue = isDirectory_dyn(); return true; }
-		break;
-	case 13:
-		if (HX_FIELD_EQ(inName,"readDirectory") ) { outValue = readDirectory_dyn(); return true; }
 	}
 	return false;
 }
@@ -144,8 +101,6 @@ hx::Class FileSystem_obj::__mClass;
 
 static ::String FileSystem_obj_sStaticFields[] = {
 	HX_("stat",d4,e3,5b,4c),
-	HX_("isDirectory",23,a9,c5,ee),
-	HX_("readDirectory",37,6c,b3,a3),
 	::String(null())
 };
 

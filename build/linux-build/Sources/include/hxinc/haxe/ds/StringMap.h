@@ -60,6 +60,9 @@ class HXCPP_CLASS_ATTRIBUTES StringMap_obj : public hx::Object
 		bool exists(::String key);
 		::Dynamic exists_dyn();
 
+		 ::Dynamic keys();
+		::Dynamic keys_dyn();
+
 
   inline void set(String key, ::null value) { __string_hash_set(HX_MAP_THIS,key,value); }
   inline void set(String key, bool value) { __string_hash_set(HX_MAP_THIS,key,value); }

@@ -40,23 +40,14 @@
 #ifndef INCLUDED_bonsai_input_InputEvent
 #include <hxinc/bonsai/input/InputEvent.h>
 #endif
+#ifndef INCLUDED_zui_Handle
+#include <hxinc/zui/Handle.h>
+#endif
 #ifndef INCLUDED_zui_Zui
 #include <hxinc/zui/Zui.h>
 #endif
 #ifndef INCLUDED_zui_Themes
 #include <hxinc/zui/Themes.h>
-#endif
-#ifndef INCLUDED_zui_Popup
-#include <hxinc/zui/Popup.h>
-#endif
-#ifndef INCLUDED_zui_Handle
-#include <hxinc/zui/Handle.h>
-#endif
-#ifndef INCLUDED_zui_Id
-#include <hxinc/zui/Id.h>
-#endif
-#ifndef INCLUDED_zui_Ext
-#include <hxinc/zui/Ext.h>
 #endif
 #ifndef INCLUDED_kha_vr_VrInterfaceEmulated
 #include <hxinc/kha/vr/VrInterfaceEmulated.h>
@@ -178,11 +169,17 @@
 #ifndef INCLUDED_kha_Assets
 #include <hxinc/kha/Assets.h>
 #endif
+#ifndef INCLUDED_haxe_xml_Parser
+#include <hxinc/haxe/xml/Parser.h>
+#endif
 #ifndef INCLUDED_haxe_Unserializer
 #include <hxinc/haxe/Unserializer.h>
 #endif
 #ifndef INCLUDED_haxe_Log
 #include <hxinc/haxe/Log.h>
+#endif
+#ifndef INCLUDED_Xml
+#include <hxinc/Xml.h>
 #endif
 #ifndef INCLUDED_InputBindings
 #include <hxinc/InputBindings.h>
@@ -544,6 +541,12 @@
 #ifndef INCLUDED_kha__Assets_ImageList
 #include <hxinc/kha/_Assets/ImageList.h>
 #endif
+#ifndef INCLUDED_haxe_xml_Printer
+#include <hxinc/haxe/xml/Printer.h>
+#endif
+#ifndef INCLUDED_haxe_xml_XmlParserException
+#include <hxinc/haxe/xml/XmlParserException.h>
+#endif
 #ifndef INCLUDED_haxe_io_Path
 #include <hxinc/haxe/io/Path.h>
 #endif
@@ -607,6 +610,9 @@
 #ifndef INCLUDED_game_World
 #include <hxinc/game/World.h>
 #endif
+#ifndef INCLUDED_game_TileMap
+#include <hxinc/game/TileMap.h>
+#endif
 #ifndef INCLUDED_game_BodyPartParticles
 #include <hxinc/game/BodyPartParticles.h>
 #endif
@@ -618,6 +624,9 @@
 #endif
 #ifndef INCLUDED_bonsai_scene_Scene
 #include <hxinc/bonsai/scene/Scene.h>
+#endif
+#ifndef INCLUDED_bonsai_resource_Tiled
+#include <hxinc/bonsai/resource/Tiled.h>
 #endif
 #ifndef INCLUDED_bonsai_render_Transformation
 #include <hxinc/bonsai/render/Transformation.h>
@@ -643,11 +652,17 @@
 #ifndef INCLUDED_bonsai_Engine
 #include <hxinc/bonsai/Engine.h>
 #endif
+#ifndef INCLUDED__Xml_XmlType_Impl_
+#include <hxinc/_Xml/XmlType_Impl_.h>
+#endif
 #ifndef INCLUDED_Type
 #include <hxinc/Type.h>
 #endif
 #ifndef INCLUDED_StringTools
 #include <hxinc/StringTools.h>
+#endif
+#ifndef INCLUDED_StringBuf
+#include <hxinc/StringBuf.h>
 #endif
 #ifndef INCLUDED_Std
 #include <hxinc/Std.h>
@@ -660,6 +675,9 @@
 #endif
 #ifndef INCLUDED_Lambda
 #include <hxinc/Lambda.h>
+#endif
+#ifndef INCLUDED_EReg
+#include <hxinc/EReg.h>
 #endif
 #ifndef INCLUDED_Date
 #include <hxinc/Date.h>
@@ -684,12 +702,9 @@ hx::RegisterResources( hx::GetResources() );
 ::game::ChestPart_obj::__register();
 ::game::HeadPart_obj::__register();
 ::bonsai::input::InputEvent_obj::__register();
+::zui::Handle_obj::__register();
 ::zui::Zui_obj::__register();
 ::zui::Themes_obj::__register();
-::zui::Popup_obj::__register();
-::zui::Handle_obj::__register();
-::zui::Id_obj::__register();
-::zui::Ext_obj::__register();
 ::kha::vr::VrInterfaceEmulated_obj::__register();
 ::kha::netsync::SyncBuilder_obj::__register();
 ::kha::netsync::Session_obj::__register();
@@ -730,8 +745,10 @@ hx::RegisterResources( hx::GetResources() );
 ::kha::Display_obj::__register();
 ::kha::_Color::Color_Impl__obj::__register();
 ::kha::Assets_obj::__register();
+::haxe::xml::Parser_obj::__register();
 ::haxe::Unserializer_obj::__register();
 ::haxe::Log_obj::__register();
+::Xml_obj::__register();
 ::InputBindings_obj::__register();
 ::sys::thread::_Thread::Thread_Impl__obj::__register();
 ::sys::thread::Mutex_obj::__register();
@@ -852,6 +869,8 @@ hx::RegisterResources( hx::GetResources() );
 ::kha::_Assets::BlobList_obj::__register();
 ::kha::_Assets::SoundList_obj::__register();
 ::kha::_Assets::ImageList_obj::__register();
+::haxe::xml::Printer_obj::__register();
+::haxe::xml::XmlParserException_obj::__register();
 ::haxe::io::Path_obj::__register();
 ::haxe::io::FPHelper_obj::__register();
 ::haxe::io::Eof_obj::__register();
@@ -873,10 +892,12 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::Timer_obj::__register();
 ::haxe::IMap_obj::__register();
 ::game::World_obj::__register();
+::game::TileMap_obj::__register();
 ::game::BodyPartParticles_obj::__register();
 ::game::Body_obj::__register();
 ::cpp::vm::Gc_obj::__register();
 ::bonsai::scene::Scene_obj::__register();
+::bonsai::resource::Tiled_obj::__register();
 ::bonsai::render::Transformation_obj::__register();
 ::bonsai::render::SpriteMap_obj::__register();
 ::bonsai::render::AnimatedSprite_obj::__register();
@@ -885,12 +906,15 @@ hx::RegisterResources( hx::GetResources() );
 ::bonsai::entity::ParticleSystem_obj::__register();
 ::bonsai::entity::Entity_obj::__register();
 ::bonsai::Engine_obj::__register();
+::_Xml::XmlType_Impl__obj::__register();
 ::Type_obj::__register();
 ::StringTools_obj::__register();
+::StringBuf_obj::__register();
 ::Std_obj::__register();
 ::Reflect_obj::__register();
 ::Main_obj::__register();
 ::Lambda_obj::__register();
+::EReg_obj::__register();
 ::Date_obj::__register();
 ::sys::io::FileSeek_obj::__boot();
 ::kha::input::BlockInterventions_obj::__boot();
@@ -907,7 +931,9 @@ hx::RegisterResources( hx::GetResources() );
 ::bonsai::input::InputEvent_obj::__boot();
 ::haxe::Log_obj::__boot();
 ::InputBindings_obj::__boot();
+::Xml_obj::__boot();
 ::haxe::Unserializer_obj::__boot();
+::haxe::xml::Parser_obj::__boot();
 ::kha::Assets_obj::__boot();
 ::kha::_Color::Color_Impl__obj::__boot();
 ::kha::Display_obj::__boot();
@@ -948,11 +974,8 @@ hx::RegisterResources( hx::GetResources() );
 ::kha::netsync::Session_obj::__boot();
 ::kha::netsync::SyncBuilder_obj::__boot();
 ::kha::vr::VrInterfaceEmulated_obj::__boot();
-::zui::Ext_obj::__boot();
-::zui::Id_obj::__boot();
-::zui::Handle_obj::__boot();
-::zui::Popup_obj::__boot();
 ::zui::Themes_obj::__boot();
 ::zui::Zui_obj::__boot();
+::zui::Handle_obj::__boot();
 }
 

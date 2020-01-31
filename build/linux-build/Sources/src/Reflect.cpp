@@ -10,6 +10,7 @@ HX_LOCAL_STACK_FRAME(_hx_pos_fb12a6cdf615224e_35_field,"Reflect","field",0x54b04
 HX_LOCAL_STACK_FRAME(_hx_pos_fb12a6cdf615224e_40_setField,"Reflect","setField",0x71684429,"Reflect.setField","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/Reflect.hx",40,0x77be0eff)
 HX_LOCAL_STACK_FRAME(_hx_pos_fb12a6cdf615224e_54_callMethod,"Reflect","callMethod",0xb49e52d0,"Reflect.callMethod","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/Reflect.hx",54,0x77be0eff)
 HX_LOCAL_STACK_FRAME(_hx_pos_fb12a6cdf615224e_81_compare,"Reflect","compare",0xa2d92b54,"Reflect.compare","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/Reflect.hx",81,0x77be0eff)
+HX_LOCAL_STACK_FRAME(_hx_pos_fb12a6cdf615224e_93_isObject,"Reflect","isObject",0xd04960ba,"Reflect.isObject","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/Reflect.hx",93,0x77be0eff)
 HX_LOCAL_STACK_FRAME(_hx_pos_fb12a6cdf615224e_102_isEnumValue,"Reflect","isEnumValue",0x97884d95,"Reflect.isEnumValue","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/Reflect.hx",102,0x77be0eff)
 
 void Reflect_obj::__construct() { }
@@ -81,6 +82,18 @@ HXDLIN(  81)		return hx::IsEq( a,b ) ? 0 : hx::IsGreater( a,b ) ? 1 : -1;
 
 STATIC_HX_DEFINE_DYNAMIC_FUNC2(Reflect_obj,compare,return )
 
+bool Reflect_obj::isObject( ::Dynamic v){
+            	HX_STACKFRAME(&_hx_pos_fb12a6cdf615224e_93_isObject)
+HXLINE(  94)		if (hx::IsNull( v )) {
+HXLINE(  95)			return false;
+            		}
+HXLINE(  96)		int t = ( (int)(v->__GetType()) );
+HXLINE(  97)		return ((((t == 4) || (t == 8)) || (t == 3)) || (t == 5));
+            	}
+
+
+STATIC_HX_DEFINE_DYNAMIC_FUNC1(Reflect_obj,isObject,return )
+
 bool Reflect_obj::isEnumValue( ::Dynamic v){
             	HX_STACKFRAME(&_hx_pos_fb12a6cdf615224e_102_isEnumValue)
 HXDLIN( 102)		return (hx::IsNotNull( v ) && hx::IsEq( v->__GetType(),7 ));
@@ -106,6 +119,7 @@ bool Reflect_obj::__GetStatic(const ::String &inName, Dynamic &outValue, hx::Pro
 	case 8:
 		if (HX_FIELD_EQ(inName,"hasField") ) { outValue = hasField_dyn(); return true; }
 		if (HX_FIELD_EQ(inName,"setField") ) { outValue = setField_dyn(); return true; }
+		if (HX_FIELD_EQ(inName,"isObject") ) { outValue = isObject_dyn(); return true; }
 		break;
 	case 10:
 		if (HX_FIELD_EQ(inName,"callMethod") ) { outValue = callMethod_dyn(); return true; }
@@ -129,6 +143,7 @@ static ::String Reflect_obj_sStaticFields[] = {
 	HX_("setField",b8,fd,c7,0e),
 	HX_("callMethod",1f,ce,8a,34),
 	HX_("compare",a5,18,69,83),
+	HX_("isObject",49,1a,a9,6d),
 	HX_("isEnumValue",66,b7,87,06),
 	::String(null())
 };

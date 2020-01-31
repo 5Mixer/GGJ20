@@ -6,11 +6,20 @@
 #endif
 namespace game{
 
-::game::HeadPart HeadPart_obj::NaturalHead;
+::game::HeadPart HeadPart_obj::NaturalHeadDown;
+
+::game::HeadPart HeadPart_obj::NaturalHeadLeft;
+
+::game::HeadPart HeadPart_obj::NaturalHeadRight;
+
+::game::HeadPart HeadPart_obj::NaturalHeadUp;
 
 bool HeadPart_obj::__GetStatic(const ::String &inName, ::Dynamic &outValue, hx::PropertyAccess inCallProp)
 {
-	if (inName==HX_("NaturalHead",89,b3,c5,85)) { outValue = HeadPart_obj::NaturalHead; return true; }
+	if (inName==HX_("NaturalHeadDown",8b,d0,47,15)) { outValue = HeadPart_obj::NaturalHeadDown; return true; }
+	if (inName==HX_("NaturalHeadLeft",30,e0,89,1a)) { outValue = HeadPart_obj::NaturalHeadLeft; return true; }
+	if (inName==HX_("NaturalHeadRight",93,57,27,95)) { outValue = HeadPart_obj::NaturalHeadRight; return true; }
+	if (inName==HX_("NaturalHeadUp",44,b2,40,c9)) { outValue = HeadPart_obj::NaturalHeadUp; return true; }
 	return super::__GetStatic(inName, outValue, inCallProp);
 }
 
@@ -18,24 +27,36 @@ HX_DEFINE_CREATE_ENUM(HeadPart_obj)
 
 int HeadPart_obj::__FindIndex(::String inName)
 {
-	if (inName==HX_("NaturalHead",89,b3,c5,85)) return 0;
+	if (inName==HX_("NaturalHeadDown",8b,d0,47,15)) return 2;
+	if (inName==HX_("NaturalHeadLeft",30,e0,89,1a)) return 1;
+	if (inName==HX_("NaturalHeadRight",93,57,27,95)) return 0;
+	if (inName==HX_("NaturalHeadUp",44,b2,40,c9)) return 3;
 	return super::__FindIndex(inName);
 }
 
 int HeadPart_obj::__FindArgCount(::String inName)
 {
-	if (inName==HX_("NaturalHead",89,b3,c5,85)) return 0;
+	if (inName==HX_("NaturalHeadDown",8b,d0,47,15)) return 0;
+	if (inName==HX_("NaturalHeadLeft",30,e0,89,1a)) return 0;
+	if (inName==HX_("NaturalHeadRight",93,57,27,95)) return 0;
+	if (inName==HX_("NaturalHeadUp",44,b2,40,c9)) return 0;
 	return super::__FindArgCount(inName);
 }
 
 hx::Val HeadPart_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
 {
-	if (inName==HX_("NaturalHead",89,b3,c5,85)) return NaturalHead;
+	if (inName==HX_("NaturalHeadDown",8b,d0,47,15)) return NaturalHeadDown;
+	if (inName==HX_("NaturalHeadLeft",30,e0,89,1a)) return NaturalHeadLeft;
+	if (inName==HX_("NaturalHeadRight",93,57,27,95)) return NaturalHeadRight;
+	if (inName==HX_("NaturalHeadUp",44,b2,40,c9)) return NaturalHeadUp;
 	return super::__Field(inName,inCallProp);
 }
 
 static ::String HeadPart_obj_sStaticFields[] = {
-	HX_("NaturalHead",89,b3,c5,85),
+	HX_("NaturalHeadRight",93,57,27,95),
+	HX_("NaturalHeadLeft",30,e0,89,1a),
+	HX_("NaturalHeadDown",8b,d0,47,15),
+	HX_("NaturalHeadUp",44,b2,40,c9),
 	::String(null())
 };
 
@@ -61,7 +82,10 @@ hx::Static(__mClass) = hx::_hx_RegisterClass(HX_("game.HeadPart",4f,e1,73,ad), h
 
 void HeadPart_obj::__boot()
 {
-NaturalHead = hx::CreateConstEnum< HeadPart_obj >(HX_("NaturalHead",89,b3,c5,85),0);
+NaturalHeadDown = hx::CreateConstEnum< HeadPart_obj >(HX_("NaturalHeadDown",8b,d0,47,15),2);
+NaturalHeadLeft = hx::CreateConstEnum< HeadPart_obj >(HX_("NaturalHeadLeft",30,e0,89,1a),1);
+NaturalHeadRight = hx::CreateConstEnum< HeadPart_obj >(HX_("NaturalHeadRight",93,57,27,95),0);
+NaturalHeadUp = hx::CreateConstEnum< HeadPart_obj >(HX_("NaturalHeadUp",44,b2,40,c9),3);
 }
 
 
