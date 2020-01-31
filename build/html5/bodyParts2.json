@@ -1,5 +1,5 @@
 { "frames": {
-   "bodyParts.ase": {
+   "bodyParts2.ase": {
     "frame": { "x": 0, "y": 0, "w": 32, "h": 32 },
     "rotated": false,
     "trimmed": false,
@@ -27,11 +27,7 @@
    { "name": "armKnife", "opacity": 255, "blendMode": "normal" },
    { "name": "armSword", "opacity": 255, "blendMode": "normal" },
    { "name": "armAxe", "opacity": 255, "blendMode": "normal" },
-   { "name": "boots", "opacity": 255, "blendMode": "normal" },
-   { "name": "eyesRight", "opacity": 255, "blendMode": "normal" },
-   { "name": "eyesLeft", "opacity": 255, "blendMode": "normal" },
-   { "name": "eyesDown", "opacity": 255, "blendMode": "normal" },
-   { "name": "eyesUp", "opacity": 255, "blendMode": "normal" }
+   { "name": "boots", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]

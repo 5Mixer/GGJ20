@@ -80,7 +80,39 @@
 			],
 			"type": "image",
 			"original_width": 32,
-			"original_height": 320
+			"original_height": 480
+		},
+		{
+			"name": "bodyParts2",
+			"files": [
+				"bodyParts2.png"
+			],
+			"file_sizes": [
+				829
+			],
+			"type": "image",
+			"original_width": 32,
+			"original_height": 352
+		},
+		{
+			"name": "bodyParts2_ase",
+			"files": [
+				"bodyParts2.ase"
+			],
+			"file_sizes": [
+				1983
+			],
+			"type": "blob"
+		},
+		{
+			"name": "bodyParts2_json",
+			"files": [
+				"bodyParts2.json"
+			],
+			"file_sizes": [
+				1212
+			],
+			"type": "blob"
 		},
 		{
 			"name": "bodyParts_ase",
@@ -88,7 +120,7 @@
 				"bodyParts.ase"
 			],
 			"file_sizes": [
-				1484
+				1900
 			],
 			"type": "blob"
 		},
@@ -98,51 +130,17 @@
 				"bodyParts.json"
 			],
 			"file_sizes": [
-				1113
+				1478
 			],
 			"type": "blob"
 		},
 		{
-			"name": "chest",
+			"name": "map_tmx",
 			"files": [
-				"chest.png"
+				"map.tmx"
 			],
 			"file_sizes": [
-				153
-			],
-			"type": "image",
-			"original_width": 32,
-			"original_height": 32
-		},
-		{
-			"name": "chest_ase",
-			"files": [
-				"chest.ase"
-			],
-			"file_sizes": [
-				617
-			],
-			"type": "blob"
-		},
-		{
-			"name": "heads",
-			"files": [
-				"heads.png"
-			],
-			"file_sizes": [
-				220
-			],
-			"type": "image",
-			"original_width": 32,
-			"original_height": 96
-		},
-		{
-			"name": "heads_ase",
-			"files": [
-				"heads.ase"
-			],
-			"file_sizes": [
-				762
+				26946
 			],
 			"type": "blob"
 		},
@@ -560,6 +558,48 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "tiles",
+			"files": [
+				"tiles.png"
+			],
+			"file_sizes": [
+				754
+			],
+			"type": "image",
+			"original_width": 128,
+			"original_height": 128
+		},
+		{
+			"name": "tiles_ase",
+			"files": [
+				"tiles.ase"
+			],
+			"file_sizes": [
+				982
+			],
+			"type": "blob"
+		},
+		{
+			"name": "tiles_json",
+			"files": [
+				"tiles.json"
+			],
+			"file_sizes": [
+				563
+			],
+			"type": "blob"
+		},
+		{
+			"name": "tiles_tsx",
+			"files": [
+				"tiles.tsx"
+			],
+			"file_sizes": [
+				224
+			],
+			"type": "blob"
 		}
 	]
 }
