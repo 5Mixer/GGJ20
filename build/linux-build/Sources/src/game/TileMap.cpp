@@ -45,8 +45,8 @@
 #endif
 
 HX_DEFINE_STACK_FRAME(_hx_pos_ff75d527b55e4390_7_new,"game.TileMap","new",0x6d50c964,"game.TileMap.new","game/TileMap.hx",7,0x1572d9cd)
-HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_34_render,"game.TileMap","render",0x7672ecd2,"game.TileMap.render","game/TileMap.hx",34,0x1572d9cd)
-HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_47_update,"game.TileMap","update",0xf84f0785,"game.TileMap.update","game/TileMap.hx",47,0x1572d9cd)
+HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_30_render,"game.TileMap","render",0x7672ecd2,"game.TileMap.render","game/TileMap.hx",30,0x1572d9cd)
+HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_42_update,"game.TileMap","update",0xf84f0785,"game.TileMap.update","game/TileMap.hx",42,0x1572d9cd)
 namespace game{
 
 void TileMap_obj::__construct(){
@@ -54,16 +54,14 @@ void TileMap_obj::__construct(){
 HXLINE(  11)		this->_hx_set_tiles(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
 HXLINE(   9)		this->height = 10;
 HXLINE(   8)		this->width = 10;
-HXLINE(  19)		super::__construct();
-HXLINE(  21)		this->_hx_set_tiled(HX_CTX,  ::bonsai::resource::Tiled_obj::__alloc( HX_CTX ,::kha::Assets_obj::blobs->levelDanny_tmx->toString()));
-HXLINE(  22)		this->_hx_set_tiled2(HX_CTX,  ::bonsai::resource::Tiled_obj::__alloc( HX_CTX ,::kha::Assets_obj::blobs->levelInn_tmx->toString()));
-HXLINE(  23)		this->width = this->tiled2->width;
-HXLINE(  24)		this->height = this->tiled2->height;
-HXLINE(  26)		this->_hx_set_spriteMap(HX_CTX,  ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->tiles,4,4));
-HXLINE(  27)		this->_hx_set_spriteMap2(HX_CTX,  ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->tiles2,16,16));
-HXLINE(  29)		this->_hx_set_transformation(HX_CTX,  ::bonsai::render::Transformation_obj::__alloc( HX_CTX ));
-HXLINE(  30)		this->transformation->_hx_set_offset(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
-HXLINE(  31)		this->transformation->_hx_set_origin(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
+HXLINE(  17)		super::__construct();
+HXLINE(  19)		this->_hx_set_tiled(HX_CTX,  ::bonsai::resource::Tiled_obj::__alloc( HX_CTX ,::kha::Assets_obj::blobs->map_tmx->toString()));
+HXLINE(  20)		this->width = this->tiled->width;
+HXLINE(  21)		this->height = this->tiled->height;
+HXLINE(  23)		this->_hx_set_spriteMap(HX_CTX,  ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->tiles,16,16));
+HXLINE(  25)		this->_hx_set_transformation(HX_CTX,  ::bonsai::render::Transformation_obj::__alloc( HX_CTX ));
+HXLINE(  26)		this->transformation->_hx_set_offset(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
+HXLINE(  27)		this->transformation->_hx_set_origin(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
             	}
 
 Dynamic TileMap_obj::__CreateEmpty() { return new TileMap_obj; }
@@ -86,31 +84,31 @@ bool TileMap_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void TileMap_obj::render( ::kha::graphics2::Graphics graphics){
-            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_34_render)
-HXLINE(  35)		this->transformation->apply(graphics);
-HXLINE(  37)		{
-HXLINE(  37)			int _g = 0;
-HXDLIN(  37)			int _g1 = this->width;
-HXDLIN(  37)			while((_g < _g1)){
-HXLINE(  37)				_g = (_g + 1);
-HXDLIN(  37)				int y = (_g - 1);
-HXLINE(  38)				{
-HXLINE(  38)					int _g2 = 0;
-HXDLIN(  38)					int _g11 = this->height;
-HXDLIN(  38)					while((_g2 < _g11)){
-HXLINE(  38)						_g2 = (_g2 + 1);
-HXDLIN(  38)						int x = (_g2 - 1);
-HXLINE(  40)						this->spriteMap2->render(graphics,( (float)((x * 16)) ),( (float)((y * 16)) ),(this->tiled2->tiles->__get(y).StaticCast< ::Array< int > >()->__get(x) - 1));
+            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_30_render)
+HXLINE(  31)		this->transformation->apply(graphics);
+HXLINE(  33)		{
+HXLINE(  33)			int _g = 0;
+HXDLIN(  33)			int _g1 = this->width;
+HXDLIN(  33)			while((_g < _g1)){
+HXLINE(  33)				_g = (_g + 1);
+HXDLIN(  33)				int y = (_g - 1);
+HXLINE(  34)				{
+HXLINE(  34)					int _g2 = 0;
+HXDLIN(  34)					int _g11 = this->height;
+HXDLIN(  34)					while((_g2 < _g11)){
+HXLINE(  34)						_g2 = (_g2 + 1);
+HXDLIN(  34)						int x = (_g2 - 1);
+HXLINE(  35)						this->spriteMap->render(graphics,( (float)((x * 16)) ),( (float)((y * 16)) ),(this->tiled->tiles->__get(y).StaticCast< ::Array< int > >()->__get(x) - 1));
             					}
             				}
             			}
             		}
-HXLINE(  44)		this->transformation->finish(graphics);
+HXLINE(  39)		this->transformation->finish(graphics);
             	}
 
 
 void TileMap_obj::update(Float dt){
-            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_47_update)
+            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_42_update)
             	}
 
 
@@ -140,9 +138,7 @@ void TileMap_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(transformation,"transformation");
 	HX_MARK_MEMBER_NAME(tiles,"tiles");
 	HX_MARK_MEMBER_NAME(tiled,"tiled");
-	HX_MARK_MEMBER_NAME(tiled2,"tiled2");
 	HX_MARK_MEMBER_NAME(spriteMap,"spriteMap");
-	HX_MARK_MEMBER_NAME(spriteMap2,"spriteMap2");
 	 ::bonsai::entity::Entity_obj::__Mark(HX_MARK_ARG);
 	HX_MARK_END_CLASS();
 }
@@ -154,9 +150,7 @@ void TileMap_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(transformation,"transformation");
 	HX_VISIT_MEMBER_NAME(tiles,"tiles");
 	HX_VISIT_MEMBER_NAME(tiled,"tiled");
-	HX_VISIT_MEMBER_NAME(tiled2,"tiled2");
 	HX_VISIT_MEMBER_NAME(spriteMap,"spriteMap");
-	HX_VISIT_MEMBER_NAME(spriteMap2,"spriteMap2");
 	 ::bonsai::entity::Entity_obj::__Visit(HX_VISIT_ARG);
 }
 
@@ -170,15 +164,11 @@ hx::Val TileMap_obj::__Field(const ::String &inName,hx::PropertyAccess inCallPro
 		break;
 	case 6:
 		if (HX_FIELD_EQ(inName,"height") ) { return hx::Val( height ); }
-		if (HX_FIELD_EQ(inName,"tiled2") ) { return hx::Val( tiled2 ); }
 		if (HX_FIELD_EQ(inName,"render") ) { return hx::Val( render_dyn() ); }
 		if (HX_FIELD_EQ(inName,"update") ) { return hx::Val( update_dyn() ); }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"spriteMap") ) { return hx::Val( spriteMap ); }
-		break;
-	case 10:
-		if (HX_FIELD_EQ(inName,"spriteMap2") ) { return hx::Val( spriteMap2 ); }
 		break;
 	case 14:
 		if (HX_FIELD_EQ(inName,"transformation") ) { return hx::Val( transformation ); }
@@ -196,13 +186,9 @@ hx::Val TileMap_obj::__SetField(const ::String &inName,const hx::Val &inValue,hx
 		break;
 	case 6:
 		if (HX_FIELD_EQ(inName,"height") ) { height=inValue.Cast< int >(); return inValue; }
-		if (HX_FIELD_EQ(inName,"tiled2") ) { _hx_set_tiled2(HX_CTX_GET,inValue.Cast<  ::bonsai::resource::Tiled >()); return inValue; }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"spriteMap") ) { _hx_set_spriteMap(HX_CTX_GET,inValue.Cast<  ::bonsai::render::SpriteMap >()); return inValue; }
-		break;
-	case 10:
-		if (HX_FIELD_EQ(inName,"spriteMap2") ) { _hx_set_spriteMap2(HX_CTX_GET,inValue.Cast<  ::bonsai::render::SpriteMap >()); return inValue; }
 		break;
 	case 14:
 		if (HX_FIELD_EQ(inName,"transformation") ) { _hx_set_transformation(HX_CTX_GET,inValue.Cast<  ::bonsai::render::Transformation >()); return inValue; }
@@ -217,9 +203,7 @@ void TileMap_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("transformation",c9,bd,2f,0a));
 	outFields->push(HX_("tiles",85,fd,34,10));
 	outFields->push(HX_("tiled",76,fd,34,10));
-	outFields->push(HX_("tiled2",fc,c9,28,1e));
 	outFields->push(HX_("spriteMap",97,77,04,56));
-	outFields->push(HX_("spriteMap2",bb,2c,e4,ed));
 	super::__GetFields(outFields);
 };
 
@@ -230,9 +214,7 @@ static hx::StorageInfo TileMap_obj_sMemberStorageInfo[] = {
 	{hx::fsObject /*  ::bonsai::render::Transformation */ ,(int)offsetof(TileMap_obj,transformation),HX_("transformation",c9,bd,2f,0a)},
 	{hx::fsObject /* ::Array< ::Dynamic> */ ,(int)offsetof(TileMap_obj,tiles),HX_("tiles",85,fd,34,10)},
 	{hx::fsObject /*  ::bonsai::resource::Tiled */ ,(int)offsetof(TileMap_obj,tiled),HX_("tiled",76,fd,34,10)},
-	{hx::fsObject /*  ::bonsai::resource::Tiled */ ,(int)offsetof(TileMap_obj,tiled2),HX_("tiled2",fc,c9,28,1e)},
 	{hx::fsObject /*  ::bonsai::render::SpriteMap */ ,(int)offsetof(TileMap_obj,spriteMap),HX_("spriteMap",97,77,04,56)},
-	{hx::fsObject /*  ::bonsai::render::SpriteMap */ ,(int)offsetof(TileMap_obj,spriteMap2),HX_("spriteMap2",bb,2c,e4,ed)},
 	{ hx::fsUnknown, 0, null()}
 };
 static hx::StaticInfo *TileMap_obj_sStaticStorageInfo = 0;
@@ -244,9 +226,7 @@ static ::String TileMap_obj_sMemberFields[] = {
 	HX_("transformation",c9,bd,2f,0a),
 	HX_("tiles",85,fd,34,10),
 	HX_("tiled",76,fd,34,10),
-	HX_("tiled2",fc,c9,28,1e),
 	HX_("spriteMap",97,77,04,56),
-	HX_("spriteMap2",bb,2c,e4,ed),
 	HX_("render",56,6b,29,05),
 	HX_("update",09,86,05,87),
 	::String(null()) };

@@ -18,19 +18,22 @@ class World extends Scene {
 
 		// bodySpriteMap = new SpriteMap(kha.Assets.);
 		this.transformation = new Transformation();
-		this.transformation.scale = new kha.math.Vector2(3, 3);
-		// add(new TileMap());
+		this.transformation.scale = new kha.math.Vector2(.11, .1);
+		add(new TileMap());
 		// add(new Player(10, 30, engine.input), 1);
 
 		bodyParticleSystem = new BodyPartParticles();
-		bodyParticleSystem.poolMaximum = 1200;
+		bodyParticleSystem.poolMaximum = 6000;
 		add(bodyParticleSystem);
 
-		for (i in 0...200) {
+		for (i in 0...10) {
 			var body = new Body();
 			add(body);
 			bodies.push(body);
 		}
+		bodies.sort(function (a,b) {
+			return a.position.y < b.position.y ? -1 : 1;
+		});
 	}
 	var f = 0;
 	override public function update (dt:Float) {

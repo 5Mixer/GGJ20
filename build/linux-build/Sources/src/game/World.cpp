@@ -5,9 +5,6 @@
 #define INCLUDED_95f339a1d026d52c
 #include "hxMath.h"
 #endif
-#ifndef INCLUDED_Type
-#include <hxinc/Type.h>
-#endif
 #ifndef INCLUDED_bonsai_Engine
 #include <hxinc/bonsai/Engine.h>
 #endif
@@ -38,8 +35,20 @@
 #ifndef INCLUDED_game_BodyPartParticles
 #include <hxinc/game/BodyPartParticles.h>
 #endif
+#ifndef INCLUDED_game_TileMap
+#include <hxinc/game/TileMap.h>
+#endif
 #ifndef INCLUDED_game_World
 #include <hxinc/game/World.h>
+#endif
+#ifndef INCLUDED_haxe_IMap
+#include <hxinc/haxe/IMap.h>
+#endif
+#ifndef INCLUDED_haxe_ds_BalancedTree
+#include <hxinc/haxe/ds/BalancedTree.h>
+#endif
+#ifndef INCLUDED_haxe_ds_EnumValueMap
+#include <hxinc/haxe/ds/EnumValueMap.h>
 #endif
 #ifndef INCLUDED_kha_graphics2_Graphics
 #include <hxinc/kha/graphics2/Graphics.h>
@@ -48,21 +57,100 @@
 #include <hxinc/kha/math/Vector2.h>
 #endif
 
+HX_DEFINE_STACK_FRAME(_hx_pos_33757abb4f47b789_35_new,"game.World","new",0x082148a8,"game.World.new","game/World.hx",35,0xee87ecc9)
 HX_DEFINE_STACK_FRAME(_hx_pos_33757abb4f47b789_7_new,"game.World","new",0x082148a8,"game.World.new","game/World.hx",7,0xee87ecc9)
-HX_LOCAL_STACK_FRAME(_hx_pos_33757abb4f47b789_30_update,"game.World","update",0x1e8a6ac1,"game.World.update","game/World.hx",30,0xee87ecc9)
-HX_LOCAL_STACK_FRAME(_hx_pos_33757abb4f47b789_44_render,"game.World","render",0x9cae500e,"game.World.render","game/World.hx",44,0xee87ecc9)
+HX_LOCAL_STACK_FRAME(_hx_pos_33757abb4f47b789_52_update,"game.World","update",0x1e8a6ac1,"game.World.update","game/World.hx",52,0xee87ecc9)
+HX_LOCAL_STACK_FRAME(_hx_pos_33757abb4f47b789_39_update,"game.World","update",0x1e8a6ac1,"game.World.update","game/World.hx",39,0xee87ecc9)
+HX_LOCAL_STACK_FRAME(_hx_pos_33757abb4f47b789_64_render,"game.World","render",0x9cae500e,"game.World.render","game/World.hx",64,0xee87ecc9)
+HX_LOCAL_STACK_FRAME(_hx_pos_33757abb4f47b789_79_explodeBody,"game.World","explodeBody",0x5665676b,"game.World.explodeBody","game/World.hx",79,0xee87ecc9)
 namespace game{
 
 void World_obj::__construct( ::bonsai::Engine engine){
+            		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_hx_Closure_0) HXARGC(2)
+            		int _hx_run( ::game::Body a, ::game::Body b){
+            			HX_GC_STACKFRAME(&_hx_pos_33757abb4f47b789_35_new)
+HXLINE(  35)			if ((a->position->y < b->position->y)) {
+HXLINE(  35)				return -1;
+            			}
+            			else {
+HXLINE(  35)				return 1;
+            			}
+            		}
+            		HX_END_LOCAL_FUNC2(return)
+
             	HX_GC_STACKFRAME(&_hx_pos_33757abb4f47b789_7_new)
-HXLINE(  29)		this->f = 0;
-HXLINE(  15)		super::__construct(HX_("World Scene",be,8c,76,52),engine);
-HXLINE(  18)		this->_hx_set_transformation(HX_CTX,  ::bonsai::render::Transformation_obj::__alloc( HX_CTX ));
-HXLINE(  19)		this->transformation->_hx_set_scale(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,3,3));
-HXLINE(  23)		this->_hx_set_bodyParticleSystem(HX_CTX,  ::game::BodyPartParticles_obj::__alloc( HX_CTX ));
-HXLINE(  24)		this->bodyParticleSystem->poolMaximum = 5;
-HXLINE(  25)		this->add(this->bodyParticleSystem,null());
-HXLINE(  27)		this->add( ::game::Body_obj::__alloc( HX_CTX ),null());
+HXLINE(  69)		 ::haxe::ds::EnumValueMap _g =  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX );
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::NaturalHead_dyn(),21);
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::NaturalChest_dyn(),10);
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::NaturalLeg_dyn(),0);
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::NaturalArm_dyn(),14);
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::Boots_dyn(),0);
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::Axe_dyn(),1);
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::Sword_dyn(),2);
+HXDLIN(  69)		_g->set(::game::BodyPart_obj::Knife_dyn(),9);
+HXDLIN(  69)		this->_hx_set_zOffset(HX_CTX, _g);
+HXLINE(  38)		this->f = 0;
+HXLINE(  14)		this->_hx_set_bodies(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
+HXLINE(  17)		super::__construct(HX_("World Scene",be,8c,76,52),engine);
+HXLINE(  20)		this->_hx_set_transformation(HX_CTX,  ::bonsai::render::Transformation_obj::__alloc( HX_CTX ));
+HXLINE(  21)		this->transformation->_hx_set_scale(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,3,3));
+HXLINE(  22)		this->add( ::game::TileMap_obj::__alloc( HX_CTX ),null());
+HXLINE(  25)		this->_hx_set_bodyParticleSystem(HX_CTX,  ::game::BodyPartParticles_obj::__alloc( HX_CTX ));
+HXLINE(  26)		this->bodyParticleSystem->poolMaximum = 6000;
+HXLINE(  27)		this->add(this->bodyParticleSystem,null());
+HXLINE(  29)		{
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body,null());
+HXLINE(  32)				this->bodies->push(body);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body1 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body1,null());
+HXLINE(  32)				this->bodies->push(body1);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body2 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body2,null());
+HXLINE(  32)				this->bodies->push(body2);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body3 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body3,null());
+HXLINE(  32)				this->bodies->push(body3);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body4 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body4,null());
+HXLINE(  32)				this->bodies->push(body4);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body5 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body5,null());
+HXLINE(  32)				this->bodies->push(body5);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body6 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body6,null());
+HXLINE(  32)				this->bodies->push(body6);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body7 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body7,null());
+HXLINE(  32)				this->bodies->push(body7);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body8 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body8,null());
+HXLINE(  32)				this->bodies->push(body8);
+            			}
+HXLINE(  29)			{
+HXLINE(  30)				 ::game::Body body9 =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  31)				this->add(body9,null());
+HXLINE(  32)				this->bodies->push(body9);
+            			}
+            		}
+HXLINE(  34)		this->bodies->sort( ::Dynamic(new _hx_Closure_0()));
             	}
 
 Dynamic World_obj::__CreateEmpty() { return new World_obj; }
@@ -85,31 +173,148 @@ bool World_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void World_obj::update(Float dt){
-            	HX_STACKFRAME(&_hx_pos_33757abb4f47b789_30_update)
-HXLINE(  31)		this->f++;
-HXLINE(  34)		this->super::update(dt);
-HXLINE(  35)		if ((hx::Mod(this->f,40) == 0)) {
-HXLINE(  36)			 ::game::BodyPartParticles _hx_tmp = this->bodyParticleSystem;
-HXLINE(  37)			Float _hx_tmp1 = (::Math_obj::random() * ( (Float)(230) ));
-HXLINE(  38)			Float _hx_tmp2 = (::Math_obj::random() * ( (Float)(230) ));
-HXLINE(  41)			::cpp::VirtualArray params = null();
-HXLINE(  36)			_hx_tmp->spawnParticle( ::Dynamic(hx::Anon_obj::Create(5)
-            				->setFixed(0,HX_("x",78,00,00,00),_hx_tmp1)
-            				->setFixed(1,HX_("y",79,00,00,00),_hx_tmp2)
-            				->setFixed(2,HX_("z",7a,00,00,00),( (Float)(16) ))
-            				->setFixed(3,HX_("vz",44,67,00,00),((Float)-.7))
-            				->setFixed(4,HX_("part",f3,e3,51,4a),::Type_obj::createEnumIndex(hx::ClassOf< ::game::BodyPart >(),::Math_obj::floor((::Math_obj::random() * ( (Float)(4) ))),params))));
+            		HX_BEGIN_LOCAL_FUNC_S0(hx::LocalFunc,_hx_Closure_0) HXARGC(2)
+            		int _hx_run( ::Dynamic a, ::Dynamic b){
+            			HX_STACKFRAME(&_hx_pos_33757abb4f47b789_52_update)
+HXLINE(  52)			if (((( (Float)(a->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) ) - ( (Float)(b->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) )) > 0)) {
+HXLINE(  52)				return 1;
+            			}
+            			else {
+HXLINE(  52)				return -1;
+            			}
+HXDLIN(  52)			return 0;
             		}
+            		HX_END_LOCAL_FUNC2(return)
+
+            	HX_STACKFRAME(&_hx_pos_33757abb4f47b789_39_update)
+HXLINE(  40)		this->f++;
+HXLINE(  43)		this->super::update(dt);
+HXLINE(  44)		if ((this->f > 100)) {
+HXLINE(  45)			int _g = 0;
+HXDLIN(  45)			::Array< ::Dynamic> _g1 = this->bodies;
+HXDLIN(  45)			while((_g < _g1->length)){
+HXLINE(  45)				 ::game::Body body = _g1->__get(_g).StaticCast<  ::game::Body >();
+HXDLIN(  45)				_g = (_g + 1);
+HXLINE(  46)				if ((::Math_obj::sqrt((::Math_obj::pow(body->position->x,( (Float)(2) )) + ::Math_obj::pow(body->position->y,( (Float)(2) )))) < (this->f - 100))) {
+HXLINE(  47)					this->explodeBody(body);
+            				}
+            			}
+            		}
+HXLINE(  51)		this->bodyParticleSystem->members->sort( ::Dynamic(new _hx_Closure_0()));
             	}
 
 
 void World_obj::render( ::kha::graphics2::Graphics g){
-            	HX_STACKFRAME(&_hx_pos_33757abb4f47b789_44_render)
-HXLINE(  45)		this->transformation->apply(g);
-HXLINE(  46)		this->super::render(g);
-HXLINE(  47)		this->transformation->finish(g);
+            	HX_STACKFRAME(&_hx_pos_33757abb4f47b789_64_render)
+HXLINE(  65)		this->transformation->apply(g);
+HXLINE(  66)		this->super::render(g);
+HXLINE(  67)		this->transformation->finish(g);
             	}
 
+
+void World_obj::explodeBody( ::game::Body body){
+            	HX_STACKFRAME(&_hx_pos_33757abb4f47b789_79_explodeBody)
+HXLINE(  80)		int offset = 0;
+HXLINE(  81)		Float vz = ((( (Float)(-1) ) * ::Math_obj::random()) - ( (Float)(2) ));
+HXLINE(  82)		if (hx::IsNull( body )) {
+HXLINE(  83)			return;
+            		}
+HXLINE(  84)		 ::game::BodyPartParticles _hx_tmp = this->bodyParticleSystem;
+HXLINE(  85)		Float body1 = body->position->x;
+HXLINE(  86)		Float body2 = body->position->y;
+HXDLIN(  86)		::Dynamic this1 = this->zOffset;
+HXDLIN(  86)		Float _hx_tmp1 = (body2 + ( ( ::haxe::ds::EnumValueMap)(this1) )->get(body->getHeadDrop()));
+HXLINE(  87)		::Dynamic this2 = this->zOffset;
+HXDLIN(  87)		Float _hx_tmp2 = ( (Float)((offset + ( ( ::haxe::ds::EnumValueMap)(this2) )->get(body->getHeadDrop()))) );
+HXLINE(  88)		Float _hx_tmp3 = (::Math_obj::random() - ((Float).5));
+HXLINE(  84)		_hx_tmp->spawnParticle( ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("x",78,00,00,00),body1)
+            			->setFixed(1,HX_("y",79,00,00,00),_hx_tmp1)
+            			->setFixed(2,HX_("z",7a,00,00,00),_hx_tmp2)
+            			->setFixed(3,HX_("vx",42,67,00,00),_hx_tmp3)
+            			->setFixed(4,HX_("vz",44,67,00,00),vz)
+            			->setFixed(5,HX_("part",f3,e3,51,4a),body->getHeadDrop())));
+HXLINE(  92)		 ::game::BodyPartParticles _hx_tmp4 = this->bodyParticleSystem;
+HXLINE(  93)		Float body3 = body->position->x;
+HXLINE(  94)		Float body4 = body->position->y;
+HXDLIN(  94)		::Dynamic this3 = this->zOffset;
+HXDLIN(  94)		Float _hx_tmp5 = (body4 + ( ( ::haxe::ds::EnumValueMap)(this3) )->get(body->getChestDrop()));
+HXLINE(  95)		::Dynamic this4 = this->zOffset;
+HXDLIN(  95)		Float _hx_tmp6 = ( (Float)((offset + ( ( ::haxe::ds::EnumValueMap)(this4) )->get(body->getChestDrop()))) );
+HXLINE(  97)		Float _hx_tmp7 = (::Math_obj::random() - ((Float).5));
+HXLINE(  92)		_hx_tmp4->spawnParticle( ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("x",78,00,00,00),body3)
+            			->setFixed(1,HX_("y",79,00,00,00),_hx_tmp5)
+            			->setFixed(2,HX_("z",7a,00,00,00),_hx_tmp6)
+            			->setFixed(3,HX_("vx",42,67,00,00),_hx_tmp7)
+            			->setFixed(4,HX_("vz",44,67,00,00),vz)
+            			->setFixed(5,HX_("part",f3,e3,51,4a),body->getChestDrop())));
+HXLINE( 100)		 ::game::BodyPartParticles _hx_tmp8 = this->bodyParticleSystem;
+HXLINE( 101)		Float body5 = body->position->x;
+HXLINE( 102)		Float body6 = body->position->y;
+HXDLIN( 102)		::Dynamic this5 = this->zOffset;
+HXDLIN( 102)		Float _hx_tmp9 = (body6 + ( ( ::haxe::ds::EnumValueMap)(this5) )->get(body->getLeftArmDrop()));
+HXLINE( 103)		::Dynamic this6 = this->zOffset;
+HXDLIN( 103)		Float _hx_tmp10 = ( (Float)((offset + ( ( ::haxe::ds::EnumValueMap)(this6) )->get(body->getLeftArmDrop()))) );
+HXLINE( 105)		Float _hx_tmp11 = (::Math_obj::random() - ((Float).5));
+HXLINE( 100)		_hx_tmp8->spawnParticle( ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("x",78,00,00,00),body5)
+            			->setFixed(1,HX_("y",79,00,00,00),_hx_tmp9)
+            			->setFixed(2,HX_("z",7a,00,00,00),_hx_tmp10)
+            			->setFixed(3,HX_("vx",42,67,00,00),_hx_tmp11)
+            			->setFixed(4,HX_("vz",44,67,00,00),vz)
+            			->setFixed(5,HX_("part",f3,e3,51,4a),body->getLeftArmDrop())));
+HXLINE( 108)		 ::game::BodyPartParticles _hx_tmp12 = this->bodyParticleSystem;
+HXLINE( 109)		Float body7 = body->position->x;
+HXLINE( 110)		Float body8 = body->position->y;
+HXDLIN( 110)		::Dynamic this7 = this->zOffset;
+HXDLIN( 110)		Float _hx_tmp13 = (body8 + ( ( ::haxe::ds::EnumValueMap)(this7) )->get(body->getRightArmDrop()));
+HXLINE( 111)		::Dynamic this8 = this->zOffset;
+HXDLIN( 111)		Float _hx_tmp14 = ( (Float)((offset + ( ( ::haxe::ds::EnumValueMap)(this8) )->get(body->getRightArmDrop()))) );
+HXLINE( 113)		Float _hx_tmp15 = (::Math_obj::random() - ((Float).5));
+HXLINE( 108)		_hx_tmp12->spawnParticle( ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("x",78,00,00,00),body7)
+            			->setFixed(1,HX_("y",79,00,00,00),_hx_tmp13)
+            			->setFixed(2,HX_("z",7a,00,00,00),_hx_tmp14)
+            			->setFixed(3,HX_("vx",42,67,00,00),_hx_tmp15)
+            			->setFixed(4,HX_("vz",44,67,00,00),vz)
+            			->setFixed(5,HX_("part",f3,e3,51,4a),body->getRightArmDrop())));
+HXLINE( 116)		 ::game::BodyPartParticles _hx_tmp16 = this->bodyParticleSystem;
+HXLINE( 117)		Float body9 = body->position->x;
+HXLINE( 118)		Float body10 = body->position->y;
+HXDLIN( 118)		::Dynamic this9 = this->zOffset;
+HXDLIN( 118)		Float _hx_tmp17 = (body10 + ( ( ::haxe::ds::EnumValueMap)(this9) )->get(body->getLeftLegDrop()));
+HXLINE( 119)		::Dynamic this10 = this->zOffset;
+HXDLIN( 119)		Float _hx_tmp18 = ( (Float)((offset + ( ( ::haxe::ds::EnumValueMap)(this10) )->get(body->getLeftLegDrop()))) );
+HXLINE( 121)		Float _hx_tmp19 = (::Math_obj::random() - ((Float).5));
+HXLINE( 116)		_hx_tmp16->spawnParticle( ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("x",78,00,00,00),body9)
+            			->setFixed(1,HX_("y",79,00,00,00),_hx_tmp17)
+            			->setFixed(2,HX_("z",7a,00,00,00),_hx_tmp18)
+            			->setFixed(3,HX_("vx",42,67,00,00),_hx_tmp19)
+            			->setFixed(4,HX_("vz",44,67,00,00),vz)
+            			->setFixed(5,HX_("part",f3,e3,51,4a),body->getLeftLegDrop())));
+HXLINE( 124)		 ::game::BodyPartParticles _hx_tmp20 = this->bodyParticleSystem;
+HXLINE( 125)		Float body11 = body->position->x;
+HXLINE( 126)		Float body12 = body->position->y;
+HXDLIN( 126)		::Dynamic this11 = this->zOffset;
+HXDLIN( 126)		Float _hx_tmp21 = (body12 + ( ( ::haxe::ds::EnumValueMap)(this11) )->get(body->getRightLegDrop()));
+HXLINE( 127)		::Dynamic this12 = this->zOffset;
+HXDLIN( 127)		Float _hx_tmp22 = ( (Float)((offset + ( ( ::haxe::ds::EnumValueMap)(this12) )->get(body->getRightLegDrop()))) );
+HXLINE( 129)		Float _hx_tmp23 = (::Math_obj::random() - ((Float).5));
+HXLINE( 124)		_hx_tmp20->spawnParticle( ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("x",78,00,00,00),body11)
+            			->setFixed(1,HX_("y",79,00,00,00),_hx_tmp21)
+            			->setFixed(2,HX_("z",7a,00,00,00),_hx_tmp22)
+            			->setFixed(3,HX_("vx",42,67,00,00),_hx_tmp23)
+            			->setFixed(4,HX_("vz",44,67,00,00),vz)
+            			->setFixed(5,HX_("part",f3,e3,51,4a),body->getRightLegDrop())));
+HXLINE( 132)		this->bodies->remove(body);
+HXLINE( 133)		this->remove(body);
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC1(World_obj,explodeBody,(void))
 
 
 hx::ObjectPtr< World_obj > World_obj::__new( ::bonsai::Engine engine) {
@@ -136,7 +341,9 @@ void World_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(bodyParticleSystem,"bodyParticleSystem");
 	HX_MARK_MEMBER_NAME(bodyAnimatedSprite,"bodyAnimatedSprite");
 	HX_MARK_MEMBER_NAME(bodySpriteMap,"bodySpriteMap");
+	HX_MARK_MEMBER_NAME(bodies,"bodies");
 	HX_MARK_MEMBER_NAME(f,"f");
+	HX_MARK_MEMBER_NAME(zOffset,"zOffset");
 	 ::bonsai::scene::Scene_obj::__Mark(HX_MARK_ARG);
 	HX_MARK_END_CLASS();
 }
@@ -147,7 +354,9 @@ void World_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(bodyParticleSystem,"bodyParticleSystem");
 	HX_VISIT_MEMBER_NAME(bodyAnimatedSprite,"bodyAnimatedSprite");
 	HX_VISIT_MEMBER_NAME(bodySpriteMap,"bodySpriteMap");
+	HX_VISIT_MEMBER_NAME(bodies,"bodies");
 	HX_VISIT_MEMBER_NAME(f,"f");
+	HX_VISIT_MEMBER_NAME(zOffset,"zOffset");
 	 ::bonsai::scene::Scene_obj::__Visit(HX_VISIT_ARG);
 }
 
@@ -158,8 +367,15 @@ hx::Val World_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
 		if (HX_FIELD_EQ(inName,"f") ) { return hx::Val( f ); }
 		break;
 	case 6:
+		if (HX_FIELD_EQ(inName,"bodies") ) { return hx::Val( bodies ); }
 		if (HX_FIELD_EQ(inName,"update") ) { return hx::Val( update_dyn() ); }
 		if (HX_FIELD_EQ(inName,"render") ) { return hx::Val( render_dyn() ); }
+		break;
+	case 7:
+		if (HX_FIELD_EQ(inName,"zOffset") ) { return hx::Val( zOffset ); }
+		break;
+	case 11:
+		if (HX_FIELD_EQ(inName,"explodeBody") ) { return hx::Val( explodeBody_dyn() ); }
 		break;
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodySpriteMap") ) { return hx::Val( bodySpriteMap ); }
@@ -180,6 +396,12 @@ hx::Val World_obj::__SetField(const ::String &inName,const hx::Val &inValue,hx::
 	case 1:
 		if (HX_FIELD_EQ(inName,"f") ) { f=inValue.Cast< int >(); return inValue; }
 		break;
+	case 6:
+		if (HX_FIELD_EQ(inName,"bodies") ) { _hx_set_bodies(HX_CTX_GET,inValue.Cast< ::Array< ::Dynamic> >()); return inValue; }
+		break;
+	case 7:
+		if (HX_FIELD_EQ(inName,"zOffset") ) { _hx_set_zOffset(HX_CTX_GET,inValue.Cast<  ::haxe::ds::EnumValueMap >()); return inValue; }
+		break;
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodySpriteMap") ) { _hx_set_bodySpriteMap(HX_CTX_GET,inValue.Cast<  ::bonsai::render::SpriteMap >()); return inValue; }
 		break;
@@ -199,7 +421,9 @@ void World_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("bodyParticleSystem",17,e8,76,1e));
 	outFields->push(HX_("bodyAnimatedSprite",4a,85,b6,81));
 	outFields->push(HX_("bodySpriteMap",95,78,9c,67));
+	outFields->push(HX_("bodies",80,1b,dd,5a));
 	outFields->push(HX_("f",66,00,00,00));
+	outFields->push(HX_("zOffset",ad,a3,0e,66));
 	super::__GetFields(outFields);
 };
 
@@ -209,7 +433,9 @@ static hx::StorageInfo World_obj_sMemberStorageInfo[] = {
 	{hx::fsObject /*  ::game::BodyPartParticles */ ,(int)offsetof(World_obj,bodyParticleSystem),HX_("bodyParticleSystem",17,e8,76,1e)},
 	{hx::fsObject /*  ::bonsai::render::AnimatedSprite */ ,(int)offsetof(World_obj,bodyAnimatedSprite),HX_("bodyAnimatedSprite",4a,85,b6,81)},
 	{hx::fsObject /*  ::bonsai::render::SpriteMap */ ,(int)offsetof(World_obj,bodySpriteMap),HX_("bodySpriteMap",95,78,9c,67)},
+	{hx::fsObject /* ::Array< ::Dynamic> */ ,(int)offsetof(World_obj,bodies),HX_("bodies",80,1b,dd,5a)},
 	{hx::fsInt,(int)offsetof(World_obj,f),HX_("f",66,00,00,00)},
+	{hx::fsObject /*  ::haxe::ds::EnumValueMap */ ,(int)offsetof(World_obj,zOffset),HX_("zOffset",ad,a3,0e,66)},
 	{ hx::fsUnknown, 0, null()}
 };
 static hx::StaticInfo *World_obj_sStaticStorageInfo = 0;
@@ -220,9 +446,12 @@ static ::String World_obj_sMemberFields[] = {
 	HX_("bodyParticleSystem",17,e8,76,1e),
 	HX_("bodyAnimatedSprite",4a,85,b6,81),
 	HX_("bodySpriteMap",95,78,9c,67),
+	HX_("bodies",80,1b,dd,5a),
 	HX_("f",66,00,00,00),
 	HX_("update",09,86,05,87),
 	HX_("render",56,6b,29,05),
+	HX_("zOffset",ad,a3,0e,66),
+	HX_("explodeBody",23,67,7a,bc),
 	::String(null()) };
 
 hx::Class World_obj::__mClass;

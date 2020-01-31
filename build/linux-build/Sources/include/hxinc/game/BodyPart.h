@@ -24,14 +24,22 @@ class BodyPart_obj : public hx::EnumBase_obj
 		::String GetEnumName( ) const { return HX_("game.BodyPart",d1,1b,98,40); }
 		::String __ToString() const { return HX_("BodyPart.",b9,9a,30,1f) + _hx_tag; }
 
-		static ::game::BodyPart Arm;
-		static inline ::game::BodyPart Arm_dyn() { return Arm; }
-		static ::game::BodyPart Body;
-		static inline ::game::BodyPart Body_dyn() { return Body; }
-		static ::game::BodyPart Head;
-		static inline ::game::BodyPart Head_dyn() { return Head; }
-		static ::game::BodyPart Leg;
-		static inline ::game::BodyPart Leg_dyn() { return Leg; }
+		static ::game::BodyPart Axe;
+		static inline ::game::BodyPart Axe_dyn() { return Axe; }
+		static ::game::BodyPart Boots;
+		static inline ::game::BodyPart Boots_dyn() { return Boots; }
+		static ::game::BodyPart Knife;
+		static inline ::game::BodyPart Knife_dyn() { return Knife; }
+		static ::game::BodyPart NaturalArm;
+		static inline ::game::BodyPart NaturalArm_dyn() { return NaturalArm; }
+		static ::game::BodyPart NaturalChest;
+		static inline ::game::BodyPart NaturalChest_dyn() { return NaturalChest; }
+		static ::game::BodyPart NaturalHead;
+		static inline ::game::BodyPart NaturalHead_dyn() { return NaturalHead; }
+		static ::game::BodyPart NaturalLeg;
+		static inline ::game::BodyPart NaturalLeg_dyn() { return NaturalLeg; }
+		static ::game::BodyPart Sword;
+		static inline ::game::BodyPart Sword_dyn() { return Sword; }
 };
 
 } // end namespace game

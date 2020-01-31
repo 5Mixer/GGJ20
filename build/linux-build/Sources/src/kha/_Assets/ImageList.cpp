@@ -22,16 +22,16 @@
 
 HX_DEFINE_STACK_FRAME(_hx_pos_f30eae4745d61cf6_9_new,"kha._Assets.ImageList","new",0x9d995fb5,"kha._Assets.ImageList.new","kha/Assets.hx",9,0x66f27110)
 static const ::String _hx_array_data_acc06143_1[] = {
-	HX_("bodyParts",1e,bb,5d,7d),HX_("chest",c1,a6,b6,45),HX_("heads",53,d3,b8,24),
+	HX_("bodyParts",1e,bb,5d,7d),HX_("bodyParts2",54,ff,a5,34),HX_("tiles",85,fd,34,10),
 };
 static const ::String _hx_array_data_acc06143_2[] = {
-	HX_("heads.k",90,b6,12,63),
+	HX_("tiles.k",42,51,93,45),
 };
 static const int _hx_array_data_acc06143_3[] = {
 	(int)1,
 };
 static const ::String _hx_array_data_acc06143_4[] = {
-	HX_("chest.k",7e,c1,be,1d),
+	HX_("bodyParts2.k",d1,a4,a3,29),
 };
 static const int _hx_array_data_acc06143_5[] = {
 	(int)1,
@@ -45,34 +45,34 @@ static const int _hx_array_data_acc06143_7[] = {
 HX_LOCAL_STACK_FRAME(_hx_pos_f30eae4745d61cf6_15_get,"kha._Assets.ImageList","get",0x9d940feb,"kha._Assets.ImageList.get","kha/Assets.hx",15,0x66f27110)
 HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_bodyPartsLoad,"kha._Assets.ImageList","bodyPartsLoad",0x243553f9,"kha._Assets.ImageList.bodyPartsLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_bodyPartsUnload,"kha._Assets.ImageList","bodyPartsUnload",0xa84ab592,"kha._Assets.ImageList.bodyPartsUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_chestLoad,"kha._Assets.ImageList","chestLoad",0xdae39e9c,"kha._Assets.ImageList.chestLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_chestUnload,"kha._Assets.ImageList","chestUnload",0x1f1b2ef5,"kha._Assets.ImageList.chestUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_headsLoad,"kha._Assets.ImageList","headsLoad",0x14ec7c2e,"kha._Assets.ImageList.headsLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_headsUnload,"kha._Assets.ImageList","headsUnload",0x93441507,"kha._Assets.ImageList.headsUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_bodyParts2Load,"kha._Assets.ImageList","bodyParts2Load",0x7af13665,"kha._Assets.ImageList.bodyParts2Load","kha/internal/AssetsBuilder.hx",126,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_bodyParts2Unload,"kha._Assets.ImageList","bodyParts2Unload",0x0f950afe,"kha._Assets.ImageList.bodyParts2Unload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_tilesLoad,"kha._Assets.ImageList","tilesLoad",0x0ccea760,"kha._Assets.ImageList.tilesLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_tilesUnload,"kha._Assets.ImageList","tilesUnload",0xe86cf0b9,"kha._Assets.ImageList.tilesUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 namespace kha{
 namespace _Assets{
 
 void ImageList_obj::__construct(){
             	HX_GC_STACKFRAME(&_hx_pos_f30eae4745d61cf6_9_new)
 HXLINE( 191)		this->_hx_set_names(HX_CTX, ::Array_obj< ::String >::fromData( _hx_array_data_acc06143_1,3));
-HXLINE( 118)		this->_hx_set_headsDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
+HXLINE( 118)		this->_hx_set_tilesDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("original_width",58,c4,9b,c9),40)
             			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_2,1))
             			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_3,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("heads",53,d3,b8,24))
+            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("tiles",85,fd,34,10))
             			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),96)));
-HXLINE( 110)		this->_hx_set_headsName(HX_CTX, HX_("heads",53,d3,b8,24));
-HXLINE(  69)		this->_hx_set_heads(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_chestDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(5,HX_("original_height",55,81,ff,54),4)));
+HXLINE( 110)		this->_hx_set_tilesName(HX_CTX, HX_("tiles",85,fd,34,10));
+HXLINE(  69)		this->_hx_set_tiles(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_bodyParts2Description(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
             			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
             			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_4,1))
             			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_5,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("chest",c1,a6,b6,45))
+            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("bodyParts2",54,ff,a5,34))
             			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),32)));
-HXLINE( 110)		this->_hx_set_chestName(HX_CTX, HX_("chest",c1,a6,b6,45));
-HXLINE(  69)		this->_hx_set_chest(HX_CTX, null());
+            			->setFixed(5,HX_("original_height",55,81,ff,54),352)));
+HXLINE( 110)		this->_hx_set_bodyParts2Name(HX_CTX, HX_("bodyParts2",54,ff,a5,34));
+HXLINE(  69)		this->_hx_set_bodyParts2(HX_CTX, null());
 HXLINE( 118)		this->_hx_set_bodyPartsDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
             			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
             			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_6,1))
@@ -131,53 +131,53 @@ HXLINE( 178)		this->_hx_set_bodyParts(HX_CTX, null());
 
 HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,bodyPartsUnload,(void))
 
-void ImageList_obj::chestLoad( ::Dynamic done, ::Dynamic failure){
+void ImageList_obj::bodyParts2Load( ::Dynamic done, ::Dynamic failure){
             		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
             		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_chestLoad)
+            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_bodyParts2Load)
 HXDLIN( 126)			done();
             		}
             		HX_END_LOCAL_FUNC1((void))
 
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_chestLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("chest",c1,a6,b6,45), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("chestLoad",87,61,e8,2f)));
+            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_bodyParts2Load)
+HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("bodyParts2",54,ff,a5,34), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("bodyParts2Load",9a,ff,4a,a9)));
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,chestLoad,(void))
+HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,bodyParts2Load,(void))
 
-void ImageList_obj::chestUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_chestUnload)
-HXLINE( 177)		this->chest->unload();
-HXLINE( 178)		this->_hx_set_chest(HX_CTX, null());
+void ImageList_obj::bodyParts2Unload(){
+            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_bodyParts2Unload)
+HXLINE( 177)		this->bodyParts2->unload();
+HXLINE( 178)		this->_hx_set_bodyParts2(HX_CTX, null());
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,chestUnload,(void))
+HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,bodyParts2Unload,(void))
 
-void ImageList_obj::headsLoad( ::Dynamic done, ::Dynamic failure){
+void ImageList_obj::tilesLoad( ::Dynamic done, ::Dynamic failure){
             		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
             		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_headsLoad)
+            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_tilesLoad)
 HXDLIN( 126)			done();
             		}
             		HX_END_LOCAL_FUNC1((void))
 
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_headsLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("heads",53,d3,b8,24), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("headsLoad",19,3f,f1,69)));
+            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_tilesLoad)
+HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("tiles",85,fd,34,10), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("tilesLoad",4b,6a,d3,61)));
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,headsLoad,(void))
+HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,tilesLoad,(void))
 
-void ImageList_obj::headsUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_headsUnload)
-HXLINE( 177)		this->heads->unload();
-HXLINE( 178)		this->_hx_set_heads(HX_CTX, null());
+void ImageList_obj::tilesUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_tilesUnload)
+HXLINE( 177)		this->tiles->unload();
+HXLINE( 178)		this->_hx_set_tiles(HX_CTX, null());
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,headsUnload,(void))
+HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,tilesUnload,(void))
 
 
 hx::ObjectPtr< ImageList_obj > ImageList_obj::__new() {
@@ -203,12 +203,12 @@ void ImageList_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(bodyParts,"bodyParts");
 	HX_MARK_MEMBER_NAME(bodyPartsName,"bodyPartsName");
 	HX_MARK_MEMBER_NAME(bodyPartsDescription,"bodyPartsDescription");
-	HX_MARK_MEMBER_NAME(chest,"chest");
-	HX_MARK_MEMBER_NAME(chestName,"chestName");
-	HX_MARK_MEMBER_NAME(chestDescription,"chestDescription");
-	HX_MARK_MEMBER_NAME(heads,"heads");
-	HX_MARK_MEMBER_NAME(headsName,"headsName");
-	HX_MARK_MEMBER_NAME(headsDescription,"headsDescription");
+	HX_MARK_MEMBER_NAME(bodyParts2,"bodyParts2");
+	HX_MARK_MEMBER_NAME(bodyParts2Name,"bodyParts2Name");
+	HX_MARK_MEMBER_NAME(bodyParts2Description,"bodyParts2Description");
+	HX_MARK_MEMBER_NAME(tiles,"tiles");
+	HX_MARK_MEMBER_NAME(tilesName,"tilesName");
+	HX_MARK_MEMBER_NAME(tilesDescription,"tilesDescription");
 	HX_MARK_MEMBER_NAME(names,"names");
 	HX_MARK_END_CLASS();
 }
@@ -218,12 +218,12 @@ void ImageList_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(bodyParts,"bodyParts");
 	HX_VISIT_MEMBER_NAME(bodyPartsName,"bodyPartsName");
 	HX_VISIT_MEMBER_NAME(bodyPartsDescription,"bodyPartsDescription");
-	HX_VISIT_MEMBER_NAME(chest,"chest");
-	HX_VISIT_MEMBER_NAME(chestName,"chestName");
-	HX_VISIT_MEMBER_NAME(chestDescription,"chestDescription");
-	HX_VISIT_MEMBER_NAME(heads,"heads");
-	HX_VISIT_MEMBER_NAME(headsName,"headsName");
-	HX_VISIT_MEMBER_NAME(headsDescription,"headsDescription");
+	HX_VISIT_MEMBER_NAME(bodyParts2,"bodyParts2");
+	HX_VISIT_MEMBER_NAME(bodyParts2Name,"bodyParts2Name");
+	HX_VISIT_MEMBER_NAME(bodyParts2Description,"bodyParts2Description");
+	HX_VISIT_MEMBER_NAME(tiles,"tiles");
+	HX_VISIT_MEMBER_NAME(tilesName,"tilesName");
+	HX_VISIT_MEMBER_NAME(tilesDescription,"tilesDescription");
 	HX_VISIT_MEMBER_NAME(names,"names");
 }
 
@@ -234,34 +234,40 @@ hx::Val ImageList_obj::__Field(const ::String &inName,hx::PropertyAccess inCallP
 		if (HX_FIELD_EQ(inName,"get") ) { return hx::Val( get_dyn() ); }
 		break;
 	case 5:
-		if (HX_FIELD_EQ(inName,"chest") ) { return hx::Val( chest ); }
-		if (HX_FIELD_EQ(inName,"heads") ) { return hx::Val( heads ); }
+		if (HX_FIELD_EQ(inName,"tiles") ) { return hx::Val( tiles ); }
 		if (HX_FIELD_EQ(inName,"names") ) { return hx::Val( names ); }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"bodyParts") ) { return hx::Val( bodyParts ); }
-		if (HX_FIELD_EQ(inName,"chestName") ) { return hx::Val( chestName ); }
-		if (HX_FIELD_EQ(inName,"chestLoad") ) { return hx::Val( chestLoad_dyn() ); }
-		if (HX_FIELD_EQ(inName,"headsName") ) { return hx::Val( headsName ); }
-		if (HX_FIELD_EQ(inName,"headsLoad") ) { return hx::Val( headsLoad_dyn() ); }
+		if (HX_FIELD_EQ(inName,"tilesName") ) { return hx::Val( tilesName ); }
+		if (HX_FIELD_EQ(inName,"tilesLoad") ) { return hx::Val( tilesLoad_dyn() ); }
+		break;
+	case 10:
+		if (HX_FIELD_EQ(inName,"bodyParts2") ) { return hx::Val( bodyParts2 ); }
 		break;
 	case 11:
-		if (HX_FIELD_EQ(inName,"chestUnload") ) { return hx::Val( chestUnload_dyn() ); }
-		if (HX_FIELD_EQ(inName,"headsUnload") ) { return hx::Val( headsUnload_dyn() ); }
+		if (HX_FIELD_EQ(inName,"tilesUnload") ) { return hx::Val( tilesUnload_dyn() ); }
 		break;
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodyPartsName") ) { return hx::Val( bodyPartsName ); }
 		if (HX_FIELD_EQ(inName,"bodyPartsLoad") ) { return hx::Val( bodyPartsLoad_dyn() ); }
 		break;
+	case 14:
+		if (HX_FIELD_EQ(inName,"bodyParts2Name") ) { return hx::Val( bodyParts2Name ); }
+		if (HX_FIELD_EQ(inName,"bodyParts2Load") ) { return hx::Val( bodyParts2Load_dyn() ); }
+		break;
 	case 15:
 		if (HX_FIELD_EQ(inName,"bodyPartsUnload") ) { return hx::Val( bodyPartsUnload_dyn() ); }
 		break;
 	case 16:
-		if (HX_FIELD_EQ(inName,"chestDescription") ) { return hx::Val( chestDescription ); }
-		if (HX_FIELD_EQ(inName,"headsDescription") ) { return hx::Val( headsDescription ); }
+		if (HX_FIELD_EQ(inName,"bodyParts2Unload") ) { return hx::Val( bodyParts2Unload_dyn() ); }
+		if (HX_FIELD_EQ(inName,"tilesDescription") ) { return hx::Val( tilesDescription ); }
 		break;
 	case 20:
 		if (HX_FIELD_EQ(inName,"bodyPartsDescription") ) { return hx::Val( bodyPartsDescription ); }
+		break;
+	case 21:
+		if (HX_FIELD_EQ(inName,"bodyParts2Description") ) { return hx::Val( bodyParts2Description ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -270,24 +276,30 @@ hx::Val ImageList_obj::__SetField(const ::String &inName,const hx::Val &inValue,
 {
 	switch(inName.length) {
 	case 5:
-		if (HX_FIELD_EQ(inName,"chest") ) { _hx_set_chest(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"heads") ) { _hx_set_heads(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tiles") ) { _hx_set_tiles(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"names") ) { _hx_set_names(HX_CTX_GET,inValue.Cast< ::Array< ::String > >()); return inValue; }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"bodyParts") ) { _hx_set_bodyParts(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"chestName") ) { _hx_set_chestName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"headsName") ) { _hx_set_headsName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tilesName") ) { _hx_set_tilesName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		break;
+	case 10:
+		if (HX_FIELD_EQ(inName,"bodyParts2") ) { _hx_set_bodyParts2(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
 		break;
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodyPartsName") ) { _hx_set_bodyPartsName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		break;
+	case 14:
+		if (HX_FIELD_EQ(inName,"bodyParts2Name") ) { _hx_set_bodyParts2Name(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		break;
 	case 16:
-		if (HX_FIELD_EQ(inName,"chestDescription") ) { _hx_set_chestDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"headsDescription") ) { _hx_set_headsDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"tilesDescription") ) { _hx_set_tilesDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 		break;
 	case 20:
 		if (HX_FIELD_EQ(inName,"bodyPartsDescription") ) { _hx_set_bodyPartsDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		break;
+	case 21:
+		if (HX_FIELD_EQ(inName,"bodyParts2Description") ) { _hx_set_bodyParts2Description(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
@@ -297,12 +309,12 @@ void ImageList_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("bodyParts",1e,bb,5d,7d));
 	outFields->push(HX_("bodyPartsName",89,40,35,58));
 	outFields->push(HX_("bodyPartsDescription",7e,9e,94,42));
-	outFields->push(HX_("chest",c1,a6,b6,45));
-	outFields->push(HX_("chestName",ac,39,30,31));
-	outFields->push(HX_("chestDescription",bb,5f,c0,bf));
-	outFields->push(HX_("heads",53,d3,b8,24));
-	outFields->push(HX_("headsName",3e,17,39,6b));
-	outFields->push(HX_("headsDescription",69,38,02,82));
+	outFields->push(HX_("bodyParts2",54,ff,a5,34));
+	outFields->push(HX_("bodyParts2Name",bf,d7,92,aa));
+	outFields->push(HX_("bodyParts2Description",08,fa,cb,77));
+	outFields->push(HX_("tiles",85,fd,34,10));
+	outFields->push(HX_("tilesName",70,42,1b,63));
+	outFields->push(HX_("tilesDescription",77,b7,65,cf));
 	outFields->push(HX_("names",c8,8f,84,96));
 	super::__GetFields(outFields);
 };
@@ -312,12 +324,12 @@ static hx::StorageInfo ImageList_obj_sMemberStorageInfo[] = {
 	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,bodyParts),HX_("bodyParts",1e,bb,5d,7d)},
 	{hx::fsString,(int)offsetof(ImageList_obj,bodyPartsName),HX_("bodyPartsName",89,40,35,58)},
 	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,bodyPartsDescription),HX_("bodyPartsDescription",7e,9e,94,42)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,chest),HX_("chest",c1,a6,b6,45)},
-	{hx::fsString,(int)offsetof(ImageList_obj,chestName),HX_("chestName",ac,39,30,31)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,chestDescription),HX_("chestDescription",bb,5f,c0,bf)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,heads),HX_("heads",53,d3,b8,24)},
-	{hx::fsString,(int)offsetof(ImageList_obj,headsName),HX_("headsName",3e,17,39,6b)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,headsDescription),HX_("headsDescription",69,38,02,82)},
+	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,bodyParts2),HX_("bodyParts2",54,ff,a5,34)},
+	{hx::fsString,(int)offsetof(ImageList_obj,bodyParts2Name),HX_("bodyParts2Name",bf,d7,92,aa)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,bodyParts2Description),HX_("bodyParts2Description",08,fa,cb,77)},
+	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,tiles),HX_("tiles",85,fd,34,10)},
+	{hx::fsString,(int)offsetof(ImageList_obj,tilesName),HX_("tilesName",70,42,1b,63)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,tilesDescription),HX_("tilesDescription",77,b7,65,cf)},
 	{hx::fsObject /* ::Array< ::String > */ ,(int)offsetof(ImageList_obj,names),HX_("names",c8,8f,84,96)},
 	{ hx::fsUnknown, 0, null()}
 };
@@ -331,16 +343,16 @@ static ::String ImageList_obj_sMemberFields[] = {
 	HX_("bodyPartsDescription",7e,9e,94,42),
 	HX_("bodyPartsLoad",64,68,ed,56),
 	HX_("bodyPartsUnload",bd,fa,80,08),
-	HX_("chest",c1,a6,b6,45),
-	HX_("chestName",ac,39,30,31),
-	HX_("chestDescription",bb,5f,c0,bf),
-	HX_("chestLoad",87,61,e8,2f),
-	HX_("chestUnload",a0,c2,06,51),
-	HX_("heads",53,d3,b8,24),
-	HX_("headsName",3e,17,39,6b),
-	HX_("headsDescription",69,38,02,82),
-	HX_("headsLoad",19,3f,f1,69),
-	HX_("headsUnload",b2,a8,2f,c5),
+	HX_("bodyParts2",54,ff,a5,34),
+	HX_("bodyParts2Name",bf,d7,92,aa),
+	HX_("bodyParts2Description",08,fa,cb,77),
+	HX_("bodyParts2Load",9a,ff,4a,a9),
+	HX_("bodyParts2Unload",73,4b,db,de),
+	HX_("tiles",85,fd,34,10),
+	HX_("tilesName",70,42,1b,63),
+	HX_("tilesDescription",77,b7,65,cf),
+	HX_("tilesLoad",4b,6a,d3,61),
+	HX_("tilesUnload",64,84,58,1a),
 	HX_("names",c8,8f,84,96),
 	::String(null()) };
 

@@ -13,6 +13,7 @@ HX_DECLARE_CLASS2(bonsai,entity,Entity)
 HX_DECLARE_CLASS2(bonsai,render,AnimatedSprite)
 HX_DECLARE_CLASS1(game,ArmPart)
 HX_DECLARE_CLASS1(game,Body)
+HX_DECLARE_CLASS1(game,BodyPart)
 HX_DECLARE_CLASS1(game,ChestPart)
 HX_DECLARE_CLASS1(game,HeadPart)
 HX_DECLARE_CLASS1(game,LegPart)
@@ -79,6 +80,24 @@ class HXCPP_CLASS_ATTRIBUTES Body_obj : public  ::bonsai::entity::Entity_obj
 		 ::bonsai::render::AnimatedSprite animatedSprite;
 		inline  ::bonsai::render::AnimatedSprite _hx_set_animatedSprite(hx::StackContext *_hx_ctx, ::bonsai::render::AnimatedSprite _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return animatedSprite=_hx_v; }
 		void render( ::kha::graphics2::Graphics graphics);
+
+		 ::game::BodyPart getHeadDrop();
+		::Dynamic getHeadDrop_dyn();
+
+		 ::game::BodyPart getChestDrop();
+		::Dynamic getChestDrop_dyn();
+
+		 ::game::BodyPart getLeftArmDrop();
+		::Dynamic getLeftArmDrop_dyn();
+
+		 ::game::BodyPart getRightArmDrop();
+		::Dynamic getRightArmDrop_dyn();
+
+		 ::game::BodyPart getLeftLegDrop();
+		::Dynamic getLeftLegDrop_dyn();
+
+		 ::game::BodyPart getRightLegDrop();
+		::Dynamic getRightLegDrop_dyn();
 
 };
 

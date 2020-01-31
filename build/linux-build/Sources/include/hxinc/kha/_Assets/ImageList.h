@@ -62,29 +62,29 @@ class HXCPP_CLASS_ATTRIBUTES ImageList_obj : public hx::Object
 		void bodyPartsUnload();
 		::Dynamic bodyPartsUnload_dyn();
 
-		 ::kha::Image chest;
-		inline  ::kha::Image _hx_set_chest(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return chest=_hx_v; }
-		::String chestName;
-		inline ::String _hx_set_chestName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return chestName=_hx_v; }
-		 ::Dynamic chestDescription;
-		inline  ::Dynamic _hx_set_chestDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return chestDescription=_hx_v; }
-		void chestLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic chestLoad_dyn();
+		 ::kha::Image bodyParts2;
+		inline  ::kha::Image _hx_set_bodyParts2(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParts2=_hx_v; }
+		::String bodyParts2Name;
+		inline ::String _hx_set_bodyParts2Name(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return bodyParts2Name=_hx_v; }
+		 ::Dynamic bodyParts2Description;
+		inline  ::Dynamic _hx_set_bodyParts2Description(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParts2Description=_hx_v; }
+		void bodyParts2Load( ::Dynamic done, ::Dynamic failure);
+		::Dynamic bodyParts2Load_dyn();
 
-		void chestUnload();
-		::Dynamic chestUnload_dyn();
+		void bodyParts2Unload();
+		::Dynamic bodyParts2Unload_dyn();
 
-		 ::kha::Image heads;
-		inline  ::kha::Image _hx_set_heads(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return heads=_hx_v; }
-		::String headsName;
-		inline ::String _hx_set_headsName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return headsName=_hx_v; }
-		 ::Dynamic headsDescription;
-		inline  ::Dynamic _hx_set_headsDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return headsDescription=_hx_v; }
-		void headsLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic headsLoad_dyn();
+		 ::kha::Image tiles;
+		inline  ::kha::Image _hx_set_tiles(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles=_hx_v; }
+		::String tilesName;
+		inline ::String _hx_set_tilesName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tilesName=_hx_v; }
+		 ::Dynamic tilesDescription;
+		inline  ::Dynamic _hx_set_tilesDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tilesDescription=_hx_v; }
+		void tilesLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic tilesLoad_dyn();
 
-		void headsUnload();
-		::Dynamic headsUnload_dyn();
+		void tilesUnload();
+		::Dynamic tilesUnload_dyn();
 
 		::Array< ::String > names;
 		inline ::Array< ::String > _hx_set_names(hx::StackContext *_hx_ctx,::Array< ::String > _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return names=_hx_v; }

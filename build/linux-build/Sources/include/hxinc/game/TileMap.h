@@ -59,12 +59,8 @@ class HXCPP_CLASS_ATTRIBUTES TileMap_obj : public  ::bonsai::entity::Entity_obj
 		inline ::Array< ::Dynamic> _hx_set_tiles(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles=_hx_v; }
 		 ::bonsai::resource::Tiled tiled;
 		inline  ::bonsai::resource::Tiled _hx_set_tiled(hx::StackContext *_hx_ctx, ::bonsai::resource::Tiled _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiled=_hx_v; }
-		 ::bonsai::resource::Tiled tiled2;
-		inline  ::bonsai::resource::Tiled _hx_set_tiled2(hx::StackContext *_hx_ctx, ::bonsai::resource::Tiled _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiled2=_hx_v; }
 		 ::bonsai::render::SpriteMap spriteMap;
 		inline  ::bonsai::render::SpriteMap _hx_set_spriteMap(hx::StackContext *_hx_ctx, ::bonsai::render::SpriteMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return spriteMap=_hx_v; }
-		 ::bonsai::render::SpriteMap spriteMap2;
-		inline  ::bonsai::render::SpriteMap _hx_set_spriteMap2(hx::StackContext *_hx_ctx, ::bonsai::render::SpriteMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return spriteMap2=_hx_v; }
 		void render( ::kha::graphics2::Graphics graphics);
 
 		void update(Float dt);
