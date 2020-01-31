@@ -914,10 +914,10 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	this.transformation = new bonsai_render_Transformation();
 	this.transformation.scale = new kha_math_Vector2(3,3);
 	this.bodyParticleSystem = new game_BodyPartParticles();
-	this.bodyParticleSystem.poolMaximum = 1200;
+	this.bodyParticleSystem.poolMaximum = 12000;
 	this.add(this.bodyParticleSystem);
 	var _g1 = 0;
-	while(_g1 < 200) {
+	while(_g1 < 2000) {
 		var i = _g1++;
 		var body = new game_Body();
 		this.add(body);

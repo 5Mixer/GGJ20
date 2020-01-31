@@ -23,14 +23,17 @@ class World extends Scene {
 		// add(new Player(10, 30, engine.input), 1);
 
 		bodyParticleSystem = new BodyPartParticles();
-		bodyParticleSystem.poolMaximum = 1200;
+		bodyParticleSystem.poolMaximum = 6000;
 		add(bodyParticleSystem);
 
-		for (i in 0...200) {
+		for (i in 0...1000) {
 			var body = new Body();
 			add(body);
 			bodies.push(body);
 		}
+		bodies.sort(function (a,b) {
+			return a.position.y < b.position.y ? -1 : 1;
+		})
 	}
 	var f = 0;
 	override public function update (dt:Float) {
