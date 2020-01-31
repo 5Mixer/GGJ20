@@ -52,23 +52,8 @@ class HXCPP_CLASS_ATTRIBUTES StringTools_obj : public hx::Object
 		static ::String urlDecode(::String s);
 		static ::Dynamic urlDecode_dyn();
 
-		static ::String htmlEscape(::String s, ::Dynamic quotes);
-		static ::Dynamic htmlEscape_dyn();
-
 		static bool endsWith(::String s,::String end);
 		static ::Dynamic endsWith_dyn();
-
-		static bool isSpace(::String s,int pos);
-		static ::Dynamic isSpace_dyn();
-
-		static ::String ltrim(::String s);
-		static ::Dynamic ltrim_dyn();
-
-		static ::String rtrim(::String s);
-		static ::Dynamic rtrim_dyn();
-
-		static ::String trim(::String s);
-		static ::Dynamic trim_dyn();
 
 };
 

@@ -22,134 +22,32 @@
 
 HX_DEFINE_STACK_FRAME(_hx_pos_f30eae4745d61cf6_9_new,"kha._Assets.ImageList","new",0x9d995fb5,"kha._Assets.ImageList.new","kha/Assets.hx",9,0x66f27110)
 static const ::String _hx_array_data_acc06143_1[] = {
-	HX_("goblin",57,c6,55,59),HX_("goblinRunSheet",cb,4c,9d,fb),HX_("player",61,eb,b8,37),HX_("playerSwordSwing",82,04,29,db),HX_("playerWalk",0a,39,b4,b1),HX_("tiles",85,fd,34,10),HX_("tiles2",0d,d7,28,1e),
+	HX_("body1",4f,d3,ef,b6),
 };
 static const ::String _hx_array_data_acc06143_2[] = {
-	HX_("tiles2.k",ca,9c,56,9b),
+	HX_("body1.k",8c,ad,06,31),
 };
 static const int _hx_array_data_acc06143_3[] = {
 	(int)1,
 };
-static const ::String _hx_array_data_acc06143_4[] = {
-	HX_("tiles.k",42,51,93,45),
-};
-static const int _hx_array_data_acc06143_5[] = {
-	(int)1,
-};
-static const ::String _hx_array_data_acc06143_6[] = {
-	HX_("playerWalk.k",07,38,fc,b1),
-};
-static const int _hx_array_data_acc06143_7[] = {
-	(int)1,
-};
-static const ::String _hx_array_data_acc06143_8[] = {
-	HX_("playerSwordSwing.k",7f,d1,d4,ba),
-};
-static const int _hx_array_data_acc06143_9[] = {
-	(int)1,
-};
-static const ::String _hx_array_data_acc06143_10[] = {
-	HX_("player.k",1e,6e,53,48),
-};
-static const int _hx_array_data_acc06143_11[] = {
-	(int)1,
-};
-static const ::String _hx_array_data_acc06143_12[] = {
-	HX_("goblinRunSheet.k",08,7e,22,17),
-};
-static const int _hx_array_data_acc06143_13[] = {
-	(int)1,
-};
-static const ::String _hx_array_data_acc06143_14[] = {
-	HX_("goblin.k",94,72,15,af),
-};
-static const int _hx_array_data_acc06143_15[] = {
-	(int)1,
-};
 HX_LOCAL_STACK_FRAME(_hx_pos_f30eae4745d61cf6_15_get,"kha._Assets.ImageList","get",0x9d940feb,"kha._Assets.ImageList.get","kha/Assets.hx",15,0x66f27110)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_goblinLoad,"kha._Assets.ImageList","goblinLoad",0xb9f83968,"kha._Assets.ImageList.goblinLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_goblinUnload,"kha._Assets.ImageList","goblinUnload",0x60a514c1,"kha._Assets.ImageList.goblinUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_goblinRunSheetLoad,"kha._Assets.ImageList","goblinRunSheetLoad",0x396cccdc,"kha._Assets.ImageList.goblinRunSheetLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_goblinRunSheetUnload,"kha._Assets.ImageList","goblinRunSheetUnload",0x14fc6d35,"kha._Assets.ImageList.goblinRunSheetUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_playerLoad,"kha._Assets.ImageList","playerLoad",0x9b53ab72,"kha._Assets.ImageList.playerLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_playerUnload,"kha._Assets.ImageList","playerUnload",0xe5489d4b,"kha._Assets.ImageList.playerUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_playerSwordSwingLoad,"kha._Assets.ImageList","playerSwordSwingLoad",0xdd5b14d3,"kha._Assets.ImageList.playerSwordSwingLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_playerSwordSwingUnload,"kha._Assets.ImageList","playerSwordSwingUnload",0x4705e0ec,"kha._Assets.ImageList.playerSwordSwingUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_playerWalkLoad,"kha._Assets.ImageList","playerWalkLoad",0x38fd831b,"kha._Assets.ImageList.playerWalkLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_playerWalkUnload,"kha._Assets.ImageList","playerWalkUnload",0xa2d67134,"kha._Assets.ImageList.playerWalkUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_tilesLoad,"kha._Assets.ImageList","tilesLoad",0x0ccea760,"kha._Assets.ImageList.tilesLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_tilesUnload,"kha._Assets.ImageList","tilesUnload",0xe86cf0b9,"kha._Assets.ImageList.tilesUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_tiles2Load,"kha._Assets.ImageList","tiles2Load",0x1880dd1e,"kha._Assets.ImageList.tiles2Load","kha/internal/AssetsBuilder.hx",126,0x6901246d)
-HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_tiles2Unload,"kha._Assets.ImageList","tiles2Unload",0xed6691f7,"kha._Assets.ImageList.tiles2Unload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_body1Load,"kha._Assets.ImageList","body1Load",0x41092a2a,"kha._Assets.ImageList.body1Load","kha/internal/AssetsBuilder.hx",126,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_body1Unload,"kha._Assets.ImageList","body1Unload",0x82653a03,"kha._Assets.ImageList.body1Unload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 namespace kha{
 namespace _Assets{
 
 void ImageList_obj::__construct(){
             	HX_GC_STACKFRAME(&_hx_pos_f30eae4745d61cf6_9_new)
-HXLINE( 191)		this->_hx_set_names(HX_CTX, ::Array_obj< ::String >::fromData( _hx_array_data_acc06143_1,7));
-HXLINE( 118)		this->_hx_set_tiles2Description(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),64)
+HXLINE( 191)		this->_hx_set_names(HX_CTX, ::Array_obj< ::String >::fromData( _hx_array_data_acc06143_1,1));
+HXLINE( 118)		this->_hx_set_body1Description(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
             			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_2,1))
             			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_3,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("tiles2",0d,d7,28,1e))
+            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("body1",4f,d3,ef,b6))
             			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),64)));
-HXLINE( 110)		this->_hx_set_tiles2Name(HX_CTX, HX_("tiles2",0d,d7,28,1e));
-HXLINE(  69)		this->_hx_set_tiles2(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_tilesDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),40)
-            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_4,1))
-            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_5,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("tiles",85,fd,34,10))
-            			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),4)));
-HXLINE( 110)		this->_hx_set_tilesName(HX_CTX, HX_("tiles",85,fd,34,10));
-HXLINE(  69)		this->_hx_set_tiles(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_playerWalkDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),192)
-            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_6,1))
-            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_7,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("playerWalk",0a,39,b4,b1))
-            			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),32)));
-HXLINE( 110)		this->_hx_set_playerWalkName(HX_CTX, HX_("playerWalk",0a,39,b4,b1));
-HXLINE(  69)		this->_hx_set_playerWalk(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_playerSwordSwingDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),448)
-            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_8,1))
-            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_9,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("playerSwordSwing",82,04,29,db))
-            			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),48)));
-HXLINE( 110)		this->_hx_set_playerSwordSwingName(HX_CTX, HX_("playerSwordSwing",82,04,29,db));
-HXLINE(  69)		this->_hx_set_playerSwordSwing(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_playerDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),16)
-            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_10,1))
-            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_11,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("player",61,eb,b8,37))
-            			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),32)));
-HXLINE( 110)		this->_hx_set_playerName(HX_CTX, HX_("player",61,eb,b8,37));
-HXLINE(  69)		this->_hx_set_player(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_goblinRunSheetDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),96)
-            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_12,1))
-            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_13,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("goblinRunSheet",cb,4c,9d,fb))
-            			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),16)));
-HXLINE( 110)		this->_hx_set_goblinRunSheetName(HX_CTX, HX_("goblinRunSheet",cb,4c,9d,fb));
-HXLINE(  69)		this->_hx_set_goblinRunSheet(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_goblinDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),16)
-            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_14,1))
-            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_15,1))
-            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("goblin",57,c6,55,59))
-            			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),16)));
-HXLINE( 110)		this->_hx_set_goblinName(HX_CTX, HX_("goblin",57,c6,55,59));
-HXLINE(  69)		this->_hx_set_goblin(HX_CTX, null());
+            			->setFixed(5,HX_("original_height",55,81,ff,54),128)));
+HXLINE( 110)		this->_hx_set_body1Name(HX_CTX, HX_("body1",4f,d3,ef,b6));
+HXLINE(  69)		this->_hx_set_body1(HX_CTX, null());
             	}
 
 Dynamic ImageList_obj::__CreateEmpty() { return new ImageList_obj; }
@@ -175,173 +73,29 @@ HXDLIN(  15)		return ( ( ::kha::Image)(::Reflect_obj::field(hx::ObjectPtr<OBJ_>(
 
 HX_DEFINE_DYNAMIC_FUNC1(ImageList_obj,get,return )
 
-void ImageList_obj::goblinLoad( ::Dynamic done, ::Dynamic failure){
+void ImageList_obj::body1Load( ::Dynamic done, ::Dynamic failure){
             		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
             		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_goblinLoad)
+            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_body1Load)
 HXDLIN( 126)			done();
             		}
             		HX_END_LOCAL_FUNC1((void))
 
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_goblinLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("goblin",57,c6,55,59), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("goblinLoad",1d,04,1e,c9)));
+            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_body1Load)
+HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("body1",4f,d3,ef,b6), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("body1Load",15,ed,0d,96)));
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,goblinLoad,(void))
+HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,body1Load,(void))
 
-void ImageList_obj::goblinUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_goblinUnload)
-HXLINE( 177)		this->goblin->unload();
-HXLINE( 178)		this->_hx_set_goblin(HX_CTX, null());
+void ImageList_obj::body1Unload(){
+            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_body1Unload)
+HXLINE( 177)		this->body1->unload();
+HXLINE( 178)		this->_hx_set_body1(HX_CTX, null());
             	}
 
 
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,goblinUnload,(void))
-
-void ImageList_obj::goblinRunSheetLoad( ::Dynamic done, ::Dynamic failure){
-            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
-            		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_goblinRunSheetLoad)
-HXDLIN( 126)			done();
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_goblinRunSheetLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("goblinRunSheet",cb,4c,9d,fb), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("goblinRunSheetLoad",91,d4,1b,17)));
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,goblinRunSheetLoad,(void))
-
-void ImageList_obj::goblinRunSheetUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_goblinRunSheetUnload)
-HXLINE( 177)		this->goblinRunSheet->unload();
-HXLINE( 178)		this->_hx_set_goblinRunSheet(HX_CTX, null());
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,goblinRunSheetUnload,(void))
-
-void ImageList_obj::playerLoad( ::Dynamic done, ::Dynamic failure){
-            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
-            		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_playerLoad)
-HXDLIN( 126)			done();
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_playerLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("player",61,eb,b8,37), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("playerLoad",27,76,79,aa)));
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,playerLoad,(void))
-
-void ImageList_obj::playerUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_playerUnload)
-HXLINE( 177)		this->player->unload();
-HXLINE( 178)		this->_hx_set_player(HX_CTX, null());
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,playerUnload,(void))
-
-void ImageList_obj::playerSwordSwingLoad( ::Dynamic done, ::Dynamic failure){
-            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
-            		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_playerSwordSwingLoad)
-HXDLIN( 126)			done();
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_playerSwordSwingLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("playerSwordSwing",82,04,29,db), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("playerSwordSwingLoad",c8,33,a3,ca)));
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,playerSwordSwingLoad,(void))
-
-void ImageList_obj::playerSwordSwingUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_playerSwordSwingUnload)
-HXLINE( 177)		this->playerSwordSwing->unload();
-HXLINE( 178)		this->_hx_set_playerSwordSwing(HX_CTX, null());
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,playerSwordSwingUnload,(void))
-
-void ImageList_obj::playerWalkLoad( ::Dynamic done, ::Dynamic failure){
-            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
-            		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_playerWalkLoad)
-HXDLIN( 126)			done();
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_playerWalkLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("playerWalk",0a,39,b4,b1), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("playerWalkLoad",50,4c,57,67)));
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,playerWalkLoad,(void))
-
-void ImageList_obj::playerWalkUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_playerWalkUnload)
-HXLINE( 177)		this->playerWalk->unload();
-HXLINE( 178)		this->_hx_set_playerWalk(HX_CTX, null());
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,playerWalkUnload,(void))
-
-void ImageList_obj::tilesLoad( ::Dynamic done, ::Dynamic failure){
-            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
-            		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_tilesLoad)
-HXDLIN( 126)			done();
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_tilesLoad)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("tiles",85,fd,34,10), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("tilesLoad",4b,6a,d3,61)));
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,tilesLoad,(void))
-
-void ImageList_obj::tilesUnload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_tilesUnload)
-HXLINE( 177)		this->tiles->unload();
-HXLINE( 178)		this->_hx_set_tiles(HX_CTX, null());
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,tilesUnload,(void))
-
-void ImageList_obj::tiles2Load( ::Dynamic done, ::Dynamic failure){
-            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
-            		void _hx_run( ::kha::Image image){
-            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_tiles2Load)
-HXDLIN( 126)			done();
-            		}
-            		HX_END_LOCAL_FUNC1((void))
-
-            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_tiles2Load)
-HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("tiles2",0d,d7,28,1e), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("tiles2Load",d3,a7,a6,27)));
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,tiles2Load,(void))
-
-void ImageList_obj::tiles2Unload(){
-            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_tiles2Unload)
-HXLINE( 177)		this->tiles2->unload();
-HXLINE( 178)		this->_hx_set_tiles2(HX_CTX, null());
-            	}
-
-
-HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,tiles2Unload,(void))
+HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,body1Unload,(void))
 
 
 hx::ObjectPtr< ImageList_obj > ImageList_obj::__new() {
@@ -364,54 +118,18 @@ ImageList_obj::ImageList_obj()
 void ImageList_obj::__Mark(HX_MARK_PARAMS)
 {
 	HX_MARK_BEGIN_CLASS(ImageList);
-	HX_MARK_MEMBER_NAME(goblin,"goblin");
-	HX_MARK_MEMBER_NAME(goblinName,"goblinName");
-	HX_MARK_MEMBER_NAME(goblinDescription,"goblinDescription");
-	HX_MARK_MEMBER_NAME(goblinRunSheet,"goblinRunSheet");
-	HX_MARK_MEMBER_NAME(goblinRunSheetName,"goblinRunSheetName");
-	HX_MARK_MEMBER_NAME(goblinRunSheetDescription,"goblinRunSheetDescription");
-	HX_MARK_MEMBER_NAME(player,"player");
-	HX_MARK_MEMBER_NAME(playerName,"playerName");
-	HX_MARK_MEMBER_NAME(playerDescription,"playerDescription");
-	HX_MARK_MEMBER_NAME(playerSwordSwing,"playerSwordSwing");
-	HX_MARK_MEMBER_NAME(playerSwordSwingName,"playerSwordSwingName");
-	HX_MARK_MEMBER_NAME(playerSwordSwingDescription,"playerSwordSwingDescription");
-	HX_MARK_MEMBER_NAME(playerWalk,"playerWalk");
-	HX_MARK_MEMBER_NAME(playerWalkName,"playerWalkName");
-	HX_MARK_MEMBER_NAME(playerWalkDescription,"playerWalkDescription");
-	HX_MARK_MEMBER_NAME(tiles,"tiles");
-	HX_MARK_MEMBER_NAME(tilesName,"tilesName");
-	HX_MARK_MEMBER_NAME(tilesDescription,"tilesDescription");
-	HX_MARK_MEMBER_NAME(tiles2,"tiles2");
-	HX_MARK_MEMBER_NAME(tiles2Name,"tiles2Name");
-	HX_MARK_MEMBER_NAME(tiles2Description,"tiles2Description");
+	HX_MARK_MEMBER_NAME(body1,"body1");
+	HX_MARK_MEMBER_NAME(body1Name,"body1Name");
+	HX_MARK_MEMBER_NAME(body1Description,"body1Description");
 	HX_MARK_MEMBER_NAME(names,"names");
 	HX_MARK_END_CLASS();
 }
 
 void ImageList_obj::__Visit(HX_VISIT_PARAMS)
 {
-	HX_VISIT_MEMBER_NAME(goblin,"goblin");
-	HX_VISIT_MEMBER_NAME(goblinName,"goblinName");
-	HX_VISIT_MEMBER_NAME(goblinDescription,"goblinDescription");
-	HX_VISIT_MEMBER_NAME(goblinRunSheet,"goblinRunSheet");
-	HX_VISIT_MEMBER_NAME(goblinRunSheetName,"goblinRunSheetName");
-	HX_VISIT_MEMBER_NAME(goblinRunSheetDescription,"goblinRunSheetDescription");
-	HX_VISIT_MEMBER_NAME(player,"player");
-	HX_VISIT_MEMBER_NAME(playerName,"playerName");
-	HX_VISIT_MEMBER_NAME(playerDescription,"playerDescription");
-	HX_VISIT_MEMBER_NAME(playerSwordSwing,"playerSwordSwing");
-	HX_VISIT_MEMBER_NAME(playerSwordSwingName,"playerSwordSwingName");
-	HX_VISIT_MEMBER_NAME(playerSwordSwingDescription,"playerSwordSwingDescription");
-	HX_VISIT_MEMBER_NAME(playerWalk,"playerWalk");
-	HX_VISIT_MEMBER_NAME(playerWalkName,"playerWalkName");
-	HX_VISIT_MEMBER_NAME(playerWalkDescription,"playerWalkDescription");
-	HX_VISIT_MEMBER_NAME(tiles,"tiles");
-	HX_VISIT_MEMBER_NAME(tilesName,"tilesName");
-	HX_VISIT_MEMBER_NAME(tilesDescription,"tilesDescription");
-	HX_VISIT_MEMBER_NAME(tiles2,"tiles2");
-	HX_VISIT_MEMBER_NAME(tiles2Name,"tiles2Name");
-	HX_VISIT_MEMBER_NAME(tiles2Description,"tiles2Description");
+	HX_VISIT_MEMBER_NAME(body1,"body1");
+	HX_VISIT_MEMBER_NAME(body1Name,"body1Name");
+	HX_VISIT_MEMBER_NAME(body1Description,"body1Description");
 	HX_VISIT_MEMBER_NAME(names,"names");
 }
 
@@ -422,70 +140,18 @@ hx::Val ImageList_obj::__Field(const ::String &inName,hx::PropertyAccess inCallP
 		if (HX_FIELD_EQ(inName,"get") ) { return hx::Val( get_dyn() ); }
 		break;
 	case 5:
-		if (HX_FIELD_EQ(inName,"tiles") ) { return hx::Val( tiles ); }
+		if (HX_FIELD_EQ(inName,"body1") ) { return hx::Val( body1 ); }
 		if (HX_FIELD_EQ(inName,"names") ) { return hx::Val( names ); }
 		break;
-	case 6:
-		if (HX_FIELD_EQ(inName,"goblin") ) { return hx::Val( goblin ); }
-		if (HX_FIELD_EQ(inName,"player") ) { return hx::Val( player ); }
-		if (HX_FIELD_EQ(inName,"tiles2") ) { return hx::Val( tiles2 ); }
-		break;
 	case 9:
-		if (HX_FIELD_EQ(inName,"tilesName") ) { return hx::Val( tilesName ); }
-		if (HX_FIELD_EQ(inName,"tilesLoad") ) { return hx::Val( tilesLoad_dyn() ); }
-		break;
-	case 10:
-		if (HX_FIELD_EQ(inName,"goblinName") ) { return hx::Val( goblinName ); }
-		if (HX_FIELD_EQ(inName,"goblinLoad") ) { return hx::Val( goblinLoad_dyn() ); }
-		if (HX_FIELD_EQ(inName,"playerName") ) { return hx::Val( playerName ); }
-		if (HX_FIELD_EQ(inName,"playerLoad") ) { return hx::Val( playerLoad_dyn() ); }
-		if (HX_FIELD_EQ(inName,"playerWalk") ) { return hx::Val( playerWalk ); }
-		if (HX_FIELD_EQ(inName,"tiles2Name") ) { return hx::Val( tiles2Name ); }
-		if (HX_FIELD_EQ(inName,"tiles2Load") ) { return hx::Val( tiles2Load_dyn() ); }
+		if (HX_FIELD_EQ(inName,"body1Name") ) { return hx::Val( body1Name ); }
+		if (HX_FIELD_EQ(inName,"body1Load") ) { return hx::Val( body1Load_dyn() ); }
 		break;
 	case 11:
-		if (HX_FIELD_EQ(inName,"tilesUnload") ) { return hx::Val( tilesUnload_dyn() ); }
-		break;
-	case 12:
-		if (HX_FIELD_EQ(inName,"goblinUnload") ) { return hx::Val( goblinUnload_dyn() ); }
-		if (HX_FIELD_EQ(inName,"playerUnload") ) { return hx::Val( playerUnload_dyn() ); }
-		if (HX_FIELD_EQ(inName,"tiles2Unload") ) { return hx::Val( tiles2Unload_dyn() ); }
-		break;
-	case 14:
-		if (HX_FIELD_EQ(inName,"goblinRunSheet") ) { return hx::Val( goblinRunSheet ); }
-		if (HX_FIELD_EQ(inName,"playerWalkName") ) { return hx::Val( playerWalkName ); }
-		if (HX_FIELD_EQ(inName,"playerWalkLoad") ) { return hx::Val( playerWalkLoad_dyn() ); }
+		if (HX_FIELD_EQ(inName,"body1Unload") ) { return hx::Val( body1Unload_dyn() ); }
 		break;
 	case 16:
-		if (HX_FIELD_EQ(inName,"playerSwordSwing") ) { return hx::Val( playerSwordSwing ); }
-		if (HX_FIELD_EQ(inName,"playerWalkUnload") ) { return hx::Val( playerWalkUnload_dyn() ); }
-		if (HX_FIELD_EQ(inName,"tilesDescription") ) { return hx::Val( tilesDescription ); }
-		break;
-	case 17:
-		if (HX_FIELD_EQ(inName,"goblinDescription") ) { return hx::Val( goblinDescription ); }
-		if (HX_FIELD_EQ(inName,"playerDescription") ) { return hx::Val( playerDescription ); }
-		if (HX_FIELD_EQ(inName,"tiles2Description") ) { return hx::Val( tiles2Description ); }
-		break;
-	case 18:
-		if (HX_FIELD_EQ(inName,"goblinRunSheetName") ) { return hx::Val( goblinRunSheetName ); }
-		if (HX_FIELD_EQ(inName,"goblinRunSheetLoad") ) { return hx::Val( goblinRunSheetLoad_dyn() ); }
-		break;
-	case 20:
-		if (HX_FIELD_EQ(inName,"goblinRunSheetUnload") ) { return hx::Val( goblinRunSheetUnload_dyn() ); }
-		if (HX_FIELD_EQ(inName,"playerSwordSwingName") ) { return hx::Val( playerSwordSwingName ); }
-		if (HX_FIELD_EQ(inName,"playerSwordSwingLoad") ) { return hx::Val( playerSwordSwingLoad_dyn() ); }
-		break;
-	case 21:
-		if (HX_FIELD_EQ(inName,"playerWalkDescription") ) { return hx::Val( playerWalkDescription ); }
-		break;
-	case 22:
-		if (HX_FIELD_EQ(inName,"playerSwordSwingUnload") ) { return hx::Val( playerSwordSwingUnload_dyn() ); }
-		break;
-	case 25:
-		if (HX_FIELD_EQ(inName,"goblinRunSheetDescription") ) { return hx::Val( goblinRunSheetDescription ); }
-		break;
-	case 27:
-		if (HX_FIELD_EQ(inName,"playerSwordSwingDescription") ) { return hx::Val( playerSwordSwingDescription ); }
+		if (HX_FIELD_EQ(inName,"body1Description") ) { return hx::Val( body1Description ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -494,104 +160,32 @@ hx::Val ImageList_obj::__SetField(const ::String &inName,const hx::Val &inValue,
 {
 	switch(inName.length) {
 	case 5:
-		if (HX_FIELD_EQ(inName,"tiles") ) { _hx_set_tiles(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"body1") ) { _hx_set_body1(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"names") ) { _hx_set_names(HX_CTX_GET,inValue.Cast< ::Array< ::String > >()); return inValue; }
 		break;
-	case 6:
-		if (HX_FIELD_EQ(inName,"goblin") ) { _hx_set_goblin(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"player") ) { _hx_set_player(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"tiles2") ) { _hx_set_tiles2(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		break;
 	case 9:
-		if (HX_FIELD_EQ(inName,"tilesName") ) { _hx_set_tilesName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		break;
-	case 10:
-		if (HX_FIELD_EQ(inName,"goblinName") ) { _hx_set_goblinName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"playerName") ) { _hx_set_playerName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"playerWalk") ) { _hx_set_playerWalk(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"tiles2Name") ) { _hx_set_tiles2Name(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		break;
-	case 14:
-		if (HX_FIELD_EQ(inName,"goblinRunSheet") ) { _hx_set_goblinRunSheet(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"playerWalkName") ) { _hx_set_playerWalkName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"body1Name") ) { _hx_set_body1Name(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		break;
 	case 16:
-		if (HX_FIELD_EQ(inName,"playerSwordSwing") ) { _hx_set_playerSwordSwing(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"tilesDescription") ) { _hx_set_tilesDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		break;
-	case 17:
-		if (HX_FIELD_EQ(inName,"goblinDescription") ) { _hx_set_goblinDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"playerDescription") ) { _hx_set_playerDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		if (HX_FIELD_EQ(inName,"tiles2Description") ) { _hx_set_tiles2Description(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		break;
-	case 18:
-		if (HX_FIELD_EQ(inName,"goblinRunSheetName") ) { _hx_set_goblinRunSheetName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		break;
-	case 20:
-		if (HX_FIELD_EQ(inName,"playerSwordSwingName") ) { _hx_set_playerSwordSwingName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
-		break;
-	case 21:
-		if (HX_FIELD_EQ(inName,"playerWalkDescription") ) { _hx_set_playerWalkDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		break;
-	case 25:
-		if (HX_FIELD_EQ(inName,"goblinRunSheetDescription") ) { _hx_set_goblinRunSheetDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
-		break;
-	case 27:
-		if (HX_FIELD_EQ(inName,"playerSwordSwingDescription") ) { _hx_set_playerSwordSwingDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"body1Description") ) { _hx_set_body1Description(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
 
 void ImageList_obj::__GetFields(Array< ::String> &outFields)
 {
-	outFields->push(HX_("goblin",57,c6,55,59));
-	outFields->push(HX_("goblinName",42,dc,65,ca));
-	outFields->push(HX_("goblinDescription",e5,db,f1,56));
-	outFields->push(HX_("goblinRunSheet",cb,4c,9d,fb));
-	outFields->push(HX_("goblinRunSheetName",b6,ac,63,18));
-	outFields->push(HX_("goblinRunSheetDescription",f1,c1,29,5a));
-	outFields->push(HX_("player",61,eb,b8,37));
-	outFields->push(HX_("playerName",4c,4e,c1,ab));
-	outFields->push(HX_("playerDescription",1b,1f,c1,d9));
-	outFields->push(HX_("playerSwordSwing",82,04,29,db));
-	outFields->push(HX_("playerSwordSwingName",ed,0b,eb,cb));
-	outFields->push(HX_("playerSwordSwingDescription",9a,c7,b2,37));
-	outFields->push(HX_("playerWalk",0a,39,b4,b1));
-	outFields->push(HX_("playerWalkName",75,24,9f,68));
-	outFields->push(HX_("playerWalkDescription",12,50,fe,76));
-	outFields->push(HX_("tiles",85,fd,34,10));
-	outFields->push(HX_("tilesName",70,42,1b,63));
-	outFields->push(HX_("tilesDescription",77,b7,65,cf));
-	outFields->push(HX_("tiles2",0d,d7,28,1e));
-	outFields->push(HX_("tiles2Name",f8,7f,ee,28));
-	outFields->push(HX_("tiles2Description",ef,ba,f0,21));
+	outFields->push(HX_("body1",4f,d3,ef,b6));
+	outFields->push(HX_("body1Name",3a,c5,55,97));
+	outFields->push(HX_("body1Description",ed,81,2d,b6));
 	outFields->push(HX_("names",c8,8f,84,96));
 	super::__GetFields(outFields);
 };
 
 #ifdef HXCPP_SCRIPTABLE
 static hx::StorageInfo ImageList_obj_sMemberStorageInfo[] = {
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,goblin),HX_("goblin",57,c6,55,59)},
-	{hx::fsString,(int)offsetof(ImageList_obj,goblinName),HX_("goblinName",42,dc,65,ca)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,goblinDescription),HX_("goblinDescription",e5,db,f1,56)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,goblinRunSheet),HX_("goblinRunSheet",cb,4c,9d,fb)},
-	{hx::fsString,(int)offsetof(ImageList_obj,goblinRunSheetName),HX_("goblinRunSheetName",b6,ac,63,18)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,goblinRunSheetDescription),HX_("goblinRunSheetDescription",f1,c1,29,5a)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,player),HX_("player",61,eb,b8,37)},
-	{hx::fsString,(int)offsetof(ImageList_obj,playerName),HX_("playerName",4c,4e,c1,ab)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,playerDescription),HX_("playerDescription",1b,1f,c1,d9)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,playerSwordSwing),HX_("playerSwordSwing",82,04,29,db)},
-	{hx::fsString,(int)offsetof(ImageList_obj,playerSwordSwingName),HX_("playerSwordSwingName",ed,0b,eb,cb)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,playerSwordSwingDescription),HX_("playerSwordSwingDescription",9a,c7,b2,37)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,playerWalk),HX_("playerWalk",0a,39,b4,b1)},
-	{hx::fsString,(int)offsetof(ImageList_obj,playerWalkName),HX_("playerWalkName",75,24,9f,68)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,playerWalkDescription),HX_("playerWalkDescription",12,50,fe,76)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,tiles),HX_("tiles",85,fd,34,10)},
-	{hx::fsString,(int)offsetof(ImageList_obj,tilesName),HX_("tilesName",70,42,1b,63)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,tilesDescription),HX_("tilesDescription",77,b7,65,cf)},
-	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,tiles2),HX_("tiles2",0d,d7,28,1e)},
-	{hx::fsString,(int)offsetof(ImageList_obj,tiles2Name),HX_("tiles2Name",f8,7f,ee,28)},
-	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,tiles2Description),HX_("tiles2Description",ef,ba,f0,21)},
+	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,body1),HX_("body1",4f,d3,ef,b6)},
+	{hx::fsString,(int)offsetof(ImageList_obj,body1Name),HX_("body1Name",3a,c5,55,97)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,body1Description),HX_("body1Description",ed,81,2d,b6)},
 	{hx::fsObject /* ::Array< ::String > */ ,(int)offsetof(ImageList_obj,names),HX_("names",c8,8f,84,96)},
 	{ hx::fsUnknown, 0, null()}
 };
@@ -600,41 +194,11 @@ static hx::StaticInfo *ImageList_obj_sStaticStorageInfo = 0;
 
 static ::String ImageList_obj_sMemberFields[] = {
 	HX_("get",96,80,4e,00),
-	HX_("goblin",57,c6,55,59),
-	HX_("goblinName",42,dc,65,ca),
-	HX_("goblinDescription",e5,db,f1,56),
-	HX_("goblinLoad",1d,04,1e,c9),
-	HX_("goblinUnload",b6,b6,da,dc),
-	HX_("goblinRunSheet",cb,4c,9d,fb),
-	HX_("goblinRunSheetName",b6,ac,63,18),
-	HX_("goblinRunSheetDescription",f1,c1,29,5a),
-	HX_("goblinRunSheetLoad",91,d4,1b,17),
-	HX_("goblinRunSheetUnload",2a,8c,44,02),
-	HX_("player",61,eb,b8,37),
-	HX_("playerName",4c,4e,c1,ab),
-	HX_("playerDescription",1b,1f,c1,d9),
-	HX_("playerLoad",27,76,79,aa),
-	HX_("playerUnload",40,3f,7e,61),
-	HX_("playerSwordSwing",82,04,29,db),
-	HX_("playerSwordSwingName",ed,0b,eb,cb),
-	HX_("playerSwordSwingDescription",9a,c7,b2,37),
-	HX_("playerSwordSwingLoad",c8,33,a3,ca),
-	HX_("playerSwordSwingUnload",21,67,cb,2d),
-	HX_("playerWalk",0a,39,b4,b1),
-	HX_("playerWalkName",75,24,9f,68),
-	HX_("playerWalkDescription",12,50,fe,76),
-	HX_("playerWalkLoad",50,4c,57,67),
-	HX_("playerWalkUnload",a9,b1,1c,72),
-	HX_("tiles",85,fd,34,10),
-	HX_("tilesName",70,42,1b,63),
-	HX_("tilesDescription",77,b7,65,cf),
-	HX_("tilesLoad",4b,6a,d3,61),
-	HX_("tilesUnload",64,84,58,1a),
-	HX_("tiles2",0d,d7,28,1e),
-	HX_("tiles2Name",f8,7f,ee,28),
-	HX_("tiles2Description",ef,ba,f0,21),
-	HX_("tiles2Load",d3,a7,a6,27),
-	HX_("tiles2Unload",ec,33,9c,69),
+	HX_("body1",4f,d3,ef,b6),
+	HX_("body1Name",3a,c5,55,97),
+	HX_("body1Description",ed,81,2d,b6),
+	HX_("body1Load",15,ed,0d,96),
+	HX_("body1Unload",ae,cd,50,b4),
 	HX_("names",c8,8f,84,96),
 	::String(null()) };
 

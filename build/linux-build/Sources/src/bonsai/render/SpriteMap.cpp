@@ -22,6 +22,7 @@
 
 HX_DEFINE_STACK_FRAME(_hx_pos_a13f6e9c18a41fdc_7_new,"bonsai.render.SpriteMap","new",0x96307505,"bonsai.render.SpriteMap.new","bonsai/render/SpriteMap.hx",7,0x3c50f42b)
 HX_LOCAL_STACK_FRAME(_hx_pos_a13f6e9c18a41fdc_17_render,"bonsai.render.SpriteMap","render",0x54db7bd1,"bonsai.render.SpriteMap.render","bonsai/render/SpriteMap.hx",17,0x3c50f42b)
+HX_LOCAL_STACK_FRAME(_hx_pos_a13f6e9c18a41fdc_23_renderCell,"bonsai.render.SpriteMap","renderCell",0x2b0a8613,"bonsai.render.SpriteMap.renderCell","bonsai/render/SpriteMap.hx",23,0x3c50f42b)
 namespace bonsai{
 namespace render{
 
@@ -60,6 +61,14 @@ HXLINE(  20)		graphics->drawSubImage(this->image,x,y,( (float)(sx1) ),( (float)(
 
 
 HX_DEFINE_DYNAMIC_FUNC4(SpriteMap_obj,render,(void))
+
+void SpriteMap_obj::renderCell( ::kha::graphics2::Graphics graphics,float x,float y,int xcell,int ycell){
+            	HX_STACKFRAME(&_hx_pos_a13f6e9c18a41fdc_23_renderCell)
+HXDLIN(  23)		graphics->drawSubImage(this->image,x,y,( (float)((xcell * this->gridWidth)) ),( (float)((ycell * this->gridHeight)) ),( (float)(this->gridWidth) ),( (float)(this->gridHeight) ));
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC5(SpriteMap_obj,renderCell,(void))
 
 
 hx::ObjectPtr< SpriteMap_obj > SpriteMap_obj::__new( ::kha::Image image,int gridWidth,int gridHeight) {
@@ -109,6 +118,7 @@ hx::Val SpriteMap_obj::__Field(const ::String &inName,hx::PropertyAccess inCallP
 		break;
 	case 10:
 		if (HX_FIELD_EQ(inName,"gridHeight") ) { return hx::Val( gridHeight ); }
+		if (HX_FIELD_EQ(inName,"renderCell") ) { return hx::Val( renderCell_dyn() ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -151,6 +161,7 @@ static ::String SpriteMap_obj_sMemberFields[] = {
 	HX_("gridWidth",60,01,26,bf),
 	HX_("gridHeight",4d,ab,6a,38),
 	HX_("render",56,6b,29,05),
+	HX_("renderCell",18,1c,c7,de),
 	::String(null()) };
 
 hx::Class SpriteMap_obj::__mClass;

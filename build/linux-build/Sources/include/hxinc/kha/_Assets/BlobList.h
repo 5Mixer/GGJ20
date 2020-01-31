@@ -49,221 +49,29 @@ class HXCPP_CLASS_ATTRIBUTES BlobList_obj : public hx::Object
 		 ::kha::internal::BytesBlob get(::String name);
 		::Dynamic get_dyn();
 
-		 ::kha::internal::BytesBlob goblinRunSheet_json;
-		inline  ::kha::internal::BytesBlob _hx_set_goblinRunSheet_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblinRunSheet_json=_hx_v; }
-		::String goblinRunSheet_jsonName;
-		inline ::String _hx_set_goblinRunSheet_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return goblinRunSheet_jsonName=_hx_v; }
-		 ::Dynamic goblinRunSheet_jsonDescription;
-		inline  ::Dynamic _hx_set_goblinRunSheet_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblinRunSheet_jsonDescription=_hx_v; }
-		void goblinRunSheet_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic goblinRunSheet_jsonLoad_dyn();
+		 ::kha::internal::BytesBlob body1_ase;
+		inline  ::kha::internal::BytesBlob _hx_set_body1_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_ase=_hx_v; }
+		::String body1_aseName;
+		inline ::String _hx_set_body1_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return body1_aseName=_hx_v; }
+		 ::Dynamic body1_aseDescription;
+		inline  ::Dynamic _hx_set_body1_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_aseDescription=_hx_v; }
+		void body1_aseLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic body1_aseLoad_dyn();
 
-		void goblinRunSheet_jsonUnload();
-		::Dynamic goblinRunSheet_jsonUnload_dyn();
+		void body1_aseUnload();
+		::Dynamic body1_aseUnload_dyn();
 
-		 ::kha::internal::BytesBlob goblinRun_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_goblinRun_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblinRun_ase=_hx_v; }
-		::String goblinRun_aseName;
-		inline ::String _hx_set_goblinRun_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return goblinRun_aseName=_hx_v; }
-		 ::Dynamic goblinRun_aseDescription;
-		inline  ::Dynamic _hx_set_goblinRun_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblinRun_aseDescription=_hx_v; }
-		void goblinRun_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic goblinRun_aseLoad_dyn();
+		 ::kha::internal::BytesBlob body1_json;
+		inline  ::kha::internal::BytesBlob _hx_set_body1_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_json=_hx_v; }
+		::String body1_jsonName;
+		inline ::String _hx_set_body1_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return body1_jsonName=_hx_v; }
+		 ::Dynamic body1_jsonDescription;
+		inline  ::Dynamic _hx_set_body1_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1_jsonDescription=_hx_v; }
+		void body1_jsonLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic body1_jsonLoad_dyn();
 
-		void goblinRun_aseUnload();
-		::Dynamic goblinRun_aseUnload_dyn();
-
-		 ::kha::internal::BytesBlob goblin_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_goblin_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblin_ase=_hx_v; }
-		::String goblin_aseName;
-		inline ::String _hx_set_goblin_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return goblin_aseName=_hx_v; }
-		 ::Dynamic goblin_aseDescription;
-		inline  ::Dynamic _hx_set_goblin_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblin_aseDescription=_hx_v; }
-		void goblin_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic goblin_aseLoad_dyn();
-
-		void goblin_aseUnload();
-		::Dynamic goblin_aseUnload_dyn();
-
-		 ::kha::internal::BytesBlob goblin_json;
-		inline  ::kha::internal::BytesBlob _hx_set_goblin_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblin_json=_hx_v; }
-		::String goblin_jsonName;
-		inline ::String _hx_set_goblin_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return goblin_jsonName=_hx_v; }
-		 ::Dynamic goblin_jsonDescription;
-		inline  ::Dynamic _hx_set_goblin_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblin_jsonDescription=_hx_v; }
-		void goblin_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic goblin_jsonLoad_dyn();
-
-		void goblin_jsonUnload();
-		::Dynamic goblin_jsonUnload_dyn();
-
-		 ::kha::internal::BytesBlob levelDanny_tmx;
-		inline  ::kha::internal::BytesBlob _hx_set_levelDanny_tmx(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return levelDanny_tmx=_hx_v; }
-		::String levelDanny_tmxName;
-		inline ::String _hx_set_levelDanny_tmxName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return levelDanny_tmxName=_hx_v; }
-		 ::Dynamic levelDanny_tmxDescription;
-		inline  ::Dynamic _hx_set_levelDanny_tmxDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return levelDanny_tmxDescription=_hx_v; }
-		void levelDanny_tmxLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic levelDanny_tmxLoad_dyn();
-
-		void levelDanny_tmxUnload();
-		::Dynamic levelDanny_tmxUnload_dyn();
-
-		 ::kha::internal::BytesBlob levelInn_tmx;
-		inline  ::kha::internal::BytesBlob _hx_set_levelInn_tmx(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return levelInn_tmx=_hx_v; }
-		::String levelInn_tmxName;
-		inline ::String _hx_set_levelInn_tmxName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return levelInn_tmxName=_hx_v; }
-		 ::Dynamic levelInn_tmxDescription;
-		inline  ::Dynamic _hx_set_levelInn_tmxDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return levelInn_tmxDescription=_hx_v; }
-		void levelInn_tmxLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic levelInn_tmxLoad_dyn();
-
-		void levelInn_tmxUnload();
-		::Dynamic levelInn_tmxUnload_dyn();
-
-		 ::kha::internal::BytesBlob playerSwordSwing_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_playerSwordSwing_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerSwordSwing_ase=_hx_v; }
-		::String playerSwordSwing_aseName;
-		inline ::String _hx_set_playerSwordSwing_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playerSwordSwing_aseName=_hx_v; }
-		 ::Dynamic playerSwordSwing_aseDescription;
-		inline  ::Dynamic _hx_set_playerSwordSwing_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerSwordSwing_aseDescription=_hx_v; }
-		void playerSwordSwing_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic playerSwordSwing_aseLoad_dyn();
-
-		void playerSwordSwing_aseUnload();
-		::Dynamic playerSwordSwing_aseUnload_dyn();
-
-		 ::kha::internal::BytesBlob playerSwordSwing_json;
-		inline  ::kha::internal::BytesBlob _hx_set_playerSwordSwing_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerSwordSwing_json=_hx_v; }
-		::String playerSwordSwing_jsonName;
-		inline ::String _hx_set_playerSwordSwing_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playerSwordSwing_jsonName=_hx_v; }
-		 ::Dynamic playerSwordSwing_jsonDescription;
-		inline  ::Dynamic _hx_set_playerSwordSwing_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerSwordSwing_jsonDescription=_hx_v; }
-		void playerSwordSwing_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic playerSwordSwing_jsonLoad_dyn();
-
-		void playerSwordSwing_jsonUnload();
-		::Dynamic playerSwordSwing_jsonUnload_dyn();
-
-		 ::kha::internal::BytesBlob playerWalk_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_playerWalk_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerWalk_ase=_hx_v; }
-		::String playerWalk_aseName;
-		inline ::String _hx_set_playerWalk_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playerWalk_aseName=_hx_v; }
-		 ::Dynamic playerWalk_aseDescription;
-		inline  ::Dynamic _hx_set_playerWalk_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerWalk_aseDescription=_hx_v; }
-		void playerWalk_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic playerWalk_aseLoad_dyn();
-
-		void playerWalk_aseUnload();
-		::Dynamic playerWalk_aseUnload_dyn();
-
-		 ::kha::internal::BytesBlob playerWalk_json;
-		inline  ::kha::internal::BytesBlob _hx_set_playerWalk_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerWalk_json=_hx_v; }
-		::String playerWalk_jsonName;
-		inline ::String _hx_set_playerWalk_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playerWalk_jsonName=_hx_v; }
-		 ::Dynamic playerWalk_jsonDescription;
-		inline  ::Dynamic _hx_set_playerWalk_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerWalk_jsonDescription=_hx_v; }
-		void playerWalk_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic playerWalk_jsonLoad_dyn();
-
-		void playerWalk_jsonUnload();
-		::Dynamic playerWalk_jsonUnload_dyn();
-
-		 ::kha::internal::BytesBlob player_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_player_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return player_ase=_hx_v; }
-		::String player_aseName;
-		inline ::String _hx_set_player_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return player_aseName=_hx_v; }
-		 ::Dynamic player_aseDescription;
-		inline  ::Dynamic _hx_set_player_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return player_aseDescription=_hx_v; }
-		void player_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic player_aseLoad_dyn();
-
-		void player_aseUnload();
-		::Dynamic player_aseUnload_dyn();
-
-		 ::kha::internal::BytesBlob player_json;
-		inline  ::kha::internal::BytesBlob _hx_set_player_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return player_json=_hx_v; }
-		::String player_jsonName;
-		inline ::String _hx_set_player_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return player_jsonName=_hx_v; }
-		 ::Dynamic player_jsonDescription;
-		inline  ::Dynamic _hx_set_player_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return player_jsonDescription=_hx_v; }
-		void player_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic player_jsonLoad_dyn();
-
-		void player_jsonUnload();
-		::Dynamic player_jsonUnload_dyn();
-
-		 ::kha::internal::BytesBlob tiles2_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_tiles2_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles2_ase=_hx_v; }
-		::String tiles2_aseName;
-		inline ::String _hx_set_tiles2_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tiles2_aseName=_hx_v; }
-		 ::Dynamic tiles2_aseDescription;
-		inline  ::Dynamic _hx_set_tiles2_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles2_aseDescription=_hx_v; }
-		void tiles2_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tiles2_aseLoad_dyn();
-
-		void tiles2_aseUnload();
-		::Dynamic tiles2_aseUnload_dyn();
-
-		 ::kha::internal::BytesBlob tiles2_json;
-		inline  ::kha::internal::BytesBlob _hx_set_tiles2_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles2_json=_hx_v; }
-		::String tiles2_jsonName;
-		inline ::String _hx_set_tiles2_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tiles2_jsonName=_hx_v; }
-		 ::Dynamic tiles2_jsonDescription;
-		inline  ::Dynamic _hx_set_tiles2_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles2_jsonDescription=_hx_v; }
-		void tiles2_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tiles2_jsonLoad_dyn();
-
-		void tiles2_jsonUnload();
-		::Dynamic tiles2_jsonUnload_dyn();
-
-		 ::kha::internal::BytesBlob tilesDanny_tsx;
-		inline  ::kha::internal::BytesBlob _hx_set_tilesDanny_tsx(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tilesDanny_tsx=_hx_v; }
-		::String tilesDanny_tsxName;
-		inline ::String _hx_set_tilesDanny_tsxName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tilesDanny_tsxName=_hx_v; }
-		 ::Dynamic tilesDanny_tsxDescription;
-		inline  ::Dynamic _hx_set_tilesDanny_tsxDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tilesDanny_tsxDescription=_hx_v; }
-		void tilesDanny_tsxLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tilesDanny_tsxLoad_dyn();
-
-		void tilesDanny_tsxUnload();
-		::Dynamic tilesDanny_tsxUnload_dyn();
-
-		 ::kha::internal::BytesBlob tilesInn_tsx;
-		inline  ::kha::internal::BytesBlob _hx_set_tilesInn_tsx(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tilesInn_tsx=_hx_v; }
-		::String tilesInn_tsxName;
-		inline ::String _hx_set_tilesInn_tsxName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tilesInn_tsxName=_hx_v; }
-		 ::Dynamic tilesInn_tsxDescription;
-		inline  ::Dynamic _hx_set_tilesInn_tsxDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tilesInn_tsxDescription=_hx_v; }
-		void tilesInn_tsxLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tilesInn_tsxLoad_dyn();
-
-		void tilesInn_tsxUnload();
-		::Dynamic tilesInn_tsxUnload_dyn();
-
-		 ::kha::internal::BytesBlob tiles_ase;
-		inline  ::kha::internal::BytesBlob _hx_set_tiles_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles_ase=_hx_v; }
-		::String tiles_aseName;
-		inline ::String _hx_set_tiles_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tiles_aseName=_hx_v; }
-		 ::Dynamic tiles_aseDescription;
-		inline  ::Dynamic _hx_set_tiles_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles_aseDescription=_hx_v; }
-		void tiles_aseLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tiles_aseLoad_dyn();
-
-		void tiles_aseUnload();
-		::Dynamic tiles_aseUnload_dyn();
-
-		 ::kha::internal::BytesBlob tiles_json;
-		inline  ::kha::internal::BytesBlob _hx_set_tiles_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles_json=_hx_v; }
-		::String tiles_jsonName;
-		inline ::String _hx_set_tiles_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tiles_jsonName=_hx_v; }
-		 ::Dynamic tiles_jsonDescription;
-		inline  ::Dynamic _hx_set_tiles_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles_jsonDescription=_hx_v; }
-		void tiles_jsonLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tiles_jsonLoad_dyn();
-
-		void tiles_jsonUnload();
-		::Dynamic tiles_jsonUnload_dyn();
+		void body1_jsonUnload();
+		::Dynamic body1_jsonUnload_dyn();
 
 		::Array< ::String > names;
 		inline ::Array< ::String > _hx_set_names(hx::StackContext *_hx_ctx,::Array< ::String > _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return names=_hx_v; }

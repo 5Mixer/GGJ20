@@ -55,6 +55,9 @@ class HXCPP_CLASS_ATTRIBUTES SpriteMap_obj : public hx::Object
 		void render( ::kha::graphics2::Graphics graphics,float x,float y,int index);
 		::Dynamic render_dyn();
 
+		void renderCell( ::kha::graphics2::Graphics graphics,float x,float y,int xcell,int ycell);
+		::Dynamic renderCell_dyn();
+
 };
 
 } // end namespace bonsai

@@ -1,6 +1,6 @@
 package game;
 
-class BodyParticle {
+typedef BodyParticle = {
 	public var x:Float; // z=0 (floor) position
 	public var y:Float;
 	public var vz:Float;
@@ -11,22 +11,24 @@ class BodyParticle {
 class BodyPartParticles extends bonsai.entity.ParticleSystem<BodyParticle> {
 	var animatedSprite:bonsai.render.AnimatedSprite;
 	var bodyPartToLayer:Map<BodyPart, Int>;
-	override public function new (animatedSprite) {
+	override public function new () {
 		super(400); // Lot's of body parts
-		this.animatedSprite = animatedSprite;
+		this.animatedSprite = new bonsai.render.AnimatedSprite();
+		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.body1, 32, 32), frames: [0] });
+		this.animatedSprite.play("idle");
 		bodyPartToLayer = [
-			BodyPart.Head => 0,
 			BodyPart.Body => 0,
-			BodyPart.Arm  => 0,
-			BodyPart.Leg  => 0
+			BodyPart.Head => 1,
+			BodyPart.Leg  => 2,
+			BodyPart.Arm  => 3
 		];
 	}
 
 	override public function update (delta:Float) {
 		super.update(delta);
 		for (particle in members) {
-			if (particle.z > 0) {
-				particle.vz += 1 * delta;
+			if (particle.z >= 0) {
+				particle.vz += 10 * delta;
 				particle.z -= particle.vz;
 			} else {
 				particle.vz *= -.4;

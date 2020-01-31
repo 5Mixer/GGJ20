@@ -71,86 +71,34 @@
 			"type": "font"
 		},
 		{
-			"name": "goblin",
+			"name": "body1",
 			"files": [
-				"goblin.png"
+				"body1.png"
 			],
 			"file_sizes": [
-				228
+				284
 			],
 			"type": "image",
-			"original_width": 16,
-			"original_height": 16
+			"original_width": 32,
+			"original_height": 128
 		},
 		{
-			"name": "goblinRunSheet",
+			"name": "body1_ase",
 			"files": [
-				"goblinRunSheet.png"
+				"body1.ase"
 			],
 			"file_sizes": [
-				422
-			],
-			"type": "image",
-			"original_width": 96,
-			"original_height": 16
-		},
-		{
-			"name": "goblinRunSheet_json",
-			"files": [
-				"goblinRunSheet.json"
-			],
-			"file_sizes": [
-				576
+				915
 			],
 			"type": "blob"
 		},
 		{
-			"name": "goblinRun_ase",
+			"name": "body1_json",
 			"files": [
-				"goblinRun.ase"
+				"body1.json"
 			],
 			"file_sizes": [
-				1220
-			],
-			"type": "blob"
-		},
-		{
-			"name": "goblin_ase",
-			"files": [
-				"goblin.ase"
-			],
-			"file_sizes": [
-				631
-			],
-			"type": "blob"
-		},
-		{
-			"name": "goblin_json",
-			"files": [
-				"goblin.json"
-			],
-			"file_sizes": [
-				556
-			],
-			"type": "blob"
-		},
-		{
-			"name": "levelDanny_tmx",
-			"files": [
-				"levelDanny.tmx"
-			],
-			"file_sizes": [
-				617
-			],
-			"type": "blob"
-		},
-		{
-			"name": "levelInn_tmx",
-			"files": [
-				"levelInn.tmx"
-			],
-			"file_sizes": [
-				1218
+				748
 			],
 			"type": "blob"
 		},
@@ -568,186 +516,6 @@
 					]
 				}
 			]
-		},
-		{
-			"name": "player",
-			"files": [
-				"player.png"
-			],
-			"file_sizes": [
-				276
-			],
-			"type": "image",
-			"original_width": 16,
-			"original_height": 32
-		},
-		{
-			"name": "playerSwordSwing",
-			"files": [
-				"playerSwordSwing.png"
-			],
-			"file_sizes": [
-				1672
-			],
-			"type": "image",
-			"original_width": 448,
-			"original_height": 48
-		},
-		{
-			"name": "playerSwordSwing_ase",
-			"files": [
-				"playerSwordSwing.ase"
-			],
-			"file_sizes": [
-				3690
-			],
-			"type": "blob"
-		},
-		{
-			"name": "playerSwordSwing_json",
-			"files": [
-				"playerSwordSwing.json"
-			],
-			"file_sizes": [
-				2236
-			],
-			"type": "blob"
-		},
-		{
-			"name": "playerWalk",
-			"files": [
-				"playerWalk.png"
-			],
-			"file_sizes": [
-				1082
-			],
-			"type": "image",
-			"original_width": 192,
-			"original_height": 32
-		},
-		{
-			"name": "playerWalk_ase",
-			"files": [
-				"playerWalk.ase"
-			],
-			"file_sizes": [
-				6837
-			],
-			"type": "blob"
-		},
-		{
-			"name": "playerWalk_json",
-			"files": [
-				"playerWalk.json"
-			],
-			"file_sizes": [
-				3498
-			],
-			"type": "blob"
-		},
-		{
-			"name": "player_ase",
-			"files": [
-				"player.ase"
-			],
-			"file_sizes": [
-				900
-			],
-			"type": "blob"
-		},
-		{
-			"name": "player_json",
-			"files": [
-				"player.json"
-			],
-			"file_sizes": [
-				678
-			],
-			"type": "blob"
-		},
-		{
-			"name": "tiles",
-			"files": [
-				"tiles.png"
-			],
-			"file_sizes": [
-				193
-			],
-			"type": "image",
-			"original_width": 40,
-			"original_height": 4
-		},
-		{
-			"name": "tiles2",
-			"files": [
-				"tiles2.png"
-			],
-			"file_sizes": [
-				362
-			],
-			"type": "image",
-			"original_width": 64,
-			"original_height": 64
-		},
-		{
-			"name": "tiles2_ase",
-			"files": [
-				"tiles2.ase"
-			],
-			"file_sizes": [
-				693
-			],
-			"type": "blob"
-		},
-		{
-			"name": "tiles2_json",
-			"files": [
-				"tiles2.json"
-			],
-			"file_sizes": [
-				556
-			],
-			"type": "blob"
-		},
-		{
-			"name": "tilesDanny_tsx",
-			"files": [
-				"tilesDanny.tsx"
-			],
-			"file_sizes": [
-				216
-			],
-			"type": "blob"
-		},
-		{
-			"name": "tilesInn_tsx",
-			"files": [
-				"tilesInn.tsx"
-			],
-			"file_sizes": [
-				222
-			],
-			"type": "blob"
-		},
-		{
-			"name": "tiles_ase",
-			"files": [
-				"tiles.ase"
-			],
-			"file_sizes": [
-				629
-			],
-			"type": "blob"
-		},
-		{
-			"name": "tiles_json",
-			"files": [
-				"tiles.json"
-			],
-			"file_sizes": [
-				559
-			],
-			"type": "blob"
 		}
 	]
 }

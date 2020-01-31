@@ -50,89 +50,17 @@ class HXCPP_CLASS_ATTRIBUTES ImageList_obj : public hx::Object
 		 ::kha::Image get(::String name);
 		::Dynamic get_dyn();
 
-		 ::kha::Image goblin;
-		inline  ::kha::Image _hx_set_goblin(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblin=_hx_v; }
-		::String goblinName;
-		inline ::String _hx_set_goblinName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return goblinName=_hx_v; }
-		 ::Dynamic goblinDescription;
-		inline  ::Dynamic _hx_set_goblinDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblinDescription=_hx_v; }
-		void goblinLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic goblinLoad_dyn();
+		 ::kha::Image body1;
+		inline  ::kha::Image _hx_set_body1(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1=_hx_v; }
+		::String body1Name;
+		inline ::String _hx_set_body1Name(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return body1Name=_hx_v; }
+		 ::Dynamic body1Description;
+		inline  ::Dynamic _hx_set_body1Description(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return body1Description=_hx_v; }
+		void body1Load( ::Dynamic done, ::Dynamic failure);
+		::Dynamic body1Load_dyn();
 
-		void goblinUnload();
-		::Dynamic goblinUnload_dyn();
-
-		 ::kha::Image goblinRunSheet;
-		inline  ::kha::Image _hx_set_goblinRunSheet(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblinRunSheet=_hx_v; }
-		::String goblinRunSheetName;
-		inline ::String _hx_set_goblinRunSheetName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return goblinRunSheetName=_hx_v; }
-		 ::Dynamic goblinRunSheetDescription;
-		inline  ::Dynamic _hx_set_goblinRunSheetDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return goblinRunSheetDescription=_hx_v; }
-		void goblinRunSheetLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic goblinRunSheetLoad_dyn();
-
-		void goblinRunSheetUnload();
-		::Dynamic goblinRunSheetUnload_dyn();
-
-		 ::kha::Image player;
-		inline  ::kha::Image _hx_set_player(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return player=_hx_v; }
-		::String playerName;
-		inline ::String _hx_set_playerName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playerName=_hx_v; }
-		 ::Dynamic playerDescription;
-		inline  ::Dynamic _hx_set_playerDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerDescription=_hx_v; }
-		void playerLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic playerLoad_dyn();
-
-		void playerUnload();
-		::Dynamic playerUnload_dyn();
-
-		 ::kha::Image playerSwordSwing;
-		inline  ::kha::Image _hx_set_playerSwordSwing(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerSwordSwing=_hx_v; }
-		::String playerSwordSwingName;
-		inline ::String _hx_set_playerSwordSwingName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playerSwordSwingName=_hx_v; }
-		 ::Dynamic playerSwordSwingDescription;
-		inline  ::Dynamic _hx_set_playerSwordSwingDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerSwordSwingDescription=_hx_v; }
-		void playerSwordSwingLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic playerSwordSwingLoad_dyn();
-
-		void playerSwordSwingUnload();
-		::Dynamic playerSwordSwingUnload_dyn();
-
-		 ::kha::Image playerWalk;
-		inline  ::kha::Image _hx_set_playerWalk(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerWalk=_hx_v; }
-		::String playerWalkName;
-		inline ::String _hx_set_playerWalkName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playerWalkName=_hx_v; }
-		 ::Dynamic playerWalkDescription;
-		inline  ::Dynamic _hx_set_playerWalkDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return playerWalkDescription=_hx_v; }
-		void playerWalkLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic playerWalkLoad_dyn();
-
-		void playerWalkUnload();
-		::Dynamic playerWalkUnload_dyn();
-
-		 ::kha::Image tiles;
-		inline  ::kha::Image _hx_set_tiles(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles=_hx_v; }
-		::String tilesName;
-		inline ::String _hx_set_tilesName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tilesName=_hx_v; }
-		 ::Dynamic tilesDescription;
-		inline  ::Dynamic _hx_set_tilesDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tilesDescription=_hx_v; }
-		void tilesLoad( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tilesLoad_dyn();
-
-		void tilesUnload();
-		::Dynamic tilesUnload_dyn();
-
-		 ::kha::Image tiles2;
-		inline  ::kha::Image _hx_set_tiles2(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles2=_hx_v; }
-		::String tiles2Name;
-		inline ::String _hx_set_tiles2Name(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return tiles2Name=_hx_v; }
-		 ::Dynamic tiles2Description;
-		inline  ::Dynamic _hx_set_tiles2Description(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles2Description=_hx_v; }
-		void tiles2Load( ::Dynamic done, ::Dynamic failure);
-		::Dynamic tiles2Load_dyn();
-
-		void tiles2Unload();
-		::Dynamic tiles2Unload_dyn();
+		void body1Unload();
+		::Dynamic body1Unload_dyn();
 
 		::Array< ::String > names;
 		inline ::Array< ::String > _hx_set_names(hx::StackContext *_hx_ctx,::Array< ::String > _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return names=_hx_v; }

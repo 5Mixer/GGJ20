@@ -49,14 +49,14 @@ class Player extends Entity {
 		super.update(dt);
 		if (input.isAnyKeyDown(InputBindings.right)){
 			this.position.x += dt * 28;
-			this.animation.play("walk");
+			// this.animation.play("walk");
 			facingRight = true;
 		} else if (input.isAnyKeyDown(InputBindings.left)){
 			this.position.x -= dt * 28;
-			this.animation.play("walk");
+			// this.animation.play("walk");
 			facingRight = false;
 		}else{
-			this.animation.play("idle");
+			// this.animation.play("idle");
 		}
 	}
 }
