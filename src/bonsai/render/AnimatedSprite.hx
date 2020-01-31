@@ -7,6 +7,7 @@ typedef Animation = {
 
 class AnimatedSprite {
 	var animations:Map<String, Animation>;
+	public var drawLayers:Array<Int>;
 	var playing:String;
 	var frame:Int;
 
@@ -15,6 +16,7 @@ class AnimatedSprite {
 
 	public function new () {
 		animations = new Map<String, Animation>();
+		drawLayers = [0];
 	}
 	public function registerAnimation (identifier:String, animation:Animation) {
 		animations.set(identifier, animation);
@@ -44,6 +46,8 @@ class AnimatedSprite {
 		if (currentAnimation == null)
 			return;
 		var currentFrame = currentAnimation.frames[frame];
-		currentAnimation.spriteMap.render(graphics, x, y, currentFrame);
+		
+		for (layer in drawLayers)
+			currentAnimation.spriteMap.renderCell(graphics, x, y, currentFrame, layer);
 	}
 }

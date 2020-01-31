@@ -7,10 +7,11 @@
 #endif
 
 HX_DECLARE_CLASS1(bonsai,Engine)
-HX_DECLARE_CLASS2(bonsai,event,EventSystem)
+HX_DECLARE_CLASS2(bonsai,input,Input)
 HX_DECLARE_CLASS2(bonsai,scene,Scene)
 HX_DECLARE_CLASS1(kha,Canvas)
 HX_DECLARE_CLASS1(kha,Framebuffer)
+HX_DECLARE_CLASS1(zui,Zui)
 
 namespace bonsai{
 
@@ -47,11 +48,13 @@ class HXCPP_CLASS_ATTRIBUTES Engine_obj : public hx::Object
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("Engine",e2,bb,18,31); }
 
-		 ::bonsai::event::EventSystem events;
-		inline  ::bonsai::event::EventSystem _hx_set_events(hx::StackContext *_hx_ctx, ::bonsai::event::EventSystem _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return events=_hx_v; }
 		 ::bonsai::scene::Scene currentScene;
 		inline  ::bonsai::scene::Scene _hx_set_currentScene(hx::StackContext *_hx_ctx, ::bonsai::scene::Scene _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return currentScene=_hx_v; }
+		 ::bonsai::input::Input input;
+		inline  ::bonsai::input::Input _hx_set_input(hx::StackContext *_hx_ctx, ::bonsai::input::Input _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return input=_hx_v; }
 		Float time;
+		 ::zui::Zui debugInterface;
+		inline  ::zui::Zui _hx_set_debugInterface(hx::StackContext *_hx_ctx, ::zui::Zui _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return debugInterface=_hx_v; }
 		void start(::String title,hx::Null< int >  width,hx::Null< int >  height, ::Dynamic onReady);
 		::Dynamic start_dyn();
 

@@ -4,15 +4,18 @@
 #ifndef INCLUDED_StartMenu
 #include <hxinc/StartMenu.h>
 #endif
+#ifndef INCLUDED_bonsai_Engine
+#include <hxinc/bonsai/Engine.h>
+#endif
 #ifndef INCLUDED_bonsai_scene_Scene
 #include <hxinc/bonsai/scene/Scene.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_5f0413da1a2f4888_98_new,"StartMenu","new",0x86fd5473,"StartMenu.new","Main.hx",98,0x087e5c05)
+HX_DEFINE_STACK_FRAME(_hx_pos_5f0413da1a2f4888_37_new,"StartMenu","new",0x86fd5473,"StartMenu.new","Main.hx",37,0x087e5c05)
 
-void StartMenu_obj::__construct(){
-            	HX_STACKFRAME(&_hx_pos_5f0413da1a2f4888_98_new)
-HXDLIN(  98)		super::__construct(HX_("Start Menu",5d,6e,9f,1f));
+void StartMenu_obj::__construct( ::bonsai::Engine engine){
+            	HX_STACKFRAME(&_hx_pos_5f0413da1a2f4888_37_new)
+HXDLIN(  37)		super::__construct(HX_("Start Menu",5d,6e,9f,1f),engine);
             	}
 
 Dynamic StartMenu_obj::__CreateEmpty() { return new StartMenu_obj; }
@@ -22,7 +25,7 @@ void *StartMenu_obj::_hx_vtable = 0;
 Dynamic StartMenu_obj::__Create(hx::DynamicArray inArgs)
 {
 	hx::ObjectPtr< StartMenu_obj > _hx_result = new StartMenu_obj();
-	_hx_result->__construct();
+	_hx_result->__construct(inArgs[0]);
 	return _hx_result;
 }
 
@@ -35,16 +38,16 @@ bool StartMenu_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 
-hx::ObjectPtr< StartMenu_obj > StartMenu_obj::__new() {
+hx::ObjectPtr< StartMenu_obj > StartMenu_obj::__new( ::bonsai::Engine engine) {
 	hx::ObjectPtr< StartMenu_obj > __this = new StartMenu_obj();
-	__this->__construct();
+	__this->__construct(engine);
 	return __this;
 }
 
-hx::ObjectPtr< StartMenu_obj > StartMenu_obj::__alloc(hx::Ctx *_hx_ctx) {
+hx::ObjectPtr< StartMenu_obj > StartMenu_obj::__alloc(hx::Ctx *_hx_ctx, ::bonsai::Engine engine) {
 	StartMenu_obj *__this = (StartMenu_obj*)(hx::Ctx::alloc(_hx_ctx, sizeof(StartMenu_obj), true, "StartMenu"));
 	*(void **)__this = StartMenu_obj::_hx_vtable;
-	__this->__construct();
+	__this->__construct(engine);
 	return __this;
 }
 

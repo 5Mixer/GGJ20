@@ -10,30 +10,29 @@
 #ifndef INCLUDED_haxe_IMap
 #include <hxinc/haxe/IMap.h>
 #endif
+#ifndef INCLUDED_haxe_Log
+#include <hxinc/haxe/Log.h>
+#endif
 #ifndef INCLUDED_haxe_ds_StringMap
 #include <hxinc/haxe/ds/StringMap.h>
-#endif
-#ifndef INCLUDED_kha_Scheduler
-#include <hxinc/kha/Scheduler.h>
 #endif
 #ifndef INCLUDED_kha_graphics2_Graphics
 #include <hxinc/kha/graphics2/Graphics.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_7_new,"bonsai.render.AnimatedSprite","new",0x4725cd7e,"bonsai.render.AnimatedSprite.new","bonsai/render/AnimatedSprite.hx",7,0xfb981592)
-HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_21_registerAnimation,"bonsai.render.AnimatedSprite","registerAnimation",0x8bff39bf,"bonsai.render.AnimatedSprite.registerAnimation","bonsai/render/AnimatedSprite.hx",21,0xfb981592)
-HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_23_play,"bonsai.render.AnimatedSprite","play",0xfb45ab16,"bonsai.render.AnimatedSprite.play","bonsai/render/AnimatedSprite.hx",23,0xfb981592)
-HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_29_update,"bonsai.render.AnimatedSprite","update",0xe7a40fab,"bonsai.render.AnimatedSprite.update","bonsai/render/AnimatedSprite.hx",29,0xfb981592)
-HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_36_render,"bonsai.render.AnimatedSprite","render",0x65c7f4f8,"bonsai.render.AnimatedSprite.render","bonsai/render/AnimatedSprite.hx",36,0xfb981592)
+HX_DEFINE_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_8_new,"bonsai.render.AnimatedSprite","new",0x4725cd7e,"bonsai.render.AnimatedSprite.new","bonsai/render/AnimatedSprite.hx",8,0xfb981592)
+HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_20_registerAnimation,"bonsai.render.AnimatedSprite","registerAnimation",0x8bff39bf,"bonsai.render.AnimatedSprite.registerAnimation","bonsai/render/AnimatedSprite.hx",20,0xfb981592)
+HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_22_play,"bonsai.render.AnimatedSprite","play",0xfb45ab16,"bonsai.render.AnimatedSprite.play","bonsai/render/AnimatedSprite.hx",22,0xfb981592)
+HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_33_update,"bonsai.render.AnimatedSprite","update",0xe7a40fab,"bonsai.render.AnimatedSprite.update","bonsai/render/AnimatedSprite.hx",33,0xfb981592)
+HX_LOCAL_STACK_FRAME(_hx_pos_f81f7692c02ccd6b_42_render,"bonsai.render.AnimatedSprite","render",0x65c7f4f8,"bonsai.render.AnimatedSprite.render","bonsai/render/AnimatedSprite.hx",42,0xfb981592)
 namespace bonsai{
 namespace render{
 
-void AnimatedSprite_obj::__construct( ::bonsai::render::SpriteMap spriteMap){
-            	HX_GC_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_7_new)
-HXLINE(  14)		this->frameTime = ((Float).1);
-HXLINE(  13)		this->lastFrameTime = ((Float)0);
-HXLINE(  17)		this->_hx_set_spriteMap(HX_CTX, spriteMap);
-HXLINE(  18)		this->_hx_set_animations(HX_CTX,  ::haxe::ds::StringMap_obj::__alloc( HX_CTX ));
+void AnimatedSprite_obj::__construct(){
+            	HX_GC_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_8_new)
+HXLINE(  14)		this->timeUntilNextFrame = ((Float).1);
+HXLINE(  13)		this->frameTime = ((Float).1);
+HXLINE(  17)		this->_hx_set_animations(HX_CTX,  ::haxe::ds::StringMap_obj::__alloc( HX_CTX ));
             	}
 
 Dynamic AnimatedSprite_obj::__CreateEmpty() { return new AnimatedSprite_obj; }
@@ -43,7 +42,7 @@ void *AnimatedSprite_obj::_hx_vtable = 0;
 Dynamic AnimatedSprite_obj::__Create(hx::DynamicArray inArgs)
 {
 	hx::ObjectPtr< AnimatedSprite_obj > _hx_result = new AnimatedSprite_obj();
-	_hx_result->__construct(inArgs[0]);
+	_hx_result->__construct();
 	return _hx_result;
 }
 
@@ -52,33 +51,41 @@ bool AnimatedSprite_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void AnimatedSprite_obj::registerAnimation(::String identifier, ::Dynamic animation){
-            	HX_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_21_registerAnimation)
-HXDLIN(  21)		this->animations->set(identifier,animation);
+            	HX_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_20_registerAnimation)
+HXDLIN(  20)		this->animations->set(identifier,animation);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC2(AnimatedSprite_obj,registerAnimation,(void))
 
 void AnimatedSprite_obj::play(::String identifier){
-            	HX_GC_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_23_play)
-HXLINE(  24)		this->_hx_set_playing(HX_CTX, identifier);
-HXLINE(  25)		this->frame = 0;
-HXLINE(  26)		this->lastFrameTime = ::kha::Scheduler_obj::time();
+            	HX_GC_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_22_play)
+HXLINE(  23)		if ((this->playing == identifier)) {
+HXLINE(  24)			return;
+            		}
+HXLINE(  25)		if (!(this->animations->exists(identifier))) {
+HXLINE(  26)			::haxe::Log_obj::trace(((HX_("Attempted to play animation ",b7,ab,cb,e1) + identifier) + HX_(", which isn't registered",a8,bd,01,1b)),hx::SourceInfo(HX_("bonsai/render/AnimatedSprite.hx",92,15,98,fb),26,HX_("bonsai.render.AnimatedSprite",8c,f6,1d,a7),HX_("play",f4,2d,5a,4a)));
+HXLINE(  27)			return;
+            		}
+HXLINE(  29)		this->_hx_set_playing(HX_CTX, identifier);
+HXLINE(  30)		this->frame = 0;
+HXLINE(  31)		this->timeUntilNextFrame = this->frameTime;
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(AnimatedSprite_obj,play,(void))
 
 void AnimatedSprite_obj::update(Float dt){
-            	HX_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_29_update)
-HXDLIN(  29)		Float _hx_tmp = ::kha::Scheduler_obj::time();
-HXDLIN(  29)		if ((_hx_tmp > (this->lastFrameTime + this->frameTime))) {
-HXLINE(  30)			this->lastFrameTime = ::kha::Scheduler_obj::time();
-HXLINE(  31)			 ::bonsai::render::AnimatedSprite _hx_tmp1 = hx::ObjectPtr<OBJ_>(this);
-HXDLIN(  31)			_hx_tmp1->frame = (_hx_tmp1->frame + 1);
-HXLINE(  32)			int _hx_tmp2 = this->frame;
-HXDLIN(  32)			if ((_hx_tmp2 > (( (::Array< int >)(this->animations->get(this->playing)->__Field(HX_("frames",a6,af,85,ac),hx::paccDynamic)) )->length - 1))) {
-HXLINE(  33)				this->frame = 0;
+            	HX_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_33_update)
+HXLINE(  34)		 ::bonsai::render::AnimatedSprite _hx_tmp = hx::ObjectPtr<OBJ_>(this);
+HXDLIN(  34)		_hx_tmp->timeUntilNextFrame = (_hx_tmp->timeUntilNextFrame - dt);
+HXLINE(  35)		if ((this->timeUntilNextFrame <= 0)) {
+HXLINE(  36)			this->timeUntilNextFrame = this->frameTime;
+HXLINE(  37)			 ::bonsai::render::AnimatedSprite _hx_tmp1 = hx::ObjectPtr<OBJ_>(this);
+HXDLIN(  37)			_hx_tmp1->frame = (_hx_tmp1->frame + 1);
+HXLINE(  38)			int _hx_tmp2 = this->frame;
+HXDLIN(  38)			if ((_hx_tmp2 > (( (::Array< int >)(this->animations->get(this->playing)->__Field(HX_("frames",a6,af,85,ac),hx::paccDynamic)) )->length - 1))) {
+HXLINE(  39)				this->frame = 0;
             			}
             		}
             	}
@@ -87,26 +94,29 @@ HXLINE(  33)				this->frame = 0;
 HX_DEFINE_DYNAMIC_FUNC1(AnimatedSprite_obj,update,(void))
 
 void AnimatedSprite_obj::render( ::kha::graphics2::Graphics graphics,float x,float y){
-            	HX_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_36_render)
-HXLINE(  37)		 ::Dynamic currentAnimation = this->animations->get(this->playing);
-HXLINE(  38)		int currentFrame = ( (int)( ::Dynamic(currentAnimation->__Field(HX_("frames",a6,af,85,ac),hx::paccDynamic))->__GetItem(this->frame)) );
-HXLINE(  39)		this->spriteMap->render(graphics,x,y,currentFrame);
+            	HX_STACKFRAME(&_hx_pos_f81f7692c02ccd6b_42_render)
+HXLINE(  43)		 ::Dynamic currentAnimation = this->animations->get(this->playing);
+HXLINE(  44)		if (hx::IsNull( currentAnimation )) {
+HXLINE(  45)			return;
+            		}
+HXLINE(  46)		int currentFrame = ( (int)( ::Dynamic(currentAnimation->__Field(HX_("frames",a6,af,85,ac),hx::paccDynamic))->__GetItem(this->frame)) );
+HXLINE(  47)		( ( ::bonsai::render::SpriteMap)(currentAnimation->__Field(HX_("spriteMap",97,77,04,56),hx::paccDynamic)) )->render(graphics,x,y,currentFrame);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC3(AnimatedSprite_obj,render,(void))
 
 
-hx::ObjectPtr< AnimatedSprite_obj > AnimatedSprite_obj::__new( ::bonsai::render::SpriteMap spriteMap) {
+hx::ObjectPtr< AnimatedSprite_obj > AnimatedSprite_obj::__new() {
 	hx::ObjectPtr< AnimatedSprite_obj > __this = new AnimatedSprite_obj();
-	__this->__construct(spriteMap);
+	__this->__construct();
 	return __this;
 }
 
-hx::ObjectPtr< AnimatedSprite_obj > AnimatedSprite_obj::__alloc(hx::Ctx *_hx_ctx, ::bonsai::render::SpriteMap spriteMap) {
+hx::ObjectPtr< AnimatedSprite_obj > AnimatedSprite_obj::__alloc(hx::Ctx *_hx_ctx) {
 	AnimatedSprite_obj *__this = (AnimatedSprite_obj*)(hx::Ctx::alloc(_hx_ctx, sizeof(AnimatedSprite_obj), true, "bonsai.render.AnimatedSprite"));
 	*(void **)__this = AnimatedSprite_obj::_hx_vtable;
-	__this->__construct(spriteMap);
+	__this->__construct();
 	return __this;
 }
 
@@ -120,9 +130,8 @@ void AnimatedSprite_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(animations,"animations");
 	HX_MARK_MEMBER_NAME(playing,"playing");
 	HX_MARK_MEMBER_NAME(frame,"frame");
-	HX_MARK_MEMBER_NAME(spriteMap,"spriteMap");
-	HX_MARK_MEMBER_NAME(lastFrameTime,"lastFrameTime");
 	HX_MARK_MEMBER_NAME(frameTime,"frameTime");
+	HX_MARK_MEMBER_NAME(timeUntilNextFrame,"timeUntilNextFrame");
 	HX_MARK_END_CLASS();
 }
 
@@ -131,9 +140,8 @@ void AnimatedSprite_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(animations,"animations");
 	HX_VISIT_MEMBER_NAME(playing,"playing");
 	HX_VISIT_MEMBER_NAME(frame,"frame");
-	HX_VISIT_MEMBER_NAME(spriteMap,"spriteMap");
-	HX_VISIT_MEMBER_NAME(lastFrameTime,"lastFrameTime");
 	HX_VISIT_MEMBER_NAME(frameTime,"frameTime");
+	HX_VISIT_MEMBER_NAME(timeUntilNextFrame,"timeUntilNextFrame");
 }
 
 hx::Val AnimatedSprite_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
@@ -153,17 +161,16 @@ hx::Val AnimatedSprite_obj::__Field(const ::String &inName,hx::PropertyAccess in
 		if (HX_FIELD_EQ(inName,"playing") ) { return hx::Val( playing ); }
 		break;
 	case 9:
-		if (HX_FIELD_EQ(inName,"spriteMap") ) { return hx::Val( spriteMap ); }
 		if (HX_FIELD_EQ(inName,"frameTime") ) { return hx::Val( frameTime ); }
 		break;
 	case 10:
 		if (HX_FIELD_EQ(inName,"animations") ) { return hx::Val( animations ); }
 		break;
-	case 13:
-		if (HX_FIELD_EQ(inName,"lastFrameTime") ) { return hx::Val( lastFrameTime ); }
-		break;
 	case 17:
 		if (HX_FIELD_EQ(inName,"registerAnimation") ) { return hx::Val( registerAnimation_dyn() ); }
+		break;
+	case 18:
+		if (HX_FIELD_EQ(inName,"timeUntilNextFrame") ) { return hx::Val( timeUntilNextFrame ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -178,14 +185,13 @@ hx::Val AnimatedSprite_obj::__SetField(const ::String &inName,const hx::Val &inV
 		if (HX_FIELD_EQ(inName,"playing") ) { _hx_set_playing(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
 		break;
 	case 9:
-		if (HX_FIELD_EQ(inName,"spriteMap") ) { _hx_set_spriteMap(HX_CTX_GET,inValue.Cast<  ::bonsai::render::SpriteMap >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"frameTime") ) { frameTime=inValue.Cast< Float >(); return inValue; }
 		break;
 	case 10:
 		if (HX_FIELD_EQ(inName,"animations") ) { _hx_set_animations(HX_CTX_GET,inValue.Cast<  ::haxe::ds::StringMap >()); return inValue; }
 		break;
-	case 13:
-		if (HX_FIELD_EQ(inName,"lastFrameTime") ) { lastFrameTime=inValue.Cast< Float >(); return inValue; }
+	case 18:
+		if (HX_FIELD_EQ(inName,"timeUntilNextFrame") ) { timeUntilNextFrame=inValue.Cast< Float >(); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
@@ -195,9 +201,8 @@ void AnimatedSprite_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("animations",ef,34,1c,83));
 	outFields->push(HX_("playing",6e,0f,18,8a));
 	outFields->push(HX_("frame",2d,78,83,06));
-	outFields->push(HX_("spriteMap",97,77,04,56));
-	outFields->push(HX_("lastFrameTime",a4,65,b6,38));
 	outFields->push(HX_("frameTime",da,8a,7d,3a));
+	outFields->push(HX_("timeUntilNextFrame",a9,32,51,53));
 	super::__GetFields(outFields);
 };
 
@@ -206,9 +211,8 @@ static hx::StorageInfo AnimatedSprite_obj_sMemberStorageInfo[] = {
 	{hx::fsObject /*  ::haxe::ds::StringMap */ ,(int)offsetof(AnimatedSprite_obj,animations),HX_("animations",ef,34,1c,83)},
 	{hx::fsString,(int)offsetof(AnimatedSprite_obj,playing),HX_("playing",6e,0f,18,8a)},
 	{hx::fsInt,(int)offsetof(AnimatedSprite_obj,frame),HX_("frame",2d,78,83,06)},
-	{hx::fsObject /*  ::bonsai::render::SpriteMap */ ,(int)offsetof(AnimatedSprite_obj,spriteMap),HX_("spriteMap",97,77,04,56)},
-	{hx::fsFloat,(int)offsetof(AnimatedSprite_obj,lastFrameTime),HX_("lastFrameTime",a4,65,b6,38)},
 	{hx::fsFloat,(int)offsetof(AnimatedSprite_obj,frameTime),HX_("frameTime",da,8a,7d,3a)},
+	{hx::fsFloat,(int)offsetof(AnimatedSprite_obj,timeUntilNextFrame),HX_("timeUntilNextFrame",a9,32,51,53)},
 	{ hx::fsUnknown, 0, null()}
 };
 static hx::StaticInfo *AnimatedSprite_obj_sStaticStorageInfo = 0;
@@ -218,9 +222,8 @@ static ::String AnimatedSprite_obj_sMemberFields[] = {
 	HX_("animations",ef,34,1c,83),
 	HX_("playing",6e,0f,18,8a),
 	HX_("frame",2d,78,83,06),
-	HX_("spriteMap",97,77,04,56),
-	HX_("lastFrameTime",a4,65,b6,38),
 	HX_("frameTime",da,8a,7d,3a),
+	HX_("timeUntilNextFrame",a9,32,51,53),
 	HX_("registerAnimation",21,c4,0f,37),
 	HX_("play",f4,2d,5a,4a),
 	HX_("update",09,86,05,87),

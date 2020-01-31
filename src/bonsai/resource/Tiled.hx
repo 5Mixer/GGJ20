@@ -25,10 +25,7 @@ class Tiled {
 		for (layer in map.elementsNamed("layer")){
 			var n = 0;
 			var layerTiles = layer.elementsNamed("data").next().firstChild().nodeValue.split(",");
-			// trace(layer.elementsNamed("data").next().firstChild());
-			// trace(layerTiles);
 			for (tile in layerTiles){
-				// var tile = Std.parseInt(tile.get("gid"));
 				var x = n%width;
 				var y = Math.floor(n/width);
 
@@ -40,7 +37,6 @@ class Tiled {
 
 				n++;
 			}
-			trace(tiles);
 		}
 
 		for (objectlayer in map.elementsNamed("objectgroup")){

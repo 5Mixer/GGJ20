@@ -38,7 +38,7 @@ class Player extends Entity {
 
 	override public function render (graphics:kha.graphics2.Graphics) {
 		this.transformation.offset = this.position;
-		transformation.scale.x = facingRight ? 1:-1;
+		transformation.scale.x = facingRight ? 1 : -1;
 		this.transformation.apply(graphics);
 		this.animation.render(graphics, 0, 0);
 		this.transformation.finish(graphics);
@@ -57,10 +57,6 @@ class Player extends Entity {
 			facingRight = false;
 		}else{
 			this.animation.play("idle");
-		}
-		if (input.isAnyKeyDown(InputBindings.punch)){
-			// this.scene.SCENEELEMENTTHATSPAWNSPUNCHPARTICLES.spawnPunchParticles(this.position.x + this.width/2, this.position.y + this.height/2, this.facingRight);
-			trace("POW!!!");
 		}
 	}
 }

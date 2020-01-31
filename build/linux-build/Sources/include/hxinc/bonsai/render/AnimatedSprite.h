@@ -7,7 +7,6 @@
 #endif
 
 HX_DECLARE_CLASS2(bonsai,render,AnimatedSprite)
-HX_DECLARE_CLASS2(bonsai,render,SpriteMap)
 HX_DECLARE_CLASS1(haxe,IMap)
 HX_DECLARE_CLASS2(haxe,ds,StringMap)
 HX_DECLARE_CLASS2(kha,graphics2,Graphics)
@@ -26,13 +25,13 @@ class HXCPP_CLASS_ATTRIBUTES AnimatedSprite_obj : public hx::Object
 	public:
 		enum { _hx_ClassId = 0x47bfdeb8 };
 
-		void __construct( ::bonsai::render::SpriteMap spriteMap);
+		void __construct();
 		inline void *operator new(size_t inSize, bool inContainer=true,const char *inName="bonsai.render.AnimatedSprite")
 			{ return hx::Object::operator new(inSize,inContainer,inName); }
 		inline void *operator new(size_t inSize, int extra)
 			{ return hx::Object::operator new(inSize+extra,true,"bonsai.render.AnimatedSprite"); }
-		static hx::ObjectPtr< AnimatedSprite_obj > __new( ::bonsai::render::SpriteMap spriteMap);
-		static hx::ObjectPtr< AnimatedSprite_obj > __alloc(hx::Ctx *_hx_ctx, ::bonsai::render::SpriteMap spriteMap);
+		static hx::ObjectPtr< AnimatedSprite_obj > __new();
+		static hx::ObjectPtr< AnimatedSprite_obj > __alloc(hx::Ctx *_hx_ctx);
 		static void * _hx_vtable;
 		static Dynamic __CreateEmpty();
 		static Dynamic __Create(hx::DynamicArray inArgs);
@@ -53,10 +52,8 @@ class HXCPP_CLASS_ATTRIBUTES AnimatedSprite_obj : public hx::Object
 		::String playing;
 		inline ::String _hx_set_playing(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playing=_hx_v; }
 		int frame;
-		 ::bonsai::render::SpriteMap spriteMap;
-		inline  ::bonsai::render::SpriteMap _hx_set_spriteMap(hx::StackContext *_hx_ctx, ::bonsai::render::SpriteMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return spriteMap=_hx_v; }
-		Float lastFrameTime;
 		Float frameTime;
+		Float timeUntilNextFrame;
 		void registerAnimation(::String identifier, ::Dynamic animation);
 		::Dynamic registerAnimation_dyn();
 

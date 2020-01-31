@@ -6,6 +6,7 @@
 #include <hxcpp.h>
 #endif
 
+HX_DECLARE_CLASS1(bonsai,Engine)
 HX_DECLARE_CLASS2(bonsai,entity,Entity)
 HX_DECLARE_CLASS2(bonsai,scene,Scene)
 HX_DECLARE_CLASS2(kha,graphics2,Graphics)
@@ -24,13 +25,13 @@ class HXCPP_CLASS_ATTRIBUTES Scene_obj : public hx::Object
 	public:
 		enum { _hx_ClassId = 0x1b8885fe };
 
-		void __construct(::String name);
+		void __construct(::String name, ::bonsai::Engine engine);
 		inline void *operator new(size_t inSize, bool inContainer=true,const char *inName="bonsai.scene.Scene")
 			{ return hx::Object::operator new(inSize,inContainer,inName); }
 		inline void *operator new(size_t inSize, int extra)
 			{ return hx::Object::operator new(inSize+extra,true,"bonsai.scene.Scene"); }
-		static hx::ObjectPtr< Scene_obj > __new(::String name);
-		static hx::ObjectPtr< Scene_obj > __alloc(hx::Ctx *_hx_ctx,::String name);
+		static hx::ObjectPtr< Scene_obj > __new(::String name, ::bonsai::Engine engine);
+		static hx::ObjectPtr< Scene_obj > __alloc(hx::Ctx *_hx_ctx,::String name, ::bonsai::Engine engine);
 		static void * _hx_vtable;
 		static Dynamic __CreateEmpty();
 		static Dynamic __Create(hx::DynamicArray inArgs);
@@ -50,16 +51,18 @@ class HXCPP_CLASS_ATTRIBUTES Scene_obj : public hx::Object
 		inline ::Array< ::Dynamic> _hx_set_layers(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return layers=_hx_v; }
 		::String name;
 		inline ::String _hx_set_name(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return name=_hx_v; }
+		 ::bonsai::Engine engine;
+		inline  ::bonsai::Engine _hx_set_engine(hx::StackContext *_hx_ctx, ::bonsai::Engine _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return engine=_hx_v; }
 		void add( ::bonsai::entity::Entity entity,hx::Null< int >  layer);
 		::Dynamic add_dyn();
 
 		void remove( ::bonsai::entity::Entity entity);
 		::Dynamic remove_dyn();
 
-		void update(Float dt);
+		virtual void update(Float dt);
 		::Dynamic update_dyn();
 
-		void render( ::kha::graphics2::Graphics graphics);
+		virtual void render( ::kha::graphics2::Graphics graphics);
 		::Dynamic render_dyn();
 
 };

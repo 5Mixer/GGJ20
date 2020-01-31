@@ -10,6 +10,7 @@
 #include <hxinc/bonsai/scene/Scene.h>
 #endif
 HX_DECLARE_CLASS0(StartMenu)
+HX_DECLARE_CLASS1(bonsai,Engine)
 HX_DECLARE_CLASS2(bonsai,scene,Scene)
 
 
@@ -24,13 +25,13 @@ class HXCPP_CLASS_ATTRIBUTES StartMenu_obj : public  ::bonsai::scene::Scene_obj
 	public:
 		enum { _hx_ClassId = 0x177aeb71 };
 
-		void __construct();
+		void __construct( ::bonsai::Engine engine);
 		inline void *operator new(size_t inSize, bool inContainer=true,const char *inName="StartMenu")
 			{ return hx::Object::operator new(inSize,inContainer,inName); }
 		inline void *operator new(size_t inSize, int extra)
 			{ return hx::Object::operator new(inSize+extra,true,"StartMenu"); }
-		static hx::ObjectPtr< StartMenu_obj > __new();
-		static hx::ObjectPtr< StartMenu_obj > __alloc(hx::Ctx *_hx_ctx);
+		static hx::ObjectPtr< StartMenu_obj > __new( ::bonsai::Engine engine);
+		static hx::ObjectPtr< StartMenu_obj > __alloc(hx::Ctx *_hx_ctx, ::bonsai::Engine engine);
 		static void * _hx_vtable;
 		static Dynamic __CreateEmpty();
 		static Dynamic __Create(hx::DynamicArray inArgs);

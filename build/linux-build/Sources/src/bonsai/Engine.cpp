@@ -4,8 +4,8 @@
 #ifndef INCLUDED_bonsai_Engine
 #include <hxinc/bonsai/Engine.h>
 #endif
-#ifndef INCLUDED_bonsai_event_EventSystem
-#include <hxinc/bonsai/event/EventSystem.h>
+#ifndef INCLUDED_bonsai_input_Input
+#include <hxinc/bonsai/input/Input.h>
 #endif
 #ifndef INCLUDED_bonsai_scene_Scene
 #include <hxinc/bonsai/scene/Scene.h>
@@ -22,6 +22,12 @@
 #ifndef INCLUDED_kha_FramebufferOptions
 #include <hxinc/kha/FramebufferOptions.h>
 #endif
+#ifndef INCLUDED_kha_Kravur
+#include <hxinc/kha/Kravur.h>
+#endif
+#ifndef INCLUDED_kha_Resource
+#include <hxinc/kha/Resource.h>
+#endif
 #ifndef INCLUDED_kha_Scheduler
 #include <hxinc/kha/Scheduler.h>
 #endif
@@ -37,21 +43,34 @@
 #ifndef INCLUDED_kha_WindowOptions
 #include <hxinc/kha/WindowOptions.h>
 #endif
+#ifndef INCLUDED_kha__Assets_FontList
+#include <hxinc/kha/_Assets/FontList.h>
+#endif
 #ifndef INCLUDED_kha_graphics2_Graphics
 #include <hxinc/kha/graphics2/Graphics.h>
 #endif
+#ifndef INCLUDED_zui_Ext
+#include <hxinc/zui/Ext.h>
+#endif
+#ifndef INCLUDED_zui_Handle
+#include <hxinc/zui/Handle.h>
+#endif
+#ifndef INCLUDED_zui_Zui
+#include <hxinc/zui/Zui.h>
+#endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_459eda6a7759f998_16_new,"bonsai.Engine","new",0x4f7b1108,"bonsai.Engine.new","bonsai/Engine.hx",16,0xa63e5f47)
-HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_23_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",23,0xa63e5f47)
+HX_DEFINE_STACK_FRAME(_hx_pos_459eda6a7759f998_20_new,"bonsai.Engine","new",0x4f7b1108,"bonsai.Engine.new","bonsai/Engine.hx",20,0xa63e5f47)
+HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_29_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",29,0xa63e5f47)
+HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_30_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",30,0xa63e5f47)
+HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_28_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",28,0xa63e5f47)
+HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_25_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",25,0xa63e5f47)
 HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_24_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",24,0xa63e5f47)
-HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_22_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",22,0xa63e5f47)
-HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_20_start,"bonsai.Engine","start",0x5c022f0a,"bonsai.Engine.start","bonsai/Engine.hx",20,0xa63e5f47)
-HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_30_update,"bonsai.Engine","update",0xa6f21e61,"bonsai.Engine.update","bonsai/Engine.hx",30,0xa63e5f47)
-HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_36_render,"bonsai.Engine","render",0x251603ae,"bonsai.Engine.render","bonsai/Engine.hx",36,0xa63e5f47)
+HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_39_update,"bonsai.Engine","update",0xa6f21e61,"bonsai.Engine.update","bonsai/Engine.hx",39,0xa63e5f47)
+HX_LOCAL_STACK_FRAME(_hx_pos_459eda6a7759f998_45_render,"bonsai.Engine","render",0x251603ae,"bonsai.Engine.render","bonsai/Engine.hx",45,0xa63e5f47)
 namespace bonsai{
 
 void Engine_obj::__construct(){
-            	HX_STACKFRAME(&_hx_pos_459eda6a7759f998_16_new)
+            	HX_STACKFRAME(&_hx_pos_459eda6a7759f998_20_new)
             	}
 
 Dynamic Engine_obj::__CreateEmpty() { return new Engine_obj; }
@@ -76,27 +95,30 @@ void Engine_obj::start(::String __o_title,hx::Null< int >  __o_width,hx::Null< i
             			void _hx_run(){
             				HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::bonsai::Engine,_gthis) HXARGC(0)
             				void _hx_run(){
-            					HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_23_start)
-HXLINE(  23)					_gthis->update();
+            					HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_29_start)
+HXLINE(  29)					_gthis->update();
             				}
             				HX_END_LOCAL_FUNC0((void))
 
             				HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_1, ::bonsai::Engine,_gthis) HXARGC(1)
             				void _hx_run(::Array< ::Dynamic> framebuffers){
-            					HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_24_start)
-HXLINE(  24)					_gthis->render(framebuffers->__get(0).StaticCast<  ::kha::Framebuffer >());
+            					HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_30_start)
+HXLINE(  30)					_gthis->render(framebuffers->__get(0).StaticCast<  ::kha::Framebuffer >());
             				}
             				HX_END_LOCAL_FUNC1((void))
 
-            				HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_22_start)
-HXLINE(  23)				::kha::Scheduler_obj::addTimeTask( ::Dynamic(new _hx_Closure_0(_gthis)),( (Float)(0) ),((Float)0.0166666666666666664),null());
-HXLINE(  24)				::kha::System_obj::notifyOnFrames( ::Dynamic(new _hx_Closure_1(_gthis)));
-HXLINE(  25)				onReady();
+            				HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_28_start)
+HXLINE(  29)				::kha::Scheduler_obj::addTimeTask( ::Dynamic(new _hx_Closure_0(_gthis)),( (Float)(0) ),((Float)0.0166666666666666664),null());
+HXLINE(  30)				::kha::System_obj::notifyOnFrames( ::Dynamic(new _hx_Closure_1(_gthis)));
+HXLINE(  32)				_gthis->_hx_set_debugInterface(HX_CTX,  ::zui::Zui_obj::__alloc( HX_CTX , ::Dynamic(hx::Anon_obj::Create(1)
+            					->setFixed(0,HX_("font",cf,5d,c0,43),::kha::Assets_obj::fonts->SourceSansPro))));
+HXLINE(  34)				onReady();
             			}
             			HX_END_LOCAL_FUNC0((void))
 
-            			HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_22_start)
-HXLINE(  22)			::kha::Assets_obj::loadEverything( ::Dynamic(new _hx_Closure_2(_gthis,onReady)),null(),null(),null());
+            			HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_25_start)
+HXLINE(  26)			_gthis->_hx_set_input(HX_CTX,  ::bonsai::input::Input_obj::__alloc( HX_CTX ));
+HXLINE(  28)			::kha::Assets_obj::loadEverything( ::Dynamic(new _hx_Closure_2(_gthis,onReady)),null(),null(),null());
             		}
             		HX_END_LOCAL_FUNC1((void))
 
@@ -104,31 +126,50 @@ HXLINE(  22)			::kha::Assets_obj::loadEverything( ::Dynamic(new _hx_Closure_2(_g
             		if (hx::IsNull(__o_title)) title = HX_("Bonsai Engine Game",ca,78,d7,2d);
             		int width = __o_width.Default(800);
             		int height = __o_height.Default(600);
-            	HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_20_start)
-HXDLIN(  20)		 ::bonsai::Engine _gthis = hx::ObjectPtr<OBJ_>(this);
-HXLINE(  21)		::kha::System_obj::start( ::kha::SystemOptions_obj::__alloc( HX_CTX ,title,width,height,null(),null()), ::Dynamic(new _hx_Closure_3(_gthis,onReady)));
+            	HX_GC_STACKFRAME(&_hx_pos_459eda6a7759f998_24_start)
+HXDLIN(  24)		 ::bonsai::Engine _gthis = hx::ObjectPtr<OBJ_>(this);
+HXLINE(  25)		::kha::System_obj::start( ::kha::SystemOptions_obj::__alloc( HX_CTX ,title,width,height,null(),null()), ::Dynamic(new _hx_Closure_3(_gthis,onReady)));
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC4(Engine_obj,start,(void))
 
 void Engine_obj::update(){
-            	HX_STACKFRAME(&_hx_pos_459eda6a7759f998_30_update)
-HXLINE(  31)		Float delta = ::kha::Scheduler_obj::time();
-HXDLIN(  31)		Float delta1 = (delta - this->time);
-HXLINE(  32)		this->currentScene->update(delta1);
-HXLINE(  33)		this->time = ::kha::Scheduler_obj::time();
+            	HX_STACKFRAME(&_hx_pos_459eda6a7759f998_39_update)
+HXLINE(  40)		Float delta = ::kha::Scheduler_obj::time();
+HXDLIN(  40)		Float delta1 = (delta - this->time);
+HXLINE(  41)		this->currentScene->update(delta1);
+HXLINE(  42)		this->time = ::kha::Scheduler_obj::time();
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Engine_obj,update,(void))
 
 void Engine_obj::render( ::kha::Framebuffer framebuffer){
-            	HX_STACKFRAME(&_hx_pos_459eda6a7759f998_36_render)
-HXLINE(  37)		 ::kha::graphics2::Graphics g = framebuffer->get_g2();
-HXLINE(  38)		g->begin(null(),null());
-HXLINE(  39)		this->currentScene->render(g);
-HXLINE(  40)		g->end();
+            	HX_STACKFRAME(&_hx_pos_459eda6a7759f998_45_render)
+HXLINE(  46)		 ::kha::graphics2::Graphics g = framebuffer->get_g2();
+HXLINE(  47)		g->begin(null(),null());
+HXLINE(  48)		this->currentScene->render(g);
+HXLINE(  49)		g->end();
+HXLINE(  51)		g->set_opacity(( (Float)(1) ));
+HXLINE(  52)		this->debugInterface->begin(g);
+HXLINE(  53)		 ::zui::Zui _hx_tmp = this->debugInterface;
+HXDLIN(  53)		 ::zui::Handle _hx_tmp1 = ::zui::Handle_obj::global->nest(0,null());
+HXDLIN(  53)		if (_hx_tmp->window(_hx_tmp1,0,0,framebuffer->get_width(),300,false)) {
+HXLINE(  54)			 ::zui::Zui _hx_tmp2 = this->debugInterface;
+HXDLIN(  54)			if (_hx_tmp2->panel(::zui::Handle_obj::global->nest(1, ::Dynamic(hx::Anon_obj::Create(1)
+            				->setFixed(0,HX_("selected",5b,2a,6d,b1),true))),HX_("Terminal",9c,dd,9c,c9),null())) {
+HXLINE(  55)				this->debugInterface->indent();
+HXLINE(  56)				this->debugInterface->text(HX_("Output of the log goes here",45,1b,94,f3),null(),null());
+HXLINE(  57)				 ::zui::Zui _hx_tmp3 = this->debugInterface;
+HXDLIN(  57)				::zui::Ext_obj::textArea(_hx_tmp3,::zui::Handle_obj::global->nest(2,null()),null());
+HXLINE(  58)				 ::zui::Zui _hx_tmp4 = this->debugInterface;
+HXDLIN(  58)				_hx_tmp4->textInput(::zui::Handle_obj::global->nest(3, ::Dynamic(hx::Anon_obj::Create(1)
+            					->setFixed(0,HX_("text",ad,cc,f9,4c),HX_("Out",6e,58,3c,00)))),HX_("Input",ea,33,4b,51),null());
+HXLINE(  59)				this->debugInterface->button(HX_("Go",48,3e,00,00),null(),null());
+            			}
+            		}
+HXLINE(  63)		this->debugInterface->end(null());
             	}
 
 
@@ -155,17 +196,19 @@ Engine_obj::Engine_obj()
 void Engine_obj::__Mark(HX_MARK_PARAMS)
 {
 	HX_MARK_BEGIN_CLASS(Engine);
-	HX_MARK_MEMBER_NAME(events,"events");
 	HX_MARK_MEMBER_NAME(currentScene,"currentScene");
+	HX_MARK_MEMBER_NAME(input,"input");
 	HX_MARK_MEMBER_NAME(time,"time");
+	HX_MARK_MEMBER_NAME(debugInterface,"debugInterface");
 	HX_MARK_END_CLASS();
 }
 
 void Engine_obj::__Visit(HX_VISIT_PARAMS)
 {
-	HX_VISIT_MEMBER_NAME(events,"events");
 	HX_VISIT_MEMBER_NAME(currentScene,"currentScene");
+	HX_VISIT_MEMBER_NAME(input,"input");
 	HX_VISIT_MEMBER_NAME(time,"time");
+	HX_VISIT_MEMBER_NAME(debugInterface,"debugInterface");
 }
 
 hx::Val Engine_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
@@ -175,15 +218,18 @@ hx::Val Engine_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp
 		if (HX_FIELD_EQ(inName,"time") ) { return hx::Val( time ); }
 		break;
 	case 5:
+		if (HX_FIELD_EQ(inName,"input") ) { return hx::Val( input ); }
 		if (HX_FIELD_EQ(inName,"start") ) { return hx::Val( start_dyn() ); }
 		break;
 	case 6:
-		if (HX_FIELD_EQ(inName,"events") ) { return hx::Val( events ); }
 		if (HX_FIELD_EQ(inName,"update") ) { return hx::Val( update_dyn() ); }
 		if (HX_FIELD_EQ(inName,"render") ) { return hx::Val( render_dyn() ); }
 		break;
 	case 12:
 		if (HX_FIELD_EQ(inName,"currentScene") ) { return hx::Val( currentScene ); }
+		break;
+	case 14:
+		if (HX_FIELD_EQ(inName,"debugInterface") ) { return hx::Val( debugInterface ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -194,37 +240,43 @@ hx::Val Engine_obj::__SetField(const ::String &inName,const hx::Val &inValue,hx:
 	case 4:
 		if (HX_FIELD_EQ(inName,"time") ) { time=inValue.Cast< Float >(); return inValue; }
 		break;
-	case 6:
-		if (HX_FIELD_EQ(inName,"events") ) { _hx_set_events(HX_CTX_GET,inValue.Cast<  ::bonsai::event::EventSystem >()); return inValue; }
+	case 5:
+		if (HX_FIELD_EQ(inName,"input") ) { _hx_set_input(HX_CTX_GET,inValue.Cast<  ::bonsai::input::Input >()); return inValue; }
 		break;
 	case 12:
 		if (HX_FIELD_EQ(inName,"currentScene") ) { _hx_set_currentScene(HX_CTX_GET,inValue.Cast<  ::bonsai::scene::Scene >()); return inValue; }
+		break;
+	case 14:
+		if (HX_FIELD_EQ(inName,"debugInterface") ) { _hx_set_debugInterface(HX_CTX_GET,inValue.Cast<  ::zui::Zui >()); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
 
 void Engine_obj::__GetFields(Array< ::String> &outFields)
 {
-	outFields->push(HX_("events",19,4f,6a,96));
 	outFields->push(HX_("currentScene",53,be,dd,bf));
+	outFields->push(HX_("input",0a,c4,1d,be));
 	outFields->push(HX_("time",0d,cc,fc,4c));
+	outFields->push(HX_("debugInterface",e6,5c,38,db));
 	super::__GetFields(outFields);
 };
 
 #ifdef HXCPP_SCRIPTABLE
 static hx::StorageInfo Engine_obj_sMemberStorageInfo[] = {
-	{hx::fsObject /*  ::bonsai::event::EventSystem */ ,(int)offsetof(Engine_obj,events),HX_("events",19,4f,6a,96)},
 	{hx::fsObject /*  ::bonsai::scene::Scene */ ,(int)offsetof(Engine_obj,currentScene),HX_("currentScene",53,be,dd,bf)},
+	{hx::fsObject /*  ::bonsai::input::Input */ ,(int)offsetof(Engine_obj,input),HX_("input",0a,c4,1d,be)},
 	{hx::fsFloat,(int)offsetof(Engine_obj,time),HX_("time",0d,cc,fc,4c)},
+	{hx::fsObject /*  ::zui::Zui */ ,(int)offsetof(Engine_obj,debugInterface),HX_("debugInterface",e6,5c,38,db)},
 	{ hx::fsUnknown, 0, null()}
 };
 static hx::StaticInfo *Engine_obj_sStaticStorageInfo = 0;
 #endif
 
 static ::String Engine_obj_sMemberFields[] = {
-	HX_("events",19,4f,6a,96),
 	HX_("currentScene",53,be,dd,bf),
+	HX_("input",0a,c4,1d,be),
 	HX_("time",0d,cc,fc,4c),
+	HX_("debugInterface",e6,5c,38,db),
 	HX_("start",62,74,0b,84),
 	HX_("update",09,86,05,87),
 	HX_("render",56,6b,29,05),

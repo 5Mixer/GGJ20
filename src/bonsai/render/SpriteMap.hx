@@ -19,4 +19,7 @@ class SpriteMap {
 		var sy = 0; //Math.floor(index / this.gridHeight) * this.gridHeight; //TODO
 		graphics.drawSubImage(this.image, x, y, sx, sy, gridWidth, gridHeight); 
 	}
+	public function renderCell (graphics:kha.graphics2.Graphics, x, y, xcell, ycell) {
+		graphics.drawSubImage(this.image, x, y, xcell * gridWidth, ycell * gridHeight, gridWidth, gridHeight); 
+	}
 }

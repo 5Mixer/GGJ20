@@ -11,17 +11,17 @@
 #include <hxinc/kha/math/Vector2.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_6382ef93610544f7_6_new,"bonsai.entity.Entity","new",0x6aa9086c,"bonsai.entity.Entity.new","bonsai/entity/Entity.hx",6,0x52a53264)
-HX_LOCAL_STACK_FRAME(_hx_pos_6382ef93610544f7_14_render,"bonsai.entity.Entity","render",0x09d5c2ca,"bonsai.entity.Entity.render","bonsai/entity/Entity.hx",14,0x52a53264)
-HX_LOCAL_STACK_FRAME(_hx_pos_6382ef93610544f7_17_update,"bonsai.entity.Entity","update",0x8bb1dd7d,"bonsai.entity.Entity.update","bonsai/entity/Entity.hx",17,0x52a53264)
+HX_DEFINE_STACK_FRAME(_hx_pos_6382ef93610544f7_3_new,"bonsai.entity.Entity","new",0x6aa9086c,"bonsai.entity.Entity.new","bonsai/entity/Entity.hx",3,0x52a53264)
+HX_LOCAL_STACK_FRAME(_hx_pos_6382ef93610544f7_11_render,"bonsai.entity.Entity","render",0x09d5c2ca,"bonsai.entity.Entity.render","bonsai/entity/Entity.hx",11,0x52a53264)
+HX_LOCAL_STACK_FRAME(_hx_pos_6382ef93610544f7_14_update,"bonsai.entity.Entity","update",0x8bb1dd7d,"bonsai.entity.Entity.update","bonsai/entity/Entity.hx",14,0x52a53264)
 namespace bonsai{
 namespace entity{
 
 void Entity_obj::__construct(){
-            	HX_GC_STACKFRAME(&_hx_pos_6382ef93610544f7_6_new)
-HXLINE(   9)		this->visible = true;
-HXLINE(   8)		this->active = true;
-HXLINE(  12)		this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,null(),null()));
+            	HX_GC_STACKFRAME(&_hx_pos_6382ef93610544f7_3_new)
+HXLINE(   6)		this->visible = true;
+HXLINE(   5)		this->active = true;
+HXLINE(   9)		this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,null(),null()));
             	}
 
 Dynamic Entity_obj::__CreateEmpty() { return new Entity_obj; }
@@ -40,14 +40,14 @@ bool Entity_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void Entity_obj::render( ::kha::graphics2::Graphics graphics){
-            	HX_STACKFRAME(&_hx_pos_6382ef93610544f7_14_render)
+            	HX_STACKFRAME(&_hx_pos_6382ef93610544f7_11_render)
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(Entity_obj,render,(void))
 
 void Entity_obj::update(Float dt){
-            	HX_STACKFRAME(&_hx_pos_6382ef93610544f7_17_update)
+            	HX_STACKFRAME(&_hx_pos_6382ef93610544f7_14_update)
             	}
 
 

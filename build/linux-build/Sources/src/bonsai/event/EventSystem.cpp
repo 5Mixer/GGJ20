@@ -5,13 +5,14 @@
 #include <hxinc/bonsai/event/EventSystem.h>
 #endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_d06aab7413059a95_8_new,"bonsai.event.EventSystem","new",0xe79c1cf3,"bonsai.event.EventSystem.new","bonsai/event/EventSystem.hx",8,0x63d1081f)
-HX_LOCAL_STACK_FRAME(_hx_pos_d06aab7413059a95_12_listen,"bonsai.event.EventSystem","listen",0x63135994,"bonsai.event.EventSystem.listen","bonsai/event/EventSystem.hx",12,0x63d1081f)
+HX_DEFINE_STACK_FRAME(_hx_pos_d06aab7413059a95_4_new,"bonsai.event.EventSystem","new",0xe79c1cf3,"bonsai.event.EventSystem.new","bonsai/event/EventSystem.hx",4,0x63d1081f)
+HX_LOCAL_STACK_FRAME(_hx_pos_d06aab7413059a95_7_listen,"bonsai.event.EventSystem","listen",0x63135994,"bonsai.event.EventSystem.listen","bonsai/event/EventSystem.hx",7,0x63d1081f)
+HX_LOCAL_STACK_FRAME(_hx_pos_d06aab7413059a95_10_dispatch,"bonsai.event.EventSystem","dispatch",0xb7fe0d47,"bonsai.event.EventSystem.dispatch","bonsai/event/EventSystem.hx",10,0x63d1081f)
 namespace bonsai{
 namespace event{
 
 void EventSystem_obj::__construct(){
-            	HX_STACKFRAME(&_hx_pos_d06aab7413059a95_8_new)
+            	HX_STACKFRAME(&_hx_pos_d06aab7413059a95_4_new)
             	}
 
 Dynamic EventSystem_obj::__CreateEmpty() { return new EventSystem_obj; }
@@ -30,11 +31,18 @@ bool EventSystem_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void EventSystem_obj::listen( ::Dynamic event){
-            	HX_STACKFRAME(&_hx_pos_d06aab7413059a95_12_listen)
+            	HX_STACKFRAME(&_hx_pos_d06aab7413059a95_7_listen)
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(EventSystem_obj,listen,(void))
+
+void EventSystem_obj::dispatch( ::Dynamic event){
+            	HX_STACKFRAME(&_hx_pos_d06aab7413059a95_10_dispatch)
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC1(EventSystem_obj,dispatch,(void))
 
 
 EventSystem_obj::EventSystem_obj()
@@ -46,6 +54,9 @@ hx::Val EventSystem_obj::__Field(const ::String &inName,hx::PropertyAccess inCal
 	switch(inName.length) {
 	case 6:
 		if (HX_FIELD_EQ(inName,"listen") ) { return hx::Val( listen_dyn() ); }
+		break;
+	case 8:
+		if (HX_FIELD_EQ(inName,"dispatch") ) { return hx::Val( dispatch_dyn() ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -57,6 +68,7 @@ static hx::StaticInfo *EventSystem_obj_sStaticStorageInfo = 0;
 
 static ::String EventSystem_obj_sMemberFields[] = {
 	HX_("listen",47,c8,f9,ef),
+	HX_("dispatch",ba,ce,63,1e),
 	::String(null()) };
 
 hx::Class EventSystem_obj::__mClass;

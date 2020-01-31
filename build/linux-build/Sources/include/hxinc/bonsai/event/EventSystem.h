@@ -6,7 +6,7 @@
 #include <hxcpp.h>
 #endif
 
-HX_DECLARE_STACK_FRAME(_hx_pos_d06aab7413059a95_8_new)
+HX_DECLARE_STACK_FRAME(_hx_pos_d06aab7413059a95_4_new)
 HX_DECLARE_CLASS2(bonsai,event,EventSystem)
 
 namespace bonsai{
@@ -39,7 +39,7 @@ class HXCPP_CLASS_ATTRIBUTES EventSystem_obj : public hx::Object
 			EventSystem_obj *__this = (EventSystem_obj*)(hx::Ctx::alloc(_hx_ctx, sizeof(EventSystem_obj), false, "bonsai.event.EventSystem"));
 			*(void **)__this = EventSystem_obj::_hx_vtable;
 {
-            	HX_STACKFRAME(&_hx_pos_d06aab7413059a95_8_new)
+            	HX_STACKFRAME(&_hx_pos_d06aab7413059a95_4_new)
             	}
 		
 			return __this;
@@ -58,6 +58,9 @@ class HXCPP_CLASS_ATTRIBUTES EventSystem_obj : public hx::Object
 
 		void listen( ::Dynamic event);
 		::Dynamic listen_dyn();
+
+		void dispatch( ::Dynamic event);
+		::Dynamic dispatch_dyn();
 
 };
 

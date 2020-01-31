@@ -14,7 +14,7 @@ class Main {
 		engine.start(onAssetLoad);
 	}
 	public static function onAssetLoad () {
-		engine.currentScene = new Level1(engine);
+		engine.currentScene = new World(engine);
 	}
 }
 
@@ -23,19 +23,4 @@ class InputBindings {
 	public static var right = [KeyCode.Right, KeyCode.D];
 	public static var up    = [KeyCode.Up,    KeyCode.W];
 	public static var down  = [KeyCode.Down,  KeyCode.S];
-	public static var punch  = [KeyCode.P];
 }
-
-class Level2 extends bonsai.scene.Scene {
-	override public function new (engine) {
-		super("Level2", engine);
-		add(new Player(200, 50, engine.input));
-	}
-}
-class StartMenu extends bonsai.scene.Scene {
-	override public function new (engine) {
-		super("Start Menu", engine);
-	}
-}
-
-
