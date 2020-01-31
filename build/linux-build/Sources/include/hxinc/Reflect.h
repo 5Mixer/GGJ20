@@ -61,8 +61,11 @@ class HXCPP_CLASS_ATTRIBUTES Reflect_obj : public hx::Object
 		static  ::Dynamic callMethod( ::Dynamic o, ::Dynamic func,::cpp::VirtualArray args);
 		static ::Dynamic callMethod_dyn();
 
-		static bool isObject( ::Dynamic v);
-		static ::Dynamic isObject_dyn();
+		static int compare( ::Dynamic a, ::Dynamic b);
+		static ::Dynamic compare_dyn();
+
+		static bool isEnumValue( ::Dynamic v);
+		static ::Dynamic isEnumValue_dyn();
 
 };
 

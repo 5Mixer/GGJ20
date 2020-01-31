@@ -46,7 +46,8 @@ class AnimatedSprite {
 		if (currentAnimation == null)
 			return;
 		var currentFrame = currentAnimation.frames[frame];
-		
+		if (drawLayers == null || drawLayers == [])
+			trace("Null layers object");
 		for (layer in drawLayers)
 			currentAnimation.spriteMap.renderCell(graphics, x, y, currentFrame, layer);
 	}

@@ -1,8 +1,12 @@
 package game;
 
 enum BodyPart {
-	Head;
-	Body;
-	Arm;
-	Leg;
+	NaturalHead;
+	NaturalChest;
+	NaturalArm;
+	NaturalLeg;
+	Boots;
+	Axe;
+	Sword;
+	Knife;
 }

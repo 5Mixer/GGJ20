@@ -1,7 +1,7 @@
 package bonsai.entity;
 
 class ParticleSystem<ParticleType> extends Entity {
-	var members:Array<ParticleType>;
+	public var members:Array<ParticleType>;
 	public var poolMaximum:Int;
 	var index = 0;
 	public function new (poolMaximum=300) {

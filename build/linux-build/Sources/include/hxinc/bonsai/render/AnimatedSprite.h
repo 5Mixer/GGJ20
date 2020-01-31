@@ -49,6 +49,8 @@ class HXCPP_CLASS_ATTRIBUTES AnimatedSprite_obj : public hx::Object
 
 		 ::haxe::ds::StringMap animations;
 		inline  ::haxe::ds::StringMap _hx_set_animations(hx::StackContext *_hx_ctx, ::haxe::ds::StringMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return animations=_hx_v; }
+		::Array< int > drawLayers;
+		inline ::Array< int > _hx_set_drawLayers(hx::StackContext *_hx_ctx,::Array< int > _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return drawLayers=_hx_v; }
 		::String playing;
 		inline ::String _hx_set_playing(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return playing=_hx_v; }
 		int frame;

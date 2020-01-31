@@ -10,8 +10,8 @@
 #ifndef INCLUDED_bonsai_scene_Scene
 #include <hxinc/bonsai/scene/Scene.h>
 #endif
-#ifndef INCLUDED_game_Level1
-#include <hxinc/game/Level1.h>
+#ifndef INCLUDED_game_World
+#include <hxinc/game/World.h>
 #endif
 
 HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_10_main,"Main","main",0xed0e206e,"Main.main","Main.hx",10,0x087e5c05)
@@ -47,7 +47,7 @@ STATIC_HX_DEFINE_DYNAMIC_FUNC0(Main_obj,main,(void))
 
 void Main_obj::onAssetLoad(){
             	HX_GC_STACKFRAME(&_hx_pos_e47a9afac0942eb9_17_onAssetLoad)
-HXDLIN(  17)		::Main_obj::engine->_hx_set_currentScene(HX_CTX,  ::game::Level1_obj::__alloc( HX_CTX ,::Main_obj::engine));
+HXDLIN(  17)		::Main_obj::engine->_hx_set_currentScene(HX_CTX,  ::game::World_obj::__alloc( HX_CTX ,::Main_obj::engine));
             	}
 
 

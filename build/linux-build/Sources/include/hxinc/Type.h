@@ -49,12 +49,6 @@ class HXCPP_CLASS_ATTRIBUTES Type_obj : public hx::Object
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("Type",da,1e,e2,37); }
 
-		static hx::Class getClass( ::Dynamic o);
-		static ::Dynamic getClass_dyn();
-
-		static ::String getClassName(hx::Class c);
-		static ::Dynamic getClassName_dyn();
-
 		static hx::Class resolveClass(::String name);
 		static ::Dynamic resolveClass_dyn();
 
@@ -67,11 +61,17 @@ class HXCPP_CLASS_ATTRIBUTES Type_obj : public hx::Object
 		static  ::Dynamic createEnum(hx::Class e,::String constr,::cpp::VirtualArray params);
 		static ::Dynamic createEnum_dyn();
 
+		static  ::Dynamic createEnumIndex(hx::Class e,int index,::cpp::VirtualArray params);
+		static ::Dynamic createEnumIndex_dyn();
+
 		static ::Array< ::String > getInstanceFields(hx::Class c);
 		static ::Dynamic getInstanceFields_dyn();
 
 		static ::Array< ::String > getEnumConstructs(hx::Class e);
 		static ::Dynamic getEnumConstructs_dyn();
+
+		static ::cpp::VirtualArray enumParameters( ::Dynamic e);
+		static ::Dynamic enumParameters_dyn();
 
 };
 

@@ -21,10 +21,6 @@ HX_LOCAL_STACK_FRAME(_hx_pos_a66906f68108a45a_25_boot,"InputBindings","boot",0xf
 static const int _hx_array_data_9f3e3b98_7[] = {
 	(int)40,(int)83,
 };
-HX_LOCAL_STACK_FRAME(_hx_pos_a66906f68108a45a_26_boot,"InputBindings","boot",0xf214f0c8,"InputBindings.boot","Main.hx",26,0x087e5c05)
-static const int _hx_array_data_9f3e3b98_9[] = {
-	(int)80,
-};
 
 void InputBindings_obj::__construct() { }
 
@@ -51,8 +47,6 @@ bool InputBindings_obj::_hx_isInstanceOf(int inClassId) {
 
 ::Array< int > InputBindings_obj::down;
 
-::Array< int > InputBindings_obj::punch;
-
 
 InputBindings_obj::InputBindings_obj()
 {
@@ -70,7 +64,6 @@ bool InputBindings_obj::__GetStatic(const ::String &inName, Dynamic &outValue, h
 		break;
 	case 5:
 		if (HX_FIELD_EQ(inName,"right") ) { outValue = ( right ); return true; }
-		if (HX_FIELD_EQ(inName,"punch") ) { outValue = ( punch ); return true; }
 	}
 	return false;
 }
@@ -87,7 +80,6 @@ bool InputBindings_obj::__SetStatic(const ::String &inName,Dynamic &ioValue,hx::
 		break;
 	case 5:
 		if (HX_FIELD_EQ(inName,"right") ) { right=ioValue.Cast< ::Array< int > >(); return true; }
-		if (HX_FIELD_EQ(inName,"punch") ) { punch=ioValue.Cast< ::Array< int > >(); return true; }
 	}
 	return false;
 }
@@ -99,7 +91,6 @@ static hx::StaticInfo InputBindings_obj_sStaticStorageInfo[] = {
 	{hx::fsObject /* ::Array< int > */ ,(void *) &InputBindings_obj::right,HX_("right",dc,0b,64,e9)},
 	{hx::fsObject /* ::Array< int > */ ,(void *) &InputBindings_obj::up,HX_("up",5b,66,00,00)},
 	{hx::fsObject /* ::Array< int > */ ,(void *) &InputBindings_obj::down,HX_("down",62,f8,6d,42)},
-	{hx::fsObject /* ::Array< int > */ ,(void *) &InputBindings_obj::punch,HX_("punch",ae,bd,8a,ca)},
 	{ hx::fsUnknown, 0, null()}
 };
 #endif
@@ -109,7 +100,6 @@ static void InputBindings_obj_sMarkStatics(HX_MARK_PARAMS) {
 	HX_MARK_MEMBER_NAME(InputBindings_obj::right,"right");
 	HX_MARK_MEMBER_NAME(InputBindings_obj::up,"up");
 	HX_MARK_MEMBER_NAME(InputBindings_obj::down,"down");
-	HX_MARK_MEMBER_NAME(InputBindings_obj::punch,"punch");
 };
 
 #ifdef HXCPP_VISIT_ALLOCS
@@ -118,7 +108,6 @@ static void InputBindings_obj_sVisitStatics(HX_VISIT_PARAMS) {
 	HX_VISIT_MEMBER_NAME(InputBindings_obj::right,"right");
 	HX_VISIT_MEMBER_NAME(InputBindings_obj::up,"up");
 	HX_VISIT_MEMBER_NAME(InputBindings_obj::down,"down");
-	HX_VISIT_MEMBER_NAME(InputBindings_obj::punch,"punch");
 };
 
 #endif
@@ -130,7 +119,6 @@ static ::String InputBindings_obj_sStaticFields[] = {
 	HX_("right",dc,0b,64,e9),
 	HX_("up",5b,66,00,00),
 	HX_("down",62,f8,6d,42),
-	HX_("punch",ae,bd,8a,ca),
 	::String(null())
 };
 
@@ -178,10 +166,6 @@ HXDLIN(  24)		up = ::Array_obj< int >::fromData( _hx_array_data_9f3e3b98_5,2);
 {
             	HX_STACKFRAME(&_hx_pos_a66906f68108a45a_25_boot)
 HXDLIN(  25)		down = ::Array_obj< int >::fromData( _hx_array_data_9f3e3b98_7,2);
-            	}
-{
-            	HX_STACKFRAME(&_hx_pos_a66906f68108a45a_26_boot)
-HXDLIN(  26)		punch = ::Array_obj< int >::fromData( _hx_array_data_9f3e3b98_9,1);
             	}
 }
 

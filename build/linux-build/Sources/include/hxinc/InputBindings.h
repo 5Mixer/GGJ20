@@ -55,7 +55,6 @@ class HXCPP_CLASS_ATTRIBUTES InputBindings_obj : public hx::Object
 		static ::Array< int > right;
 		static ::Array< int > up;
 		static ::Array< int > down;
-		static ::Array< int > punch;
 };
 
 

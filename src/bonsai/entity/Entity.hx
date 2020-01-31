@@ -1,9 +1,9 @@
 package bonsai.entity;
 
 class Entity {
-	var position:kha.math.Vector2;
-	var active = true;
-	var visible = true;
+	public var position:kha.math.Vector2;
+	public var active = true;
+	public var visible = true;
 
 	public function new () {
 		position = new kha.math.Vector2();
