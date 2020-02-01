@@ -71,18 +71,6 @@
 			"type": "font"
 		},
 		{
-			"name": "bodyParts",
-			"files": [
-				"bodyParts.png"
-			],
-			"file_sizes": [
-				856
-			],
-			"type": "image",
-			"original_width": 32,
-			"original_height": 480
-		},
-		{
 			"name": "bodyParts2",
 			"files": [
 				"bodyParts2.png"
@@ -105,42 +93,42 @@
 			"type": "blob"
 		},
 		{
-			"name": "bodyParts2_json",
-			"files": [
-				"bodyParts2.json"
-			],
-			"file_sizes": [
-				1440
-			],
-			"type": "blob"
-		},
-		{
-			"name": "bodyParts_ase",
-			"files": [
-				"bodyParts.ase"
-			],
-			"file_sizes": [
-				1900
-			],
-			"type": "blob"
-		},
-		{
-			"name": "bodyParts_json",
-			"files": [
-				"bodyParts.json"
-			],
-			"file_sizes": [
-				1439
-			],
-			"type": "blob"
-		},
-		{
 			"name": "castle1_tmx",
 			"files": [
 				"castle1.tmx"
 			],
 			"file_sizes": [
-				1752
+				1634
+			],
+			"type": "blob"
+		},
+		{
+			"name": "castle2_tmx",
+			"files": [
+				"castle2.tmx"
+			],
+			"file_sizes": [
+				4802
+			],
+			"type": "blob"
+		},
+		{
+			"name": "castle3_tmx",
+			"files": [
+				"castle3.tmx"
+			],
+			"file_sizes": [
+				1634
+			],
+			"type": "blob"
+		},
+		{
+			"name": "castle4_tmx",
+			"files": [
+				"castle4.tmx"
+			],
+			"file_sizes": [
+				1634
 			],
 			"type": "blob"
 		},
@@ -150,7 +138,7 @@
 				"castleTiles.png"
 			],
 			"file_sizes": [
-				1528
+				1971
 			],
 			"type": "image",
 			"original_width": 128,
@@ -162,17 +150,7 @@
 				"castleTiles.ase"
 			],
 			"file_sizes": [
-				1783
-			],
-			"type": "blob"
-		},
-		{
-			"name": "castleTiles_json",
-			"files": [
-				"castleTiles.json"
-			],
-			"file_sizes": [
-				544
+				1989
 			],
 			"type": "blob"
 		},
@@ -182,7 +160,7 @@
 				"castleTiles.tsx"
 			],
 			"file_sizes": [
-				232
+				233
 			],
 			"type": "blob"
 		},
@@ -634,16 +612,6 @@
 			"type": "blob"
 		},
 		{
-			"name": "satanicCircle_json",
-			"files": [
-				"satanicCircle.json"
-			],
-			"file_sizes": [
-				1685
-			],
-			"type": "blob"
-		},
-		{
 			"name": "tiles",
 			"files": [
 				"tiles.png"
@@ -662,16 +630,6 @@
 			],
 			"file_sizes": [
 				1479
-			],
-			"type": "blob"
-		},
-		{
-			"name": "tiles_json",
-			"files": [
-				"tiles.json"
-			],
-			"file_sizes": [
-				538
 			],
 			"type": "blob"
 		},
