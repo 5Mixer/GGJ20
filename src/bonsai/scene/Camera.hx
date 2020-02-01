@@ -6,7 +6,7 @@ class Camera {
 	public var transformation:Transformation;
 	var shakeTransformation:Transformation;
 	var shakeDuration = 0.;
-	var shakeStrength = 0;
+	var shakeStrength = 0.;
 	public var position:kha.math.Vector2;
 
 	public function new () {
@@ -38,7 +38,7 @@ class Camera {
 		transformation.finish(g);
 		shakeTransformation.finish(g);
 	}
-	public function shake (duration, strength) {
+	public function shake (duration:Float, strength:Float) {
 		shakeDuration = duration;
 		shakeStrength = strength;
 

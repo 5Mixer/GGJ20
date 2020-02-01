@@ -109,6 +109,30 @@ class HXCPP_CLASS_ATTRIBUTES BlobList_obj : public hx::Object
 		void map_tmxUnload();
 		::Dynamic map_tmxUnload_dyn();
 
+		 ::kha::internal::BytesBlob satanicCircle_ase;
+		inline  ::kha::internal::BytesBlob _hx_set_satanicCircle_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return satanicCircle_ase=_hx_v; }
+		::String satanicCircle_aseName;
+		inline ::String _hx_set_satanicCircle_aseName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return satanicCircle_aseName=_hx_v; }
+		 ::Dynamic satanicCircle_aseDescription;
+		inline  ::Dynamic _hx_set_satanicCircle_aseDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return satanicCircle_aseDescription=_hx_v; }
+		void satanicCircle_aseLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic satanicCircle_aseLoad_dyn();
+
+		void satanicCircle_aseUnload();
+		::Dynamic satanicCircle_aseUnload_dyn();
+
+		 ::kha::internal::BytesBlob satanicCircle_json;
+		inline  ::kha::internal::BytesBlob _hx_set_satanicCircle_json(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return satanicCircle_json=_hx_v; }
+		::String satanicCircle_jsonName;
+		inline ::String _hx_set_satanicCircle_jsonName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return satanicCircle_jsonName=_hx_v; }
+		 ::Dynamic satanicCircle_jsonDescription;
+		inline  ::Dynamic _hx_set_satanicCircle_jsonDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return satanicCircle_jsonDescription=_hx_v; }
+		void satanicCircle_jsonLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic satanicCircle_jsonLoad_dyn();
+
+		void satanicCircle_jsonUnload();
+		::Dynamic satanicCircle_jsonUnload_dyn();
+
 		 ::kha::internal::BytesBlob tiles_ase;
 		inline  ::kha::internal::BytesBlob _hx_set_tiles_ase(hx::StackContext *_hx_ctx, ::kha::internal::BytesBlob _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles_ase=_hx_v; }
 		::String tiles_aseName;

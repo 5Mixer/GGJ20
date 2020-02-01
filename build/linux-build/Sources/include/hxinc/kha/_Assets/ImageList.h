@@ -74,6 +74,18 @@ class HXCPP_CLASS_ATTRIBUTES ImageList_obj : public hx::Object
 		void bodyParts2Unload();
 		::Dynamic bodyParts2Unload_dyn();
 
+		 ::kha::Image satanicCircle;
+		inline  ::kha::Image _hx_set_satanicCircle(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return satanicCircle=_hx_v; }
+		::String satanicCircleName;
+		inline ::String _hx_set_satanicCircleName(hx::StackContext *_hx_ctx,::String _hx_v) { HX_OBJ_WB(this,_hx_v.raw_ref()) return satanicCircleName=_hx_v; }
+		 ::Dynamic satanicCircleDescription;
+		inline  ::Dynamic _hx_set_satanicCircleDescription(hx::StackContext *_hx_ctx, ::Dynamic _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return satanicCircleDescription=_hx_v; }
+		void satanicCircleLoad( ::Dynamic done, ::Dynamic failure);
+		::Dynamic satanicCircleLoad_dyn();
+
+		void satanicCircleUnload();
+		::Dynamic satanicCircleUnload_dyn();
+
 		 ::kha::Image tiles;
 		inline  ::kha::Image _hx_set_tiles(hx::StackContext *_hx_ctx, ::kha::Image _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles=_hx_v; }
 		::String tilesName;

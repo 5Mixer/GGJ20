@@ -57,6 +57,9 @@ class HXCPP_CLASS_ATTRIBUTES ObjectMap_obj : public hx::Object
 		 ::Dynamic get( ::Dynamic key);
 		::Dynamic get_dyn();
 
+		 ::Dynamic keys();
+		::Dynamic keys_dyn();
+
 
   inline void set(Dynamic key, ::null value) { __object_hash_set(HX_MAP_THIS,key,value); }
   inline void set(Dynamic key, bool value) { __object_hash_set(HX_MAP_THIS,key,value); }

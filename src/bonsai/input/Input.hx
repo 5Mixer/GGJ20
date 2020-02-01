@@ -5,6 +5,8 @@ import bonsai.event.EventSystem;
 enum InputEvent {
 	MouseEnter;
 	MouseLeave;
+	MouseDown;
+	MouseUp;
 	MouseScroll(delta:Int);
 }
 
@@ -18,6 +20,8 @@ class Input {
 	public var mouseInside = true;
 
 	public var downKeys = [];
+
+	public var mouseUpListeners:Array<() -> Void> = [];
 
 	public function new () {
 		mousePosition = new kha.math.Vector2(0,0);
@@ -39,12 +43,16 @@ class Input {
 		if (button == 2) mouseRightDown = true;
 		mousePosition.x = x;
 		mousePosition.y = y;
+		events.dispatch(InputEvent.MouseDown);
 	}
 	function mouseUp (button, x, y) {
 		if (button == 0) mouseLeftDown = false;
 		if (button == 2) mouseRightDown = false;
 		mousePosition.x = x;
 		mousePosition.y = y;
+		events.dispatch(InputEvent.MouseUp);
+		for (listener in mouseUpListeners)
+			listener();
 	}
 	function mouseMove (x, y, dx, dy) {
 		if (!mouseInside)

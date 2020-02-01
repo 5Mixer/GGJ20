@@ -11,6 +11,7 @@
 HX_DEFINE_STACK_FRAME(_hx_pos_edbd2e6c80c60279_58_new,"haxe.ds.ObjectMap","new",0x27af5498,"haxe.ds.ObjectMap.new","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/ObjectMap.hx",58,0x1861ae36)
 HX_LOCAL_STACK_FRAME(_hx_pos_edbd2e6c80c60279_61_set,"haxe.ds.ObjectMap","set",0x27b31fda,"haxe.ds.ObjectMap.set","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/ObjectMap.hx",61,0x1861ae36)
 HX_LOCAL_STACK_FRAME(_hx_pos_edbd2e6c80c60279_65_get,"haxe.ds.ObjectMap","get",0x27aa04ce,"haxe.ds.ObjectMap.get","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/ObjectMap.hx",65,0x1861ae36)
+HX_LOCAL_STACK_FRAME(_hx_pos_edbd2e6c80c60279_76_keys,"haxe.ds.ObjectMap","keys",0x8fbf0ebc,"haxe.ds.ObjectMap.keys","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/ObjectMap.hx",76,0x1861ae36)
 namespace haxe{
 namespace ds{
 
@@ -34,6 +35,8 @@ bool ObjectMap_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 static ::haxe::IMap_obj _hx_haxe_ds_ObjectMap__hx_haxe_IMap= {
+	(  ::Dynamic (hx::Object::*)( ::Dynamic))&::haxe::ds::ObjectMap_obj::get,
+	(  ::Dynamic (hx::Object::*)())&::haxe::ds::ObjectMap_obj::keys,
 };
 
 void *ObjectMap_obj::_hx_getInterface(int inHash) {
@@ -62,6 +65,15 @@ HXDLIN(  65)		return  ::__object_hash_get(this->h,key);
 
 
 HX_DEFINE_DYNAMIC_FUNC1(ObjectMap_obj,get,return )
+
+ ::Dynamic ObjectMap_obj::keys(){
+            	HX_STACKFRAME(&_hx_pos_edbd2e6c80c60279_76_keys)
+HXLINE(  77)		::cpp::VirtualArray a =  ::__object_hash_keys(this->h);
+HXLINE(  78)		return a->iterator();
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC0(ObjectMap_obj,keys,return )
 
 
 hx::ObjectPtr< ObjectMap_obj > ObjectMap_obj::__new() {
@@ -102,6 +114,9 @@ hx::Val ObjectMap_obj::__Field(const ::String &inName,hx::PropertyAccess inCallP
 	case 3:
 		if (HX_FIELD_EQ(inName,"set") ) { return hx::Val( set_dyn() ); }
 		if (HX_FIELD_EQ(inName,"get") ) { return hx::Val( get_dyn() ); }
+		break;
+	case 4:
+		if (HX_FIELD_EQ(inName,"keys") ) { return hx::Val( keys_dyn() ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -133,6 +148,7 @@ static ::String ObjectMap_obj_sMemberFields[] = {
 	HX_("h",68,00,00,00),
 	HX_("set",a2,9b,57,00),
 	HX_("get",96,80,4e,00),
+	HX_("keys",f4,e1,06,47),
 	::String(null()) };
 
 hx::Class ObjectMap_obj::__mClass;

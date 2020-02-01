@@ -52,6 +52,8 @@ bool EnumValueMap_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 static ::haxe::IMap_obj _hx_haxe_ds_EnumValueMap__hx_haxe_IMap= {
+	(  ::Dynamic (hx::Object::*)( ::Dynamic))&::haxe::ds::EnumValueMap_obj::get,
+	(  ::Dynamic (hx::Object::*)())&::haxe::ds::EnumValueMap_obj::keys,
 };
 
 void *EnumValueMap_obj::_hx_getInterface(int inHash) {

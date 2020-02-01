@@ -14,13 +14,18 @@
 #ifndef INCLUDED_kha_math_FastMatrix3
 #include <hxinc/kha/math/FastMatrix3.h>
 #endif
+#ifndef INCLUDED_kha_math_FastVector2
+#include <hxinc/kha/math/FastVector2.h>
+#endif
 #ifndef INCLUDED_kha_math_Vector2
 #include <hxinc/kha/math/Vector2.h>
 #endif
 
 HX_DEFINE_STACK_FRAME(_hx_pos_91118b6f6a1477d5_11_new,"bonsai.render.Transformation","new",0x55c9a0bf,"bonsai.render.Transformation.new","bonsai/render/Transformation.hx",11,0x51c22571)
 HX_LOCAL_STACK_FRAME(_hx_pos_91118b6f6a1477d5_18_apply,"bonsai.render.Transformation","apply",0x1f0d6b8d,"bonsai.render.Transformation.apply","bonsai/render/Transformation.hx",18,0x51c22571)
-HX_LOCAL_STACK_FRAME(_hx_pos_91118b6f6a1477d5_27_finish,"bonsai.render.Transformation","finish",0x0356b554,"bonsai.render.Transformation.finish","bonsai/render/Transformation.hx",27,0x51c22571)
+HX_LOCAL_STACK_FRAME(_hx_pos_91118b6f6a1477d5_28_finish,"bonsai.render.Transformation","finish",0x0356b554,"bonsai.render.Transformation.finish","bonsai/render/Transformation.hx",28,0x51c22571)
+HX_LOCAL_STACK_FRAME(_hx_pos_91118b6f6a1477d5_30_transformPoint,"bonsai.render.Transformation","transformPoint",0x10d7ad45,"bonsai.render.Transformation.transformPoint","bonsai/render/Transformation.hx",30,0x51c22571)
+HX_LOCAL_STACK_FRAME(_hx_pos_91118b6f6a1477d5_39_untransformPoint,"bonsai.render.Transformation","untransformPoint",0x01ad5f9e,"bonsai.render.Transformation.untransformPoint","bonsai/render/Transformation.hx",39,0x51c22571)
 namespace bonsai{
 namespace render{
 
@@ -49,16 +54,16 @@ bool Transformation_obj::_hx_isInstanceOf(int inClassId) {
 void Transformation_obj::apply( ::kha::graphics2::Graphics graphics){
             	HX_GC_STACKFRAME(&_hx_pos_91118b6f6a1477d5_18_apply)
 HXDLIN(  18)		 ::kha::math::FastMatrix3 _this = graphics->transformations->__get(graphics->transformationIndex).StaticCast<  ::kha::math::FastMatrix3 >();
-HXDLIN(  18)		float m__00 = ( (float)(1) );
-HXDLIN(  18)		float m__10 = ( (float)(0) );
-HXDLIN(  18)		float m__20 = ( (float)((this->offset->x + this->origin->x)) );
-HXDLIN(  18)		float m__01 = ( (float)(0) );
-HXDLIN(  18)		float m__11 = ( (float)(1) );
-HXDLIN(  18)		float m__21 = ( (float)((this->offset->y + this->origin->y)) );
-HXDLIN(  18)		float m__02 = ( (float)(0) );
-HXDLIN(  18)		float m__12 = ( (float)(0) );
-HXDLIN(  18)		float m__22 = ( (float)(1) );
-HXDLIN(  18)		float _this__00 = (((_this->_00 * m__00) + (_this->_10 * m__01)) + (_this->_20 * m__02));
+HXLINE(  19)		float m__00 = ( (float)(1) );
+HXDLIN(  19)		float m__10 = ( (float)(0) );
+HXDLIN(  19)		float m__20 = ( (float)((this->offset->x + this->origin->x)) );
+HXDLIN(  19)		float m__01 = ( (float)(0) );
+HXDLIN(  19)		float m__11 = ( (float)(1) );
+HXDLIN(  19)		float m__21 = ( (float)((this->offset->y + this->origin->y)) );
+HXDLIN(  19)		float m__02 = ( (float)(0) );
+HXDLIN(  19)		float m__12 = ( (float)(0) );
+HXDLIN(  19)		float m__22 = ( (float)(1) );
+HXLINE(  18)		float _this__00 = (((_this->_00 * m__00) + (_this->_10 * m__01)) + (_this->_20 * m__02));
 HXDLIN(  18)		float _this__10 = (((_this->_00 * m__10) + (_this->_10 * m__11)) + (_this->_20 * m__12));
 HXDLIN(  18)		float _this__20 = (((_this->_00 * m__20) + (_this->_10 * m__21)) + (_this->_20 * m__22));
 HXDLIN(  18)		float _this__01 = (((_this->_01 * m__00) + (_this->_11 * m__01)) + (_this->_21 * m__02));
@@ -67,15 +72,15 @@ HXDLIN(  18)		float _this__21 = (((_this->_01 * m__20) + (_this->_11 * m__21)) +
 HXDLIN(  18)		float _this__02 = (((_this->_02 * m__00) + (_this->_12 * m__01)) + (_this->_22 * m__02));
 HXDLIN(  18)		float _this__12 = (((_this->_02 * m__10) + (_this->_12 * m__11)) + (_this->_22 * m__12));
 HXDLIN(  18)		float _this__22 = (((_this->_02 * m__20) + (_this->_12 * m__21)) + (_this->_22 * m__22));
-HXLINE(  20)		float m__001 = ( (float)(this->scale->x) );
-HXDLIN(  20)		float m__101 = ( (float)(0) );
-HXDLIN(  20)		float m__201 = ( (float)(0) );
-HXDLIN(  20)		float m__011 = ( (float)(0) );
-HXDLIN(  20)		float m__111 = ( (float)(this->scale->y) );
-HXDLIN(  20)		float m__211 = ( (float)(0) );
-HXDLIN(  20)		float m__021 = ( (float)(0) );
-HXDLIN(  20)		float m__121 = ( (float)(0) );
-HXDLIN(  20)		float m__221 = ( (float)(1) );
+HXLINE(  21)		float m__001 = ( (float)(this->scale->x) );
+HXDLIN(  21)		float m__101 = ( (float)(0) );
+HXDLIN(  21)		float m__201 = ( (float)(0) );
+HXDLIN(  21)		float m__011 = ( (float)(0) );
+HXDLIN(  21)		float m__111 = ( (float)(this->scale->y) );
+HXDLIN(  21)		float m__211 = ( (float)(0) );
+HXDLIN(  21)		float m__021 = ( (float)(0) );
+HXDLIN(  21)		float m__121 = ( (float)(0) );
+HXDLIN(  21)		float m__221 = ( (float)(1) );
 HXLINE(  18)		float _this__001 = (((_this__00 * m__001) + (_this__10 * m__011)) + (_this__20 * m__021));
 HXDLIN(  18)		float _this__101 = (((_this__00 * m__101) + (_this__10 * m__111)) + (_this__20 * m__121));
 HXDLIN(  18)		float _this__201 = (((_this__00 * m__201) + (_this__10 * m__211)) + (_this__20 * m__221));
@@ -85,16 +90,16 @@ HXDLIN(  18)		float _this__211 = (((_this__01 * m__201) + (_this__11 * m__211)) 
 HXDLIN(  18)		float _this__021 = (((_this__02 * m__001) + (_this__12 * m__011)) + (_this__22 * m__021));
 HXDLIN(  18)		float _this__121 = (((_this__02 * m__101) + (_this__12 * m__111)) + (_this__22 * m__121));
 HXDLIN(  18)		float _this__221 = (((_this__02 * m__201) + (_this__12 * m__211)) + (_this__22 * m__221));
-HXLINE(  21)		float alpha = ( (float)(this->rotation) );
-HXDLIN(  21)		float m__002 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
-HXDLIN(  21)		float m__102 = ( (float)(-(::Math_obj::sin(( (Float)(alpha) )))) );
-HXDLIN(  21)		float m__202 = ( (float)(0) );
-HXDLIN(  21)		float m__012 = ( (float)(::Math_obj::sin(( (Float)(alpha) ))) );
-HXDLIN(  21)		float m__112 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
-HXDLIN(  21)		float m__212 = ( (float)(0) );
-HXDLIN(  21)		float m__022 = ( (float)(0) );
-HXDLIN(  21)		float m__122 = ( (float)(0) );
-HXDLIN(  21)		float m__222 = ( (float)(1) );
+HXLINE(  22)		float alpha = ( (float)(this->rotation) );
+HXDLIN(  22)		float m__002 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
+HXDLIN(  22)		float m__102 = ( (float)(-(::Math_obj::sin(( (Float)(alpha) )))) );
+HXDLIN(  22)		float m__202 = ( (float)(0) );
+HXDLIN(  22)		float m__012 = ( (float)(::Math_obj::sin(( (Float)(alpha) ))) );
+HXDLIN(  22)		float m__112 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
+HXDLIN(  22)		float m__212 = ( (float)(0) );
+HXDLIN(  22)		float m__022 = ( (float)(0) );
+HXDLIN(  22)		float m__122 = ( (float)(0) );
+HXDLIN(  22)		float m__222 = ( (float)(1) );
 HXLINE(  18)		float _this__002 = (((_this__001 * m__002) + (_this__101 * m__012)) + (_this__201 * m__022));
 HXDLIN(  18)		float _this__102 = (((_this__001 * m__102) + (_this__101 * m__112)) + (_this__201 * m__122));
 HXDLIN(  18)		float _this__202 = (((_this__001 * m__202) + (_this__101 * m__212)) + (_this__201 * m__222));
@@ -104,15 +109,15 @@ HXDLIN(  18)		float _this__212 = (((_this__011 * m__202) + (_this__111 * m__212)
 HXDLIN(  18)		float _this__022 = (((_this__021 * m__002) + (_this__121 * m__012)) + (_this__221 * m__022));
 HXDLIN(  18)		float _this__122 = (((_this__021 * m__102) + (_this__121 * m__112)) + (_this__221 * m__122));
 HXDLIN(  18)		float _this__222 = (((_this__021 * m__202) + (_this__121 * m__212)) + (_this__221 * m__222));
-HXLINE(  22)		float m__003 = ( (float)(1) );
-HXDLIN(  22)		float m__103 = ( (float)(0) );
-HXDLIN(  22)		float m__203 = ( (float)(-(this->origin->x)) );
-HXDLIN(  22)		float m__013 = ( (float)(0) );
-HXDLIN(  22)		float m__113 = ( (float)(1) );
-HXDLIN(  22)		float m__213 = ( (float)(-(this->origin->y)) );
-HXDLIN(  22)		float m__023 = ( (float)(0) );
-HXDLIN(  22)		float m__123 = ( (float)(0) );
-HXDLIN(  22)		float m__223 = ( (float)(1) );
+HXLINE(  23)		float m__003 = ( (float)(1) );
+HXDLIN(  23)		float m__103 = ( (float)(0) );
+HXDLIN(  23)		float m__203 = ( (float)(-(this->origin->x)) );
+HXDLIN(  23)		float m__013 = ( (float)(0) );
+HXDLIN(  23)		float m__113 = ( (float)(1) );
+HXDLIN(  23)		float m__213 = ( (float)(-(this->origin->y)) );
+HXDLIN(  23)		float m__023 = ( (float)(0) );
+HXDLIN(  23)		float m__123 = ( (float)(0) );
+HXDLIN(  23)		float m__223 = ( (float)(1) );
 HXLINE(  18)		float trans__00 = (((_this__002 * m__003) + (_this__102 * m__013)) + (_this__202 * m__023));
 HXDLIN(  18)		float trans__10 = (((_this__002 * m__103) + (_this__102 * m__113)) + (_this__202 * m__123));
 HXDLIN(  18)		float trans__20 = (((_this__002 * m__203) + (_this__102 * m__213)) + (_this__202 * m__223));
@@ -146,12 +151,210 @@ HXDLIN(  18)		graphics->setTransformation(graphics->transformations->__get(graph
 HX_DEFINE_DYNAMIC_FUNC1(Transformation_obj,apply,(void))
 
 void Transformation_obj::finish( ::kha::graphics2::Graphics graphics){
-            	HX_STACKFRAME(&_hx_pos_91118b6f6a1477d5_27_finish)
-HXDLIN(  27)		graphics->popTransformation();
+            	HX_STACKFRAME(&_hx_pos_91118b6f6a1477d5_28_finish)
+HXDLIN(  28)		graphics->popTransformation();
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(Transformation_obj,finish,(void))
+
+ ::kha::math::FastVector2 Transformation_obj::transformPoint( ::kha::math::Vector2 point){
+            	HX_GC_STACKFRAME(&_hx_pos_91118b6f6a1477d5_30_transformPoint)
+HXLINE(  31)		float _this__00 = ( (float)(1) );
+HXDLIN(  31)		float _this__10 = ( (float)(0) );
+HXDLIN(  31)		float _this__20 = ( (float)((this->offset->x + this->origin->x)) );
+HXDLIN(  31)		float _this__01 = ( (float)(0) );
+HXDLIN(  31)		float _this__11 = ( (float)(1) );
+HXDLIN(  31)		float _this__21 = ( (float)((this->offset->y + this->origin->y)) );
+HXDLIN(  31)		float _this__02 = ( (float)(0) );
+HXDLIN(  31)		float _this__12 = ( (float)(0) );
+HXDLIN(  31)		float _this__22 = ( (float)(1) );
+HXLINE(  33)		float m__00 = ( (float)(this->scale->x) );
+HXDLIN(  33)		float m__10 = ( (float)(0) );
+HXDLIN(  33)		float m__20 = ( (float)(0) );
+HXDLIN(  33)		float m__01 = ( (float)(0) );
+HXDLIN(  33)		float m__11 = ( (float)(this->scale->y) );
+HXDLIN(  33)		float m__21 = ( (float)(0) );
+HXDLIN(  33)		float m__02 = ( (float)(0) );
+HXDLIN(  33)		float m__12 = ( (float)(0) );
+HXDLIN(  33)		float m__22 = ( (float)(1) );
+HXLINE(  31)		float _this__001 = (((_this__00 * m__00) + (_this__10 * m__01)) + (_this__20 * m__02));
+HXDLIN(  31)		float _this__101 = (((_this__00 * m__10) + (_this__10 * m__11)) + (_this__20 * m__12));
+HXDLIN(  31)		float _this__201 = (((_this__00 * m__20) + (_this__10 * m__21)) + (_this__20 * m__22));
+HXDLIN(  31)		float _this__011 = (((_this__01 * m__00) + (_this__11 * m__01)) + (_this__21 * m__02));
+HXDLIN(  31)		float _this__111 = (((_this__01 * m__10) + (_this__11 * m__11)) + (_this__21 * m__12));
+HXDLIN(  31)		float _this__211 = (((_this__01 * m__20) + (_this__11 * m__21)) + (_this__21 * m__22));
+HXDLIN(  31)		float _this__021 = (((_this__02 * m__00) + (_this__12 * m__01)) + (_this__22 * m__02));
+HXDLIN(  31)		float _this__121 = (((_this__02 * m__10) + (_this__12 * m__11)) + (_this__22 * m__12));
+HXDLIN(  31)		float _this__221 = (((_this__02 * m__20) + (_this__12 * m__21)) + (_this__22 * m__22));
+HXLINE(  34)		float alpha = ( (float)(this->rotation) );
+HXDLIN(  34)		float m__001 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
+HXDLIN(  34)		float m__101 = ( (float)(-(::Math_obj::sin(( (Float)(alpha) )))) );
+HXDLIN(  34)		float m__201 = ( (float)(0) );
+HXDLIN(  34)		float m__011 = ( (float)(::Math_obj::sin(( (Float)(alpha) ))) );
+HXDLIN(  34)		float m__111 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
+HXDLIN(  34)		float m__211 = ( (float)(0) );
+HXDLIN(  34)		float m__021 = ( (float)(0) );
+HXDLIN(  34)		float m__121 = ( (float)(0) );
+HXDLIN(  34)		float m__221 = ( (float)(1) );
+HXLINE(  31)		float _this__002 = (((_this__001 * m__001) + (_this__101 * m__011)) + (_this__201 * m__021));
+HXDLIN(  31)		float _this__102 = (((_this__001 * m__101) + (_this__101 * m__111)) + (_this__201 * m__121));
+HXDLIN(  31)		float _this__202 = (((_this__001 * m__201) + (_this__101 * m__211)) + (_this__201 * m__221));
+HXDLIN(  31)		float _this__012 = (((_this__011 * m__001) + (_this__111 * m__011)) + (_this__211 * m__021));
+HXDLIN(  31)		float _this__112 = (((_this__011 * m__101) + (_this__111 * m__111)) + (_this__211 * m__121));
+HXDLIN(  31)		float _this__212 = (((_this__011 * m__201) + (_this__111 * m__211)) + (_this__211 * m__221));
+HXDLIN(  31)		float _this__022 = (((_this__021 * m__001) + (_this__121 * m__011)) + (_this__221 * m__021));
+HXDLIN(  31)		float _this__122 = (((_this__021 * m__101) + (_this__121 * m__111)) + (_this__221 * m__121));
+HXDLIN(  31)		float _this__222 = (((_this__021 * m__201) + (_this__121 * m__211)) + (_this__221 * m__221));
+HXLINE(  35)		float m__002 = ( (float)(1) );
+HXDLIN(  35)		float m__102 = ( (float)(0) );
+HXDLIN(  35)		float m__202 = ( (float)(-(this->origin->x)) );
+HXDLIN(  35)		float m__012 = ( (float)(0) );
+HXDLIN(  35)		float m__112 = ( (float)(1) );
+HXDLIN(  35)		float m__212 = ( (float)(-(this->origin->y)) );
+HXDLIN(  35)		float m__022 = ( (float)(0) );
+HXDLIN(  35)		float m__122 = ( (float)(0) );
+HXDLIN(  35)		float m__222 = ( (float)(1) );
+HXLINE(  31)		float _this__003 = (((_this__002 * m__002) + (_this__102 * m__012)) + (_this__202 * m__022));
+HXDLIN(  31)		float _this__103 = (((_this__002 * m__102) + (_this__102 * m__112)) + (_this__202 * m__122));
+HXDLIN(  31)		float _this__203 = (((_this__002 * m__202) + (_this__102 * m__212)) + (_this__202 * m__222));
+HXDLIN(  31)		float _this__013 = (((_this__012 * m__002) + (_this__112 * m__012)) + (_this__212 * m__022));
+HXDLIN(  31)		float _this__113 = (((_this__012 * m__102) + (_this__112 * m__112)) + (_this__212 * m__122));
+HXDLIN(  31)		float _this__213 = (((_this__012 * m__202) + (_this__112 * m__212)) + (_this__212 * m__222));
+HXDLIN(  31)		float _this__023 = (((_this__022 * m__002) + (_this__122 * m__012)) + (_this__222 * m__022));
+HXDLIN(  31)		float _this__123 = (((_this__022 * m__102) + (_this__122 * m__112)) + (_this__222 * m__122));
+HXDLIN(  31)		float _this__223 = (((_this__022 * m__202) + (_this__122 * m__212)) + (_this__222 * m__222));
+HXDLIN(  31)		Float c00 = ( (Float)(((_this__113 * _this__223) - (_this__213 * _this__123))) );
+HXDLIN(  31)		Float c01 = ( (Float)(((_this__103 * _this__223) - (_this__203 * _this__123))) );
+HXDLIN(  31)		Float c02 = ( (Float)(((_this__103 * _this__213) - (_this__203 * _this__113))) );
+HXDLIN(  31)		float det = ( (float)((((( (Float)(_this__003) ) * c00) - (( (Float)(_this__013) ) * c01)) + (( (Float)(_this__023) ) * c02))) );
+HXDLIN(  31)		if ((::Math_obj::abs(( (Float)(det) )) < ((Float)0.000001))) {
+HXLINE(  31)			HX_STACK_DO_THROW(HX_("determinant is too small",f0,e3,aa,fc));
+            		}
+HXDLIN(  31)		Float c10 = ( (Float)(((_this__013 * _this__223) - (_this__213 * _this__023))) );
+HXDLIN(  31)		Float c11 = ( (Float)(((_this__003 * _this__223) - (_this__203 * _this__023))) );
+HXDLIN(  31)		Float c12 = ( (Float)(((_this__003 * _this__213) - (_this__203 * _this__013))) );
+HXDLIN(  31)		Float c20 = ( (Float)(((_this__013 * _this__123) - (_this__113 * _this__023))) );
+HXDLIN(  31)		Float c21 = ( (Float)(((_this__003 * _this__123) - (_this__103 * _this__023))) );
+HXDLIN(  31)		Float c22 = ( (Float)(((_this__003 * _this__113) - (_this__103 * _this__013))) );
+HXDLIN(  31)		float invdet = ( (float)((((Float)1.0) / ( (Float)(det) ))) );
+HXDLIN(  31)		float matrix__00 = ( (float)((c00 * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__10 = ( (float)((-(c01) * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__20 = ( (float)((c02 * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__01 = ( (float)((-(c10) * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__11 = ( (float)((c11 * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__21 = ( (float)((-(c12) * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__02 = ( (float)((c20 * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__12 = ( (float)((-(c21) * ( (Float)(invdet) ))) );
+HXDLIN(  31)		float matrix__22 = ( (float)((c22 * ( (Float)(invdet) ))) );
+HXLINE(  37)		 ::kha::math::FastVector2 value = ::kha::math::FastVector2_obj::fromVector2(point);
+HXDLIN(  37)		float w = (((matrix__02 * value->x) + (matrix__12 * value->y)) + matrix__22);
+HXDLIN(  37)		Float x = (( (Float)((((matrix__00 * value->x) + (matrix__10 * value->y)) + matrix__20)) ) / ( (Float)(w) ));
+HXDLIN(  37)		float y = ( (float)((( (Float)((((matrix__01 * value->x) + (matrix__11 * value->y)) + matrix__21)) ) / ( (Float)(w) ))) );
+HXDLIN(  37)		return  ::kha::math::FastVector2_obj::__alloc( HX_CTX ,x,y);
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC1(Transformation_obj,transformPoint,return )
+
+ ::kha::math::FastVector2 Transformation_obj::untransformPoint( ::kha::math::Vector2 point){
+            	HX_GC_STACKFRAME(&_hx_pos_91118b6f6a1477d5_39_untransformPoint)
+HXLINE(  40)		float _this__00 = ( (float)(1) );
+HXDLIN(  40)		float _this__10 = ( (float)(0) );
+HXDLIN(  40)		float _this__20 = ( (float)((this->offset->x + this->origin->x)) );
+HXDLIN(  40)		float _this__01 = ( (float)(0) );
+HXDLIN(  40)		float _this__11 = ( (float)(1) );
+HXDLIN(  40)		float _this__21 = ( (float)((this->offset->y + this->origin->y)) );
+HXDLIN(  40)		float _this__02 = ( (float)(0) );
+HXDLIN(  40)		float _this__12 = ( (float)(0) );
+HXDLIN(  40)		float _this__22 = ( (float)(1) );
+HXLINE(  42)		float m__00 = ( (float)(this->scale->x) );
+HXDLIN(  42)		float m__10 = ( (float)(0) );
+HXDLIN(  42)		float m__20 = ( (float)(0) );
+HXDLIN(  42)		float m__01 = ( (float)(0) );
+HXDLIN(  42)		float m__11 = ( (float)(this->scale->y) );
+HXDLIN(  42)		float m__21 = ( (float)(0) );
+HXDLIN(  42)		float m__02 = ( (float)(0) );
+HXDLIN(  42)		float m__12 = ( (float)(0) );
+HXDLIN(  42)		float m__22 = ( (float)(1) );
+HXLINE(  40)		float _this__001 = (((_this__00 * m__00) + (_this__10 * m__01)) + (_this__20 * m__02));
+HXDLIN(  40)		float _this__101 = (((_this__00 * m__10) + (_this__10 * m__11)) + (_this__20 * m__12));
+HXDLIN(  40)		float _this__201 = (((_this__00 * m__20) + (_this__10 * m__21)) + (_this__20 * m__22));
+HXDLIN(  40)		float _this__011 = (((_this__01 * m__00) + (_this__11 * m__01)) + (_this__21 * m__02));
+HXDLIN(  40)		float _this__111 = (((_this__01 * m__10) + (_this__11 * m__11)) + (_this__21 * m__12));
+HXDLIN(  40)		float _this__211 = (((_this__01 * m__20) + (_this__11 * m__21)) + (_this__21 * m__22));
+HXDLIN(  40)		float _this__021 = (((_this__02 * m__00) + (_this__12 * m__01)) + (_this__22 * m__02));
+HXDLIN(  40)		float _this__121 = (((_this__02 * m__10) + (_this__12 * m__11)) + (_this__22 * m__12));
+HXDLIN(  40)		float _this__221 = (((_this__02 * m__20) + (_this__12 * m__21)) + (_this__22 * m__22));
+HXLINE(  43)		float alpha = ( (float)(this->rotation) );
+HXDLIN(  43)		float m__001 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
+HXDLIN(  43)		float m__101 = ( (float)(-(::Math_obj::sin(( (Float)(alpha) )))) );
+HXDLIN(  43)		float m__201 = ( (float)(0) );
+HXDLIN(  43)		float m__011 = ( (float)(::Math_obj::sin(( (Float)(alpha) ))) );
+HXDLIN(  43)		float m__111 = ( (float)(::Math_obj::cos(( (Float)(alpha) ))) );
+HXDLIN(  43)		float m__211 = ( (float)(0) );
+HXDLIN(  43)		float m__021 = ( (float)(0) );
+HXDLIN(  43)		float m__121 = ( (float)(0) );
+HXDLIN(  43)		float m__221 = ( (float)(1) );
+HXLINE(  40)		float _this__002 = (((_this__001 * m__001) + (_this__101 * m__011)) + (_this__201 * m__021));
+HXDLIN(  40)		float _this__102 = (((_this__001 * m__101) + (_this__101 * m__111)) + (_this__201 * m__121));
+HXDLIN(  40)		float _this__202 = (((_this__001 * m__201) + (_this__101 * m__211)) + (_this__201 * m__221));
+HXDLIN(  40)		float _this__012 = (((_this__011 * m__001) + (_this__111 * m__011)) + (_this__211 * m__021));
+HXDLIN(  40)		float _this__112 = (((_this__011 * m__101) + (_this__111 * m__111)) + (_this__211 * m__121));
+HXDLIN(  40)		float _this__212 = (((_this__011 * m__201) + (_this__111 * m__211)) + (_this__211 * m__221));
+HXDLIN(  40)		float _this__022 = (((_this__021 * m__001) + (_this__121 * m__011)) + (_this__221 * m__021));
+HXDLIN(  40)		float _this__122 = (((_this__021 * m__101) + (_this__121 * m__111)) + (_this__221 * m__121));
+HXDLIN(  40)		float _this__222 = (((_this__021 * m__201) + (_this__121 * m__211)) + (_this__221 * m__221));
+HXLINE(  44)		float m__002 = ( (float)(1) );
+HXDLIN(  44)		float m__102 = ( (float)(0) );
+HXDLIN(  44)		float m__202 = ( (float)(-(this->origin->x)) );
+HXDLIN(  44)		float m__012 = ( (float)(0) );
+HXDLIN(  44)		float m__112 = ( (float)(1) );
+HXDLIN(  44)		float m__212 = ( (float)(-(this->origin->y)) );
+HXDLIN(  44)		float m__022 = ( (float)(0) );
+HXDLIN(  44)		float m__122 = ( (float)(0) );
+HXDLIN(  44)		float m__222 = ( (float)(1) );
+HXLINE(  40)		float _this__003 = (((_this__002 * m__002) + (_this__102 * m__012)) + (_this__202 * m__022));
+HXDLIN(  40)		float _this__103 = (((_this__002 * m__102) + (_this__102 * m__112)) + (_this__202 * m__122));
+HXDLIN(  40)		float _this__203 = (((_this__002 * m__202) + (_this__102 * m__212)) + (_this__202 * m__222));
+HXDLIN(  40)		float _this__013 = (((_this__012 * m__002) + (_this__112 * m__012)) + (_this__212 * m__022));
+HXDLIN(  40)		float _this__113 = (((_this__012 * m__102) + (_this__112 * m__112)) + (_this__212 * m__122));
+HXDLIN(  40)		float _this__213 = (((_this__012 * m__202) + (_this__112 * m__212)) + (_this__212 * m__222));
+HXDLIN(  40)		float _this__023 = (((_this__022 * m__002) + (_this__122 * m__012)) + (_this__222 * m__022));
+HXDLIN(  40)		float _this__123 = (((_this__022 * m__102) + (_this__122 * m__112)) + (_this__222 * m__122));
+HXDLIN(  40)		float _this__223 = (((_this__022 * m__202) + (_this__122 * m__212)) + (_this__222 * m__222));
+HXDLIN(  40)		Float c00 = ( (Float)(((_this__113 * _this__223) - (_this__213 * _this__123))) );
+HXDLIN(  40)		Float c01 = ( (Float)(((_this__103 * _this__223) - (_this__203 * _this__123))) );
+HXDLIN(  40)		Float c02 = ( (Float)(((_this__103 * _this__213) - (_this__203 * _this__113))) );
+HXDLIN(  40)		float det = ( (float)((((( (Float)(_this__003) ) * c00) - (( (Float)(_this__013) ) * c01)) + (( (Float)(_this__023) ) * c02))) );
+HXDLIN(  40)		if ((::Math_obj::abs(( (Float)(det) )) < ((Float)0.000001))) {
+HXLINE(  40)			HX_STACK_DO_THROW(HX_("determinant is too small",f0,e3,aa,fc));
+            		}
+HXDLIN(  40)		Float c10 = ( (Float)(((_this__013 * _this__223) - (_this__213 * _this__023))) );
+HXDLIN(  40)		Float c11 = ( (Float)(((_this__003 * _this__223) - (_this__203 * _this__023))) );
+HXDLIN(  40)		Float c12 = ( (Float)(((_this__003 * _this__213) - (_this__203 * _this__013))) );
+HXDLIN(  40)		Float c20 = ( (Float)(((_this__013 * _this__123) - (_this__113 * _this__023))) );
+HXDLIN(  40)		Float c21 = ( (Float)(((_this__003 * _this__123) - (_this__103 * _this__023))) );
+HXDLIN(  40)		Float c22 = ( (Float)(((_this__003 * _this__113) - (_this__103 * _this__013))) );
+HXDLIN(  40)		float invdet = ( (float)((((Float)1.0) / ( (Float)(det) ))) );
+HXDLIN(  40)		float matrix__00 = ( (float)((c00 * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__10 = ( (float)((-(c01) * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__20 = ( (float)((c02 * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__01 = ( (float)((-(c10) * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__11 = ( (float)((c11 * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__21 = ( (float)((-(c12) * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__02 = ( (float)((c20 * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__12 = ( (float)((-(c21) * ( (Float)(invdet) ))) );
+HXDLIN(  40)		float matrix__22 = ( (float)((c22 * ( (Float)(invdet) ))) );
+HXLINE(  47)		 ::kha::math::FastVector2 value = ::kha::math::FastVector2_obj::fromVector2(point);
+HXDLIN(  47)		float w = (((matrix__02 * value->x) + (matrix__12 * value->y)) + matrix__22);
+HXDLIN(  47)		Float x = (( (Float)((((matrix__00 * value->x) + (matrix__10 * value->y)) + matrix__20)) ) / ( (Float)(w) ));
+HXDLIN(  47)		float y = ( (float)((( (Float)((((matrix__01 * value->x) + (matrix__11 * value->y)) + matrix__21)) ) / ( (Float)(w) ))) );
+HXDLIN(  47)		return  ::kha::math::FastVector2_obj::__alloc( HX_CTX ,x,y);
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC1(Transformation_obj,untransformPoint,return )
 
 
 hx::ObjectPtr< Transformation_obj > Transformation_obj::__new() {
@@ -203,6 +406,12 @@ hx::Val Transformation_obj::__Field(const ::String &inName,hx::PropertyAccess in
 		break;
 	case 8:
 		if (HX_FIELD_EQ(inName,"rotation") ) { return hx::Val( rotation ); }
+		break;
+	case 14:
+		if (HX_FIELD_EQ(inName,"transformPoint") ) { return hx::Val( transformPoint_dyn() ); }
+		break;
+	case 16:
+		if (HX_FIELD_EQ(inName,"untransformPoint") ) { return hx::Val( untransformPoint_dyn() ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -250,6 +459,8 @@ static ::String Transformation_obj_sMemberFields[] = {
 	HX_("origin",e6,19,01,4b),
 	HX_("apply",6e,85,3b,24),
 	HX_("finish",53,40,7f,86),
+	HX_("transformPoint",44,cf,11,3d),
+	HX_("untransformPoint",5d,3f,33,4a),
 	::String(null()) };
 
 hx::Class Transformation_obj::__mClass;

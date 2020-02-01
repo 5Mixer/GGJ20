@@ -1,128 +1,92 @@
 package game;
 
-enum HeadPart {
-	NaturalHeadRight;
-	NaturalHeadLeft;
-	NaturalHeadDown;
-	NaturalHeadUp;
-}
-enum ChestPart {
-	NaturalChest;
-}
-enum ArmPart {
-	NaturalArm;
-	Knife;
-	Sword;
-	Axe;
-}
-enum LegPart {
-	NaturalLeg;
-	Boots;
-}
 
 class Body extends bonsai.entity.Entity{
-	public var head:HeadPart;
-	public var chest:ChestPart;
-	public var leftArm:ArmPart;
-	public var rightArm:ArmPart;
-	public var leftLeg:LegPart;
-	public var rightLeg:LegPart;
+	public var head:BodyPart;
+	public var chest:BodyPart;
+	public var leftArm:BodyPart;
+	public var rightArm:BodyPart;
+	public var leftLeg:BodyPart;
+	public var rightLeg:BodyPart;
 
-	var headLayers:Map<HeadPart,Int> = [
-		HeadPart.NaturalHeadRight => 1,
-		HeadPart.NaturalHeadLeft => 2,
-		HeadPart.NaturalHeadDown => 3,
-		HeadPart.NaturalHeadUp => 4
+	public var vz:Float = 0;
+	public var z:Float = 0;
+	public var vx:Float = 0;
+
+	var bodyLayers:Map<BodyPart,Int> = [
+		BodyPart.NaturalHeadRight => 1,
+		BodyPart.NaturalHeadLeft => 2,
+		BodyPart.NaturalHeadDown => 3,
+		BodyPart.NaturalHeadUp => 4,
+		BodyPart.NaturalChest => 0,
+		BodyPart.NaturalArm => 6,
+		BodyPart.Knife => 7,
+		BodyPart.Sword => 8,
+		BodyPart.Axe => 9,
+		BodyPart.NaturalLeg => 5,
+		BodyPart.Boots => 10
 	];
-	var chestLayers:Map<ChestPart,Int> = [
-		ChestPart.NaturalChest => 0
-	];
-	var armLayers:Map<ArmPart,Int> = [
-		ArmPart.NaturalArm => 6,
-		ArmPart.Knife => 7,
-		ArmPart.Sword => 8,
-		ArmPart.Axe => 9
-	];
-	var legLayers:Map<LegPart,Int> = [
-		LegPart.NaturalLeg => 5,
-		LegPart.Boots => 10
-	];
-	
+
 	var animatedSprite:bonsai.render.AnimatedSprite;
 
 	override public function new () {
 		super();
 
-		position = new kha.math.Vector2(220 * Math.random(), 160*Math.random());
+		position = new kha.math.Vector2(-160 + 320 * Math.random(), -110 + 220*Math.random());
 
-		chest = ChestPart.NaturalChest;
-		head = HeadPart.NaturalHeadDown;
-		leftArm = ArmPart.Knife;
-		rightArm = ArmPart.Sword;
-		leftLeg = LegPart.NaturalLeg;
-		rightLeg = LegPart.NaturalLeg;
+		chest = BodyPart.NaturalChest;
+		head = BodyPart.NaturalHeadDown;
+		leftArm = BodyPart.Knife;
+		rightArm = BodyPart.Sword;
+		leftLeg = BodyPart.NaturalLeg;
+		rightLeg = BodyPart.NaturalLeg;
 
 		this.animatedSprite = new bonsai.render.AnimatedSprite();
 		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0] });
 		this.animatedSprite.play("idle");
+	}
+	override public function update (dt:Float) {
+
+		if (Math.abs(vz) < .1 && z < 1 && Math.abs(vx) < .1){
+			vz = 0;
+			vx = 0;
+			z = 0;
+			position.x = Math.round(position.x);
+		}else{
+			if (z >= 0) {
+				vz += 10 * dt;
+				z -= vz;
+				position.x += vx;
+			} else {
+				vz *= -.4;
+				z = 0;
+				vx *= .6;
+			}
+		}
+
+		super.update(dt);
 	}
 	override public function render (graphics:kha.graphics2.Graphics) {
 		if (chest == null || head == null || leftLeg == null || rightLeg == null || leftArm == null || rightArm == null) {
 			trace("attempted to render a body that lacks part/s");
 			return;
 		}
-		animatedSprite.drawLayers = [chestLayers[chest]];
-		animatedSprite.render(graphics, position.x, position.y);
-		
-		animatedSprite.drawLayers = [headLayers[head]];
-		animatedSprite.render(graphics, position.x, position.y);
-		
-		animatedSprite.drawLayers = [legLayers[leftLeg]];
-		animatedSprite.render(graphics, position.x, position.y);
-		
-		animatedSprite.drawLayers = [legLayers[rightLeg]];
-		animatedSprite.render(graphics, position.x + 5, position.y);
-		
-		animatedSprite.drawLayers = [armLayers[leftArm]];
-		animatedSprite.render(graphics, position.x, position.y);
+		animatedSprite.drawLayers = [bodyLayers[chest]];
+		animatedSprite.render(graphics, position.x, position.y-z);
 
-		animatedSprite.drawLayers = [armLayers[rightArm]];
-		animatedSprite.render(graphics, position.x + 7, position.y);
-	}
+		animatedSprite.drawLayers = [bodyLayers[head]];
+		animatedSprite.render(graphics, position.x, position.y-z);
 
-	public function getHeadDrop () {
-		return BodyPart.NaturalHead;
+		animatedSprite.drawLayers = [bodyLayers[leftLeg]];
+		animatedSprite.render(graphics, position.x, position.y-z);
 
-	}
-	public function getChestDrop () {
-		return BodyPart.NaturalChest;
-	}
-	public function getLeftArmDrop () {
-		return [
-			ArmPart.NaturalArm => BodyPart.NaturalArm,
-			ArmPart.Axe => BodyPart.Axe,
-			ArmPart.Sword => BodyPart.Sword,
-			ArmPart.Knife => BodyPart.Knife
-		][leftArm];
-	}
-	public function getRightArmDrop () {
-		return [
-			ArmPart.NaturalArm => BodyPart.NaturalArm,
-			ArmPart.Axe => BodyPart.Axe,
-			ArmPart.Sword => BodyPart.Sword,
-			ArmPart.Knife => BodyPart.Knife
-		][rightArm];
-	}
-	public function getLeftLegDrop () {
-		return [
-			LegPart.NaturalLeg => BodyPart.NaturalLeg,
-			LegPart.Boots => BodyPart.Boots
-		][leftLeg];
-	}
-	public function getRightLegDrop () {
-		return [
-			LegPart.NaturalLeg => BodyPart.NaturalLeg,
-			LegPart.Boots => BodyPart.Boots
-		][rightLeg];
+		animatedSprite.drawLayers = [bodyLayers[rightLeg]];
+		animatedSprite.render(graphics, position.x + 5, position.y-z);
+
+		animatedSprite.drawLayers = [bodyLayers[leftArm]];
+		animatedSprite.render(graphics, position.x, position.y-z);
+
+		animatedSprite.drawLayers = [bodyLayers[rightArm]];
+		animatedSprite.render(graphics, position.x + 7, position.y-z);
 	}
 }
