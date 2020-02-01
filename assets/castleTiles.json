@@ -17,7 +17,10 @@
   "frameTags": [
   ],
   "layers": [
-   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" }
+   { "name": "clan1", "opacity": 255, "blendMode": "normal" },
+   { "name": "clan2", "opacity": 255, "blendMode": "normal" },
+   { "name": "clan3", "opacity": 255, "blendMode": "normal" },
+   { "name": "clan4", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]
