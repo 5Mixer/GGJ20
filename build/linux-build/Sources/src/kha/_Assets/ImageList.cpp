@@ -78,7 +78,7 @@ HXLINE( 118)		this->_hx_set_satanicCircleDescription(HX_CTX,  ::Dynamic(hx::Anon
             			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_5,1))
             			->setFixed(3,HX_("name",4b,72,ff,48),HX_("satanicCircle",1d,af,db,38))
             			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),192)));
+            			->setFixed(5,HX_("original_height",55,81,ff,54),64)));
 HXLINE( 110)		this->_hx_set_satanicCircleName(HX_CTX, HX_("satanicCircle",1d,af,db,38));
 HXLINE(  69)		this->_hx_set_satanicCircle(HX_CTX, null());
 HXLINE( 118)		this->_hx_set_castleTilesDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
@@ -91,7 +91,7 @@ HXLINE( 118)		this->_hx_set_castleTilesDescription(HX_CTX,  ::Dynamic(hx::Anon_o
 HXLINE( 110)		this->_hx_set_castleTilesName(HX_CTX, HX_("castleTiles",6d,bf,04,f0));
 HXLINE(  69)		this->_hx_set_castleTiles(HX_CTX, null());
 HXLINE( 118)		this->_hx_set_bodyParts2Description(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
+            			->setFixed(0,HX_("original_width",58,c4,9b,c9),96)
             			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_8,1))
             			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_9,1))
             			->setFixed(3,HX_("name",4b,72,ff,48),HX_("bodyParts2",54,ff,a5,34))

@@ -79,7 +79,7 @@
 				1
 			],
 			"type": "image",
-			"original_width": 32,
+			"original_width": 96,
 			"original_height": 480
 		},
 		{
@@ -583,7 +583,7 @@
 			],
 			"type": "image",
 			"original_width": 320,
-			"original_height": 192
+			"original_height": 64
 		},
 		{
 			"name": "satanicCircle_ase",

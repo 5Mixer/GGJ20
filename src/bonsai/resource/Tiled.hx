@@ -15,6 +15,7 @@ class Tiled {
 	public var layers:Map<String,TiledLayer> = [];
 	public var entities:Array<TiledEntity> = [];
 	public var polygons:Array<Array<kha.math.Vector2>> = [];
+	public var rectangles:Array<{x:Int,y:Int,width:Int,height:Int}> = [];
 
 	public function new (data:String) {
 		loadRawData(data);
@@ -63,6 +64,8 @@ class Tiled {
 
 				var xOffset = Math.floor(Std.parseInt(object.get("x")));
 				var yOffset = Math.floor(Std.parseInt(object.get("y")));
+				
+				rectangles.push({x:Std.parseInt(object.get("x")), y:Std.parseInt(object.get("y")), width: Std.parseInt(object.get("width")), height: Std.parseInt(object.get("height")) });
 
 				for (polygon in polygons) {
 					var rawPolygonData = polygon.get("points");
@@ -76,7 +79,7 @@ class Tiled {
 							});
 					polygonPoints = points;
 				}
-				this.polygons.push(polygonPoints);
+				// this.polygons.push(polygonPoints);
 				// entities.push({
 				// 	x: Math.floor(Std.parseInt(object.get("x"))),
 				// 	y: Math.floor(Std.parseInt(object.get("y"))),

@@ -26,17 +26,22 @@
 #ifndef INCLUDED_haxe_xml_Parser
 #include <hxinc/haxe/xml/Parser.h>
 #endif
+#ifndef INCLUDED_kha_math_Vector2
+#include <hxinc/kha/math/Vector2.h>
+#endif
 
-HX_DEFINE_STACK_FRAME(_hx_pos_a95086091276de0e_9_new,"bonsai.resource.Tiled","new",0xb81014dc,"bonsai.resource.Tiled.new","bonsai/resource/Tiled.hx",9,0xab9c91f4)
-HX_LOCAL_STACK_FRAME(_hx_pos_a95086091276de0e_18_loadRawData,"bonsai.resource.Tiled","loadRawData",0xf0454b28,"bonsai.resource.Tiled.loadRawData","bonsai/resource/Tiled.hx",18,0xab9c91f4)
+HX_DEFINE_STACK_FRAME(_hx_pos_a95086091276de0e_12_new,"bonsai.resource.Tiled","new",0xb81014dc,"bonsai.resource.Tiled.new","bonsai/resource/Tiled.hx",12,0xab9c91f4)
+HX_LOCAL_STACK_FRAME(_hx_pos_a95086091276de0e_23_loadRawData,"bonsai.resource.Tiled","loadRawData",0xf0454b28,"bonsai.resource.Tiled.loadRawData","bonsai/resource/Tiled.hx",23,0xab9c91f4)
 namespace bonsai{
 namespace resource{
 
 void Tiled_obj::__construct(::String data){
-            	HX_GC_STACKFRAME(&_hx_pos_a95086091276de0e_9_new)
-HXLINE(  13)		this->_hx_set_entities(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
-HXLINE(  12)		this->_hx_set_tiles(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
-HXLINE(  16)		this->loadRawData(data);
+            	HX_GC_STACKFRAME(&_hx_pos_a95086091276de0e_12_new)
+HXLINE(  18)		this->_hx_set_rectangles(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
+HXLINE(  17)		this->_hx_set_polygons(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
+HXLINE(  16)		this->_hx_set_entities(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
+HXLINE(  15)		this->_hx_set_layers(HX_CTX,  ::haxe::ds::StringMap_obj::__alloc( HX_CTX ));
+HXLINE(  21)		this->loadRawData(data);
             	}
 
 Dynamic Tiled_obj::__CreateEmpty() { return new Tiled_obj; }
@@ -55,88 +60,120 @@ bool Tiled_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void Tiled_obj::loadRawData(::String raw){
-            	HX_GC_STACKFRAME(&_hx_pos_a95086091276de0e_18_loadRawData)
-HXLINE(  19)		 ::Xml data = ::haxe::xml::Parser_obj::parse(raw,null());
-HXLINE(  21)		 ::Xml map = ( ( ::Xml)(data->elementsNamed(HX_("map",9c,0a,53,00))->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
-HXLINE(  22)		this->width = ( (int)(::Std_obj::parseInt(map->get(HX_("width",06,b6,62,ca)))) );
-HXLINE(  23)		this->height = ( (int)(::Std_obj::parseInt(map->get(HX_("height",e7,07,4c,02)))) );
-HXLINE(  25)		{
-HXLINE(  25)			 ::Dynamic layer = map->elementsNamed(HX_("layer",d1,81,c0,6f));
-HXDLIN(  25)			while(( (bool)(layer->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
-HXLINE(  25)				 ::Xml layer1 = ( ( ::Xml)(layer->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
-HXLINE(  26)				int n = 0;
-HXLINE(  27)				 ::Xml _this = ( ( ::Xml)(layer1->elementsNamed(HX_("data",2a,56,63,42))->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
-HXDLIN(  27)				bool layerTiles;
-HXDLIN(  27)				if ((_this->nodeType != ::Xml_obj::Document)) {
-HXLINE(  27)					layerTiles = (_this->nodeType != ::Xml_obj::Element);
+            	HX_GC_STACKFRAME(&_hx_pos_a95086091276de0e_23_loadRawData)
+HXLINE(  24)		 ::Xml data = ::haxe::xml::Parser_obj::parse(raw,null());
+HXLINE(  26)		 ::Xml map = ( ( ::Xml)(data->elementsNamed(HX_("map",9c,0a,53,00))->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  27)		this->width = ( (int)(::Std_obj::parseInt(map->get(HX_("width",06,b6,62,ca)))) );
+HXLINE(  28)		this->height = ( (int)(::Std_obj::parseInt(map->get(HX_("height",e7,07,4c,02)))) );
+HXLINE(  30)		{
+HXLINE(  30)			 ::Dynamic layer = map->elementsNamed(HX_("layer",d1,81,c0,6f));
+HXDLIN(  30)			while(( (bool)(layer->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  30)				 ::Xml layer1 = ( ( ::Xml)(layer->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  31)				int n = 0;
+HXLINE(  32)				 ::Xml _this = ( ( ::Xml)(layer1->elementsNamed(HX_("data",2a,56,63,42))->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXDLIN(  32)				bool rawLayerTiles;
+HXDLIN(  32)				if ((_this->nodeType != ::Xml_obj::Document)) {
+HXLINE(  32)					rawLayerTiles = (_this->nodeType != ::Xml_obj::Element);
             				}
             				else {
-HXLINE(  27)					layerTiles = false;
+HXLINE(  32)					rawLayerTiles = false;
             				}
-HXDLIN(  27)				if (layerTiles) {
-HXLINE(  27)					HX_STACK_DO_THROW((HX_("Bad node type, expected Element or Document but found ",a0,d6,ba,79) + ::_Xml::XmlType_Impl__obj::toString(_this->nodeType)));
+HXDLIN(  32)				if (rawLayerTiles) {
+HXLINE(  32)					HX_STACK_DO_THROW((HX_("Bad node type, expected Element or Document but found ",a0,d6,ba,79) + ::_Xml::XmlType_Impl__obj::toString(_this->nodeType)));
             				}
-HXDLIN(  27)				 ::Xml _this1 = _this->children->__get(0).StaticCast<  ::Xml >();
-HXDLIN(  27)				bool layerTiles1;
-HXDLIN(  27)				if ((_this1->nodeType != ::Xml_obj::Document)) {
-HXLINE(  27)					layerTiles1 = (_this1->nodeType == ::Xml_obj::Element);
+HXDLIN(  32)				 ::Xml _this1 = _this->children->__get(0).StaticCast<  ::Xml >();
+HXDLIN(  32)				bool rawLayerTiles1;
+HXDLIN(  32)				if ((_this1->nodeType != ::Xml_obj::Document)) {
+HXLINE(  32)					rawLayerTiles1 = (_this1->nodeType == ::Xml_obj::Element);
             				}
             				else {
-HXLINE(  27)					layerTiles1 = true;
+HXLINE(  32)					rawLayerTiles1 = true;
             				}
-HXDLIN(  27)				if (layerTiles1) {
-HXLINE(  27)					HX_STACK_DO_THROW((HX_("Bad node type, unexpected ",be,79,d5,11) + ::_Xml::XmlType_Impl__obj::toString(_this1->nodeType)));
+HXDLIN(  32)				if (rawLayerTiles1) {
+HXLINE(  32)					HX_STACK_DO_THROW((HX_("Bad node type, unexpected ",be,79,d5,11) + ::_Xml::XmlType_Impl__obj::toString(_this1->nodeType)));
             				}
-HXDLIN(  27)				::Array< ::String > layerTiles2 = _this1->nodeValue.split(HX_(",",2c,00,00,00));
-HXLINE(  28)				{
-HXLINE(  28)					int _g = 0;
-HXDLIN(  28)					while((_g < layerTiles2->length)){
-HXLINE(  28)						::String tile = layerTiles2->__get(_g);
-HXDLIN(  28)						_g = (_g + 1);
-HXLINE(  29)						int x = hx::Mod(n,this->width);
-HXLINE(  30)						int y = ::Math_obj::floor((( (Float)(n) ) / ( (Float)(this->width) )));
-HXLINE(  33)						if (hx::IsNull( this->tiles->__get(y).StaticCast< ::Array< int > >() )) {
-HXLINE(  34)							this->tiles->setCtx( HX_CTX, y,::Array_obj< int >::__new(0));
+HXDLIN(  32)				::Array< ::String > rawLayerTiles2 = _this1->nodeValue.split(HX_(",",2c,00,00,00));
+HXLINE(  33)				::Array< ::Dynamic> layerTiles = ::Array_obj< ::Dynamic>::__new(0);
+HXLINE(  34)				{
+HXLINE(  34)					int _g = 0;
+HXDLIN(  34)					while((_g < rawLayerTiles2->length)){
+HXLINE(  34)						::String tile = rawLayerTiles2->__get(_g);
+HXDLIN(  34)						_g = (_g + 1);
+HXLINE(  35)						int x = hx::Mod(n,this->width);
+HXLINE(  36)						int y = ::Math_obj::floor((( (Float)(n) ) / ( (Float)(this->width) )));
+HXLINE(  39)						if (hx::IsNull( layerTiles->__get(y).StaticCast< ::Array< int > >() )) {
+HXLINE(  40)							layerTiles->setCtx( HX_CTX, y,::Array_obj< int >::__new(0));
             						}
-HXLINE(  36)						this->tiles->__get(y).StaticCast< ::Array< int > >()[x] = ( (int)(::Std_obj::parseInt(tile)) );
-HXLINE(  38)						n = (n + 1);
+HXLINE(  42)						layerTiles->__get(y).StaticCast< ::Array< int > >()[x] = ( (int)(::Std_obj::parseInt(tile)) );
+HXLINE(  44)						n = (n + 1);
             					}
+            				}
+HXLINE(  46)				{
+HXLINE(  46)					::Dynamic this1 = this->layers;
+HXDLIN(  46)					::String key = layer1->get(HX_("name",4b,72,ff,48));
+HXDLIN(  46)					( ( ::haxe::ds::StringMap)(this1) )->set(key, ::Dynamic(hx::Anon_obj::Create(1)
+            						->setFixed(0,HX_("tiles",85,fd,34,10),layerTiles)));
             				}
             			}
             		}
-HXLINE(  42)		{
-HXLINE(  42)			 ::Dynamic objectlayer = map->elementsNamed(HX_("objectgroup",20,60,f6,75));
-HXDLIN(  42)			while(( (bool)(objectlayer->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
-HXLINE(  42)				 ::Xml objectlayer1 = ( ( ::Xml)(objectlayer->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
-HXLINE(  43)				{
-HXLINE(  43)					 ::Dynamic object = objectlayer1->elements();
-HXDLIN(  43)					while(( (bool)(object->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
-HXLINE(  43)						 ::Xml object1 = ( ( ::Xml)(object->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
-HXLINE(  44)						::String name = object1->get(HX_("name",4b,72,ff,48));
-HXLINE(  45)						 ::haxe::ds::StringMap properties =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
-HXLINE(  46)						{
-HXLINE(  46)							 ::Dynamic element = object1->elements();
-HXDLIN(  46)							while(( (bool)(element->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
-HXLINE(  46)								 ::Xml element1 = ( ( ::Xml)(element->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
-HXLINE(  47)								if ((element1->nodeType != ::Xml_obj::Element)) {
-HXLINE(  47)									HX_STACK_DO_THROW((HX_("Bad node type, expected Element but found ",d8,90,8b,bb) + ::_Xml::XmlType_Impl__obj::toString(element1->nodeType)));
+HXLINE(  51)		{
+HXLINE(  51)			 ::Dynamic objectlayer = map->elementsNamed(HX_("objectgroup",20,60,f6,75));
+HXDLIN(  51)			while(( (bool)(objectlayer->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  51)				 ::Xml objectlayer1 = ( ( ::Xml)(objectlayer->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  52)				::String layerName = objectlayer1->get(HX_("name",4b,72,ff,48));
+HXLINE(  53)				{
+HXLINE(  53)					 ::Dynamic object = objectlayer1->elements();
+HXDLIN(  53)					while(( (bool)(object->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  53)						 ::Xml object1 = ( ( ::Xml)(object->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  54)						 ::haxe::ds::StringMap properties =  ::haxe::ds::StringMap_obj::__alloc( HX_CTX );
+HXLINE(  55)						{
+HXLINE(  55)							 ::Dynamic element = object1->elements();
+HXDLIN(  55)							while(( (bool)(element->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  55)								 ::Xml element1 = ( ( ::Xml)(element->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  56)								if ((element1->nodeType != ::Xml_obj::Element)) {
+HXLINE(  56)									HX_STACK_DO_THROW((HX_("Bad node type, expected Element but found ",d8,90,8b,bb) + ::_Xml::XmlType_Impl__obj::toString(element1->nodeType)));
             								}
-HXDLIN(  47)								if ((element1->nodeName == HX_("properties",f3,fb,0e,61))) {
-HXLINE(  48)									 ::Dynamic property = element1->elements();
-HXDLIN(  48)									while(( (bool)(property->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
-HXLINE(  48)										 ::Xml property1 = ( ( ::Xml)(property->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
-HXLINE(  49)										::String key = property1->get(HX_("name",4b,72,ff,48));
-HXDLIN(  49)										properties->set(key,property1->get(HX_("value",71,7f,b8,31)));
+HXDLIN(  56)								if ((element1->nodeName == HX_("properties",f3,fb,0e,61))) {
+HXLINE(  57)									 ::Dynamic property = element1->elements();
+HXDLIN(  57)									while(( (bool)(property->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  57)										 ::Xml property1 = ( ( ::Xml)(property->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  58)										::String key1 = property1->get(HX_("name",4b,72,ff,48));
+HXDLIN(  58)										properties->set(key1,property1->get(HX_("value",71,7f,b8,31)));
             									}
             								}
             							}
             						}
-HXLINE(  53)						::Array< ::Dynamic> _hx_tmp = this->entities;
-HXLINE(  54)						int _hx_tmp1 = ::Math_obj::floor(( (Float)(::Std_obj::parseInt(object1->get(HX_("x",78,00,00,00)))) ));
-HXLINE(  53)						_hx_tmp->push( ::Dynamic(hx::Anon_obj::Create(3)
-            							->setFixed(0,HX_("x",78,00,00,00),_hx_tmp1)
-            							->setFixed(1,HX_("y",79,00,00,00),::Math_obj::floor(( (Float)(::Std_obj::parseInt(object1->get(HX_("y",79,00,00,00)))) )))
-            							->setFixed(2,HX_("properties",f3,fb,0e,61),properties)));
+HXLINE(  62)						 ::Dynamic polygons = object1->elementsNamed(HX_("polygon",7a,02,91,12));
+HXLINE(  63)						::Array< ::Dynamic> polygonPoints = ::Array_obj< ::Dynamic>::__new(0);
+HXLINE(  65)						int xOffset = ::Math_obj::floor(( (Float)(::Std_obj::parseInt(object1->get(HX_("x",78,00,00,00)))) ));
+HXLINE(  66)						int yOffset = ::Math_obj::floor(( (Float)(::Std_obj::parseInt(object1->get(HX_("y",79,00,00,00)))) ));
+HXLINE(  68)						::Array< ::Dynamic> _hx_tmp = this->rectangles;
+HXDLIN(  68)						 ::Dynamic _hx_tmp1 = ::Std_obj::parseInt(object1->get(HX_("x",78,00,00,00)));
+HXDLIN(  68)						 ::Dynamic _hx_tmp2 = ::Std_obj::parseInt(object1->get(HX_("y",79,00,00,00)));
+HXDLIN(  68)						 ::Dynamic _hx_tmp3 = ::Std_obj::parseInt(object1->get(HX_("width",06,b6,62,ca)));
+HXDLIN(  68)						_hx_tmp->push( ::Dynamic(hx::Anon_obj::Create(4)
+            							->setFixed(0,HX_("width",06,b6,62,ca),_hx_tmp3)
+            							->setFixed(1,HX_("x",78,00,00,00),_hx_tmp1)
+            							->setFixed(2,HX_("y",79,00,00,00),_hx_tmp2)
+            							->setFixed(3,HX_("height",e7,07,4c,02),::Std_obj::parseInt(object1->get(HX_("height",e7,07,4c,02))))));
+HXLINE(  70)						{
+HXLINE(  70)							 ::Dynamic polygon = polygons;
+HXDLIN(  70)							while(( (bool)(polygon->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  70)								 ::Xml polygon1 = ( ( ::Xml)(polygon->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  71)								::String rawPolygonData = polygon1->get(HX_("points",23,12,2e,f7));
+HXLINE(  72)								::Array< ::Dynamic> _g1 = ::Array_obj< ::Dynamic>::__new(0);
+HXDLIN(  72)								{
+HXLINE(  72)									 ::Dynamic x1 = rawPolygonData.split(HX_(" ",20,00,00,00))->__Field(HX_("iterator",ee,49,9a,93),hx::paccDynamic)();
+HXDLIN(  72)									while(( (bool)(x1->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  72)										::String x2 = ( (::String)(x1->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)()) );
+HXLINE(  76)										int _hx_tmp4 = (::Std_obj::parseInt(x2.split(HX_(",",2c,00,00,00))->__get(0)) + xOffset);
+HXLINE(  72)										_g1->push( ::kha::math::Vector2_obj::__alloc( HX_CTX ,_hx_tmp4,(::Std_obj::parseInt(x2.split(HX_(",",2c,00,00,00))->__get(1)) + yOffset)));
+            									}
+            								}
+HXDLIN(  72)								::Array< ::Dynamic> points = _g1;
+HXLINE(  80)								polygonPoints = points;
+            							}
+            						}
             					}
             				}
             			}
@@ -169,8 +206,10 @@ void Tiled_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_BEGIN_CLASS(Tiled);
 	HX_MARK_MEMBER_NAME(width,"width");
 	HX_MARK_MEMBER_NAME(height,"height");
-	HX_MARK_MEMBER_NAME(tiles,"tiles");
+	HX_MARK_MEMBER_NAME(layers,"layers");
 	HX_MARK_MEMBER_NAME(entities,"entities");
+	HX_MARK_MEMBER_NAME(polygons,"polygons");
+	HX_MARK_MEMBER_NAME(rectangles,"rectangles");
 	HX_MARK_END_CLASS();
 }
 
@@ -178,8 +217,10 @@ void Tiled_obj::__Visit(HX_VISIT_PARAMS)
 {
 	HX_VISIT_MEMBER_NAME(width,"width");
 	HX_VISIT_MEMBER_NAME(height,"height");
-	HX_VISIT_MEMBER_NAME(tiles,"tiles");
+	HX_VISIT_MEMBER_NAME(layers,"layers");
 	HX_VISIT_MEMBER_NAME(entities,"entities");
+	HX_VISIT_MEMBER_NAME(polygons,"polygons");
+	HX_VISIT_MEMBER_NAME(rectangles,"rectangles");
 }
 
 hx::Val Tiled_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
@@ -187,13 +228,17 @@ hx::Val Tiled_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
 	switch(inName.length) {
 	case 5:
 		if (HX_FIELD_EQ(inName,"width") ) { return hx::Val( width ); }
-		if (HX_FIELD_EQ(inName,"tiles") ) { return hx::Val( tiles ); }
 		break;
 	case 6:
 		if (HX_FIELD_EQ(inName,"height") ) { return hx::Val( height ); }
+		if (HX_FIELD_EQ(inName,"layers") ) { return hx::Val( layers ); }
 		break;
 	case 8:
 		if (HX_FIELD_EQ(inName,"entities") ) { return hx::Val( entities ); }
+		if (HX_FIELD_EQ(inName,"polygons") ) { return hx::Val( polygons ); }
+		break;
+	case 10:
+		if (HX_FIELD_EQ(inName,"rectangles") ) { return hx::Val( rectangles ); }
 		break;
 	case 11:
 		if (HX_FIELD_EQ(inName,"loadRawData") ) { return hx::Val( loadRawData_dyn() ); }
@@ -206,13 +251,17 @@ hx::Val Tiled_obj::__SetField(const ::String &inName,const hx::Val &inValue,hx::
 	switch(inName.length) {
 	case 5:
 		if (HX_FIELD_EQ(inName,"width") ) { width=inValue.Cast< int >(); return inValue; }
-		if (HX_FIELD_EQ(inName,"tiles") ) { _hx_set_tiles(HX_CTX_GET,inValue.Cast< ::Array< ::Dynamic> >()); return inValue; }
 		break;
 	case 6:
 		if (HX_FIELD_EQ(inName,"height") ) { height=inValue.Cast< int >(); return inValue; }
+		if (HX_FIELD_EQ(inName,"layers") ) { _hx_set_layers(HX_CTX_GET,inValue.Cast<  ::haxe::ds::StringMap >()); return inValue; }
 		break;
 	case 8:
 		if (HX_FIELD_EQ(inName,"entities") ) { _hx_set_entities(HX_CTX_GET,inValue.Cast< ::Array< ::Dynamic> >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"polygons") ) { _hx_set_polygons(HX_CTX_GET,inValue.Cast< ::Array< ::Dynamic> >()); return inValue; }
+		break;
+	case 10:
+		if (HX_FIELD_EQ(inName,"rectangles") ) { _hx_set_rectangles(HX_CTX_GET,inValue.Cast< ::Array< ::Dynamic> >()); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
@@ -221,8 +270,10 @@ void Tiled_obj::__GetFields(Array< ::String> &outFields)
 {
 	outFields->push(HX_("width",06,b6,62,ca));
 	outFields->push(HX_("height",e7,07,4c,02));
-	outFields->push(HX_("tiles",85,fd,34,10));
+	outFields->push(HX_("layers",82,15,b1,58));
 	outFields->push(HX_("entities",41,96,95,92));
+	outFields->push(HX_("polygons",b9,28,51,2c));
+	outFields->push(HX_("rectangles",64,d5,bc,33));
 	super::__GetFields(outFields);
 };
 
@@ -230,8 +281,10 @@ void Tiled_obj::__GetFields(Array< ::String> &outFields)
 static hx::StorageInfo Tiled_obj_sMemberStorageInfo[] = {
 	{hx::fsInt,(int)offsetof(Tiled_obj,width),HX_("width",06,b6,62,ca)},
 	{hx::fsInt,(int)offsetof(Tiled_obj,height),HX_("height",e7,07,4c,02)},
-	{hx::fsObject /* ::Array< ::Dynamic> */ ,(int)offsetof(Tiled_obj,tiles),HX_("tiles",85,fd,34,10)},
+	{hx::fsObject /*  ::haxe::ds::StringMap */ ,(int)offsetof(Tiled_obj,layers),HX_("layers",82,15,b1,58)},
 	{hx::fsObject /* ::Array< ::Dynamic> */ ,(int)offsetof(Tiled_obj,entities),HX_("entities",41,96,95,92)},
+	{hx::fsObject /* ::Array< ::Dynamic> */ ,(int)offsetof(Tiled_obj,polygons),HX_("polygons",b9,28,51,2c)},
+	{hx::fsObject /* ::Array< ::Dynamic> */ ,(int)offsetof(Tiled_obj,rectangles),HX_("rectangles",64,d5,bc,33)},
 	{ hx::fsUnknown, 0, null()}
 };
 static hx::StaticInfo *Tiled_obj_sStaticStorageInfo = 0;
@@ -240,8 +293,10 @@ static hx::StaticInfo *Tiled_obj_sStaticStorageInfo = 0;
 static ::String Tiled_obj_sMemberFields[] = {
 	HX_("width",06,b6,62,ca),
 	HX_("height",e7,07,4c,02),
-	HX_("tiles",85,fd,34,10),
+	HX_("layers",82,15,b1,58),
 	HX_("entities",41,96,95,92),
+	HX_("polygons",b9,28,51,2c),
+	HX_("rectangles",64,d5,bc,33),
 	HX_("loadRawData",ac,2a,b6,cf),
 	::String(null()) };
 

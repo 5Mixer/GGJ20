@@ -170,9 +170,9 @@
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Inventory.h">
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/SummonCircle.h">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Structure.h">
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/TileMap.h">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/SummonCircle.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/World.h">
 		</Unit>
@@ -704,10 +704,10 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Inventory.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/SummonCircle.cpp">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Structure.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/TileMap.cpp">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/SummonCircle.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/World.cpp">

@@ -607,11 +607,11 @@
 #ifndef INCLUDED_game_World
 #include <hxinc/game/World.h>
 #endif
-#ifndef INCLUDED_game_TileMap
-#include <hxinc/game/TileMap.h>
-#endif
 #ifndef INCLUDED_game_SummonCircle
 #include <hxinc/game/SummonCircle.h>
+#endif
+#ifndef INCLUDED_game_Structure
+#include <hxinc/game/Structure.h>
 #endif
 #ifndef INCLUDED_game_Inventory
 #include <hxinc/game/Inventory.h>
@@ -930,8 +930,8 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::Timer_obj::__register();
 ::haxe::IMap_obj::__register();
 ::game::World_obj::__register();
-::game::TileMap_obj::__register();
 ::game::SummonCircle_obj::__register();
+::game::Structure_obj::__register();
 ::game::Inventory_obj::__register();
 ::game::BodyPartParticles_obj::__register();
 ::game::Body_obj::__register();

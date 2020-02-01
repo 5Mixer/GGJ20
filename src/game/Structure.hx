@@ -21,11 +21,16 @@ class Structure extends Entity {
 		height = tiled.height;
 
 		for (polygon in tiled.polygons) {
-			colliders.push(new differ.shapes.Polygon(0,0,
-				Lambda.map(polygon, function (p) {
-					return new differ.math.Vector(p.x, p.y);
-				}))
-			);
+			// colliders.push(new differ.shapes.Polygon(0,0,
+			// 	Lambda.map(polygon, function (p) {
+			// 		return new differ.math.Vector(p.x, p.y);
+			// 	}))
+			// );
+		}
+		for (rectangle in tiled.rectangles) {
+			trace(rectangle);
+			colliders.push(differ.shapes.Polygon.rectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height,false));
+
 		}
 /*
 		for (layerName => layer in tiled.layers){

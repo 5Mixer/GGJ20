@@ -1135,6 +1135,7 @@ bonsai_render_Transformation.prototype = {
 	,__class__: bonsai_render_Transformation
 };
 var bonsai_resource_Tiled = $hxClasses["bonsai.resource.Tiled"] = function(data) {
+	this.rectangles = [];
 	this.polygons = [];
 	this.entities = [];
 	this.layers = new haxe_ds_StringMap();
@@ -1147,6 +1148,7 @@ bonsai_resource_Tiled.prototype = {
 	,layers: null
 	,entities: null
 	,polygons: null
+	,rectangles: null
 	,loadRawData: function(raw) {
 		var data = haxe_xml_Parser.parse(raw);
 		var map = data.elementsNamed("map").next();
@@ -1220,6 +1222,7 @@ bonsai_resource_Tiled.prototype = {
 				var polygonPoints = [];
 				var xOffset = Math.floor(Std.parseInt(object1.get("x")));
 				var yOffset = Math.floor(Std.parseInt(object1.get("y")));
+				this.rectangles.push({ x : Std.parseInt(object1.get("x")), y : Std.parseInt(object1.get("y")), width : Std.parseInt(object1.get("width")), height : Std.parseInt(object1.get("height"))});
 				var polygon = polygons;
 				while(polygon.hasNext()) {
 					var polygon1 = polygon.next();
@@ -1227,13 +1230,12 @@ bonsai_resource_Tiled.prototype = {
 					var _g1 = [];
 					var x1 = $getIterator(rawPolygonData.split(" "));
 					while(x1.hasNext()) {
-						var x11 = x1.next();
-						_g1.push(new kha_math_Vector2(Std.parseInt(x11.split(",")[0]) + xOffset,Std.parseInt(x11.split(",")[1]) + yOffset));
+						var x2 = x1.next();
+						_g1.push(new kha_math_Vector2(Std.parseInt(x2.split(",")[0]) + xOffset,Std.parseInt(x2.split(",")[1]) + yOffset));
 					}
 					var points = _g1;
 					polygonPoints = points;
 				}
-				this.polygons.push(polygonPoints);
 			}
 		}
 	}
@@ -2841,14 +2843,14 @@ var game_Structure = $hxClasses["game.Structure"] = function() {
 	while(_g < _g1.length) {
 		var polygon = _g1[_g];
 		++_g;
-		var tmp = this.colliders;
-		var _g2 = [];
-		var x1 = HxOverrides.iter(polygon);
-		while(x1.hasNext()) {
-			var x11 = x1.next();
-			_g2.push(new differ_math_Vector(x11.x,x11.y));
-		}
-		tmp.push(new differ_shapes_Polygon(0,0,_g2));
+	}
+	var _g2 = 0;
+	var _g3 = this.tiled.rectangles;
+	while(_g2 < _g3.length) {
+		var rectangle = _g3[_g2];
+		++_g2;
+		haxe_Log.trace(rectangle,{ fileName : "game/Structure.hx", lineNumber : 31, className : "game.Structure", methodName : "new"});
+		this.colliders.push(differ_shapes_Polygon.rectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height,false));
 	}
 	this.spriteMap = new bonsai_render_SpriteMap(kha_Assets.images.castleTiles,16,16);
 	this.transformation = new bonsai_render_Transformation();
@@ -5614,13 +5616,13 @@ var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
 	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [2059], original_width : 128, files : ["tiles.png"], type : "image"};
 	this.tilesName = "tiles";
 	this.tiles = null;
-	this.satanicCircleDescription = { name : "satanicCircle", original_height : 192, file_sizes : [2813], original_width : 320, files : ["satanicCircle.png"], type : "image"};
+	this.satanicCircleDescription = { name : "satanicCircle", original_height : 64, file_sizes : [972], original_width : 320, files : ["satanicCircle.png"], type : "image"};
 	this.satanicCircleName = "satanicCircle";
 	this.satanicCircle = null;
-	this.castleTilesDescription = { name : "castleTiles", original_height : 128, file_sizes : [1971], original_width : 128, files : ["castleTiles.png"], type : "image"};
+	this.castleTilesDescription = { name : "castleTiles", original_height : 512, file_sizes : [4661], original_width : 128, files : ["castleTiles.png"], type : "image"};
 	this.castleTilesName = "castleTiles";
 	this.castleTiles = null;
-	this.bodyParts2Description = { name : "bodyParts2", original_height : 480, file_sizes : [961], original_width : 32, files : ["bodyParts2.png"], type : "image"};
+	this.bodyParts2Description = { name : "bodyParts2", original_height : 480, file_sizes : [2476], original_width : 96, files : ["bodyParts2.png"], type : "image"};
 	this.bodyParts2Name = "bodyParts2";
 	this.bodyParts2 = null;
 };
@@ -5699,7 +5701,7 @@ var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
 	this.tiles_aseDescription = { name : "tiles_ase", file_sizes : [1479], files : ["tiles.ase"], type : "blob"};
 	this.tiles_aseName = "tiles_ase";
 	this.tiles_ase = null;
-	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [4371], files : ["satanicCircle.ase"], type : "blob"};
+	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [4359], files : ["satanicCircle.ase"], type : "blob"};
 	this.satanicCircle_aseName = "satanicCircle_ase";
 	this.satanicCircle_ase = null;
 	this.map_tmxDescription = { name : "map_tmx", file_sizes : [46972], files : ["map.tmx"], type : "blob"};
@@ -5708,22 +5710,22 @@ var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
 	this.castleTiles_tsxDescription = { name : "castleTiles_tsx", file_sizes : [233], files : ["castleTiles.tsx"], type : "blob"};
 	this.castleTiles_tsxName = "castleTiles_tsx";
 	this.castleTiles_tsx = null;
-	this.castleTiles_aseDescription = { name : "castleTiles_ase", file_sizes : [1989], files : ["castleTiles.ase"], type : "blob"};
+	this.castleTiles_aseDescription = { name : "castleTiles_ase", file_sizes : [4799], files : ["castleTiles.ase"], type : "blob"};
 	this.castleTiles_aseName = "castleTiles_ase";
 	this.castleTiles_ase = null;
-	this.castle4_tmxDescription = { name : "castle4_tmx", file_sizes : [1634], files : ["castle4.tmx"], type : "blob"};
+	this.castle4_tmxDescription = { name : "castle4_tmx", file_sizes : [4882], files : ["castle4.tmx"], type : "blob"};
 	this.castle4_tmxName = "castle4_tmx";
 	this.castle4_tmx = null;
-	this.castle3_tmxDescription = { name : "castle3_tmx", file_sizes : [1634], files : ["castle3.tmx"], type : "blob"};
+	this.castle3_tmxDescription = { name : "castle3_tmx", file_sizes : [4960], files : ["castle3.tmx"], type : "blob"};
 	this.castle3_tmxName = "castle3_tmx";
 	this.castle3_tmx = null;
-	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [4802], files : ["castle2.tmx"], type : "blob"};
+	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [5657], files : ["castle2.tmx"], type : "blob"};
 	this.castle2_tmxName = "castle2_tmx";
 	this.castle2_tmx = null;
-	this.castle1_tmxDescription = { name : "castle1_tmx", file_sizes : [1634], files : ["castle1.tmx"], type : "blob"};
+	this.castle1_tmxDescription = { name : "castle1_tmx", file_sizes : [4509], files : ["castle1.tmx"], type : "blob"};
 	this.castle1_tmxName = "castle1_tmx";
 	this.castle1_tmx = null;
-	this.bodyParts2_aseDescription = { name : "bodyParts2_ase", file_sizes : [2040], files : ["bodyParts2.ase"], type : "blob"};
+	this.bodyParts2_aseDescription = { name : "bodyParts2_ase", file_sizes : [4562], files : ["bodyParts2.ase"], type : "blob"};
 	this.bodyParts2_aseName = "bodyParts2_ase";
 	this.bodyParts2_ase = null;
 };

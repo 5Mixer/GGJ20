@@ -7,6 +7,9 @@
 #endif
 
 HX_DECLARE_CLASS2(bonsai,resource,Tiled)
+HX_DECLARE_CLASS1(haxe,IMap)
+HX_DECLARE_CLASS2(haxe,ds,StringMap)
+HX_DECLARE_CLASS2(kha,math,Vector2)
 
 namespace bonsai{
 namespace resource{
@@ -46,10 +49,14 @@ class HXCPP_CLASS_ATTRIBUTES Tiled_obj : public hx::Object
 
 		int width;
 		int height;
-		::Array< ::Dynamic> tiles;
-		inline ::Array< ::Dynamic> _hx_set_tiles(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return tiles=_hx_v; }
+		 ::haxe::ds::StringMap layers;
+		inline  ::haxe::ds::StringMap _hx_set_layers(hx::StackContext *_hx_ctx, ::haxe::ds::StringMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return layers=_hx_v; }
 		::Array< ::Dynamic> entities;
 		inline ::Array< ::Dynamic> _hx_set_entities(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return entities=_hx_v; }
+		::Array< ::Dynamic> polygons;
+		inline ::Array< ::Dynamic> _hx_set_polygons(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return polygons=_hx_v; }
+		::Array< ::Dynamic> rectangles;
+		inline ::Array< ::Dynamic> _hx_set_rectangles(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return rectangles=_hx_v; }
 		void loadRawData(::String raw);
 		::Dynamic loadRawData_dyn();
 

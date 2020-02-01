@@ -179,30 +179,22 @@ HXDLIN(  86)		_hx_tmp4->vx = (_hx_tmp4->vx * ((Float).9));
 HXLINE(  87)		 ::game::Body _hx_tmp5 = hx::ObjectPtr<OBJ_>(this);
 HXDLIN(  87)		_hx_tmp5->vy = (_hx_tmp5->vy * ((Float).9));
 HXLINE(  93)		int height = 10;
-HXLINE(  94)		int _hx_tmp6;
-HXDLIN(  94)		if (this->friendly) {
-HXLINE(  94)			_hx_tmp6 = 0;
-            		}
-            		else {
-HXLINE(  94)			_hx_tmp6 = 2;
-            		}
-HXDLIN(  94)		this->z = (::Math_obj::abs(::Math_obj::sin(((this->time + _hx_tmp6) * ( (Float)(10) )))) * ( (Float)(height) ));
-HXLINE(  97)		bool _hx_tmp7;
-HXDLIN(  97)		bool _hx_tmp8;
+HXLINE(  97)		bool _hx_tmp6;
+HXDLIN(  97)		bool _hx_tmp7;
 HXDLIN(  97)		if ((::Math_obj::abs(this->vz) < ((Float).1))) {
-HXLINE(  97)			_hx_tmp8 = (this->z < 1);
-            		}
-            		else {
-HXLINE(  97)			_hx_tmp8 = false;
-            		}
-HXDLIN(  97)		if (_hx_tmp8) {
-HXLINE(  97)			_hx_tmp7 = (::Math_obj::abs(this->vx) < ((Float).1));
+HXLINE(  97)			_hx_tmp7 = (this->z < 1);
             		}
             		else {
 HXLINE(  97)			_hx_tmp7 = false;
             		}
-HXLINE( 112)		this->collider->set_x(this->position->x);
-HXLINE( 113)		this->collider->set_y(this->position->y);
+HXDLIN(  97)		if (_hx_tmp7) {
+HXLINE(  97)			_hx_tmp6 = (::Math_obj::abs(this->vx) < ((Float).1));
+            		}
+            		else {
+HXLINE(  97)			_hx_tmp6 = false;
+            		}
+HXLINE( 112)		this->collider->set_x((this->position->x + 8));
+HXLINE( 113)		this->collider->set_y((this->position->y + 24));
 HXLINE( 115)		this->super::update(dt);
             	}
 
