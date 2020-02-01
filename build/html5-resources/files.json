@@ -76,10 +76,10 @@
 				"bodyParts2.png"
 			],
 			"file_sizes": [
-				961
+				2476
 			],
 			"type": "image",
-			"original_width": 32,
+			"original_width": 96,
 			"original_height": 480
 		},
 		{
@@ -88,7 +88,7 @@
 				"bodyParts2.ase"
 			],
 			"file_sizes": [
-				2040
+				4562
 			],
 			"type": "blob"
 		},
@@ -98,7 +98,7 @@
 				"castle1.tmx"
 			],
 			"file_sizes": [
-				1634
+				4600
 			],
 			"type": "blob"
 		},
@@ -108,7 +108,7 @@
 				"castle2.tmx"
 			],
 			"file_sizes": [
-				4802
+				5299
 			],
 			"type": "blob"
 		},
@@ -118,7 +118,7 @@
 				"castle3.tmx"
 			],
 			"file_sizes": [
-				1634
+				5051
 			],
 			"type": "blob"
 		},
@@ -128,7 +128,7 @@
 				"castle4.tmx"
 			],
 			"file_sizes": [
-				1634
+				6033
 			],
 			"type": "blob"
 		},
@@ -138,11 +138,11 @@
 				"castleTiles.png"
 			],
 			"file_sizes": [
-				1971
+				5983
 			],
 			"type": "image",
 			"original_width": 128,
-			"original_height": 128
+			"original_height": 512
 		},
 		{
 			"name": "castleTiles_ase",
@@ -150,7 +150,7 @@
 				"castleTiles.ase"
 			],
 			"file_sizes": [
-				1989
+				5343
 			],
 			"type": "blob"
 		},
@@ -160,7 +160,7 @@
 				"castleTiles.tsx"
 			],
 			"file_sizes": [
-				233
+				237
 			],
 			"type": "blob"
 		},
@@ -170,7 +170,7 @@
 				"map.tmx"
 			],
 			"file_sizes": [
-				46972
+				47184
 			],
 			"type": "blob"
 		},
@@ -595,11 +595,11 @@
 				"satanicCircle.png"
 			],
 			"file_sizes": [
-				2813
+				972
 			],
 			"type": "image",
 			"original_width": 320,
-			"original_height": 192
+			"original_height": 64
 		},
 		{
 			"name": "satanicCircle_ase",
@@ -607,7 +607,7 @@
 				"satanicCircle.ase"
 			],
 			"file_sizes": [
-				4371
+				4359
 			],
 			"type": "blob"
 		},
@@ -639,7 +639,7 @@
 				"tiles.tsx"
 			],
 			"file_sizes": [
-				220
+				224
 			],
 			"type": "blob"
 		}
