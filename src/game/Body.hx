@@ -63,7 +63,7 @@ class Body extends bonsai.entity.Entity{
 		rightLeg = LegPart.NaturalLeg;
 
 		this.animatedSprite = new bonsai.render.AnimatedSprite();
-		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts, 32, 32), frames: [0] });
+		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0] });
 		this.animatedSprite.play("idle");
 	}
 	override public function render (graphics:kha.graphics2.Graphics) {

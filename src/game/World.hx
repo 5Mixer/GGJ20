@@ -18,7 +18,7 @@ class World extends Scene {
 
 		// bodySpriteMap = new SpriteMap(kha.Assets.);
 		this.transformation = new Transformation();
-		this.transformation.scale = new kha.math.Vector2(.11, .1);
+		this.transformation.scale = new kha.math.Vector2(2, 2);
 		add(new TileMap());
 		// add(new Player(10, 30, engine.input), 1);
 

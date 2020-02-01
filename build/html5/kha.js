@@ -804,7 +804,7 @@ bonsai_render_SpriteMap.prototype = {
 	,gridHeight: null
 	,render: function(graphics,x,y,index) {
 		var sx = index * this.gridWidth % this.image.get_width();
-		var sy = 0;
+		var sy = Math.floor(index / (this.image.get_width() / this.gridWidth)) * this.gridHeight;
 		graphics.drawSubImage(this.image,x,y,sx,sy,this.gridWidth,this.gridHeight);
 	}
 	,renderCell: function(graphics,x,y,xcell,ycell) {
@@ -1101,7 +1101,7 @@ var game_Body = $hxClasses["game.Body"] = function() {
 	this.leftLeg = game_LegPart.NaturalLeg;
 	this.rightLeg = game_LegPart.NaturalLeg;
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
-	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts,32,32), frames : [0]});
+	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
 };
 game_Body.__name__ = "game.Body";
@@ -1255,6 +1255,7 @@ var game_TileMap = $hxClasses["game.TileMap"] = function() {
 	this.width = 100;
 	bonsai_entity_Entity.call(this);
 	this.tiled = new bonsai_resource_Tiled(kha_Assets.blobs.map_tmx.toString());
+	haxe_Log.trace(this.tiled.tiles,{ fileName : "game/TileMap.hx", lineNumber : 20, className : "game.TileMap", methodName : "new"});
 	this.width = this.tiled.width;
 	this.height = this.tiled.height;
 	this.width = 100;
@@ -1307,7 +1308,7 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	this.bodies = [];
 	bonsai_scene_Scene.call(this,"World Scene",engine);
 	this.transformation = new bonsai_render_Transformation();
-	this.transformation.scale = new kha_math_Vector2(.11,.1);
+	this.transformation.scale = new kha_math_Vector2(2,2);
 	this.add(new game_TileMap());
 	this.bodyParticleSystem = new game_BodyPartParticles();
 	this.bodyParticleSystem.poolMaximum = 6000;
