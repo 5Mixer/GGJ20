@@ -1527,6 +1527,14 @@ game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
 	}
 	,__class__: game_Inventory
 });
+var game_SummonCircle = $hxClasses["game.SummonCircle"] = function() {
+	bonsai_entity_Entity.call(this);
+};
+game_SummonCircle.__name__ = "game.SummonCircle";
+game_SummonCircle.__super__ = bonsai_entity_Entity;
+game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
+	__class__: game_SummonCircle
+});
 var game_TileMap = $hxClasses["game.TileMap"] = function() {
 	this.tiles = [];
 	this.height = 100;
@@ -1590,6 +1598,8 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	this.bodyParticleSystem.poolMaximum = 6000;
 	this.add(this.bodyParticleSystem);
 	this.camera = new bonsai_scene_Camera();
+	this.summonCircle = new game_SummonCircle();
+	this.add(this.summonCircle);
 	this.inventory = new game_Inventory();
 	this.add(this.inventory);
 	var body = new game_Body();
@@ -1640,6 +1650,7 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 	,bodies: null
 	,input: null
 	,camera: null
+	,summonCircle: null
 	,f: null
 	,update: function(dt) {
 		this.f++;

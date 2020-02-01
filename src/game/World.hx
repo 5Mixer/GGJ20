@@ -16,6 +16,8 @@ class World extends Scene {
 	var input:bonsai.input.Input;
 	var camera:Camera;
 
+	var summonCircle:SummonCircle;
+
 	override public function new (engine) {
 		super("World Scene",engine);
 		input = engine.input;
@@ -29,6 +31,8 @@ class World extends Scene {
 		add(bodyParticleSystem);
 
 		camera = new Camera();
+		summonCircle = new SummonCircle();
+		add(summonCircle);
 
 		inventory = new Inventory();
 		add(inventory);
