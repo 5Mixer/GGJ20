@@ -20,6 +20,7 @@
       <sourceFolder url="file:///home/mixer/projects/GGJ20/src" isTestSource="false" />
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/zui/Sources" isTestSource="false" />
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/differ" isTestSource="false" />
+      <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/hxNoise" isTestSource="false" />
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/hotml/Sources" isTestSource="false" />
 
     </content>
@@ -28,6 +29,9 @@
     </content>
     <content url="file://Libraries/differ">
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/differ" isTestSource="false" />
+    </content>
+    <content url="file://Libraries/hxNoise">
+      <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/hxNoise" isTestSource="false" />
     </content>
     <content url="file://Libraries/hotml">
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/hotml" isTestSource="false" />

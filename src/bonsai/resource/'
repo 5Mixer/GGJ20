@@ -1,0 +1,45 @@
+package game;
+
+import bonsai.scene.*;
+import bonsai.render.*;
+import bonsai.entity.*;
+import hxnoise.Perlin;
+
+class NoiseTilemap extends Entity {
+	public var width:Int = 300;
+	public var height:Int = 300;
+
+	var spriteMap:bonsai.render.SpriteMap;
+	public var colliders:Array<differ.shapes.Polygon> = [];
+
+	var perlin : Perlin;
+
+	override public function new () {
+		super();
+
+		spriteMap = new SpriteMap(kha.Assets.images.tiles, 16, 16);
+
+		perlin = new Perlin();
+		for(x in 0...width)
+		{
+		}
+	}
+
+	var f = 0.;
+	override public function render (graphics:kha.graphics2.Graphics) {
+		f+=.1;
+		for (y in 0...width) {
+			for (x in 0...height) {
+				var offset = Math.max(0,(Math.pow(x-150,2)+Math.pow(y-150, 2))/9000 - .3);
+				var c = Math.min(5,perlin.OctavePerlin(x / 16, y / 16, f, 5, 0.5, 0.25)*8 - offset);
+				var tile = 0;
+				spriteMap.renderCell(graphics, x*16, y*16, 0, Math.round(c) - 1);
+			}
+		}
+
+	}
+
+	override public function update (dt){
+	}
+}
+

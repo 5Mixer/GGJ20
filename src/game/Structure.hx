@@ -28,7 +28,6 @@ class Structure extends Entity {
 			// );
 		}
 		for (rectangle in tiled.rectangles) {
-			trace(rectangle);
 			colliders.push(differ.shapes.Polygon.rectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height,false));
 
 		}

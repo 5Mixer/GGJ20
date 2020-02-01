@@ -4,6 +4,8 @@ project.addSources('src');
 project.addAssets('assets/**');
 project.addLibrary('zui');
 project.addLibrary('differ');
+project.addLibrary('hxNoise');
+
 
 if (process.argv.includes("--watch")) { // run only in watch mode
 	let libPath = project.addLibrary('hotml'); // client code for code-patching

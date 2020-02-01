@@ -12,7 +12,7 @@ class Camera {
 	public function new () {
 		position = new kha.math.Vector2(0,0);
 		this.transformation = new Transformation();
-		this.transformation.scale = new kha.math.Vector2(2, 2);
+		this.transformation.scale = new kha.math.Vector2(2,2);
 		this.shakeTransformation = new Transformation();
 	}
 	public function update (delta:Float) {

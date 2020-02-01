@@ -3,12 +3,14 @@
 -cp /home/mixer/projects/GGJ20/src
 -cp /home/mixer/projects/GGJ20/Libraries/zui/Sources
 -cp /home/mixer/projects/GGJ20/Libraries/differ
+-cp /home/mixer/projects/GGJ20/Libraries/hxNoise
 -cp /home/mixer/projects/GGJ20/Libraries/hotml/Sources
 -cp /home/mixer/projects/GGJ20/Libraries/zui
 -cp /home/mixer/projects/GGJ20/Libraries/hotml
 -D hxcpp_smart_strings
 -D zui
 -D differ
+-D hxNoise
 -D hotml
 -D js_classic
 -D sys_g1

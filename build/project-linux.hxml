@@ -3,10 +3,12 @@
 -cp /home/mixer/projects/GGJ20/src
 -cp /home/mixer/projects/GGJ20/Libraries/zui/Sources
 -cp /home/mixer/projects/GGJ20/Libraries/differ
+-cp /home/mixer/projects/GGJ20/Libraries/hxNoise
 -cp /home/mixer/projects/GGJ20/Libraries/zui
 -D hxcpp_smart_strings
 -D zui
 -D differ
+-D hxNoise
 -D no-compilation
 -D include-prefix=hxinc
 -D HXCPP_GC_GENERATIONAL

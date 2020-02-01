@@ -4,3 +4,6 @@
 [submodule "Libraries/zui"]
 	path = Libraries/zui
 	url = https://github.com/armory3d/zui.git
+[submodule "Libraries/hxNoise"]
+	path = Libraries/hxNoise
+	url = https://github.com/whuop/hxNoise.git

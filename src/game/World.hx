@@ -23,6 +23,10 @@ class World extends Scene {
 	override public function new (engine) {
 		super("World Scene",engine);
 		input = engine.input;
+		
+		var map = new NoiseTilemap();
+		add(map);
+		var spawn = map.findSpawn();
 
 		// bodySpriteMap = new SpriteMap(kha.Assets.);
 		structure = new Structure();
@@ -34,13 +38,13 @@ class World extends Scene {
 		add(bodyParticleSystem);
 
 		camera = new Camera();
-		camera.position.x = -300;
-		camera.position.y = -300;
+		camera.position.x = spawn.x*2 - 300;
+		camera.position.y = spawn.y*2 - 300;
 		summonCircle = new SummonCircle();
+		summonCircle.position = spawn.add(new kha.math.Vector2(30,30));
 		add(summonCircle);
 
 		inventory = new Inventory();
-		// add(inventory);
 		input.mouseUpListeners.push(function () {
 			var clickedPart = inventory.getItemClicked(input.mousePosition);
 			if (clickedPart != null) {
@@ -67,6 +71,7 @@ class World extends Scene {
 
 		for (i in 0...100) {
 			var body = new Body();
+			body.position = spawn;
 			// add(body);
 			bodies.push(body);
 		}
@@ -183,7 +188,11 @@ class World extends Scene {
 		   part: BodyPart.createByIndex(Math.floor(Math.random() * 4))
 		   });*/
 	}
-	override public function render (g) {
+	override public function render (g:kha.graphics2.Graphics) {
+		g.color = kha.Color.fromBytes(99,155,255);
+		g.fillRect(0,0,10000,10000);
+		g.color = kha.Color.White;
+
 		camera.apply(g);
 		super.render(g);
 		for (body in bodies)

@@ -2830,6 +2830,61 @@ game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
 	}
 	,__class__: game_Inventory
 });
+var game_NoiseTilemap = $hxClasses["game.NoiseTilemap"] = function() {
+	this.seaLevel = -.75;
+	this.seed = 0.;
+	this.colliders = [];
+	this.height = 300;
+	this.width = 300;
+	bonsai_entity_Entity.call(this);
+	this.spriteMap = new bonsai_render_SpriteMap(kha_Assets.images.tiles,16,16);
+	this.perlin = new hxnoise_Perlin();
+	var _g = 0;
+	var _g1 = this.width;
+	while(_g < _g1) {
+		var x = _g++;
+	}
+	this.seed = Math.random() * 30000;
+};
+game_NoiseTilemap.__name__ = "game.NoiseTilemap";
+game_NoiseTilemap.__super__ = bonsai_entity_Entity;
+game_NoiseTilemap.prototype = $extend(bonsai_entity_Entity.prototype,{
+	width: null
+	,height: null
+	,spriteMap: null
+	,colliders: null
+	,perlin: null
+	,seed: null
+	,seaLevel: null
+	,findSpawn: function() {
+		var spawnx = 2;
+		var spawny = 150;
+		while(this.getTile(spawnx,spawny) < 1 && spawnx < 150) ++spawnx;
+		spawnx += 4;
+		return new kha_math_Vector2(spawnx * 16,spawny * 16);
+	}
+	,getTile: function(x,y) {
+		var offset = Math.max(0,(Math.pow(x - 150,2) + Math.pow(y - 150,2)) / 5000 + this.seaLevel);
+		var c = Math.min(5,this.perlin.OctavePerlin(x / 16,y / 16,this.seed,5,0.5,0.25) * 8 - offset);
+		return Math.round(c) - 1;
+	}
+	,render: function(graphics) {
+		var _g = 0;
+		var _g1 = this.width;
+		while(_g < _g1) {
+			var y = _g++;
+			var _g2 = 0;
+			var _g11 = this.height;
+			while(_g2 < _g11) {
+				var x = _g2++;
+				this.spriteMap.renderCell(graphics,x * 16,y * 16,0,this.getTile(x,y));
+			}
+		}
+	}
+	,update: function(dt) {
+	}
+	,__class__: game_NoiseTilemap
+});
 var game_Structure = $hxClasses["game.Structure"] = function() {
 	this.colliders = [];
 	this.height = 100;
@@ -2849,7 +2904,6 @@ var game_Structure = $hxClasses["game.Structure"] = function() {
 	while(_g2 < _g3.length) {
 		var rectangle = _g3[_g2];
 		++_g2;
-		haxe_Log.trace(rectangle,{ fileName : "game/Structure.hx", lineNumber : 31, className : "game.Structure", methodName : "new"});
 		this.colliders.push(differ_shapes_Polygon.rectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height,false));
 	}
 	this.spriteMap = new bonsai_render_SpriteMap(kha_Assets.images.castleTiles,16,16);
@@ -3064,15 +3118,30 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	var _gthis = this;
 	bonsai_scene_Scene.call(this,"World Scene",engine);
 	this.input = engine.input;
+	var map = new game_NoiseTilemap();
+	this.add(map);
+	var spawn = map.findSpawn();
 	this.structure = new game_Structure();
 	this.add(this.structure);
 	this.bodyParticleSystem = new game_BodyPartParticles();
 	this.bodyParticleSystem.poolMaximum = 6000;
 	this.add(this.bodyParticleSystem);
 	this.camera = new bonsai_scene_Camera();
-	this.camera.position.x = -300;
-	this.camera.position.y = -300;
+	this.camera.position.x = spawn.x * 2 - 300;
+	this.camera.position.y = spawn.y * 2 - 300;
 	this.summonCircle = new game_SummonCircle();
+	var x = 30;
+	var y = 30;
+	if(y == null) {
+		y = 0;
+	}
+	if(x == null) {
+		x = 0;
+	}
+	var vec_x = x;
+	var vec_y = y;
+	var tmp = new kha_math_Vector2(spawn.x + vec_x,spawn.y + vec_y);
+	this.summonCircle.position = tmp;
 	this.add(this.summonCircle);
 	this.inventory = new game_Inventory();
 	this.input.mouseUpListeners.push(function() {
@@ -3099,6 +3168,7 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	while(_g1 < 100) {
 		var i = _g1++;
 		var body1 = new game_Body();
+		body1.position = spawn;
 		this.bodies.push(body1);
 	}
 	this.bodies.sort(function(a,b) {
@@ -3225,6 +3295,9 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 		}
 	}
 	,render: function(g) {
+		g.set_color(kha__$Color_Color_$Impl_$.fromBytes(99,155,255));
+		g.fillRect(0,0,10000,10000);
+		g.set_color(-1);
 		this.camera.apply(g);
 		bonsai_scene_Scene.prototype.render.call(this,g);
 		var _g = 0;
@@ -5374,6 +5447,98 @@ hotml_client_Kha.reloadAsset = function(path,base64) {
 		blob.bytes = data;
 	}
 };
+var hxnoise_Perlin = $hxClasses["hxnoise.Perlin"] = function(repeat) {
+	if(repeat == null) {
+		repeat = -1;
+	}
+	this.repeat = repeat;
+	if(hxnoise_Perlin.P == null) {
+		var _g = [];
+		var _g1 = 0;
+		while(_g1 < 512) {
+			var x = _g1++;
+			_g.push(hxnoise_Perlin.PERMUTATIONS[x % 256]);
+		}
+		hxnoise_Perlin.P = _g;
+	}
+};
+hxnoise_Perlin.__name__ = "hxnoise.Perlin";
+hxnoise_Perlin.grad = function(hash,x,y,z) {
+	var h = hash & 15;
+	var u = h < 8 ? x : y;
+	var v;
+	if(h < 4) {
+		v = y;
+	} else if(h == 12 || h == 14) {
+		v = x;
+	} else {
+		v = z;
+	}
+	return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
+};
+hxnoise_Perlin.prototype = {
+	repeat: null
+	,perlin: function(x,y,z) {
+		if(this.repeat > 0) {
+			x %= this.repeat;
+			y %= this.repeat;
+			z %= this.repeat;
+		}
+		var xi = Math.floor(x) & 255;
+		var yi = Math.floor(y) & 255;
+		var zi = Math.floor(z) & 255;
+		var xf = x - Math.floor(x);
+		var yf = y - Math.floor(y);
+		var zf = z - Math.floor(z);
+		var u = this.fade(xf);
+		var v = this.fade(yf);
+		var w = this.fade(zf);
+		var aaa = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[xi] + yi] + zi];
+		var aba = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[xi] + this.inc(yi)] + zi];
+		var aab = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[xi] + yi] + this.inc(zi)];
+		var abb = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[xi] + this.inc(yi)] + this.inc(zi)];
+		var baa = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[this.inc(xi)] + yi] + zi];
+		var bba = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[this.inc(xi)] + this.inc(yi)] + zi];
+		var bab = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[this.inc(xi)] + yi] + this.inc(zi)];
+		var bbb = hxnoise_Perlin.P[hxnoise_Perlin.P[hxnoise_Perlin.P[this.inc(xi)] + this.inc(yi)] + this.inc(zi)];
+		var x1 = this.lerp(hxnoise_Perlin.grad(aaa,xf,yf,zf),hxnoise_Perlin.grad(baa,xf - 1,yf,zf),u);
+		var x2 = this.lerp(hxnoise_Perlin.grad(aba,xf,yf - 1,zf),hxnoise_Perlin.grad(bba,xf - 1,yf - 1,zf),u);
+		var y1 = this.lerp(x1,x2,v);
+		x1 = this.lerp(hxnoise_Perlin.grad(aab,xf,yf,zf - 1),hxnoise_Perlin.grad(bab,xf - 1,yf,zf - 1),u);
+		x2 = this.lerp(hxnoise_Perlin.grad(abb,xf,yf - 1,zf - 1),hxnoise_Perlin.grad(bbb,xf - 1,yf - 1,zf - 1),u);
+		var y2 = this.lerp(x1,x2,v);
+		return (this.lerp(y1,y2,w) + 1) / 2;
+	}
+	,OctavePerlin: function(x,y,z,octaves,persistence,frequency) {
+		var total = 0.0;
+		var maxValue = 0.0;
+		var amplitude = 1.0;
+		var _g = 0;
+		var _g1 = octaves;
+		while(_g < _g1) {
+			var i = _g++;
+			total += this.perlin(x * frequency,y * frequency,z * frequency) * amplitude;
+			maxValue += amplitude;
+			amplitude *= persistence;
+			frequency *= 2.0;
+		}
+		return total / maxValue;
+	}
+	,fade: function(t) {
+		return t * t * t * (t * (t * 6 - 15) + 10);
+	}
+	,inc: function(num) {
+		++num;
+		if(this.repeat > 0) {
+			num %= this.repeat;
+		}
+		return num;
+	}
+	,lerp: function(a,b,x) {
+		return a + x * (b - a);
+	}
+	,__class__: hxnoise_Perlin
+};
 var js__$Boot_HaxeError = $hxClasses["js._Boot.HaxeError"] = function(val) {
 	Error.call(this);
 	this.val = val;
@@ -5719,7 +5884,7 @@ var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
 	this.castle3_tmxDescription = { name : "castle3_tmx", file_sizes : [4960], files : ["castle3.tmx"], type : "blob"};
 	this.castle3_tmxName = "castle3_tmx";
 	this.castle3_tmx = null;
-	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [5657], files : ["castle2.tmx"], type : "blob"};
+	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [5200], files : ["castle2.tmx"], type : "blob"};
 	this.castle2_tmxName = "castle2_tmx";
 	this.castle2_tmx = null;
 	this.castle1_tmxDescription = { name : "castle1_tmx", file_sizes : [4509], files : ["castle1.tmx"], type : "blob"};
@@ -28559,6 +28724,7 @@ haxe_xml_Parser.escapes = (function($this) {
 	$r = h;
 	return $r;
 }(this));
+hxnoise_Perlin.PERMUTATIONS = [151,160,137,91,90,15,131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,190,6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,88,237,149,56,87,174,20,125,136,171,168,68,175,74,165,71,134,139,48,27,166,77,146,158,231,83,111,229,122,60,211,133,230,220,105,92,41,55,46,245,40,244,102,143,54,65,25,63,161,1,216,80,73,209,76,132,187,208,89,18,169,200,196,135,130,116,188,159,86,164,100,109,198,173,186,3,64,52,217,226,250,124,123,5,202,38,147,118,126,255,82,85,212,207,206,59,227,47,16,58,17,182,189,28,42,223,183,170,213,119,248,152,2,44,154,163,70,221,153,101,155,167,43,172,9,129,22,39,253,19,98,108,110,79,113,224,232,178,185,112,104,218,246,97,228,251,34,242,193,238,210,144,12,191,179,162,241,81,51,145,235,249,14,239,107,49,192,214,31,181,199,106,157,184,84,204,176,115,121,50,45,127,4,150,254,138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180];
 kha_Assets.images = new kha__$Assets_ImageList();
 kha_Assets.sounds = new kha__$Assets_SoundList();
 kha_Assets.blobs = new kha__$Assets_BlobList();
