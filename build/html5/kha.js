@@ -1576,10 +1576,10 @@ var game_SummonCircle = $hxClasses["game.SummonCircle"] = function() {
 	_g.set(game_BodyPart.Boots,10);
 	this.bodyLayers = _g;
 	this.animation = new bonsai_render_AnimatedSprite();
-	this.animation.drawLayers = [0,1];
+	this.animation.drawLayers = [0,1,2];
 	this.animation.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,4]});
 	this.animation.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3,4]});
-	this.animation.play("idle");
+	this.animation.play("summon");
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
 	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
