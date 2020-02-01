@@ -42,7 +42,8 @@
   ],
   "layers": [
    { "name": "satanicCircle", "opacity": 255, "blendMode": "normal" },
-   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" }
+   { "name": "Layer 2", "opacity": 255, "blendMode": "normal" },
+   { "name": "beam", "opacity": 255, "blendMode": "normal" }
   ],
   "slices": [
   ]
