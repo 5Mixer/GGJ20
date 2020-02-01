@@ -18,14 +18,18 @@ class BodyPartParticles extends bonsai.entity.ParticleSystem<BodyParticle> {
 		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0] });
 		this.animatedSprite.play("idle");
 		bodyPartToLayer = [
-			BodyPart.NaturalChest => 0,
-			BodyPart.NaturalHead  => 3,
-			BodyPart.NaturalLeg   => 5,
-			BodyPart.NaturalArm   => 6,
-			BodyPart.Axe          => 9,
-			BodyPart.Sword        => 8,
-			BodyPart.Knife        => 7,
-			BodyPart.Boots        => 10
+			BodyPart.NaturalChest     => 0,
+			BodyPart.NaturalHead      => 3,
+			BodyPart.NaturalHeadUp    => 4,
+			BodyPart.NaturalHeadDown  => 3,
+			BodyPart.NaturalHeadLeft  => 2,
+			BodyPart.NaturalHeadRight => 1,
+			BodyPart.NaturalLeg       => 5,
+			BodyPart.NaturalArm       => 6,
+			BodyPart.Axe              => 9,
+			BodyPart.Sword            => 8,
+			BodyPart.Knife            => 7,
+			BodyPart.Boots            => 10
 		];
 	}
 

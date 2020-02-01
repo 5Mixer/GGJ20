@@ -633,19 +633,22 @@ var bonsai_event_EventSystem = $hxClasses["bonsai.event.EventSystem"] = function
 };
 bonsai_event_EventSystem.__name__ = "bonsai.event.EventSystem";
 bonsai_event_EventSystem.prototype = {
-	listen: function(event) {
+	listen: function(event,func) {
 	}
 	,dispatch: function(event) {
 	}
 	,__class__: bonsai_event_EventSystem
 };
-var bonsai_input_InputEvent = $hxEnums["bonsai.input.InputEvent"] = { __ename__ : true, __constructs__ : ["MouseEnter","MouseLeave","MouseScroll"]
+var bonsai_input_InputEvent = $hxEnums["bonsai.input.InputEvent"] = { __ename__ : true, __constructs__ : ["MouseEnter","MouseLeave","MouseDown","MouseUp","MouseScroll"]
 	,MouseEnter: {_hx_index:0,__enum__:"bonsai.input.InputEvent",toString:$estr}
 	,MouseLeave: {_hx_index:1,__enum__:"bonsai.input.InputEvent",toString:$estr}
-	,MouseScroll: ($_=function(delta) { return {_hx_index:2,delta:delta,__enum__:"bonsai.input.InputEvent",toString:$estr}; },$_.__params__ = ["delta"],$_)
+	,MouseDown: {_hx_index:2,__enum__:"bonsai.input.InputEvent",toString:$estr}
+	,MouseUp: {_hx_index:3,__enum__:"bonsai.input.InputEvent",toString:$estr}
+	,MouseScroll: ($_=function(delta) { return {_hx_index:4,delta:delta,__enum__:"bonsai.input.InputEvent",toString:$estr}; },$_.__params__ = ["delta"],$_)
 };
-bonsai_input_InputEvent.__empty_constructs__ = [bonsai_input_InputEvent.MouseEnter,bonsai_input_InputEvent.MouseLeave];
+bonsai_input_InputEvent.__empty_constructs__ = [bonsai_input_InputEvent.MouseEnter,bonsai_input_InputEvent.MouseLeave,bonsai_input_InputEvent.MouseDown,bonsai_input_InputEvent.MouseUp];
 var bonsai_input_Input = $hxClasses["bonsai.input.Input"] = function() {
+	this.mouseUpListeners = [];
 	this.downKeys = [];
 	this.mouseInside = true;
 	this.absoluteScroll = 0;
@@ -665,6 +668,7 @@ bonsai_input_Input.prototype = {
 	,absoluteScroll: null
 	,mouseInside: null
 	,downKeys: null
+	,mouseUpListeners: null
 	,isAnyKeyDown: function(keys) {
 		var _g = 0;
 		while(_g < keys.length) {
@@ -685,6 +689,7 @@ bonsai_input_Input.prototype = {
 		}
 		this.mousePosition.x = x;
 		this.mousePosition.y = y;
+		this.events.dispatch(bonsai_input_InputEvent.MouseDown);
 	}
 	,mouseUp: function(button,x,y) {
 		if(button == 0) {
@@ -695,6 +700,14 @@ bonsai_input_Input.prototype = {
 		}
 		this.mousePosition.x = x;
 		this.mousePosition.y = y;
+		this.events.dispatch(bonsai_input_InputEvent.MouseUp);
+		var _g = 0;
+		var _g1 = this.mouseUpListeners;
+		while(_g < _g1.length) {
+			var listener = _g1[_g];
+			++_g;
+			listener();
+		}
 	}
 	,mouseMove: function(x,y,dx,dy) {
 		if(!this.mouseInside) {
@@ -1197,7 +1210,7 @@ bonsai_resource_Tiled.prototype = {
 	,__class__: bonsai_resource_Tiled
 };
 var bonsai_scene_Camera = $hxClasses["bonsai.scene.Camera"] = function() {
-	this.shakeStrength = 0;
+	this.shakeStrength = 0.;
 	this.shakeDuration = 0.;
 	this.position = new kha_math_Vector2(0,0);
 	this.transformation = new bonsai_render_Transformation();
@@ -1298,57 +1311,31 @@ bonsai_scene_Scene.prototype = {
 	}
 	,__class__: bonsai_scene_Scene
 };
-var game_HeadPart = $hxEnums["game.HeadPart"] = { __ename__ : true, __constructs__ : ["NaturalHeadRight","NaturalHeadLeft","NaturalHeadDown","NaturalHeadUp"]
-	,NaturalHeadRight: {_hx_index:0,__enum__:"game.HeadPart",toString:$estr}
-	,NaturalHeadLeft: {_hx_index:1,__enum__:"game.HeadPart",toString:$estr}
-	,NaturalHeadDown: {_hx_index:2,__enum__:"game.HeadPart",toString:$estr}
-	,NaturalHeadUp: {_hx_index:3,__enum__:"game.HeadPart",toString:$estr}
-};
-game_HeadPart.__empty_constructs__ = [game_HeadPart.NaturalHeadRight,game_HeadPart.NaturalHeadLeft,game_HeadPart.NaturalHeadDown,game_HeadPart.NaturalHeadUp];
-var game_ChestPart = $hxEnums["game.ChestPart"] = { __ename__ : true, __constructs__ : ["NaturalChest"]
-	,NaturalChest: {_hx_index:0,__enum__:"game.ChestPart",toString:$estr}
-};
-game_ChestPart.__empty_constructs__ = [game_ChestPart.NaturalChest];
-var game_ArmPart = $hxEnums["game.ArmPart"] = { __ename__ : true, __constructs__ : ["NaturalArm","Knife","Sword","Axe"]
-	,NaturalArm: {_hx_index:0,__enum__:"game.ArmPart",toString:$estr}
-	,Knife: {_hx_index:1,__enum__:"game.ArmPart",toString:$estr}
-	,Sword: {_hx_index:2,__enum__:"game.ArmPart",toString:$estr}
-	,Axe: {_hx_index:3,__enum__:"game.ArmPart",toString:$estr}
-};
-game_ArmPart.__empty_constructs__ = [game_ArmPart.NaturalArm,game_ArmPart.Knife,game_ArmPart.Sword,game_ArmPart.Axe];
-var game_LegPart = $hxEnums["game.LegPart"] = { __ename__ : true, __constructs__ : ["NaturalLeg","Boots"]
-	,NaturalLeg: {_hx_index:0,__enum__:"game.LegPart",toString:$estr}
-	,Boots: {_hx_index:1,__enum__:"game.LegPart",toString:$estr}
-};
-game_LegPart.__empty_constructs__ = [game_LegPart.NaturalLeg,game_LegPart.Boots];
 var game_Body = $hxClasses["game.Body"] = function() {
 	var _g = new haxe_ds_EnumValueMap();
-	_g.set(game_LegPart.NaturalLeg,5);
-	_g.set(game_LegPart.Boots,10);
-	this.legLayers = _g;
-	var _g1 = new haxe_ds_EnumValueMap();
-	_g1.set(game_ArmPart.NaturalArm,6);
-	_g1.set(game_ArmPart.Knife,7);
-	_g1.set(game_ArmPart.Sword,8);
-	_g1.set(game_ArmPart.Axe,9);
-	this.armLayers = _g1;
-	var _g2 = new haxe_ds_EnumValueMap();
-	_g2.set(game_ChestPart.NaturalChest,0);
-	this.chestLayers = _g2;
-	var _g3 = new haxe_ds_EnumValueMap();
-	_g3.set(game_HeadPart.NaturalHeadRight,1);
-	_g3.set(game_HeadPart.NaturalHeadLeft,2);
-	_g3.set(game_HeadPart.NaturalHeadDown,3);
-	_g3.set(game_HeadPart.NaturalHeadUp,4);
-	this.headLayers = _g3;
+	_g.set(game_BodyPart.NaturalHeadRight,1);
+	_g.set(game_BodyPart.NaturalHeadLeft,2);
+	_g.set(game_BodyPart.NaturalHeadDown,3);
+	_g.set(game_BodyPart.NaturalHeadUp,4);
+	_g.set(game_BodyPart.NaturalChest,0);
+	_g.set(game_BodyPart.NaturalArm,6);
+	_g.set(game_BodyPart.Knife,7);
+	_g.set(game_BodyPart.Sword,8);
+	_g.set(game_BodyPart.Axe,9);
+	_g.set(game_BodyPart.NaturalLeg,5);
+	_g.set(game_BodyPart.Boots,10);
+	this.bodyLayers = _g;
+	this.vx = 0;
+	this.z = 0;
+	this.vz = 0;
 	bonsai_entity_Entity.call(this);
-	this.position = new kha_math_Vector2(220 * Math.random(),160 * Math.random());
-	this.chest = game_ChestPart.NaturalChest;
-	this.head = game_HeadPart.NaturalHeadDown;
-	this.leftArm = game_ArmPart.Knife;
-	this.rightArm = game_ArmPart.Sword;
-	this.leftLeg = game_LegPart.NaturalLeg;
-	this.rightLeg = game_LegPart.NaturalLeg;
+	this.position = new kha_math_Vector2(-160 + 320 * Math.random(),-110 + 220 * Math.random());
+	this.chest = game_BodyPart.NaturalChest;
+	this.head = game_BodyPart.NaturalHeadDown;
+	this.leftArm = game_BodyPart.Knife;
+	this.rightArm = game_BodyPart.Sword;
+	this.leftLeg = game_BodyPart.NaturalLeg;
+	this.rightLeg = game_BodyPart.NaturalLeg;
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
 	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
@@ -1362,82 +1349,69 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 	,rightArm: null
 	,leftLeg: null
 	,rightLeg: null
-	,headLayers: null
-	,chestLayers: null
-	,armLayers: null
-	,legLayers: null
+	,vz: null
+	,z: null
+	,vx: null
+	,bodyLayers: null
 	,animatedSprite: null
+	,update: function(dt) {
+		if(Math.abs(this.vz) < .1 && this.z < 1 && Math.abs(this.vx) < .1) {
+			this.vz = 0;
+			this.vx = 0;
+			this.z = 0;
+			this.position.x = Math.round(this.position.x);
+		} else if(this.z >= 0) {
+			this.vz += 10 * dt;
+			this.z -= this.vz;
+			this.position.x += this.vx;
+		} else {
+			this.vz *= -.4;
+			this.z = 0;
+			this.vx *= .6;
+		}
+		bonsai_entity_Entity.prototype.update.call(this,dt);
+	}
 	,render: function(graphics) {
 		if(this.chest == null || this.head == null || this.leftLeg == null || this.rightLeg == null || this.leftArm == null || this.rightArm == null) {
 			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 71, className : "game.Body", methodName : "render"});
 			return;
 		}
-		var tmp = this.chestLayers.get(this.chest);
+		var tmp = this.bodyLayers.get(this.chest);
 		this.animatedSprite.drawLayers = [tmp];
-		this.animatedSprite.render(graphics,this.position.x,this.position.y);
-		var tmp1 = this.headLayers.get(this.head);
+		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
+		var tmp1 = this.bodyLayers.get(this.head);
 		this.animatedSprite.drawLayers = [tmp1];
-		this.animatedSprite.render(graphics,this.position.x,this.position.y);
-		var tmp2 = this.legLayers.get(this.leftLeg);
+		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
+		var tmp2 = this.bodyLayers.get(this.leftLeg);
 		this.animatedSprite.drawLayers = [tmp2];
-		this.animatedSprite.render(graphics,this.position.x,this.position.y);
-		var tmp3 = this.legLayers.get(this.rightLeg);
+		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
+		var tmp3 = this.bodyLayers.get(this.rightLeg);
 		this.animatedSprite.drawLayers = [tmp3];
-		this.animatedSprite.render(graphics,this.position.x + 5,this.position.y);
-		var tmp4 = this.armLayers.get(this.leftArm);
+		this.animatedSprite.render(graphics,this.position.x + 5,this.position.y - this.z);
+		var tmp4 = this.bodyLayers.get(this.leftArm);
 		this.animatedSprite.drawLayers = [tmp4];
-		this.animatedSprite.render(graphics,this.position.x,this.position.y);
-		var tmp5 = this.armLayers.get(this.rightArm);
+		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
+		var tmp5 = this.bodyLayers.get(this.rightArm);
 		this.animatedSprite.drawLayers = [tmp5];
-		this.animatedSprite.render(graphics,this.position.x + 7,this.position.y);
-	}
-	,getHeadDrop: function() {
-		return game_BodyPart.NaturalHead;
-	}
-	,getChestDrop: function() {
-		return game_BodyPart.NaturalChest;
-	}
-	,getLeftArmDrop: function() {
-		var _g = new haxe_ds_EnumValueMap();
-		_g.set(game_ArmPart.NaturalArm,game_BodyPart.NaturalArm);
-		_g.set(game_ArmPart.Axe,game_BodyPart.Axe);
-		_g.set(game_ArmPart.Sword,game_BodyPart.Sword);
-		_g.set(game_ArmPart.Knife,game_BodyPart.Knife);
-		return _g.get(this.leftArm);
-	}
-	,getRightArmDrop: function() {
-		var _g = new haxe_ds_EnumValueMap();
-		_g.set(game_ArmPart.NaturalArm,game_BodyPart.NaturalArm);
-		_g.set(game_ArmPart.Axe,game_BodyPart.Axe);
-		_g.set(game_ArmPart.Sword,game_BodyPart.Sword);
-		_g.set(game_ArmPart.Knife,game_BodyPart.Knife);
-		return _g.get(this.rightArm);
-	}
-	,getLeftLegDrop: function() {
-		var _g = new haxe_ds_EnumValueMap();
-		_g.set(game_LegPart.NaturalLeg,game_BodyPart.NaturalLeg);
-		_g.set(game_LegPart.Boots,game_BodyPart.Boots);
-		return _g.get(this.leftLeg);
-	}
-	,getRightLegDrop: function() {
-		var _g = new haxe_ds_EnumValueMap();
-		_g.set(game_LegPart.NaturalLeg,game_BodyPart.NaturalLeg);
-		_g.set(game_LegPart.Boots,game_BodyPart.Boots);
-		return _g.get(this.rightLeg);
+		this.animatedSprite.render(graphics,this.position.x + 7,this.position.y - this.z);
 	}
 	,__class__: game_Body
 });
-var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs__ : ["NaturalHead","NaturalChest","NaturalArm","NaturalLeg","Boots","Axe","Sword","Knife"]
+var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs__ : ["NaturalHead","NaturalHeadRight","NaturalHeadLeft","NaturalHeadDown","NaturalHeadUp","NaturalChest","NaturalArm","NaturalLeg","Boots","Axe","Sword","Knife"]
 	,NaturalHead: {_hx_index:0,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalChest: {_hx_index:1,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalArm: {_hx_index:2,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalLeg: {_hx_index:3,__enum__:"game.BodyPart",toString:$estr}
-	,Boots: {_hx_index:4,__enum__:"game.BodyPart",toString:$estr}
-	,Axe: {_hx_index:5,__enum__:"game.BodyPart",toString:$estr}
-	,Sword: {_hx_index:6,__enum__:"game.BodyPart",toString:$estr}
-	,Knife: {_hx_index:7,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadRight: {_hx_index:1,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadLeft: {_hx_index:2,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadDown: {_hx_index:3,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadUp: {_hx_index:4,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalChest: {_hx_index:5,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalArm: {_hx_index:6,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalLeg: {_hx_index:7,__enum__:"game.BodyPart",toString:$estr}
+	,Boots: {_hx_index:8,__enum__:"game.BodyPart",toString:$estr}
+	,Axe: {_hx_index:9,__enum__:"game.BodyPart",toString:$estr}
+	,Sword: {_hx_index:10,__enum__:"game.BodyPart",toString:$estr}
+	,Knife: {_hx_index:11,__enum__:"game.BodyPart",toString:$estr}
 };
-game_BodyPart.__empty_constructs__ = [game_BodyPart.NaturalHead,game_BodyPart.NaturalChest,game_BodyPart.NaturalArm,game_BodyPart.NaturalLeg,game_BodyPart.Boots,game_BodyPart.Axe,game_BodyPart.Sword,game_BodyPart.Knife];
+game_BodyPart.__empty_constructs__ = [game_BodyPart.NaturalHead,game_BodyPart.NaturalHeadRight,game_BodyPart.NaturalHeadLeft,game_BodyPart.NaturalHeadDown,game_BodyPart.NaturalHeadUp,game_BodyPart.NaturalChest,game_BodyPart.NaturalArm,game_BodyPart.NaturalLeg,game_BodyPart.Boots,game_BodyPart.Axe,game_BodyPart.Sword,game_BodyPart.Knife];
 var game_BodyPartParticles = $hxClasses["game.BodyPartParticles"] = function() {
 	bonsai_entity_ParticleSystem.call(this,400);
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
@@ -1446,6 +1420,10 @@ var game_BodyPartParticles = $hxClasses["game.BodyPartParticles"] = function() {
 	var _g = new haxe_ds_EnumValueMap();
 	_g.set(game_BodyPart.NaturalChest,0);
 	_g.set(game_BodyPart.NaturalHead,3);
+	_g.set(game_BodyPart.NaturalHeadUp,4);
+	_g.set(game_BodyPart.NaturalHeadDown,3);
+	_g.set(game_BodyPart.NaturalHeadLeft,2);
+	_g.set(game_BodyPart.NaturalHeadRight,1);
 	_g.set(game_BodyPart.NaturalLeg,5);
 	_g.set(game_BodyPart.NaturalArm,6);
 	_g.set(game_BodyPart.Axe,9);
@@ -1522,17 +1500,52 @@ game_Inventory.__name__ = "game.Inventory";
 game_Inventory.__super__ = bonsai_entity_Entity;
 game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
 	items: null
+	,getItemClicked: function(position) {
+		if(position.x < 250) {
+			var yOffset = 0;
+			var _g = new haxe_iterators_MapKeyValueIterator(this.items);
+			while(_g.hasNext()) {
+				var _g1 = _g.next();
+				var item = _g1.key;
+				var quantity = _g1.value;
+				if(quantity > 0) {
+					if(position.y > yOffset * 40 - 2 && position.y < yOffset * 40 - 2 + 34) {
+						return item;
+					}
+					++yOffset;
+				}
+			}
+		}
+		return null;
+	}
 	,render: function(graphics) {
 		var yOffset = 0;
 		graphics.set_font(kha_Assets.fonts.KenneyMini);
-		graphics.set_fontSize(10);
+		graphics.set_fontSize(30);
+		var total = 0;
 		var _g = new haxe_iterators_MapKeyValueIterator(this.items);
 		while(_g.hasNext()) {
 			var _g1 = _g.next();
 			var item = _g1.key;
 			var quantity = _g1.value;
 			if(quantity > 0) {
-				graphics.drawString("" + quantity + " " + Std.string(item),5,yOffset * 10);
+				++total;
+			}
+		}
+		graphics.set_color(kha__$Color_Color_$Impl_$.fromBytes(26,24,23));
+		graphics.fillRect(3,3,250,total * 40);
+		graphics.set_color(-1);
+		var _g2 = new haxe_iterators_MapKeyValueIterator(this.items);
+		while(_g2.hasNext()) {
+			var _g11 = _g2.next();
+			var item1 = _g11.key;
+			var quantity1 = _g11.value;
+			if(quantity1 > 0) {
+				graphics.set_color(kha__$Color_Color_$Impl_$.fromBytes(36,34,33));
+				graphics.fillRect(3,yOffset * 40 - 2,250,34);
+				graphics.set_color(-1);
+				graphics.drawString("" + quantity1,5,yOffset * 40);
+				graphics.drawString("" + Std.string(item1),70,yOffset * 40);
 				++yOffset;
 			}
 		}
@@ -1540,14 +1553,36 @@ game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
 	,__class__: game_Inventory
 });
 var game_SummonCircle = $hxClasses["game.SummonCircle"] = function() {
+	this.bodyLayers = new haxe_ds_EnumValueMap();
+	this.headParts = [game_BodyPart.NaturalHead];
+	this.chestParts = [game_BodyPart.NaturalChest];
+	this.legParts = [game_BodyPart.NaturalLeg,game_BodyPart.Boots];
+	this.armParts = [game_BodyPart.NaturalArm,game_BodyPart.Axe,game_BodyPart.Sword,game_BodyPart.Knife];
 	this.height = 64;
 	this.width = 64;
 	bonsai_entity_Entity.call(this);
+	var _g = new haxe_ds_EnumValueMap();
+	_g.set(game_BodyPart.NaturalChest,0);
+	_g.set(game_BodyPart.NaturalHead,3);
+	_g.set(game_BodyPart.NaturalHeadUp,3);
+	_g.set(game_BodyPart.NaturalHeadDown,2);
+	_g.set(game_BodyPart.NaturalHeadLeft,1);
+	_g.set(game_BodyPart.NaturalHeadRight,0);
+	_g.set(game_BodyPart.NaturalLeg,5);
+	_g.set(game_BodyPart.NaturalArm,6);
+	_g.set(game_BodyPart.Knife,7);
+	_g.set(game_BodyPart.Sword,8);
+	_g.set(game_BodyPart.Axe,9);
+	_g.set(game_BodyPart.Boots,10);
+	this.bodyLayers = _g;
 	this.animation = new bonsai_render_AnimatedSprite();
-	this.animation.drawLayers = [0,1,2];
-	this.animation.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1]});
-	this.animation.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3]});
-	this.animation.playOnce("summon");
+	this.animation.drawLayers = [0,1];
+	this.animation.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,4]});
+	this.animation.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3,4]});
+	this.animation.play("idle");
+	this.animatedSprite = new bonsai_render_AnimatedSprite();
+	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0]});
+	this.animatedSprite.play("idle");
 };
 game_SummonCircle.__name__ = "game.SummonCircle";
 game_SummonCircle.__super__ = bonsai_entity_Entity;
@@ -1555,8 +1590,119 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 	width: null
 	,height: null
 	,animation: null
+	,head: null
+	,chest: null
+	,leftArm: null
+	,rightArm: null
+	,leftLeg: null
+	,rightLeg: null
+	,armParts: null
+	,legParts: null
+	,chestParts: null
+	,headParts: null
+	,animatedSprite: null
+	,bodyLayers: null
+	,isComplete: function() {
+		if(this.head != null && this.chest != null && this.leftArm != null && this.rightArm != null && this.leftLeg != null) {
+			return this.rightLeg != null;
+		} else {
+			return false;
+		}
+	}
+	,getBody: function() {
+		var body = new game_Body();
+		if(this.head == game_BodyPart.NaturalHead) {
+			this.head = game_BodyPart.NaturalHeadDown;
+		}
+		var e = this.head;
+		body.head = Type.createEnum(game_BodyPart,$hxEnums[e.__enum__].__constructs__[e._hx_index],null);
+		var e1 = this.chest;
+		body.chest = Type.createEnum(game_BodyPart,$hxEnums[e1.__enum__].__constructs__[e1._hx_index],null);
+		var e2 = this.leftArm;
+		body.leftArm = Type.createEnum(game_BodyPart,$hxEnums[e2.__enum__].__constructs__[e2._hx_index],null);
+		var e3 = this.rightArm;
+		body.rightArm = Type.createEnum(game_BodyPart,$hxEnums[e3.__enum__].__constructs__[e3._hx_index],null);
+		var e4 = this.leftLeg;
+		body.leftLeg = Type.createEnum(game_BodyPart,$hxEnums[e4.__enum__].__constructs__[e4._hx_index],null);
+		var e5 = this.rightLeg;
+		body.rightLeg = Type.createEnum(game_BodyPart,$hxEnums[e5.__enum__].__constructs__[e5._hx_index],null);
+		return body;
+	}
+	,clear: function() {
+		this.head = null;
+		this.chest = null;
+		this.leftArm = null;
+		this.rightArm = null;
+		this.leftLeg = null;
+		this.rightLeg = null;
+	}
+	,addPart: function(part) {
+		if(this.armParts.indexOf(part) != -1) {
+			if(this.leftArm == null) {
+				this.leftArm = part;
+				return true;
+			}
+			if(this.rightArm == null) {
+				this.rightArm = part;
+				return true;
+			}
+		}
+		if(this.legParts.indexOf(part) != -1) {
+			if(this.leftLeg == null) {
+				this.leftLeg = part;
+				return true;
+			}
+			if(this.rightLeg == null) {
+				this.rightLeg = part;
+				return true;
+			}
+		}
+		if(this.headParts.indexOf(part) != -1) {
+			if(this.head == null) {
+				this.head = part;
+				return true;
+			}
+		}
+		if(this.chestParts.indexOf(part) != -1) {
+			if(this.chest == null) {
+				this.chest = part;
+				return true;
+			}
+		}
+		return false;
+	}
 	,render: function(graphics) {
 		this.animation.render(graphics,0,0);
+		if(this.chest != null) {
+			var tmp = this.bodyLayers.get(this.chest);
+			this.animatedSprite.drawLayers = [tmp];
+			this.animatedSprite.render(graphics,this.position.x,this.position.y);
+		}
+		if(this.head != null) {
+			var tmp1 = this.bodyLayers.get(this.head);
+			this.animatedSprite.drawLayers = [tmp1];
+			this.animatedSprite.render(graphics,this.position.x,this.position.y);
+		}
+		if(this.leftLeg != null) {
+			var tmp2 = this.bodyLayers.get(this.leftLeg);
+			this.animatedSprite.drawLayers = [tmp2];
+			this.animatedSprite.render(graphics,this.position.x,this.position.y);
+		}
+		if(this.rightLeg != null) {
+			var tmp3 = this.bodyLayers.get(this.rightLeg);
+			this.animatedSprite.drawLayers = [tmp3];
+			this.animatedSprite.render(graphics,this.position.x + 5,this.position.y);
+		}
+		if(this.leftArm != null) {
+			var tmp4 = this.bodyLayers.get(this.leftArm);
+			this.animatedSprite.drawLayers = [tmp4];
+			this.animatedSprite.render(graphics,this.position.x,this.position.y);
+		}
+		if(this.rightArm != null) {
+			var tmp5 = this.bodyLayers.get(this.rightArm);
+			this.animatedSprite.drawLayers = [tmp5];
+			this.animatedSprite.render(graphics,this.position.x + 7,this.position.y);
+		}
 	}
 	,update: function(dt) {
 		this.animation.update(dt);
@@ -1618,8 +1764,9 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	_g.set(game_BodyPart.Sword,2);
 	_g.set(game_BodyPart.Knife,9);
 	this.zOffset = _g;
-	this.f = 0;
+	this.f = 0.;
 	this.bodies = [];
+	var _gthis = this;
 	bonsai_scene_Scene.call(this,"World Scene",engine);
 	this.input = engine.input;
 	this.add(new game_TileMap());
@@ -1627,40 +1774,38 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	this.bodyParticleSystem.poolMaximum = 6000;
 	this.add(this.bodyParticleSystem);
 	this.camera = new bonsai_scene_Camera();
+	this.camera.position.x = -300;
+	this.camera.position.y = -300;
 	this.summonCircle = new game_SummonCircle();
 	this.add(this.summonCircle);
 	this.inventory = new game_Inventory();
-	this.add(this.inventory);
-	var body = new game_Body();
-	this.add(body);
-	this.bodies.push(body);
-	var body1 = new game_Body();
-	this.add(body1);
-	this.bodies.push(body1);
-	var body2 = new game_Body();
-	this.add(body2);
-	this.bodies.push(body2);
-	var body3 = new game_Body();
-	this.add(body3);
-	this.bodies.push(body3);
-	var body4 = new game_Body();
-	this.add(body4);
-	this.bodies.push(body4);
-	var body5 = new game_Body();
-	this.add(body5);
-	this.bodies.push(body5);
-	var body6 = new game_Body();
-	this.add(body6);
-	this.bodies.push(body6);
-	var body7 = new game_Body();
-	this.add(body7);
-	this.bodies.push(body7);
-	var body8 = new game_Body();
-	this.add(body8);
-	this.bodies.push(body8);
-	var body9 = new game_Body();
-	this.add(body9);
-	this.bodies.push(body9);
+	this.input.mouseUpListeners.push(function() {
+		var clickedPart = _gthis.inventory.getItemClicked(_gthis.input.mousePosition);
+		if(clickedPart != null) {
+			if(_gthis.summonCircle.addPart(clickedPart)) {
+				_gthis.inventory.items.set(clickedPart,_gthis.inventory.items.get(clickedPart) - 1);
+				_gthis.camera.shake(.1,10);
+				if(_gthis.summonCircle.isComplete()) {
+					var body = _gthis.summonCircle.getBody();
+					var _this = _gthis.summonCircle.position;
+					body.position = new kha_math_Vector2(_this.x,_this.y);
+					body.vz = -4;
+					body.vx = -1 + Math.random() * 2;
+					_gthis.add(body);
+					_gthis.summonCircle.clear();
+					_gthis.summonCircle.animation.playOnce("summon");
+					_gthis.camera.shake(1,6);
+				}
+			}
+		}
+	});
+	var _g1 = 0;
+	while(_g1 < 1000) {
+		var i = _g1++;
+		var body1 = new game_Body();
+		this.add(body1);
+		this.bodies.push(body1);
+	}
 	this.bodies.sort(function(a,b) {
 		if(a.position.y < b.position.y) {
 			return -1;
@@ -1725,6 +1870,9 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 				continue;
 			}
 			if(Math.pow(item.x + 16 - worldMousePos.x,2) + Math.pow(item.y + 14 - worldMousePos.y,2) < 200) {
+				if([game_BodyPart.NaturalHeadUp,game_BodyPart.NaturalHeadDown,game_BodyPart.NaturalHeadRight,game_BodyPart.NaturalHeadLeft].indexOf(item.part) != -1) {
+					item.part = game_BodyPart.NaturalHead;
+				}
 				this.inventory.items.set(item.part,this.inventory.items.get(item.part) + 1);
 				HxOverrides.remove(this.bodyParticleSystem.members,item);
 			} else {
@@ -1736,6 +1884,7 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 		this.camera.apply(g);
 		bonsai_scene_Scene.prototype.render.call(this,g);
 		this.camera.finish(g);
+		this.inventory.render(g);
 	}
 	,zOffset: null
 	,explodeBody: function(body) {
@@ -1744,12 +1893,12 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 		if(body == null) {
 			return;
 		}
-		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getHeadDrop()), z : offset + this.zOffset.get(body.getHeadDrop()), vx : Math.random() - .5, vz : vz, part : body.getHeadDrop()});
-		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getChestDrop()), z : offset + this.zOffset.get(body.getChestDrop()), vz : vz, vx : Math.random() - .5, part : body.getChestDrop()});
-		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getLeftArmDrop()), z : offset + this.zOffset.get(body.getLeftArmDrop()), vz : vz, vx : Math.random() - .5, part : body.getLeftArmDrop()});
-		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getRightArmDrop()), z : offset + this.zOffset.get(body.getRightArmDrop()), vz : vz, vx : Math.random() - .5, part : body.getRightArmDrop()});
-		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getLeftLegDrop()), z : offset + this.zOffset.get(body.getLeftLegDrop()), vz : vz, vx : Math.random() - .5, part : body.getLeftLegDrop()});
-		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.getRightLegDrop()), z : offset + this.zOffset.get(body.getRightLegDrop()), vz : vz, vx : Math.random() - .5, part : body.getRightLegDrop()});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.head), z : offset + this.zOffset.get(body.head), vx : Math.random() - .5, vz : vz, part : body.head});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.chest), z : offset + this.zOffset.get(body.chest), vz : vz, vx : Math.random() - .5, part : body.chest});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.leftArm), z : offset + this.zOffset.get(body.leftArm), vz : vz, vx : Math.random() - .5, part : body.leftArm});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.rightArm), z : offset + this.zOffset.get(body.rightArm), vz : vz, vx : Math.random() - .5, part : body.rightArm});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.leftLeg), z : offset + this.zOffset.get(body.leftLeg), vz : vz, vx : Math.random() - .5, part : body.leftLeg});
+		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.rightLeg), z : offset + this.zOffset.get(body.rightLeg), vz : vz, vx : Math.random() - .5, part : body.rightLeg});
 		HxOverrides.remove(this.bodies,body);
 		this.remove(body);
 	}
