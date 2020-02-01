@@ -90,10 +90,13 @@
  </layer>
  <objectgroup id="5" name="collision">
   <object id="4" x="112" y="0">
-   <polygon points="0,0 0,16 80,16 80,176 32,176 32,192 96,192 96,0"/>
+  <polygon points="0,0 0,16 80,16 0,0"/>
   </object>
-  <object id="5" x="96" y="0">
-   <polygon points="0,0 0,16 -80,16 -80,176 -32,176 -32,192 -96,192 -96,0"/>
-  </object>
+  <!-- <object id="4" x="112" y="0">                                        -->
+  <!--  <polygon points="0,0 0,16 80,16 80,176 32,176 32,192 96,192 96,0"/> -->
+  <!-- </object>                                                            -->
+  <!-- <object id="5" x="96" y="0"> -->
+   <!-- <polygon points="0,0 0,16 -80,16 -80,176 -32,176 -32,192 -96,192 -96,0"/> -->
+  <!-- </object> -->
  </objectgroup>
 </map>
