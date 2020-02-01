@@ -595,11 +595,11 @@
 				"satanicCircle.png"
 			],
 			"file_sizes": [
-				972
+				2462
 			],
 			"type": "image",
 			"original_width": 320,
-			"original_height": 64
+			"original_height": 192
 		},
 		{
 			"name": "satanicCircle_ase",
@@ -607,7 +607,17 @@
 				"satanicCircle.ase"
 			],
 			"file_sizes": [
-				4359
+				4326
+			],
+			"type": "blob"
+		},
+		{
+			"name": "skeletune_sunvox",
+			"files": [
+				"skeletune.sunvox"
+			],
+			"file_sizes": [
+				2884
 			],
 			"type": "blob"
 		},

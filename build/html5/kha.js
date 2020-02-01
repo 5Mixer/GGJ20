@@ -2900,10 +2900,13 @@ var game_SummonCircle = $hxClasses["game.SummonCircle"] = function() {
 	_g.set(game_BodyPart.Boots,10);
 	this.bodyLayers = _g;
 	this.animation = new bonsai_render_AnimatedSprite();
+	this.animation2 = new bonsai_render_AnimatedSprite();
 	this.animation.drawLayers = [0,1];
+	this.animation2.drawLayers = [2];
 	this.animation.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,4]});
-	this.animation.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3,4]});
-	this.animation.play("summon");
+	this.animation.play("idle");
+	this.animation2.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3,4]});
+	this.animation2.play("summon");
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
 	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
@@ -2914,6 +2917,7 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 	width: null
 	,height: null
 	,animation: null
+	,animation2: null
 	,head: null
 	,chest: null
 	,leftArm: null
@@ -2957,8 +2961,6 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 		this.chest = null;
 		this.leftArm = null;
 		this.rightArm = null;
-		this.leftLeg = null;
-		this.rightLeg = null;
 	}
 	,addPart: function(part) {
 		if(this.armParts.indexOf(part) != -1) {
@@ -2997,6 +2999,7 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 	}
 	,render: function(graphics) {
 		this.animation.render(graphics,0,0);
+		this.animation2.render(graphics,0,0);
 		if(this.chest != null) {
 			var tmp = this.bodyLayers.get(this.chest);
 			this.animatedSprite.drawLayers = [tmp];
@@ -3029,6 +3032,7 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 		}
 	}
 	,update: function(dt) {
+		this.animation2.update(dt);
 		this.animation.update(dt);
 		bonsai_entity_Entity.prototype.update.call(this,dt);
 	}
@@ -5602,7 +5606,7 @@ var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
 	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [2059], original_width : 128, files : ["tiles.png"], type : "image"};
 	this.tilesName = "tiles";
 	this.tiles = null;
-	this.satanicCircleDescription = { name : "satanicCircle", original_height : 64, file_sizes : [972], original_width : 320, files : ["satanicCircle.png"], type : "image"};
+	this.satanicCircleDescription = { name : "satanicCircle", original_height : 192, file_sizes : [2462], original_width : 320, files : ["satanicCircle.png"], type : "image"};
 	this.satanicCircleName = "satanicCircle";
 	this.satanicCircle = null;
 	this.castleTilesDescription = { name : "castleTiles", original_height : 512, file_sizes : [5983], original_width : 128, files : ["castleTiles.png"], type : "image"};
@@ -5680,14 +5684,17 @@ kha__$Assets_SoundList.prototype = {
 	,__class__: kha__$Assets_SoundList
 };
 var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
-	this.names = ["bodyParts2_ase","castle1_tmx","castle2_tmx","castle3_tmx","castle4_tmx","castleTiles_ase","castleTiles_tsx","map_tmx","satanicCircle_ase","tiles_ase","tiles_tsx"];
+	this.names = ["bodyParts2_ase","castle1_tmx","castle2_tmx","castle3_tmx","castle4_tmx","castleTiles_ase","castleTiles_tsx","map_tmx","satanicCircle_ase","skeletune_sunvox","tiles_ase","tiles_tsx"];
 	this.tiles_tsxDescription = { name : "tiles_tsx", file_sizes : [224], files : ["tiles.tsx"], type : "blob"};
 	this.tiles_tsxName = "tiles_tsx";
 	this.tiles_tsx = null;
 	this.tiles_aseDescription = { name : "tiles_ase", file_sizes : [1479], files : ["tiles.ase"], type : "blob"};
 	this.tiles_aseName = "tiles_ase";
 	this.tiles_ase = null;
-	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [4359], files : ["satanicCircle.ase"], type : "blob"};
+	this.skeletune_sunvoxDescription = { name : "skeletune_sunvox", file_sizes : [2884], files : ["skeletune.sunvox"], type : "blob"};
+	this.skeletune_sunvoxName = "skeletune_sunvox";
+	this.skeletune_sunvox = null;
+	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [4326], files : ["satanicCircle.ase"], type : "blob"};
 	this.satanicCircle_aseName = "satanicCircle_ase";
 	this.satanicCircle_ase = null;
 	this.map_tmxDescription = { name : "map_tmx", file_sizes : [47184], files : ["map.tmx"], type : "blob"};
@@ -5827,6 +5834,18 @@ kha__$Assets_BlobList.prototype = {
 	,satanicCircle_aseUnload: function() {
 		this.satanicCircle_ase.unload();
 		this.satanicCircle_ase = null;
+	}
+	,skeletune_sunvox: null
+	,skeletune_sunvoxName: null
+	,skeletune_sunvoxDescription: null
+	,skeletune_sunvoxLoad: function(done,failure) {
+		kha_Assets.loadBlob("skeletune_sunvox",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "skeletune_sunvoxLoad"});
+	}
+	,skeletune_sunvoxUnload: function() {
+		this.skeletune_sunvox.unload();
+		this.skeletune_sunvox = null;
 	}
 	,tiles_ase: null
 	,tiles_aseName: null
