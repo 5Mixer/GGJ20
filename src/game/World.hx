@@ -3,28 +3,35 @@ package game;
 import bonsai.scene.*;
 import bonsai.render.*;
 import bonsai.entity.*;
+import Main;
 
 class World extends Scene {
-	var transformation:Transformation;
+	var inventory:Inventory;
 	var bodyParticleSystem:BodyPartParticles;
 
 	var bodyAnimatedSprite:AnimatedSprite;
 	var bodySpriteMap:SpriteMap;
 
 	var bodies:Array<Body> = [];
+	var input:bonsai.input.Input;
+	var camera:Camera;
 
 	override public function new (engine) {
 		super("World Scene",engine);
+		input = engine.input;
 
 		// bodySpriteMap = new SpriteMap(kha.Assets.);
-		this.transformation = new Transformation();
-		this.transformation.scale = new kha.math.Vector2(2, 2);
 		add(new TileMap());
 		// add(new Player(10, 30, engine.input), 1);
 
 		bodyParticleSystem = new BodyPartParticles();
 		bodyParticleSystem.poolMaximum = 6000;
 		add(bodyParticleSystem);
+
+		camera = new Camera();
+
+		inventory = new Inventory();
+		add(inventory);
 
 		for (i in 0...10) {
 			var body = new Body();
@@ -38,12 +45,25 @@ class World extends Scene {
 	var f = 0;
 	override public function update (dt:Float) {
 		f++;
-		// var dtMultiplier = engine.input.mouseInside ? 1 : .5;
-		// super.update(dt * dtMultiplier);
+		this.camera.update(dt);
+
+		var worldMousePos = camera.transformation.transformPoint(input.mousePosition);
+		
+		var cameraSpeed = 800;
+		if (input.isAnyKeyDown(InputBindings.left))
+			this.camera.position.x -= dt * cameraSpeed;
+		if (input.isAnyKeyDown(InputBindings.right))
+			this.camera.position.x += dt * cameraSpeed;
+		if (input.isAnyKeyDown(InputBindings.down))
+			this.camera.position.y += dt * cameraSpeed;
+		if (input.isAnyKeyDown(InputBindings.up))
+			this.camera.position.y -= dt * cameraSpeed;
+	
 		super.update(dt);
-		if (f > 100){
+		
+		if (f > 50){
 			for (body in bodies) {
-				if (Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < (f - 100)) {
+				if (Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < (f - 50)) {
 					explodeBody(body);
 				}
 			}
@@ -51,6 +71,24 @@ class World extends Scene {
 		bodyParticleSystem.members.sort(function (a,b) {
 			return a.y - b.y > 0 ? 1 : -1;
 		});
+
+		var i = bodyParticleSystem.members.length - 1;
+		while (i >= 0) {
+			var item = bodyParticleSystem.members[i];
+			if (item == null){
+				i--;
+				continue;
+			}
+				
+			if (Math.pow(item.x + 16 - worldMousePos.x, 2) + Math.pow(item.y + 14 - worldMousePos.y, 2) < 200) {
+				inventory.items.set(item.part, inventory.items.get(item.part) + 1);
+				bodyParticleSystem.members.remove(item);
+				// item.vz = -4;
+			}else{
+				i--;
+			}
+
+		}
 
 		/*
 		   bodyParticleSystem.spawnParticle({
@@ -62,9 +100,9 @@ class World extends Scene {
 		   });*/
 	}
 	override public function render (g) {
-		transformation.apply(g);
+		camera.apply(g);
 		super.render(g);
-		transformation.finish(g);
+		camera.finish(g);
 	}
 	var zOffset = [
 		BodyPart.NaturalHead  => 21,

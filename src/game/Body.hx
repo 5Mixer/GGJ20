@@ -81,7 +81,7 @@ class Body extends bonsai.entity.Entity{
 		animatedSprite.render(graphics, position.x, position.y);
 		
 		animatedSprite.drawLayers = [legLayers[rightLeg]];
-		animatedSprite.render(graphics, position.x + 3, position.y);
+		animatedSprite.render(graphics, position.x + 5, position.y);
 		
 		animatedSprite.drawLayers = [armLayers[leftArm]];
 		animatedSprite.render(graphics, position.x, position.y);

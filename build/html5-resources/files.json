@@ -88,7 +88,7 @@
 				"bodyParts2.png"
 			],
 			"file_sizes": [
-				929
+				939
 			],
 			"type": "image",
 			"original_width": 32,
@@ -100,7 +100,7 @@
 				"bodyParts2.ase"
 			],
 			"file_sizes": [
-				1983
+				2035
 			],
 			"type": "blob"
 		},
@@ -110,7 +110,7 @@
 				"bodyParts2.json"
 			],
 			"file_sizes": [
-				1177
+				1440
 			],
 			"type": "blob"
 		},

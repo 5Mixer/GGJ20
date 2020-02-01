@@ -644,6 +644,7 @@ var bonsai_input_InputEvent = $hxEnums["bonsai.input.InputEvent"] = { __ename__ 
 	,MouseLeave: {_hx_index:1,__enum__:"bonsai.input.InputEvent",toString:$estr}
 	,MouseScroll: ($_=function(delta) { return {_hx_index:2,delta:delta,__enum__:"bonsai.input.InputEvent",toString:$estr}; },$_.__params__ = ["delta"],$_)
 };
+bonsai_input_InputEvent.__empty_constructs__ = [bonsai_input_InputEvent.MouseEnter,bonsai_input_InputEvent.MouseLeave];
 var bonsai_input_Input = $hxClasses["bonsai.input.Input"] = function() {
 	this.downKeys = [];
 	this.mouseInside = true;
@@ -917,6 +918,194 @@ bonsai_render_Transformation.prototype = {
 	,finish: function(graphics) {
 		graphics.popTransformation();
 	}
+	,transformPoint: function(point) {
+		var _this__00 = 1;
+		var _this__10 = 0;
+		var _this__20 = this.offset.x + this.origin.x;
+		var _this__01 = 0;
+		var _this__11 = 1;
+		var _this__21 = this.offset.y + this.origin.y;
+		var _this__02 = 0;
+		var _this__12 = 0;
+		var _this__22 = 1;
+		var m__00 = this.scale.x;
+		var m__10 = 0;
+		var m__20 = 0;
+		var m__01 = 0;
+		var m__11 = this.scale.y;
+		var m__21 = 0;
+		var m__02 = 0;
+		var m__12 = 0;
+		var m__22 = 1;
+		var _this__001 = _this__00 * m__00 + _this__10 * m__01 + _this__20 * m__02;
+		var _this__101 = _this__00 * m__10 + _this__10 * m__11 + _this__20 * m__12;
+		var _this__201 = _this__00 * m__20 + _this__10 * m__21 + _this__20 * m__22;
+		var _this__011 = _this__01 * m__00 + _this__11 * m__01 + _this__21 * m__02;
+		var _this__111 = _this__01 * m__10 + _this__11 * m__11 + _this__21 * m__12;
+		var _this__211 = _this__01 * m__20 + _this__11 * m__21 + _this__21 * m__22;
+		var _this__021 = _this__02 * m__00 + _this__12 * m__01 + _this__22 * m__02;
+		var _this__121 = _this__02 * m__10 + _this__12 * m__11 + _this__22 * m__12;
+		var _this__221 = _this__02 * m__20 + _this__12 * m__21 + _this__22 * m__22;
+		var alpha = this.rotation;
+		var m__001 = Math.cos(alpha);
+		var m__101 = -Math.sin(alpha);
+		var m__201 = 0;
+		var m__011 = Math.sin(alpha);
+		var m__111 = Math.cos(alpha);
+		var m__211 = 0;
+		var m__021 = 0;
+		var m__121 = 0;
+		var m__221 = 1;
+		var _this__002 = _this__001 * m__001 + _this__101 * m__011 + _this__201 * m__021;
+		var _this__102 = _this__001 * m__101 + _this__101 * m__111 + _this__201 * m__121;
+		var _this__202 = _this__001 * m__201 + _this__101 * m__211 + _this__201 * m__221;
+		var _this__012 = _this__011 * m__001 + _this__111 * m__011 + _this__211 * m__021;
+		var _this__112 = _this__011 * m__101 + _this__111 * m__111 + _this__211 * m__121;
+		var _this__212 = _this__011 * m__201 + _this__111 * m__211 + _this__211 * m__221;
+		var _this__022 = _this__021 * m__001 + _this__121 * m__011 + _this__221 * m__021;
+		var _this__122 = _this__021 * m__101 + _this__121 * m__111 + _this__221 * m__121;
+		var _this__222 = _this__021 * m__201 + _this__121 * m__211 + _this__221 * m__221;
+		var m__002 = 1;
+		var m__102 = 0;
+		var m__202 = -this.origin.x;
+		var m__012 = 0;
+		var m__112 = 1;
+		var m__212 = -this.origin.y;
+		var m__022 = 0;
+		var m__122 = 0;
+		var m__222 = 1;
+		var _this__003 = _this__002 * m__002 + _this__102 * m__012 + _this__202 * m__022;
+		var _this__103 = _this__002 * m__102 + _this__102 * m__112 + _this__202 * m__122;
+		var _this__203 = _this__002 * m__202 + _this__102 * m__212 + _this__202 * m__222;
+		var _this__013 = _this__012 * m__002 + _this__112 * m__012 + _this__212 * m__022;
+		var _this__113 = _this__012 * m__102 + _this__112 * m__112 + _this__212 * m__122;
+		var _this__213 = _this__012 * m__202 + _this__112 * m__212 + _this__212 * m__222;
+		var _this__023 = _this__022 * m__002 + _this__122 * m__012 + _this__222 * m__022;
+		var _this__123 = _this__022 * m__102 + _this__122 * m__112 + _this__222 * m__122;
+		var _this__223 = _this__022 * m__202 + _this__122 * m__212 + _this__222 * m__222;
+		var c00 = _this__113 * _this__223 - _this__213 * _this__123;
+		var c01 = _this__103 * _this__223 - _this__203 * _this__123;
+		var c02 = _this__103 * _this__213 - _this__203 * _this__113;
+		var det = _this__003 * c00 - _this__013 * c01 + _this__023 * c02;
+		if(Math.abs(det) < 0.000001) {
+			throw new js__$Boot_HaxeError("determinant is too small");
+		}
+		var c10 = _this__013 * _this__223 - _this__213 * _this__023;
+		var c11 = _this__003 * _this__223 - _this__203 * _this__023;
+		var c12 = _this__003 * _this__213 - _this__203 * _this__013;
+		var c20 = _this__013 * _this__123 - _this__113 * _this__023;
+		var c21 = _this__003 * _this__123 - _this__103 * _this__023;
+		var c22 = _this__003 * _this__113 - _this__103 * _this__013;
+		var invdet = 1.0 / det;
+		var matrix__00 = c00 * invdet;
+		var matrix__10 = -c01 * invdet;
+		var matrix__20 = c02 * invdet;
+		var matrix__01 = -c10 * invdet;
+		var matrix__11 = c11 * invdet;
+		var matrix__21 = -c12 * invdet;
+		var matrix__02 = c20 * invdet;
+		var matrix__12 = -c21 * invdet;
+		var matrix__22 = c22 * invdet;
+		var value = kha_math_FastVector2.fromVector2(point);
+		var w = matrix__02 * value.x + matrix__12 * value.y + matrix__22;
+		var x = (matrix__00 * value.x + matrix__10 * value.y + matrix__20) / w;
+		var y = (matrix__01 * value.x + matrix__11 * value.y + matrix__21) / w;
+		return new kha_math_FastVector2(x,y);
+	}
+	,untransformPoint: function(point) {
+		var _this__00 = 1;
+		var _this__10 = 0;
+		var _this__20 = this.offset.x + this.origin.x;
+		var _this__01 = 0;
+		var _this__11 = 1;
+		var _this__21 = this.offset.y + this.origin.y;
+		var _this__02 = 0;
+		var _this__12 = 0;
+		var _this__22 = 1;
+		var m__00 = this.scale.x;
+		var m__10 = 0;
+		var m__20 = 0;
+		var m__01 = 0;
+		var m__11 = this.scale.y;
+		var m__21 = 0;
+		var m__02 = 0;
+		var m__12 = 0;
+		var m__22 = 1;
+		var _this__001 = _this__00 * m__00 + _this__10 * m__01 + _this__20 * m__02;
+		var _this__101 = _this__00 * m__10 + _this__10 * m__11 + _this__20 * m__12;
+		var _this__201 = _this__00 * m__20 + _this__10 * m__21 + _this__20 * m__22;
+		var _this__011 = _this__01 * m__00 + _this__11 * m__01 + _this__21 * m__02;
+		var _this__111 = _this__01 * m__10 + _this__11 * m__11 + _this__21 * m__12;
+		var _this__211 = _this__01 * m__20 + _this__11 * m__21 + _this__21 * m__22;
+		var _this__021 = _this__02 * m__00 + _this__12 * m__01 + _this__22 * m__02;
+		var _this__121 = _this__02 * m__10 + _this__12 * m__11 + _this__22 * m__12;
+		var _this__221 = _this__02 * m__20 + _this__12 * m__21 + _this__22 * m__22;
+		var alpha = this.rotation;
+		var m__001 = Math.cos(alpha);
+		var m__101 = -Math.sin(alpha);
+		var m__201 = 0;
+		var m__011 = Math.sin(alpha);
+		var m__111 = Math.cos(alpha);
+		var m__211 = 0;
+		var m__021 = 0;
+		var m__121 = 0;
+		var m__221 = 1;
+		var _this__002 = _this__001 * m__001 + _this__101 * m__011 + _this__201 * m__021;
+		var _this__102 = _this__001 * m__101 + _this__101 * m__111 + _this__201 * m__121;
+		var _this__202 = _this__001 * m__201 + _this__101 * m__211 + _this__201 * m__221;
+		var _this__012 = _this__011 * m__001 + _this__111 * m__011 + _this__211 * m__021;
+		var _this__112 = _this__011 * m__101 + _this__111 * m__111 + _this__211 * m__121;
+		var _this__212 = _this__011 * m__201 + _this__111 * m__211 + _this__211 * m__221;
+		var _this__022 = _this__021 * m__001 + _this__121 * m__011 + _this__221 * m__021;
+		var _this__122 = _this__021 * m__101 + _this__121 * m__111 + _this__221 * m__121;
+		var _this__222 = _this__021 * m__201 + _this__121 * m__211 + _this__221 * m__221;
+		var m__002 = 1;
+		var m__102 = 0;
+		var m__202 = -this.origin.x;
+		var m__012 = 0;
+		var m__112 = 1;
+		var m__212 = -this.origin.y;
+		var m__022 = 0;
+		var m__122 = 0;
+		var m__222 = 1;
+		var _this__003 = _this__002 * m__002 + _this__102 * m__012 + _this__202 * m__022;
+		var _this__103 = _this__002 * m__102 + _this__102 * m__112 + _this__202 * m__122;
+		var _this__203 = _this__002 * m__202 + _this__102 * m__212 + _this__202 * m__222;
+		var _this__013 = _this__012 * m__002 + _this__112 * m__012 + _this__212 * m__022;
+		var _this__113 = _this__012 * m__102 + _this__112 * m__112 + _this__212 * m__122;
+		var _this__213 = _this__012 * m__202 + _this__112 * m__212 + _this__212 * m__222;
+		var _this__023 = _this__022 * m__002 + _this__122 * m__012 + _this__222 * m__022;
+		var _this__123 = _this__022 * m__102 + _this__122 * m__112 + _this__222 * m__122;
+		var _this__223 = _this__022 * m__202 + _this__122 * m__212 + _this__222 * m__222;
+		var c00 = _this__113 * _this__223 - _this__213 * _this__123;
+		var c01 = _this__103 * _this__223 - _this__203 * _this__123;
+		var c02 = _this__103 * _this__213 - _this__203 * _this__113;
+		var det = _this__003 * c00 - _this__013 * c01 + _this__023 * c02;
+		if(Math.abs(det) < 0.000001) {
+			throw new js__$Boot_HaxeError("determinant is too small");
+		}
+		var c10 = _this__013 * _this__223 - _this__213 * _this__023;
+		var c11 = _this__003 * _this__223 - _this__203 * _this__023;
+		var c12 = _this__003 * _this__213 - _this__203 * _this__013;
+		var c20 = _this__013 * _this__123 - _this__113 * _this__023;
+		var c21 = _this__003 * _this__123 - _this__103 * _this__023;
+		var c22 = _this__003 * _this__113 - _this__103 * _this__013;
+		var invdet = 1.0 / det;
+		var matrix__00 = c00 * invdet;
+		var matrix__10 = -c01 * invdet;
+		var matrix__20 = c02 * invdet;
+		var matrix__01 = -c10 * invdet;
+		var matrix__11 = c11 * invdet;
+		var matrix__21 = -c12 * invdet;
+		var matrix__02 = c20 * invdet;
+		var matrix__12 = -c21 * invdet;
+		var matrix__22 = c22 * invdet;
+		var value = kha_math_FastVector2.fromVector2(point);
+		var w = matrix__02 * value.x + matrix__12 * value.y + matrix__22;
+		var x = (matrix__00 * value.x + matrix__10 * value.y + matrix__20) / w;
+		var y = (matrix__01 * value.x + matrix__11 * value.y + matrix__21) / w;
+		return new kha_math_FastVector2(x,y);
+	}
 	,__class__: bonsai_render_Transformation
 };
 var bonsai_resource_Tiled = $hxClasses["bonsai.resource.Tiled"] = function(data) {
@@ -995,6 +1184,50 @@ bonsai_resource_Tiled.prototype = {
 	}
 	,__class__: bonsai_resource_Tiled
 };
+var bonsai_scene_Camera = $hxClasses["bonsai.scene.Camera"] = function() {
+	this.shakeStrength = 0;
+	this.shakeDuration = 0.;
+	this.position = new kha_math_Vector2(0,0);
+	this.transformation = new bonsai_render_Transformation();
+	this.transformation.scale = new kha_math_Vector2(2,2);
+	this.shakeTransformation = new bonsai_render_Transformation();
+};
+bonsai_scene_Camera.__name__ = "bonsai.scene.Camera";
+bonsai_scene_Camera.prototype = {
+	transformation: null
+	,shakeTransformation: null
+	,shakeDuration: null
+	,shakeStrength: null
+	,position: null
+	,update: function(delta) {
+		this.shakeDuration -= delta;
+	}
+	,apply: function(g) {
+		if(this.shakeDuration > 0) {
+			var strength = Math.random() * this.shakeStrength;
+			var direction = 2 * Math.PI * Math.random();
+			this.shakeTransformation.offset.x = Math.cos(direction) * strength;
+			this.shakeTransformation.offset.y = Math.sin(direction) * strength;
+		} else {
+			this.shakeTransformation.offset.x = 0;
+			this.shakeTransformation.offset.y = 0;
+		}
+		var _this = this.position;
+		var tmp = new kha_math_Vector2(_this.x * -1,_this.y * -1);
+		this.transformation.offset = tmp;
+		this.shakeTransformation.apply(g);
+		this.transformation.apply(g);
+	}
+	,finish: function(g) {
+		this.transformation.finish(g);
+		this.shakeTransformation.finish(g);
+	}
+	,shake: function(duration,strength) {
+		this.shakeDuration = duration;
+		this.shakeStrength = strength;
+	}
+	,__class__: bonsai_scene_Camera
+};
 var bonsai_scene_Scene = $hxClasses["bonsai.scene.Scene"] = function(name,engine) {
 	this.layers = [];
 	this.name = name;
@@ -1059,19 +1292,23 @@ var game_HeadPart = $hxEnums["game.HeadPart"] = { __ename__ : true, __constructs
 	,NaturalHeadDown: {_hx_index:2,__enum__:"game.HeadPart",toString:$estr}
 	,NaturalHeadUp: {_hx_index:3,__enum__:"game.HeadPart",toString:$estr}
 };
+game_HeadPart.__empty_constructs__ = [game_HeadPart.NaturalHeadRight,game_HeadPart.NaturalHeadLeft,game_HeadPart.NaturalHeadDown,game_HeadPart.NaturalHeadUp];
 var game_ChestPart = $hxEnums["game.ChestPart"] = { __ename__ : true, __constructs__ : ["NaturalChest"]
 	,NaturalChest: {_hx_index:0,__enum__:"game.ChestPart",toString:$estr}
 };
+game_ChestPart.__empty_constructs__ = [game_ChestPart.NaturalChest];
 var game_ArmPart = $hxEnums["game.ArmPart"] = { __ename__ : true, __constructs__ : ["NaturalArm","Knife","Sword","Axe"]
 	,NaturalArm: {_hx_index:0,__enum__:"game.ArmPart",toString:$estr}
 	,Knife: {_hx_index:1,__enum__:"game.ArmPart",toString:$estr}
 	,Sword: {_hx_index:2,__enum__:"game.ArmPart",toString:$estr}
 	,Axe: {_hx_index:3,__enum__:"game.ArmPart",toString:$estr}
 };
+game_ArmPart.__empty_constructs__ = [game_ArmPart.NaturalArm,game_ArmPart.Knife,game_ArmPart.Sword,game_ArmPart.Axe];
 var game_LegPart = $hxEnums["game.LegPart"] = { __ename__ : true, __constructs__ : ["NaturalLeg","Boots"]
 	,NaturalLeg: {_hx_index:0,__enum__:"game.LegPart",toString:$estr}
 	,Boots: {_hx_index:1,__enum__:"game.LegPart",toString:$estr}
 };
+game_LegPart.__empty_constructs__ = [game_LegPart.NaturalLeg,game_LegPart.Boots];
 var game_Body = $hxClasses["game.Body"] = function() {
 	var _g = new haxe_ds_EnumValueMap();
 	_g.set(game_LegPart.NaturalLeg,5);
@@ -1134,7 +1371,7 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 		this.animatedSprite.render(graphics,this.position.x,this.position.y);
 		var tmp3 = this.legLayers.get(this.rightLeg);
 		this.animatedSprite.drawLayers = [tmp3];
-		this.animatedSprite.render(graphics,this.position.x + 3,this.position.y);
+		this.animatedSprite.render(graphics,this.position.x + 5,this.position.y);
 		var tmp4 = this.armLayers.get(this.leftArm);
 		this.animatedSprite.drawLayers = [tmp4];
 		this.animatedSprite.render(graphics,this.position.x,this.position.y);
@@ -1188,6 +1425,7 @@ var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs
 	,Sword: {_hx_index:6,__enum__:"game.BodyPart",toString:$estr}
 	,Knife: {_hx_index:7,__enum__:"game.BodyPart",toString:$estr}
 };
+game_BodyPart.__empty_constructs__ = [game_BodyPart.NaturalHead,game_BodyPart.NaturalChest,game_BodyPart.NaturalArm,game_BodyPart.NaturalLeg,game_BodyPart.Boots,game_BodyPart.Axe,game_BodyPart.Sword,game_BodyPart.Knife];
 var game_BodyPartParticles = $hxClasses["game.BodyPartParticles"] = function() {
 	bonsai_entity_ParticleSystem.call(this,400);
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
@@ -1216,6 +1454,9 @@ game_BodyPartParticles.prototype = $extend(bonsai_entity_ParticleSystem.prototyp
 		while(_g < _g1.length) {
 			var particle = _g1[_g];
 			++_g;
+			if(particle == null) {
+				continue;
+			}
 			if(Math.abs(particle.vz) < .1 && particle.z < 1 && Math.abs(particle.vx) < .1) {
 				particle.vz = 0;
 				particle.vx = 0;
@@ -1242,12 +1483,49 @@ game_BodyPartParticles.prototype = $extend(bonsai_entity_ParticleSystem.prototyp
 		while(_g < _g1.length) {
 			var particle = _g1[_g];
 			++_g;
+			if(particle == null) {
+				continue;
+			}
 			var tmp = this.bodyPartToLayer.get(particle.part);
 			this.animatedSprite.drawLayers = [tmp];
 			this.animatedSprite.render(graphics,particle.x,particle.y - particle.z);
 		}
 	}
 	,__class__: game_BodyPartParticles
+});
+var game_Inventory = $hxClasses["game.Inventory"] = function() {
+	this.items = new haxe_ds_EnumValueMap();
+	var _g = new haxe_ds_EnumValueMap();
+	var _g1 = 0;
+	var _g2 = game_BodyPart.__empty_constructs__.slice();
+	while(_g1 < _g2.length) {
+		var part = _g2[_g1];
+		++_g1;
+		_g.set(part,0);
+	}
+	this.items = _g;
+	bonsai_entity_Entity.call(this);
+};
+game_Inventory.__name__ = "game.Inventory";
+game_Inventory.__super__ = bonsai_entity_Entity;
+game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
+	items: null
+	,render: function(graphics) {
+		var yOffset = 0;
+		graphics.set_font(kha_Assets.fonts.KenneyMini);
+		graphics.set_fontSize(10);
+		var _g = new haxe_iterators_MapKeyValueIterator(this.items);
+		while(_g.hasNext()) {
+			var _g1 = _g.next();
+			var item = _g1.key;
+			var quantity = _g1.value;
+			if(quantity > 0) {
+				graphics.drawString("" + quantity + " " + Std.string(item),5,yOffset * 10);
+				++yOffset;
+			}
+		}
+	}
+	,__class__: game_Inventory
 });
 var game_TileMap = $hxClasses["game.TileMap"] = function() {
 	this.tiles = [];
@@ -1306,12 +1584,14 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	this.f = 0;
 	this.bodies = [];
 	bonsai_scene_Scene.call(this,"World Scene",engine);
-	this.transformation = new bonsai_render_Transformation();
-	this.transformation.scale = new kha_math_Vector2(2,2);
+	this.input = engine.input;
 	this.add(new game_TileMap());
 	this.bodyParticleSystem = new game_BodyPartParticles();
 	this.bodyParticleSystem.poolMaximum = 6000;
 	this.add(this.bodyParticleSystem);
+	this.camera = new bonsai_scene_Camera();
+	this.inventory = new game_Inventory();
+	this.add(this.inventory);
 	var body = new game_Body();
 	this.add(body);
 	this.bodies.push(body);
@@ -1353,22 +1633,39 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 game_World.__name__ = "game.World";
 game_World.__super__ = bonsai_scene_Scene;
 game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
-	transformation: null
+	inventory: null
 	,bodyParticleSystem: null
 	,bodyAnimatedSprite: null
 	,bodySpriteMap: null
 	,bodies: null
+	,input: null
+	,camera: null
 	,f: null
 	,update: function(dt) {
 		this.f++;
+		this.camera.update(dt);
+		var worldMousePos = this.camera.transformation.transformPoint(this.input.mousePosition);
+		var cameraSpeed = 800;
+		if(this.input.isAnyKeyDown(InputBindings.left)) {
+			this.camera.position.x -= dt * cameraSpeed;
+		}
+		if(this.input.isAnyKeyDown(InputBindings.right)) {
+			this.camera.position.x += dt * cameraSpeed;
+		}
+		if(this.input.isAnyKeyDown(InputBindings.down)) {
+			this.camera.position.y += dt * cameraSpeed;
+		}
+		if(this.input.isAnyKeyDown(InputBindings.up)) {
+			this.camera.position.y -= dt * cameraSpeed;
+		}
 		bonsai_scene_Scene.prototype.update.call(this,dt);
-		if(this.f > 100) {
+		if(this.f > 50) {
 			var _g = 0;
 			var _g1 = this.bodies;
 			while(_g < _g1.length) {
 				var body = _g1[_g];
 				++_g;
-				if(Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < this.f - 100) {
+				if(Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < this.f - 50) {
 					this.explodeBody(body);
 				}
 			}
@@ -1380,11 +1677,25 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 				return -1;
 			}
 		});
+		var i = this.bodyParticleSystem.members.length - 1;
+		while(i >= 0) {
+			var item = this.bodyParticleSystem.members[i];
+			if(item == null) {
+				--i;
+				continue;
+			}
+			if(Math.pow(item.x + 16 - worldMousePos.x,2) + Math.pow(item.y + 14 - worldMousePos.y,2) < 200) {
+				this.inventory.items.set(item.part,this.inventory.items.get(item.part) + 1);
+				HxOverrides.remove(this.bodyParticleSystem.members,item);
+			} else {
+				--i;
+			}
+		}
 	}
 	,render: function(g) {
-		this.transformation.apply(g);
+		this.camera.apply(g);
 		bonsai_scene_Scene.prototype.render.call(this,g);
-		this.transformation.finish(g);
+		this.camera.finish(g);
 	}
 	,zOffset: null
 	,explodeBody: function(body) {
@@ -1407,6 +1718,11 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 var haxe_IMap = $hxClasses["haxe.IMap"] = function() { };
 haxe_IMap.__name__ = "haxe.IMap";
 haxe_IMap.__isInterface__ = true;
+haxe_IMap.prototype = {
+	get: null
+	,keys: null
+	,__class__: haxe_IMap
+};
 var haxe_Log = $hxClasses["haxe.Log"] = function() { };
 haxe_Log.__name__ = "haxe.Log";
 haxe_Log.formatOutput = function(v,infos) {
@@ -1950,6 +2266,7 @@ var haxe_io_Encoding = $hxEnums["haxe.io.Encoding"] = { __ename__ : true, __cons
 	,UTF8: {_hx_index:0,__enum__:"haxe.io.Encoding",toString:$estr}
 	,RawNative: {_hx_index:1,__enum__:"haxe.io.Encoding",toString:$estr}
 };
+haxe_io_Encoding.__empty_constructs__ = [haxe_io_Encoding.UTF8,haxe_io_Encoding.RawNative];
 var haxe_crypto_Base64 = $hxClasses["haxe.crypto.Base64"] = function() { };
 haxe_crypto_Base64.__name__ = "haxe.crypto.Base64";
 haxe_crypto_Base64.encode = function(bytes,complement) {
@@ -2087,6 +2404,11 @@ haxe_ds_BalancedTree.prototype = {
 		}
 		return null;
 	}
+	,keys: function() {
+		var ret = [];
+		this.keysLoop(this.root,ret);
+		return HxOverrides.iter(ret);
+	}
 	,setLoop: function(k,v,node) {
 		if(node == null) {
 			return new haxe_ds_TreeNode(null,k,v,null);
@@ -2100,6 +2422,13 @@ haxe_ds_BalancedTree.prototype = {
 		} else {
 			var nr = this.setLoop(k,v,node.right);
 			return this.balance(node.left,node.key,node.value,nr);
+		}
+	}
+	,keysLoop: function(node,acc) {
+		if(node != null) {
+			this.keysLoop(node.left,acc);
+			acc.push(node.key);
+			this.keysLoop(node.right,acc);
 		}
 	}
 	,balance: function(l,k,v,r) {
@@ -2216,6 +2545,9 @@ haxe_ds_IntMap.__name__ = "haxe.ds.IntMap";
 haxe_ds_IntMap.__interfaces__ = [haxe_IMap];
 haxe_ds_IntMap.prototype = {
 	h: null
+	,get: function(key) {
+		return this.h[key];
+	}
 	,remove: function(key) {
 		if(!this.h.hasOwnProperty(key)) {
 			return false;
@@ -2283,6 +2615,18 @@ haxe_ds_ObjectMap.prototype = {
 		this.h[id] = value;
 		this.h.__keys__[id] = key;
 	}
+	,get: function(key) {
+		return this.h[key.__id__];
+	}
+	,keys: function() {
+		var a = [];
+		for( var key in this.h.__keys__ ) {
+		if(this.h.hasOwnProperty(key)) {
+			a.push(this.h.__keys__[key]);
+		}
+		}
+		return HxOverrides.iter(a);
+	}
 	,__class__: haxe_ds_ObjectMap
 };
 var haxe_ds__$StringMap_StringMapIterator = $hxClasses["haxe.ds._StringMap.StringMapIterator"] = function(map,keys) {
@@ -2319,6 +2663,12 @@ haxe_ds_StringMap.__interfaces__ = [haxe_IMap];
 haxe_ds_StringMap.prototype = {
 	h: null
 	,rh: null
+	,get: function(key) {
+		if(__map_reserved[key] != null) {
+			return this.getReserved(key);
+		}
+		return this.h[key];
+	}
 	,setReserved: function(key,value) {
 		if(this.rh == null) {
 			this.rh = { };
@@ -2630,6 +2980,7 @@ var haxe_io_Error = $hxEnums["haxe.io.Error"] = { __ename__ : true, __constructs
 	,OutsideBounds: {_hx_index:2,__enum__:"haxe.io.Error",toString:$estr}
 	,Custom: ($_=function(e) { return {_hx_index:3,e:e,__enum__:"haxe.io.Error",toString:$estr}; },$_.__params__ = ["e"],$_)
 };
+haxe_io_Error.__empty_constructs__ = [haxe_io_Error.Blocked,haxe_io_Error.Overflow,haxe_io_Error.OutsideBounds];
 var haxe_io_FPHelper = $hxClasses["haxe.io.FPHelper"] = function() { };
 haxe_io_FPHelper.__name__ = "haxe.io.FPHelper";
 haxe_io_FPHelper.floatToI32 = function(f) {
@@ -2697,6 +3048,23 @@ haxe_io__$UInt8Array_UInt8Array_$Impl_$.fromBytes = function(bytes,bytePos,lengt
 		length = bytes.length - bytePos;
 	}
 	return new Uint8Array(bytes.b.bufferValue,bytePos,length);
+};
+var haxe_iterators_MapKeyValueIterator = $hxClasses["haxe.iterators.MapKeyValueIterator"] = function(map) {
+	this.map = map;
+	this.keys = map.keys();
+};
+haxe_iterators_MapKeyValueIterator.__name__ = "haxe.iterators.MapKeyValueIterator";
+haxe_iterators_MapKeyValueIterator.prototype = {
+	map: null
+	,keys: null
+	,hasNext: function() {
+		return this.keys.hasNext();
+	}
+	,next: function() {
+		var key = this.keys.next();
+		return { value : this.map.get(key), key : key};
+	}
+	,__class__: haxe_iterators_MapKeyValueIterator
 };
 var haxe_xml_XmlParserException = $hxClasses["haxe.xml.XmlParserException"] = function(message,xml,position) {
 	this.xml = xml;
@@ -3694,7 +4062,7 @@ var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
 	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [754], original_width : 128, files : ["tiles.png"], type : "image"};
 	this.tilesName = "tiles";
 	this.tiles = null;
-	this.bodyParts2Description = { name : "bodyParts2", original_height : 352, file_sizes : [929], original_width : 32, files : ["bodyParts2.png"], type : "image"};
+	this.bodyParts2Description = { name : "bodyParts2", original_height : 352, file_sizes : [939], original_width : 32, files : ["bodyParts2.png"], type : "image"};
 	this.bodyParts2Name = "bodyParts2";
 	this.bodyParts2 = null;
 	this.bodyPartsDescription = { name : "bodyParts", original_height : 480, file_sizes : [856], original_width : 32, files : ["bodyParts.png"], type : "image"};
@@ -3776,10 +4144,10 @@ var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
 	this.bodyParts_aseDescription = { name : "bodyParts_ase", file_sizes : [1900], files : ["bodyParts.ase"], type : "blob"};
 	this.bodyParts_aseName = "bodyParts_ase";
 	this.bodyParts_ase = null;
-	this.bodyParts2_jsonDescription = { name : "bodyParts2_json", file_sizes : [1177], files : ["bodyParts2.json"], type : "blob"};
+	this.bodyParts2_jsonDescription = { name : "bodyParts2_json", file_sizes : [1440], files : ["bodyParts2.json"], type : "blob"};
 	this.bodyParts2_jsonName = "bodyParts2_json";
 	this.bodyParts2_json = null;
-	this.bodyParts2_aseDescription = { name : "bodyParts2_ase", file_sizes : [1983], files : ["bodyParts2.ase"], type : "blob"};
+	this.bodyParts2_aseDescription = { name : "bodyParts2_ase", file_sizes : [2035], files : ["bodyParts2.ase"], type : "blob"};
 	this.bodyParts2_aseName = "bodyParts2_ase";
 	this.bodyParts2_ase = null;
 };
@@ -10809,6 +11177,7 @@ var kha_audio2_ogg_vorbis__$VorbisDecodeState_FindPageResult = $hxEnums["kha.aud
 	,Found: ($_=function(end,last) { return {_hx_index:0,end:end,last:last,__enum__:"kha.audio2.ogg.vorbis._VorbisDecodeState.FindPageResult",toString:$estr}; },$_.__params__ = ["end","last"],$_)
 	,NotFound: {_hx_index:1,__enum__:"kha.audio2.ogg.vorbis._VorbisDecodeState.FindPageResult",toString:$estr}
 };
+kha_audio2_ogg_vorbis__$VorbisDecodeState_FindPageResult.__empty_constructs__ = [kha_audio2_ogg_vorbis__$VorbisDecodeState_FindPageResult.NotFound];
 var kha_audio2_ogg_vorbis_VorbisDecoder = $hxClasses["kha.audio2.ogg.vorbis.VorbisDecoder"] = function(header,decodeState) {
 	this.header = header;
 	this.decodeState = decodeState;
@@ -14008,6 +14377,7 @@ var kha_audio2_ogg_vorbis_data_ReaderErrorType = $hxEnums["kha.audio2.ogg.vorbis
 	,SEEK_FAILED: {_hx_index:18,__enum__:"kha.audio2.ogg.vorbis.data.ReaderErrorType",toString:$estr}
 	,OTHER: {_hx_index:19,__enum__:"kha.audio2.ogg.vorbis.data.ReaderErrorType",toString:$estr}
 };
+kha_audio2_ogg_vorbis_data_ReaderErrorType.__empty_constructs__ = [kha_audio2_ogg_vorbis_data_ReaderErrorType.NEED_MORE_DATA,kha_audio2_ogg_vorbis_data_ReaderErrorType.INVALID_API_MIXING,kha_audio2_ogg_vorbis_data_ReaderErrorType.OUTOFMEM,kha_audio2_ogg_vorbis_data_ReaderErrorType.FEATURE_NOT_SUPPORTED,kha_audio2_ogg_vorbis_data_ReaderErrorType.TOO_MANY_CHANNELS,kha_audio2_ogg_vorbis_data_ReaderErrorType.FILE_OPEN_FAILURE,kha_audio2_ogg_vorbis_data_ReaderErrorType.SEEK_WITHOUT_LENGTH,kha_audio2_ogg_vorbis_data_ReaderErrorType.UNEXPECTED_EOF,kha_audio2_ogg_vorbis_data_ReaderErrorType.SEEK_INVALID,kha_audio2_ogg_vorbis_data_ReaderErrorType.INVALID_SETUP,kha_audio2_ogg_vorbis_data_ReaderErrorType.INVALID_STREAM,kha_audio2_ogg_vorbis_data_ReaderErrorType.MISSING_CAPTURE_PATTERN,kha_audio2_ogg_vorbis_data_ReaderErrorType.INVALID_STREAM_STRUCTURE_VERSION,kha_audio2_ogg_vorbis_data_ReaderErrorType.CONTINUED_PACKET_FLAG_INVALID,kha_audio2_ogg_vorbis_data_ReaderErrorType.INCORRECT_STREAM_SERIAL_NUMBER,kha_audio2_ogg_vorbis_data_ReaderErrorType.INVALID_FIRST_PAGE,kha_audio2_ogg_vorbis_data_ReaderErrorType.BAD_PACKET_TYPE,kha_audio2_ogg_vorbis_data_ReaderErrorType.CANT_FIND_LAST_PAGE,kha_audio2_ogg_vorbis_data_ReaderErrorType.SEEK_FAILED,kha_audio2_ogg_vorbis_data_ReaderErrorType.OTHER];
 var kha_audio2_ogg_vorbis_data_Residue = $hxClasses["kha.audio2.ogg.vorbis.data.Residue"] = function() {
 };
 kha_audio2_ogg_vorbis_data_Residue.__name__ = "kha.audio2.ogg.vorbis.data.Residue";
@@ -20104,6 +20474,7 @@ var kha_graphics4_StencilValue = $hxEnums["kha.graphics4.StencilValue"] = { __en
 	,Dynamic: {_hx_index:0,__enum__:"kha.graphics4.StencilValue",toString:$estr}
 	,Static: ($_=function(value) { return {_hx_index:1,value:value,__enum__:"kha.graphics4.StencilValue",toString:$estr}; },$_.__params__ = ["value"],$_)
 };
+kha_graphics4_StencilValue.__empty_constructs__ = [kha_graphics4_StencilValue.Dynamic];
 var kha_graphics4_TessellationControlShader = $hxClasses["kha.graphics4.TessellationControlShader"] = function(source,file) {
 };
 kha_graphics4_TessellationControlShader.__name__ = "kha.graphics4.TessellationControlShader";
@@ -20520,6 +20891,7 @@ var kha_input_BlockInterventions = $hxEnums["kha.input.BlockInterventions"] = { 
 	,None: {_hx_index:2,__enum__:"kha.input.BlockInterventions",toString:$estr}
 	,Custom: ($_=function(func) { return {_hx_index:3,func:func,__enum__:"kha.input.BlockInterventions",toString:$estr}; },$_.__params__ = ["func"],$_)
 };
+kha_input_BlockInterventions.__empty_constructs__ = [kha_input_BlockInterventions.Default,kha_input_BlockInterventions.Full,kha_input_BlockInterventions.None];
 var kha_netsync_Controller = $hxClasses["kha.netsync.Controller"] = function() {
 	this.__id = kha_netsync_ControllerBuilder.nextId++;
 	this._inputBuffer = new haxe_io_Bytes(new ArrayBuffer(1));

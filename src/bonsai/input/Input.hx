@@ -9,9 +9,9 @@ enum InputEvent {
 }
 
 class Input {
-	var mousePosition:kha.math.Vector2;
-	var mouseLeftDown:Bool = false;
-	var mouseRightDown:Bool = false;
+	public var mousePosition:kha.math.Vector2;
+	public var mouseLeftDown:Bool = false;
+	public var mouseRightDown:Bool = false;
 
 	public var events:EventSystem<InputEvent>;
 	public var absoluteScroll = 0;

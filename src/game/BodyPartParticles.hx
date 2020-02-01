@@ -32,6 +32,9 @@ class BodyPartParticles extends bonsai.entity.ParticleSystem<BodyParticle> {
 	override public function update (delta:Float) {
 		super.update(delta);
 		for (particle in members) {
+			if (particle == null)
+				continue;
+
 			if (Math.abs(particle.vz) < .1 && particle.z < 1 && Math.abs(particle.vx) < .1){
 				particle.vz = 0;
 				particle.vx = 0;
@@ -56,6 +59,8 @@ class BodyPartParticles extends bonsai.entity.ParticleSystem<BodyParticle> {
 		super.render(graphics);
 
 		for (particle in members) {
+			if (particle == null)
+				continue;
 			animatedSprite.drawLayers = [bodyPartToLayer[particle.part]];
 			animatedSprite.render(graphics, particle.x, particle.y - particle.z);
 		}
