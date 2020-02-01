@@ -2521,9 +2521,9 @@ var game_Body = $hxClasses["game.Body"] = function() {
 	this.position = new kha_math_Vector2(-160 + 320 * Math.random(),-110 + 220 * Math.random());
 	this.targetPosition = new kha_math_Vector2(0,0);
 	this.collider = new differ_shapes_Circle(this.position.x,this.position.y,7);
-	this.friendly = Math.random() > .5;
+	this.friendly = true;
 	this.chest = game_BodyPart.NaturalChest;
-	this.head = game_BodyPart.NaturalHeadDown;
+	this.head = game_BodyPart.NaturalHead;
 	this.leftArm = game_BodyPart.NaturalArm;
 	this.rightArm = this.friendly ? game_BodyPart.Axe : game_BodyPart.NaturalHead;
 	this.leftLeg = game_BodyPart.NaturalLeg;
@@ -2555,6 +2555,7 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 	,animatedSprite: null
 	,targetPosition: null
 	,time: null
+	,drawnHead: null
 	,update: function(dt) {
 		this.attackCooldown -= dt;
 		if(this.attackCooldown < 0) {
@@ -2562,51 +2563,109 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 		}
 		this.time += dt;
 		var speed = 180 * dt;
-		var _this = this.targetPosition;
-		var vec = this.position;
-		var x = _this.x - vec.x;
-		var y = _this.y - vec.y;
+		var x = 16;
+		var y = 32;
 		if(y == null) {
 			y = 0;
 		}
 		if(x == null) {
 			x = 0;
 		}
-		var _this_x = x;
-		var _this_y = y;
-		var x1 = _this_x;
-		var y1 = _this_y;
+		var footOffset_x = x;
+		var footOffset_y = y;
+		var _this = this.targetPosition;
+		var _this1 = this.position;
+		var x1 = _this1.x + footOffset_x;
+		var y1 = _this1.y + footOffset_y;
 		if(y1 == null) {
 			y1 = 0;
 		}
 		if(x1 == null) {
 			x1 = 0;
 		}
-		var _this_x1 = x1;
-		var _this_y1 = y1;
-		var currentLength = Math.sqrt(_this_x1 * _this_x1 + _this_y1 * _this_y1);
-		if(currentLength != 0) {
-			var mul = 1 / currentLength;
-			_this_x1 *= mul;
-			_this_y1 *= mul;
-		}
-		var x2 = _this_x1 * speed;
-		var y2 = _this_y1 * speed;
+		var vec_x = x1;
+		var vec_y = y1;
+		var x2 = _this.x - vec_x;
+		var y2 = _this.y - vec_y;
 		if(y2 == null) {
 			y2 = 0;
 		}
 		if(x2 == null) {
 			x2 = 0;
 		}
-		var movement_x = x2;
-		var movement_y = y2;
-		var _this1 = this.position;
-		this.position = new kha_math_Vector2(_this1.x + movement_x,_this1.y + movement_y);
+		var _this_x = x2;
+		var _this_y = y2;
+		var x3 = _this_x;
+		var y3 = _this_y;
+		if(y3 == null) {
+			y3 = 0;
+		}
+		if(x3 == null) {
+			x3 = 0;
+		}
+		var _this_x1 = x3;
+		var _this_y1 = y3;
+		var currentLength = Math.sqrt(_this_x1 * _this_x1 + _this_y1 * _this_y1);
+		if(currentLength != 0) {
+			var mul = 1 / currentLength;
+			_this_x1 *= mul;
+			_this_y1 *= mul;
+		}
+		var x4 = _this_x1 * speed;
+		var y4 = _this_y1 * speed;
+		if(y4 == null) {
+			y4 = 0;
+		}
+		if(x4 == null) {
+			x4 = 0;
+		}
+		var movement_x = x4;
+		var movement_y = y4;
+		var _this2 = this.targetPosition;
+		var _this3 = this.position;
+		var x5 = _this3.x + footOffset_x;
+		var y5 = _this3.y + footOffset_y;
+		if(y5 == null) {
+			y5 = 0;
+		}
+		if(x5 == null) {
+			x5 = 0;
+		}
+		var vec_x1 = x5;
+		var vec_y1 = y5;
+		var x6 = _this2.x - vec_x1;
+		var y6 = _this2.y - vec_y1;
+		if(y6 == null) {
+			y6 = 0;
+		}
+		if(x6 == null) {
+			x6 = 0;
+		}
+		var _this_x2 = x6;
+		var _this_y2 = y6;
+		if(Math.sqrt(_this_x2 * _this_x2 + _this_y2 * _this_y2) > 10) {
+			var _this4 = this.position;
+			this.position = new kha_math_Vector2(_this4.x + movement_x,_this4.y + movement_y);
+		}
+		if(this.head == game_BodyPart.NaturalHead) {
+			if(Math.abs(this.vx + movement_x) > Math.abs(this.vy + movement_y)) {
+				if(this.vx + movement_x > 0) {
+					this.drawnHead = game_BodyPart.NaturalHeadLeft;
+				} else {
+					this.drawnHead = game_BodyPart.NaturalHeadRight;
+				}
+			} else if(this.vy + movement_y > 0) {
+				this.drawnHead = game_BodyPart.NaturalHeadUp;
+			} else {
+				this.drawnHead = game_BodyPart.NaturalHeadDown;
+			}
+		}
 		this.position.x += this.vx;
 		this.position.y += this.vy;
 		this.vx *= .9;
 		this.vy *= .9;
-		var height = 10;
+		var height = 5;
+		this.z = Math.abs(Math.sin((this.time + (this.friendly ? 0 : 2)) * 10)) * height;
 		var tmp = Math.abs(this.vz) < .1 && this.z < 1 && Math.abs(this.vx) < .1;
 		this.collider.set_x(this.position.x + 8);
 		this.collider.set_y(this.position.y + 24);
@@ -2631,33 +2690,19 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 		return this.getItemDamage(this.leftArm) + this.getItemDamage(this.rightArm);
 	}
 	,render: function(graphics) {
-		if(this.chest == null || this.head == null || this.leftLeg == null || this.rightLeg == null || this.leftArm == null || this.rightArm == null) {
-			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 131, className : "game.Body", methodName : "render"});
+		if(this.chest == null || this.drawnHead == null || this.leftLeg == null || this.rightLeg == null || this.leftArm == null || this.rightArm == null) {
+			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 150, className : "game.Body", methodName : "render"});
 			return;
 		}
 		var tmp = this.bodyLayers.get(this.chest);
 		this.animatedSprite.drawLayers = [tmp];
 		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
-		var drawnHead = this.head;
-		if(drawnHead == game_BodyPart.NaturalHead) {
-			if(Math.abs(this.vx) > Math.abs(this.vy)) {
-				if(this.vx > 0) {
-					drawnHead = game_BodyPart.NaturalHeadRight;
-				} else {
-					drawnHead = game_BodyPart.NaturalHeadLeft;
-				}
-			} else if(this.vy > 0) {
-				drawnHead = game_BodyPart.NaturalHeadDown;
-			} else {
-				drawnHead = game_BodyPart.NaturalHeadUp;
-			}
-		}
-		var tmp1 = this.bodyLayers.get(this.head);
+		var tmp1 = this.bodyLayers.get(this.drawnHead);
 		this.animatedSprite.drawLayers = [tmp1];
 		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
-		var tmp2 = this.mohawks.get(this.head);
+		var tmp2 = this.mohawks.get(this.drawnHead);
 		this.animatedSprite.drawLayers = [tmp2];
-		graphics.set_color(this.friendly ? -16711936 : -65536);
+		graphics.set_color(this.friendly ? kha__$Color_Color_$Impl_$.fromBytes(41,196,77) : -65536);
 		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
 		graphics.set_color(-1);
 		var tmp3 = this.bodyLayers.get(this.leftLeg);
@@ -2780,7 +2825,7 @@ game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
 	items: null
 	,getItemClicked: function(position) {
 		if(position.x < 250) {
-			var yOffset = 0;
+			var yOffset = 1;
 			var _g = new haxe_iterators_MapKeyValueIterator(this.items);
 			while(_g.hasNext()) {
 				var _g1 = _g.next();
@@ -2797,10 +2842,9 @@ game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
 		return null;
 	}
 	,render: function(graphics) {
-		var yOffset = 0;
-		graphics.set_font(kha_Assets.fonts.KenneyMini);
+		var yOffset = 1;
 		graphics.set_fontSize(30);
-		var total = 0;
+		var total = 1;
 		var _g = new haxe_iterators_MapKeyValueIterator(this.items);
 		while(_g.hasNext()) {
 			var _g1 = _g.next();
@@ -2811,8 +2855,12 @@ game_Inventory.prototype = $extend(bonsai_entity_Entity.prototype,{
 			}
 		}
 		graphics.set_color(kha__$Color_Color_$Impl_$.fromBytes(26,24,23));
-		graphics.fillRect(3,3,250,total * 40);
+		graphics.fillRect(0,0,253,total * 40);
+		graphics.set_color(kha__$Color_Color_$Impl_$.fromBytes(36,34,33));
+		graphics.set_font(kha_Assets.fonts.KenneyMiniSquare);
 		graphics.set_color(-1);
+		graphics.drawString("Inventory:",5,0);
+		graphics.set_font(kha_Assets.fonts.KenneyMini);
 		var _g2 = new haxe_iterators_MapKeyValueIterator(this.items);
 		while(_g2.hasNext()) {
 			var _g11 = _g2.next();
@@ -3118,9 +3166,9 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	var _gthis = this;
 	bonsai_scene_Scene.call(this,"World Scene",engine);
 	this.input = engine.input;
-	var map = new game_NoiseTilemap();
-	this.add(map);
-	var spawn = map.findSpawn();
+	this.map = new game_NoiseTilemap();
+	this.add(this.map);
+	var spawn = this.map.findSpawn();
 	this.structure = new game_Structure();
 	this.add(this.structure);
 	this.bodyParticleSystem = new game_BodyPartParticles();
@@ -3168,16 +3216,19 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	while(_g1 < 100) {
 		var i = _g1++;
 		var body1 = new game_Body();
-		body1.position = spawn;
+		var x1 = Math.random() * 10;
+		var y1 = Math.random() * 10;
+		if(y1 == null) {
+			y1 = 0;
+		}
+		if(x1 == null) {
+			x1 = 0;
+		}
+		var vec_x1 = x1;
+		var vec_y1 = y1;
+		body1.position = new kha_math_Vector2(spawn.x + vec_x1,spawn.y + vec_y1);
 		this.bodies.push(body1);
 	}
-	this.bodies.sort(function(a,b) {
-		if(a.position.y < b.position.y) {
-			return -1;
-		} else {
-			return 1;
-		}
-	});
 };
 game_World.__name__ = "game.World";
 game_World.__super__ = bonsai_scene_Scene;
@@ -3191,6 +3242,7 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 	,camera: null
 	,summonCircle: null
 	,structure: null
+	,map: null
 	,f: null
 	,update: function(dt) {
 		this.f++;
@@ -3210,6 +3262,13 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 			this.camera.position.y -= dt * cameraSpeed;
 		}
 		bonsai_scene_Scene.prototype.update.call(this,dt);
+		this.bodies.sort(function(a,b) {
+			if(a.position.y < b.position.y) {
+				return -1;
+			} else {
+				return 1;
+			}
+		});
 		var _g = 0;
 		var _g1 = this.bodies;
 		while(_g < _g1.length) {
@@ -3218,14 +3277,27 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 			body.update(dt);
 		}
 		var worldMouseFast = this.camera.transformation.transformPoint(this.input.mousePosition);
-		var worldMouse = new kha_math_Vector2(worldMouseFast.x,worldMouseFast.y);
+		var x = worldMouseFast.x;
+		var y = worldMouseFast.y;
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		var worldMouse_x = x;
+		var worldMouse_y = y;
 		var _g2 = 0;
 		var _g3 = this.bodies;
 		while(_g2 < _g3.length) {
 			var body1 = _g3[_g2];
 			++_g2;
 			if(body1.friendly) {
-				body1.targetPosition = worldMouse;
+				body1.targetPosition = new kha_math_Vector2(worldMouse_x,worldMouse_y);
+				if(this.map.getTile(Math.floor(body1.position.x / 16),Math.floor(body1.position.y / 16)) == 0) {
+					body1.targetPosition.x = 2400;
+					body1.targetPosition.y = 2400;
+				}
 			}
 			var _g21 = 0;
 			var _g31 = this.bodies;
@@ -3269,8 +3341,8 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 				}
 			}
 		}
-		this.bodyParticleSystem.members.sort(function(a,b) {
-			if(a.y - b.y > 0) {
+		this.bodyParticleSystem.members.sort(function(a1,b1) {
+			if(a1.y - b1.y > 0) {
 				return 1;
 			} else {
 				return -1;

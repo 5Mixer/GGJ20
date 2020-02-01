@@ -47,6 +47,7 @@ class Body extends bonsai.entity.Entity{
 	var animatedSprite:bonsai.render.AnimatedSprite;
 	public var targetPosition:kha.math.Vector2;
 	var time:Float = 0.;
+	var drawnHead:BodyPart;
 
 	override public function new () {
 		super();
@@ -56,10 +57,10 @@ class Body extends bonsai.entity.Entity{
 
 		collider = new differ.shapes.Circle(position.x, position.y, 7);
 
-		friendly = Math.random()>.5;
+		friendly = true;
 
 		chest = BodyPart.NaturalChest;
-		head = BodyPart.NaturalHeadDown;
+		head = BodyPart.NaturalHead;
 		leftArm = BodyPart.NaturalArm;
 		rightArm = friendly ? BodyPart.Axe : BodyPart.NaturalHead;
 		leftLeg = BodyPart.NaturalLeg;
@@ -76,8 +77,26 @@ class Body extends bonsai.entity.Entity{
 
 		time+=dt;
 		var speed = 180 * dt;
-		var movement = targetPosition.sub(position).normalized().mult(speed);
-		position = position.add(movement);
+		var footOffset = new kha.math.Vector2(16,32);
+		var movement = targetPosition.sub(position.add(footOffset)).normalized().mult(speed);
+		if (targetPosition.sub(position.add(footOffset)).length > 10) {
+			position = position.add(movement);
+
+		}
+		if (head == BodyPart.NaturalHead) {
+			if (Math.abs(this.vx + movement.x) > Math.abs(this.vy+movement.y)) {
+				if (vx+movement.x > 0)
+					drawnHead = BodyPart.NaturalHeadLeft;
+				else
+					drawnHead = BodyPart.NaturalHeadRight;
+			}else{
+				if (vy+movement.y > 0)
+					drawnHead = BodyPart.NaturalHeadUp;
+				else
+					drawnHead = BodyPart.NaturalHeadDown;
+			}
+
+		}
 
 
 		position.x += vx;
@@ -90,8 +109,8 @@ class Body extends bonsai.entity.Entity{
 		// var d = targetPosition.sub(position).length/4;
 		// var height = d < 70 ? 0 : 10;
 		// var height = Math.min(15,d%1);
-		var height = 10;
-		// z = Math.abs(Math.sin((time + (friendly ? 0 : 2))*10))*height;
+		var height = 5;
+		z = Math.abs(Math.sin((time + (friendly ? 0 : 2))*10))*height;
 
 
 		if (Math.abs(vz) < .1 && z < 1 && Math.abs(vx) < .1){
@@ -127,33 +146,18 @@ class Body extends bonsai.entity.Entity{
 	}
 
 	override public function render (graphics:kha.graphics2.Graphics) {
-		if (chest == null || head == null || leftLeg == null || rightLeg == null || leftArm == null || rightArm == null) {
+		if (chest == null || drawnHead == null || leftLeg == null || rightLeg == null || leftArm == null || rightArm == null) {
 			trace("attempted to render a body that lacks part/s");
 			return;
 		}
 		animatedSprite.drawLayers = [bodyLayers[chest]];
 		animatedSprite.render(graphics, position.x, position.y-z);
 
-		var drawnHead = head;
-		if (drawnHead == BodyPart.NaturalHead) {
-			if (Math.abs(this.vx) > Math.abs(this.vy)) {
-				if (vx > 0)
-					drawnHead = BodyPart.NaturalHeadRight;
-				else
-					drawnHead = BodyPart.NaturalHeadLeft;
-			}else{
-				if (vy > 0)
-					drawnHead = BodyPart.NaturalHeadDown;
-				else
-					drawnHead = BodyPart.NaturalHeadUp;
-			}
-
-		}
-		animatedSprite.drawLayers = [bodyLayers[head]];
+		animatedSprite.drawLayers = [bodyLayers[drawnHead]];
 		animatedSprite.render(graphics, position.x, position.y-z);
 
-		animatedSprite.drawLayers = [mohawks[head]];
-		graphics.color = friendly ? kha.Color.Green : kha.Color.Red;
+		animatedSprite.drawLayers = [mohawks[drawnHead]];
+		graphics.color = friendly ? kha.Color.fromBytes(41,196,77) : kha.Color.Red;
 		animatedSprite.render(graphics, position.x, position.y-z);
 		graphics.color = kha.Color.White;
 

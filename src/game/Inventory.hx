@@ -10,7 +10,7 @@ class Inventory extends bonsai.entity.Entity {
 
 	public function getItemClicked(position:kha.math.Vector2):BodyPart {
 		if (position.x < 250) {
-			var yOffset = 0;
+			var yOffset = 1;
 			for (item => quantity in items) {
 				if (quantity > 0) {
 					if (position.y > yOffset * 40 - 2 && position.y < yOffset*40-2 + 34) 
@@ -23,18 +23,23 @@ class Inventory extends bonsai.entity.Entity {
 	}
 
 	override public function render(graphics:kha.graphics2.Graphics) {
-		var yOffset = 0;
-		graphics.font = kha.Assets.fonts.KenneyMini;
+		var yOffset = 1;
 		graphics.fontSize = 30;
 
-		var total = 0;
+		var total = 1;
 		for (item => quantity in items)
 			if (quantity > 0)
 				total++;
 
 		graphics.color = kha.Color.fromBytes(26,24,23);
-		graphics.fillRect(3, 3, 250, total * 40);
+		graphics.fillRect(0, 0, 253, total * 40);
+		
+		graphics.color = kha.Color.fromBytes(36,34,33);
+		graphics.font = kha.Assets.fonts.KenneyMiniSquare;
 		graphics.color = kha.Color.White;
+		graphics.drawString('Inventory:', 5, 0);
+		
+		graphics.font = kha.Assets.fonts.KenneyMini;
 
 		for (item => quantity in items) {
 			if (quantity > 0) {

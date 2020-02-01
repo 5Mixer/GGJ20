@@ -19,12 +19,13 @@ class World extends Scene {
 
 	var summonCircle:SummonCircle;
 	var structure:Structure;
+	var map:NoiseTilemap;
 
 	override public function new (engine) {
 		super("World Scene",engine);
 		input = engine.input;
 		
-		var map = new NoiseTilemap();
+		map = new NoiseTilemap();
 		add(map);
 		var spawn = map.findSpawn();
 
@@ -71,13 +72,10 @@ class World extends Scene {
 
 		for (i in 0...100) {
 			var body = new Body();
-			body.position = spawn;
+			body.position = spawn.add(new kha.math.Vector2(Math.random()*10,Math.random()*10));
 			// add(body);
 			bodies.push(body);
 		}
-		bodies.sort(function (a,b) {
-			return a.position.y < b.position.y ? -1 : 1;
-		});
 	}
 	var f = 0.;
 
@@ -99,6 +97,10 @@ class World extends Scene {
 			this.camera.position.y -= dt * cameraSpeed;
 
 		super.update(dt);
+		bodies.sort(function (a,b) {
+			return a.position.y < b.position.y ? -1 : 1;
+		});
+		
 		for (body in bodies)
 			body.update(dt);
 
@@ -112,8 +114,14 @@ class World extends Scene {
 		var worldMouseFast = camera.transformation.transformPoint(input.mousePosition);
 		var worldMouse = new kha.math.Vector2(worldMouseFast.x,worldMouseFast.y);
 		for (body in bodies) {
-			if (body.friendly)
-				body.targetPosition = worldMouse;
+			if (body.friendly) {
+				body.targetPosition = worldMouse.mult(1);
+				if (map.getTile(Math.floor(body.position.x/16), Math.floor(body.position.y/16)) == 0) {
+					body.targetPosition.x = 150*16;
+					body.targetPosition.y = 150*16;
+
+				}
+			}
 
 			for (body2 in bodies) {
 				if (body == body2 || Math.abs(body.position.x-body2.position.x) > 15 || Math.abs(body.position.y-body2.position.y) > 15) 
