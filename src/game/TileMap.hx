@@ -17,7 +17,6 @@ class TileMap extends Entity {
 		super();
 
 		tiled = new bonsai.resource.Tiled(kha.Assets.blobs.map_tmx.toString());
-		trace(tiled.tiles);
 		width = tiled.width;
 		height = tiled.height;
 		width = 100;

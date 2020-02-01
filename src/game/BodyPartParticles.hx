@@ -15,7 +15,7 @@ class BodyPartParticles extends bonsai.entity.ParticleSystem<BodyParticle> {
 	override public function new () {
 		super(400); // Lot's of body parts
 		this.animatedSprite = new bonsai.render.AnimatedSprite();
-		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts, 32, 32), frames: [0] });
+		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0] });
 		this.animatedSprite.play("idle");
 		bodyPartToLayer = [
 			BodyPart.NaturalChest => 0,
