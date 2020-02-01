@@ -14,12 +14,18 @@ class AnimatedSprite {
 	var frameTime = .1;
 	var timeUntilNextFrame = .1;
 
+	var looping = true;
+
 	public function new () {
 		animations = new Map<String, Animation>();
 		drawLayers = [0];
 	}
 	public function registerAnimation (identifier:String, animation:Animation) {
 		animations.set(identifier, animation);
+	}
+	public function playOnce (identifier:String) {
+		play(identifier);
+		looping = false;
 	}
 	public function play (identifier:String) {
 		if (playing == identifier)
@@ -36,9 +42,14 @@ class AnimatedSprite {
 		timeUntilNextFrame -= dt;
 		if (timeUntilNextFrame <= 0) {
 			timeUntilNextFrame = frameTime;
-			frame += 1;
-			if (frame > animations.get(playing).frames.length - 1)
-				frame = 0;
+			if (frame >= animations.get(playing).frames.length - 1){
+				if (looping)
+					frame = 0;
+				else
+					frame-=1; // NOTE: THIS CAUSES FINAL 2 FRAME PULSING
+			}else{
+				frame++;
+			}
 		}
 	}
 	public function render (graphics:kha.graphics2.Graphics, x, y) {

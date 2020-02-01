@@ -21,7 +21,7 @@ class SummonCircle extends bonsai.entity.Entity {
 			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
 			frames:[0,1,2,3]
 		});
-		this.animation.play("summon");
+		this.animation.playOnce("summon");
 	}
 
 	override public function render (graphics:kha.graphics2.Graphics) {

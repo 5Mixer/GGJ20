@@ -724,6 +724,7 @@ bonsai_input_Input.prototype = {
 	,__class__: bonsai_input_Input
 };
 var bonsai_render_AnimatedSprite = $hxClasses["bonsai.render.AnimatedSprite"] = function() {
+	this.looping = true;
 	this.timeUntilNextFrame = .1;
 	this.frameTime = .1;
 	this.animations = new haxe_ds_StringMap();
@@ -737,6 +738,7 @@ bonsai_render_AnimatedSprite.prototype = {
 	,frame: null
 	,frameTime: null
 	,timeUntilNextFrame: null
+	,looping: null
 	,registerAnimation: function(identifier,animation) {
 		var _this = this.animations;
 		if(__map_reserved[identifier] != null) {
@@ -745,13 +747,17 @@ bonsai_render_AnimatedSprite.prototype = {
 			_this.h[identifier] = animation;
 		}
 	}
+	,playOnce: function(identifier) {
+		this.play(identifier);
+		this.looping = false;
+	}
 	,play: function(identifier) {
 		if(this.playing == identifier) {
 			return;
 		}
 		var _this = this.animations;
 		if(!(__map_reserved[identifier] != null ? _this.existsReserved(identifier) : _this.h.hasOwnProperty(identifier))) {
-			haxe_Log.trace("Attempted to play animation " + identifier + ", which isn't registered",{ fileName : "bonsai/render/AnimatedSprite.hx", lineNumber : 28, className : "bonsai.render.AnimatedSprite", methodName : "play"});
+			haxe_Log.trace("Attempted to play animation " + identifier + ", which isn't registered",{ fileName : "bonsai/render/AnimatedSprite.hx", lineNumber : 34, className : "bonsai.render.AnimatedSprite", methodName : "play"});
 			return;
 		}
 		this.playing = identifier;
@@ -764,8 +770,14 @@ bonsai_render_AnimatedSprite.prototype = {
 			this.timeUntilNextFrame = this.frameTime;
 			var key = this.playing;
 			var _this = this.animations;
-			if((this.frame += 1) > (__map_reserved[key] != null ? _this.getReserved(key) : _this.h[key]).frames.length - 1) {
-				this.frame = 0;
+			if(this.frame >= (__map_reserved[key] != null ? _this.getReserved(key) : _this.h[key]).frames.length - 1) {
+				if(this.looping) {
+					this.frame = 0;
+				} else {
+					this.frame -= 1;
+				}
+			} else {
+				this.frame++;
 			}
 		}
 	}
@@ -778,7 +790,7 @@ bonsai_render_AnimatedSprite.prototype = {
 		}
 		var currentFrame = currentAnimation.frames[this.frame];
 		if(this.drawLayers == null || this.drawLayers == []) {
-			haxe_Log.trace("Null layers object",{ fileName : "bonsai/render/AnimatedSprite.hx", lineNumber : 50, className : "bonsai.render.AnimatedSprite", methodName : "render"});
+			haxe_Log.trace("Null layers object",{ fileName : "bonsai/render/AnimatedSprite.hx", lineNumber : 61, className : "bonsai.render.AnimatedSprite", methodName : "render"});
 		}
 		var _g = 0;
 		var _g1 = this.drawLayers;
@@ -1535,7 +1547,7 @@ var game_SummonCircle = $hxClasses["game.SummonCircle"] = function() {
 	this.animation.drawLayers = [0,1,2];
 	this.animation.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1]});
 	this.animation.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3]});
-	this.animation.play("summon");
+	this.animation.playOnce("summon");
 };
 game_SummonCircle.__name__ = "game.SummonCircle";
 game_SummonCircle.__super__ = bonsai_entity_Entity;
