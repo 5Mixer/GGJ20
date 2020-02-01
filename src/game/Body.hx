@@ -9,9 +9,18 @@ class Body extends bonsai.entity.Entity{
 	public var leftLeg:BodyPart;
 	public var rightLeg:BodyPart;
 
+	public var mohawk:kha.Color;
+	public var health = 100;
+	public var attackCooldown = 0.;
+
 	public var vz:Float = 0;
 	public var z:Float = 0;
 	public var vx:Float = 0;
+	public var vy:Float = 0;
+
+	public var collider:differ.shapes.Circle;
+
+	public var friendly=true;
 
 	var bodyLayers:Map<BodyPart,Int> = [
 		BodyPart.NaturalHeadRight => 1,
@@ -27,17 +36,32 @@ class Body extends bonsai.entity.Entity{
 		BodyPart.Boots => 10
 	];
 
+	var mohawks:Map<BodyPart,Int> = [
+		BodyPart.NaturalHeadRight => 11,
+		BodyPart.NaturalHeadLeft => 12,
+		BodyPart.NaturalHeadDown => 13,
+		BodyPart.NaturalHeadUp => 14
+	];
+
+
 	var animatedSprite:bonsai.render.AnimatedSprite;
+	public var targetPosition:kha.math.Vector2;
+	var time:Float = 0.;
 
 	override public function new () {
 		super();
 
 		position = new kha.math.Vector2(-160 + 320 * Math.random(), -110 + 220*Math.random());
+		targetPosition = new kha.math.Vector2(0,0);
+
+		collider = new differ.shapes.Circle(position.x, position.y, 7);
+
+		friendly = Math.random()>.5;
 
 		chest = BodyPart.NaturalChest;
 		head = BodyPart.NaturalHeadDown;
-		leftArm = BodyPart.Knife;
-		rightArm = BodyPart.Sword;
+		leftArm = BodyPart.NaturalArm;
+		rightArm = friendly ? BodyPart.Axe : BodyPart.NaturalHead;
 		leftLeg = BodyPart.NaturalLeg;
 		rightLeg = BodyPart.NaturalLeg;
 
@@ -46,26 +70,62 @@ class Body extends bonsai.entity.Entity{
 		this.animatedSprite.play("idle");
 	}
 	override public function update (dt:Float) {
+		attackCooldown -= dt;
+		if (attackCooldown < 0)
+			attackCooldown = 0.;
+
+		time+=dt;
+		var speed = 180 * dt;
+		var movement = targetPosition.sub(position).normalized().mult(speed);
+		position = position.add(movement);
+
+
+		position.x += vx;
+		position.y += vy;
+
+		vx *= .9;
+		vy *= .9;
+
+		// var v = Math.sqrt(Math.pow(vx,2)+Math.pow(vy,2));
+		// var d = targetPosition.sub(position).length/4;
+		// var height = d < 70 ? 0 : 10;
+		// var height = Math.min(15,d%1);
+		var height = 10;
+		z = Math.abs(Math.sin((time + (friendly ? 0 : 2))*10))*height;
+
 
 		if (Math.abs(vz) < .1 && z < 1 && Math.abs(vx) < .1){
-			vz = 0;
-			vx = 0;
-			z = 0;
-			position.x = Math.round(position.x);
+			// vz = -3;
+			// z = 0;
 		}else{
 			if (z >= 0) {
-				vz += 10 * dt;
-				z -= vz;
-				position.x += vx;
+				// vz += 10 * dt;
+				// z -= vz;
 			} else {
-				vz *= -.4;
-				z = 0;
-				vx *= .6;
+				// vz *= -.4;
+				// z = 0;
+				// vx *= .6;
 			}
 		}
 
+
+		collider.x = position.x;
+		collider.y = position.y;
+
 		super.update(dt);
 	}
+
+	public function getItemDamage(bodyPart) {
+		if (bodyPart == BodyPart.NaturalArm) return 5;
+		if (bodyPart == BodyPart.Knife) return 10;
+		if (bodyPart == BodyPart.Sword) return 15;
+		if (bodyPart == BodyPart.Axe) return 20;
+		return 1;
+	}
+	public function getDamage () {
+		return getItemDamage(leftArm) + getItemDamage(rightArm);
+	}
+
 	override public function render (graphics:kha.graphics2.Graphics) {
 		if (chest == null || head == null || leftLeg == null || rightLeg == null || leftArm == null || rightArm == null) {
 			trace("attempted to render a body that lacks part/s");
@@ -74,8 +134,28 @@ class Body extends bonsai.entity.Entity{
 		animatedSprite.drawLayers = [bodyLayers[chest]];
 		animatedSprite.render(graphics, position.x, position.y-z);
 
+		var drawnHead = head;
+		if (drawnHead == BodyPart.NaturalHead) {
+			if (Math.abs(this.vx) > Math.abs(this.vy)) {
+				if (vx > 0)
+					drawnHead = BodyPart.NaturalHeadRight;
+				else
+					drawnHead = BodyPart.NaturalHeadLeft;
+			}else{
+				if (vy > 0)
+					drawnHead = BodyPart.NaturalHeadDown;
+				else
+					drawnHead = BodyPart.NaturalHeadUp;
+			}
+
+		}
 		animatedSprite.drawLayers = [bodyLayers[head]];
 		animatedSprite.render(graphics, position.x, position.y-z);
+
+		animatedSprite.drawLayers = [mohawks[head]];
+		graphics.color = friendly ? kha.Color.Green : kha.Color.Red;
+		animatedSprite.render(graphics, position.x, position.y-z);
+		graphics.color = kha.Color.White;
 
 		animatedSprite.drawLayers = [bodyLayers[leftLeg]];
 		animatedSprite.render(graphics, position.x, position.y-z);

@@ -21,7 +21,8 @@ class Engine {
 
 	}	
 
-	public function start (title:String="Bonsai Engine Game", width=800, height=600, onReady) {
+	public function start (title:String="Bonsai Engine Game", width=1200, height=900, onReady) {
+		trace(width);
 		System.start({title: title, width: width, height: height}, function (_) {
 			input = new Input();
 

@@ -45,7 +45,7 @@ class SummonCircle extends bonsai.entity.Entity {
 		];
 
 		this.animation = new AnimatedSprite();
-		this.animation.drawLayers = [0,1,2];
+		this.animation.drawLayers = [0,1];
 		this.animation.registerAnimation("idle", {
 			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
 			frames:[0,4]

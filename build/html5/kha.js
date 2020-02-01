@@ -107,7 +107,7 @@ Main.__name__ = "Main";
 Main.main = function() {
 	new hotml_client_Client();
 	Main.engine = new bonsai_Engine();
-	Main.engine.start(null,null,null,Main.onAssetLoad);
+	Main.engine.start("skull",1200,800,Main.onAssetLoad);
 };
 Main.onAssetLoad = function() {
 	Main.engine.currentScene = new game_World(Main.engine);
@@ -551,15 +551,16 @@ bonsai_Engine.prototype = {
 	,debugInterface: null
 	,start: function(title,width,height,onReady) {
 		if(height == null) {
-			height = 600;
+			height = 900;
 		}
 		if(width == null) {
-			width = 800;
+			width = 1200;
 		}
 		if(title == null) {
 			title = "Bonsai Engine Game";
 		}
 		var _gthis = this;
+		haxe_Log.trace(width,{ fileName : "bonsai/Engine.hx", lineNumber : 25, className : "bonsai.Engine", methodName : "start"});
 		kha_System.start(new kha_SystemOptions(title,width,height,null,null),function(_) {
 			_gthis.input = new bonsai_input_Input();
 			kha_Assets.loadEverything(function() {
@@ -1311,29 +1312,1189 @@ bonsai_scene_Scene.prototype = {
 	}
 	,__class__: bonsai_scene_Scene
 };
+var differ_data_RayCollision = $hxClasses["differ.data.RayCollision"] = function() {
+	this.end = 0.0;
+	this.start = 0.0;
+};
+differ_data_RayCollision.__name__ = "differ.data.RayCollision";
+differ_data_RayCollision.prototype = {
+	shape: null
+	,ray: null
+	,start: null
+	,end: null
+	,reset: function() {
+		this.ray = null;
+		this.shape = null;
+		this.start = 0.0;
+		this.end = 0.0;
+		return this;
+	}
+	,copy_from: function(other) {
+		this.ray = other.ray;
+		this.shape = other.shape;
+		this.start = other.start;
+		this.end = other.end;
+	}
+	,clone: function() {
+		var _clone = new differ_data_RayCollision();
+		_clone.ray = this.ray;
+		_clone.shape = this.shape;
+		_clone.start = this.start;
+		_clone.end = this.end;
+		return _clone;
+	}
+	,__class__: differ_data_RayCollision
+};
+var differ_data_RayCollisionHelper = $hxClasses["differ.data.RayCollisionHelper"] = function() { };
+differ_data_RayCollisionHelper.__name__ = "differ.data.RayCollisionHelper";
+differ_data_RayCollisionHelper.hitStartX = function(data) {
+	return data.ray.start.x + data.ray.get_dir().x * data.start;
+};
+differ_data_RayCollisionHelper.hitStartY = function(data) {
+	return data.ray.start.y + data.ray.get_dir().y * data.start;
+};
+differ_data_RayCollisionHelper.hitEndX = function(data) {
+	return data.ray.start.x + data.ray.get_dir().x * data.end;
+};
+differ_data_RayCollisionHelper.hitEndY = function(data) {
+	return data.ray.start.y + data.ray.get_dir().y * data.end;
+};
+var differ_data_RayIntersection = $hxClasses["differ.data.RayIntersection"] = function() {
+	this.u2 = 0.0;
+	this.u1 = 0.0;
+};
+differ_data_RayIntersection.__name__ = "differ.data.RayIntersection";
+differ_data_RayIntersection.prototype = {
+	ray1: null
+	,ray2: null
+	,u1: null
+	,u2: null
+	,reset: function() {
+		this.ray1 = null;
+		this.ray2 = null;
+		this.u1 = 0.0;
+		this.u2 = 0.0;
+		return this;
+	}
+	,copy_from: function(other) {
+		this.ray1 = other.ray1;
+		this.ray2 = other.ray2;
+		this.u1 = other.u1;
+		this.u2 = other.u2;
+	}
+	,clone: function() {
+		var _clone = new differ_data_RayIntersection();
+		_clone.ray1 = this.ray1;
+		_clone.ray2 = this.ray2;
+		_clone.u1 = this.u1;
+		_clone.u2 = this.u2;
+		return _clone;
+	}
+	,__class__: differ_data_RayIntersection
+};
+var differ_data_ShapeCollision = $hxClasses["differ.data.ShapeCollision"] = function() {
+	this.otherUnitVectorY = 0.0;
+	this.otherUnitVectorX = 0.0;
+	this.otherSeparationY = 0.0;
+	this.otherSeparationX = 0.0;
+	this.otherOverlap = 0.0;
+	this.unitVectorY = 0.0;
+	this.unitVectorX = 0.0;
+	this.separationY = 0.0;
+	this.separationX = 0.0;
+	this.overlap = 0.0;
+};
+differ_data_ShapeCollision.__name__ = "differ.data.ShapeCollision";
+differ_data_ShapeCollision.prototype = {
+	overlap: null
+	,separationX: null
+	,separationY: null
+	,unitVectorX: null
+	,unitVectorY: null
+	,otherOverlap: null
+	,otherSeparationX: null
+	,otherSeparationY: null
+	,otherUnitVectorX: null
+	,otherUnitVectorY: null
+	,shape1: null
+	,shape2: null
+	,reset: function() {
+		this.shape1 = this.shape2 = null;
+		this.overlap = this.separationX = this.separationY = this.unitVectorX = this.unitVectorY = 0.0;
+		this.otherOverlap = this.otherSeparationX = this.otherSeparationY = this.otherUnitVectorX = this.otherUnitVectorY = 0.0;
+		return this;
+	}
+	,clone: function() {
+		var _clone = new differ_data_ShapeCollision();
+		_clone.overlap = this.overlap;
+		_clone.separationX = this.separationX;
+		_clone.separationY = this.separationY;
+		_clone.unitVectorX = this.unitVectorX;
+		_clone.unitVectorY = this.unitVectorY;
+		_clone.otherOverlap = this.otherOverlap;
+		_clone.otherSeparationX = this.otherSeparationX;
+		_clone.otherSeparationY = this.otherSeparationY;
+		_clone.otherUnitVectorX = this.otherUnitVectorX;
+		_clone.otherUnitVectorY = this.otherUnitVectorY;
+		_clone.shape1 = this.shape1;
+		_clone.shape2 = this.shape2;
+		return _clone;
+	}
+	,copy_from: function(_other) {
+		this.overlap = _other.overlap;
+		this.separationX = _other.separationX;
+		this.separationY = _other.separationY;
+		this.unitVectorX = _other.unitVectorX;
+		this.unitVectorY = _other.unitVectorY;
+		this.otherOverlap = _other.otherOverlap;
+		this.otherSeparationX = _other.otherSeparationX;
+		this.otherSeparationY = _other.otherSeparationY;
+		this.otherUnitVectorX = _other.otherUnitVectorX;
+		this.otherUnitVectorY = _other.otherUnitVectorY;
+		this.shape1 = _other.shape1;
+		this.shape2 = _other.shape2;
+	}
+	,__class__: differ_data_ShapeCollision
+};
+var differ_math_Matrix = $hxClasses["differ.math.Matrix"] = function(a,b,c,d,tx,ty) {
+	if(ty == null) {
+		ty = 0;
+	}
+	if(tx == null) {
+		tx = 0;
+	}
+	if(d == null) {
+		d = 1;
+	}
+	if(c == null) {
+		c = 0;
+	}
+	if(b == null) {
+		b = 0;
+	}
+	if(a == null) {
+		a = 1;
+	}
+	this._last_rotation = 0;
+	this.a = a;
+	this.b = b;
+	this.c = c;
+	this.d = d;
+	this.tx = tx;
+	this.ty = ty;
+};
+differ_math_Matrix.__name__ = "differ.math.Matrix";
+differ_math_Matrix.prototype = {
+	a: null
+	,b: null
+	,c: null
+	,d: null
+	,tx: null
+	,ty: null
+	,_last_rotation: null
+	,identity: function() {
+		this.a = 1;
+		this.b = 0;
+		this.c = 0;
+		this.d = 1;
+		this.tx = 0;
+		this.ty = 0;
+	}
+	,translate: function(x,y) {
+		this.tx += x;
+		this.ty += y;
+	}
+	,compose: function(_position,_rotation,_scale) {
+		this.identity();
+		this.scale(_scale.x,_scale.y);
+		this.rotate(_rotation);
+		this.makeTranslation(_position.x,_position.y);
+	}
+	,makeTranslation: function(_x,_y) {
+		this.tx = _x;
+		this.ty = _y;
+		return this;
+	}
+	,rotate: function(angle) {
+		var cos = Math.cos(angle);
+		var sin = Math.sin(angle);
+		var a1 = this.a * cos - this.b * sin;
+		this.b = this.a * sin + this.b * cos;
+		this.a = a1;
+		var c1 = this.c * cos - this.d * sin;
+		this.d = this.c * sin + this.d * cos;
+		this.c = c1;
+		var tx1 = this.tx * cos - this.ty * sin;
+		this.ty = this.tx * sin + this.ty * cos;
+		this.tx = tx1;
+	}
+	,scale: function(x,y) {
+		this.a *= x;
+		this.b *= y;
+		this.c *= x;
+		this.d *= y;
+		this.tx *= x;
+		this.ty *= y;
+	}
+	,toString: function() {
+		return "(a=" + this.a + ", b=" + this.b + ", c=" + this.c + ", d=" + this.d + ", tx=" + this.tx + ", ty=" + this.ty + ")";
+	}
+	,__class__: differ_math_Matrix
+};
+var differ_math_Util = $hxClasses["differ.math.Util"] = function() { };
+differ_math_Util.__name__ = "differ.math.Util";
+differ_math_Util.vec_lengthsq = function(x,y) {
+	return x * x + y * y;
+};
+differ_math_Util.vec_length = function(x,y) {
+	return Math.sqrt(x * x + y * y);
+};
+differ_math_Util.vec_normalize = function(length,component) {
+	if(length == 0) {
+		return 0;
+	}
+	component /= length;
+	return component;
+};
+differ_math_Util.vec_dot = function(x,y,otherx,othery) {
+	return x * otherx + y * othery;
+};
+var differ_math_Vector = $hxClasses["differ.math.Vector"] = function(_x,_y) {
+	if(_y == null) {
+		_y = 0;
+	}
+	if(_x == null) {
+		_x = 0;
+	}
+	this.y = 0;
+	this.x = 0;
+	this.x = _x;
+	this.y = _y;
+};
+differ_math_Vector.__name__ = "differ.math.Vector";
+differ_math_Vector.prototype = {
+	x: null
+	,y: null
+	,clone: function() {
+		return new differ_math_Vector(this.x,this.y);
+	}
+	,transform: function(matrix) {
+		var v = new differ_math_Vector(this.x,this.y);
+		v.x = this.x * matrix.a + this.y * matrix.c + matrix.tx;
+		v.y = this.x * matrix.b + this.y * matrix.d + matrix.ty;
+		return v;
+	}
+	,normalize: function() {
+		if(Math.sqrt(this.x * this.x + this.y * this.y) == 0) {
+			this.x = 1;
+			return this;
+		}
+		var len = Math.sqrt(this.x * this.x + this.y * this.y);
+		this.x /= len;
+		this.y /= len;
+		return this;
+	}
+	,truncate: function(max) {
+		var value = Math.min(max,Math.sqrt(this.x * this.x + this.y * this.y));
+		var ep = 0.00000001;
+		var _angle = Math.atan2(this.y,this.x);
+		this.x = Math.cos(_angle) * value;
+		this.y = Math.sin(_angle) * value;
+		if(Math.abs(this.x) < ep) {
+			this.x = 0;
+		}
+		if(Math.abs(this.y) < ep) {
+			this.y = 0;
+		}
+		return this;
+	}
+	,invert: function() {
+		this.x = -this.x;
+		this.y = -this.y;
+		return this;
+	}
+	,dot: function(other) {
+		return this.x * other.x + this.y * other.y;
+	}
+	,cross: function(other) {
+		return this.x * other.y - this.y * other.x;
+	}
+	,add: function(other) {
+		this.x += other.x;
+		this.y += other.y;
+		return this;
+	}
+	,subtract: function(other) {
+		this.x -= other.x;
+		this.y -= other.y;
+		return this;
+	}
+	,toString: function() {
+		return "Vector x:" + this.x + ", y:" + this.y;
+	}
+	,set_length: function(value) {
+		var ep = 0.00000001;
+		var _angle = Math.atan2(this.y,this.x);
+		this.x = Math.cos(_angle) * value;
+		this.y = Math.sin(_angle) * value;
+		if(Math.abs(this.x) < ep) {
+			this.x = 0;
+		}
+		if(Math.abs(this.y) < ep) {
+			this.y = 0;
+		}
+		return value;
+	}
+	,get_length: function() {
+		return Math.sqrt(this.x * this.x + this.y * this.y);
+	}
+	,get_lengthsq: function() {
+		return this.x * this.x + this.y * this.y;
+	}
+	,__class__: differ_math_Vector
+};
+var differ_sat_SAT2D = $hxClasses["differ.sat.SAT2D"] = function() { };
+differ_sat_SAT2D.__name__ = "differ.sat.SAT2D";
+differ_sat_SAT2D.testCircleVsPolygon = function(circle,polygon,into,flip) {
+	if(flip == null) {
+		flip = false;
+	}
+	if(into == null) {
+		into = new differ_data_ShapeCollision();
+	} else {
+		into.shape1 = into.shape2 = null;
+		into.overlap = into.separationX = into.separationY = into.unitVectorX = into.unitVectorY = 0.0;
+		into.otherOverlap = into.otherSeparationX = into.otherSeparationY = into.otherUnitVectorX = into.otherUnitVectorY = 0.0;
+		into = into;
+	}
+	var verts = polygon.get_transformedVertices();
+	var circleX = circle.get_x();
+	var circleY = circle.get_y();
+	var testDistance = 1073741823;
+	var distance = 0.0;
+	var closestX = 0.0;
+	var closestY = 0.0;
+	var _g = 0;
+	var _g1 = verts.length;
+	while(_g < _g1) {
+		var i = _g++;
+		var x = circleX - verts[i].x;
+		var y = circleY - verts[i].y;
+		distance = x * x + y * y;
+		if(distance < testDistance) {
+			testDistance = distance;
+			closestX = verts[i].x;
+			closestY = verts[i].y;
+		}
+	}
+	var normalAxisX = closestX - circleX;
+	var normalAxisY = closestY - circleY;
+	var normAxisLen = Math.sqrt(normalAxisX * normalAxisX + normalAxisY * normalAxisY);
+	var component = normalAxisX;
+	if(normAxisLen == 0) {
+		normalAxisX = 0;
+	} else {
+		component /= normAxisLen;
+		normalAxisX = component;
+	}
+	var component1 = normalAxisY;
+	if(normAxisLen == 0) {
+		normalAxisY = 0;
+	} else {
+		component1 /= normAxisLen;
+		normalAxisY = component1;
+	}
+	var test = 0.0;
+	var min1 = normalAxisX * verts[0].x + normalAxisY * verts[0].y;
+	var max1 = min1;
+	var _g2 = 1;
+	var _g3 = verts.length;
+	while(_g2 < _g3) {
+		var j = _g2++;
+		test = normalAxisX * verts[j].x + normalAxisY * verts[j].y;
+		if(test < min1) {
+			min1 = test;
+		}
+		if(test > max1) {
+			max1 = test;
+		}
+	}
+	var max2 = circle.get_transformedRadius();
+	var min2 = -circle.get_transformedRadius();
+	var offset = normalAxisX * -circleX + normalAxisY * -circleY;
+	min1 += offset;
+	max1 += offset;
+	var test1 = min1 - max2;
+	var test2 = min2 - max1;
+	if(test1 > 0 || test2 > 0) {
+		return null;
+	}
+	var distMin = -(max2 - min1);
+	if(flip) {
+		distMin *= -1;
+	}
+	into.overlap = distMin;
+	into.unitVectorX = normalAxisX;
+	into.unitVectorY = normalAxisY;
+	var closest = Math.abs(distMin);
+	var _g4 = 0;
+	var _g5 = verts.length;
+	while(_g4 < _g5) {
+		var i1 = _g4++;
+		var v2 = i1 >= verts.length - 1 ? verts[0] : verts[i1 + 1];
+		normalAxisX = -(v2.y - verts[i1].y);
+		var v21 = i1 >= verts.length - 1 ? verts[0] : verts[i1 + 1];
+		normalAxisY = v21.x - verts[i1].x;
+		var aLen = Math.sqrt(normalAxisX * normalAxisX + normalAxisY * normalAxisY);
+		var component2 = normalAxisX;
+		if(aLen == 0) {
+			normalAxisX = 0;
+		} else {
+			component2 /= aLen;
+			normalAxisX = component2;
+		}
+		var component3 = normalAxisY;
+		if(aLen == 0) {
+			normalAxisY = 0;
+		} else {
+			component3 /= aLen;
+			normalAxisY = component3;
+		}
+		min1 = normalAxisX * verts[0].x + normalAxisY * verts[0].y;
+		max1 = min1;
+		var _g41 = 1;
+		var _g51 = verts.length;
+		while(_g41 < _g51) {
+			var j1 = _g41++;
+			test = normalAxisX * verts[j1].x + normalAxisY * verts[j1].y;
+			if(test < min1) {
+				min1 = test;
+			}
+			if(test > max1) {
+				max1 = test;
+			}
+		}
+		max2 = circle.get_transformedRadius();
+		min2 = -circle.get_transformedRadius();
+		offset = normalAxisX * -circleX + normalAxisY * -circleY;
+		min1 += offset;
+		max1 += offset;
+		test1 = min1 - max2;
+		test2 = min2 - max1;
+		if(test1 > 0 || test2 > 0) {
+			return null;
+		}
+		distMin = -(max2 - min1);
+		if(flip) {
+			distMin *= -1;
+		}
+		if(Math.abs(distMin) < closest) {
+			into.unitVectorX = normalAxisX;
+			into.unitVectorY = normalAxisY;
+			into.overlap = distMin;
+			closest = Math.abs(distMin);
+		}
+	}
+	into.shape1 = flip ? polygon : circle;
+	into.shape2 = flip ? circle : polygon;
+	into.separationX = into.unitVectorX * into.overlap;
+	into.separationY = into.unitVectorY * into.overlap;
+	if(!flip) {
+		into.unitVectorX = -into.unitVectorX;
+		into.unitVectorY = -into.unitVectorY;
+	}
+	return into;
+};
+differ_sat_SAT2D.testCircleVsCircle = function(circleA,circleB,into,flip) {
+	if(flip == null) {
+		flip = false;
+	}
+	var circle1 = flip ? circleB : circleA;
+	var circle2 = flip ? circleA : circleB;
+	var totalRadius = circle1.get_transformedRadius() + circle2.get_transformedRadius();
+	var x = circle1.get_x() - circle2.get_x();
+	var y = circle1.get_y() - circle2.get_y();
+	var distancesq = x * x + y * y;
+	if(distancesq < totalRadius * totalRadius) {
+		if(into == null) {
+			into = new differ_data_ShapeCollision();
+		} else {
+			into.shape1 = into.shape2 = null;
+			into.overlap = into.separationX = into.separationY = into.unitVectorX = into.unitVectorY = 0.0;
+			into.otherOverlap = into.otherSeparationX = into.otherSeparationY = into.otherUnitVectorX = into.otherUnitVectorY = 0.0;
+			into = into;
+		}
+		var difference = totalRadius - Math.sqrt(distancesq);
+		into.shape1 = circle1;
+		into.shape2 = circle2;
+		var unitVecX = circle1.get_x() - circle2.get_x();
+		var unitVecY = circle1.get_y() - circle2.get_y();
+		var unitVecLen = Math.sqrt(unitVecX * unitVecX + unitVecY * unitVecY);
+		var component = unitVecX;
+		if(unitVecLen == 0) {
+			unitVecX = 0;
+		} else {
+			component /= unitVecLen;
+			unitVecX = component;
+		}
+		var component1 = unitVecY;
+		if(unitVecLen == 0) {
+			unitVecY = 0;
+		} else {
+			component1 /= unitVecLen;
+			unitVecY = component1;
+		}
+		into.unitVectorX = unitVecX;
+		into.unitVectorY = unitVecY;
+		into.separationX = into.unitVectorX * difference;
+		into.separationY = into.unitVectorY * difference;
+		into.overlap = difference;
+		return into;
+	}
+	return null;
+};
+differ_sat_SAT2D.testPolygonVsPolygon = function(polygon1,polygon2,into,flip) {
+	if(flip == null) {
+		flip = false;
+	}
+	if(into == null) {
+		into = new differ_data_ShapeCollision();
+	} else {
+		into.shape1 = into.shape2 = null;
+		into.overlap = into.separationX = into.separationY = into.unitVectorX = into.unitVectorY = 0.0;
+		into.otherOverlap = into.otherSeparationX = into.otherSeparationY = into.otherUnitVectorX = into.otherUnitVectorY = 0.0;
+		into = into;
+	}
+	if(differ_sat_SAT2D.checkPolygons(polygon1,polygon2,differ_sat_SAT2D.tmp1,flip) == null) {
+		return null;
+	}
+	if(differ_sat_SAT2D.checkPolygons(polygon2,polygon1,differ_sat_SAT2D.tmp2,!flip) == null) {
+		return null;
+	}
+	var result = null;
+	var other = null;
+	if(Math.abs(differ_sat_SAT2D.tmp1.overlap) < Math.abs(differ_sat_SAT2D.tmp2.overlap)) {
+		result = differ_sat_SAT2D.tmp1;
+		other = differ_sat_SAT2D.tmp2;
+	} else {
+		result = differ_sat_SAT2D.tmp2;
+		other = differ_sat_SAT2D.tmp1;
+	}
+	result.otherOverlap = other.overlap;
+	result.otherSeparationX = other.separationX;
+	result.otherSeparationY = other.separationY;
+	result.otherUnitVectorX = other.unitVectorX;
+	result.otherUnitVectorY = other.unitVectorY;
+	into.overlap = result.overlap;
+	into.separationX = result.separationX;
+	into.separationY = result.separationY;
+	into.unitVectorX = result.unitVectorX;
+	into.unitVectorY = result.unitVectorY;
+	into.otherOverlap = result.otherOverlap;
+	into.otherSeparationX = result.otherSeparationX;
+	into.otherSeparationY = result.otherSeparationY;
+	into.otherUnitVectorX = result.otherUnitVectorX;
+	into.otherUnitVectorY = result.otherUnitVectorY;
+	into.shape1 = result.shape1;
+	into.shape2 = result.shape2;
+	other = null;
+	result = other;
+	return into;
+};
+differ_sat_SAT2D.testRayVsCircle = function(ray,circle,into) {
+	var deltaX = ray.end.x - ray.start.x;
+	var deltaY = ray.end.y - ray.start.y;
+	var ray2circleX = ray.start.x - circle.get_position().x;
+	var ray2circleY = ray.start.y - circle.get_position().y;
+	var a = deltaX * deltaX + deltaY * deltaY;
+	var b = 2 * (deltaX * ray2circleX + deltaY * ray2circleY);
+	var c = ray2circleX * ray2circleX + ray2circleY * ray2circleY - circle.get_radius() * circle.get_radius();
+	var d = b * b - 4 * a * c;
+	if(d >= 0) {
+		d = Math.sqrt(d);
+		var t1 = (-b - d) / (2 * a);
+		var t2 = (-b + d) / (2 * a);
+		var valid;
+		switch(ray.infinite._hx_index) {
+		case 0:
+			valid = t1 >= 0.0 && t1 <= 1.0;
+			break;
+		case 1:
+			valid = t1 >= 0.0;
+			break;
+		case 2:
+			valid = true;
+			break;
+		}
+		if(valid) {
+			if(into == null) {
+				into = new differ_data_RayCollision();
+			} else {
+				into.ray = null;
+				into.shape = null;
+				into.start = 0.0;
+				into.end = 0.0;
+				into = into;
+			}
+			into.shape = circle;
+			into.ray = ray;
+			into.start = t1;
+			into.end = t2;
+			return into;
+		}
+	}
+	return null;
+};
+differ_sat_SAT2D.testRayVsPolygon = function(ray,polygon,into) {
+	var min_u = Infinity;
+	var max_u = -Infinity;
+	var startX = ray.start.x;
+	var startY = ray.start.y;
+	var deltaX = ray.end.x - startX;
+	var deltaY = ray.end.y - startY;
+	var verts = polygon.get_transformedVertices();
+	var v1 = verts[verts.length - 1];
+	var v2 = verts[0];
+	var ud = (v2.y - v1.y) * deltaX - (v2.x - v1.x) * deltaY;
+	var ua = ((v2.x - v1.x) * (startY - v1.y) - (v2.y - v1.y) * (startX - v1.x)) / ud;
+	var ub = (deltaX * (startY - v1.y) - deltaY * (startX - v1.x)) / ud;
+	if(ud != 0.0 && ub >= 0.0 && ub <= 1.0) {
+		if(ua < min_u) {
+			min_u = ua;
+		}
+		if(ua > max_u) {
+			max_u = ua;
+		}
+	}
+	var _g = 1;
+	var _g1 = verts.length;
+	while(_g < _g1) {
+		var i = _g++;
+		v1 = verts[i - 1];
+		v2 = verts[i];
+		ud = (v2.y - v1.y) * deltaX - (v2.x - v1.x) * deltaY;
+		ua = ((v2.x - v1.x) * (startY - v1.y) - (v2.y - v1.y) * (startX - v1.x)) / ud;
+		ub = (deltaX * (startY - v1.y) - deltaY * (startX - v1.x)) / ud;
+		if(ud != 0.0 && ub >= 0.0 && ub <= 1.0) {
+			if(ua < min_u) {
+				min_u = ua;
+			}
+			if(ua > max_u) {
+				max_u = ua;
+			}
+		}
+	}
+	var valid;
+	switch(ray.infinite._hx_index) {
+	case 0:
+		valid = min_u >= 0.0 && min_u <= 1.0;
+		break;
+	case 1:
+		valid = min_u != Infinity && min_u >= 0.0;
+		break;
+	case 2:
+		valid = min_u != Infinity;
+		break;
+	}
+	if(valid) {
+		if(into == null) {
+			into = new differ_data_RayCollision();
+		} else {
+			into.ray = null;
+			into.shape = null;
+			into.start = 0.0;
+			into.end = 0.0;
+			into = into;
+		}
+		into.shape = polygon;
+		into.ray = ray;
+		into.start = min_u;
+		into.end = max_u;
+		return into;
+	}
+	return null;
+};
+differ_sat_SAT2D.testRayVsRay = function(ray1,ray2,into) {
+	var delta1X = ray1.end.x - ray1.start.x;
+	var delta1Y = ray1.end.y - ray1.start.y;
+	var delta2X = ray2.end.x - ray2.start.x;
+	var delta2Y = ray2.end.y - ray2.start.y;
+	var diffX = ray1.start.x - ray2.start.x;
+	var diffY = ray1.start.y - ray2.start.y;
+	var ud = delta2Y * delta1X - delta2X * delta1Y;
+	if(ud == 0.0) {
+		return null;
+	}
+	var u1 = (delta2X * diffY - delta2Y * diffX) / ud;
+	var u2 = (delta1X * diffY - delta1Y * diffX) / ud;
+	var valid1;
+	switch(ray1.infinite._hx_index) {
+	case 0:
+		valid1 = u1 > 0.0 && u1 <= 1.0;
+		break;
+	case 1:
+		valid1 = u1 > 0.0;
+		break;
+	case 2:
+		valid1 = true;
+		break;
+	}
+	var valid2;
+	switch(ray2.infinite._hx_index) {
+	case 0:
+		valid2 = u2 > 0.0 && u2 <= 1.0;
+		break;
+	case 1:
+		valid2 = u2 > 0.0;
+		break;
+	case 2:
+		valid2 = true;
+		break;
+	}
+	if(valid1 && valid2) {
+		if(into == null) {
+			into = new differ_data_RayIntersection();
+		} else {
+			into.ray1 = null;
+			into.ray2 = null;
+			into.u1 = 0.0;
+			into.u2 = 0.0;
+			into = into;
+		}
+		into.ray1 = ray1;
+		into.ray2 = ray2;
+		into.u1 = u1;
+		into.u2 = u2;
+		return into;
+	}
+	return null;
+};
+differ_sat_SAT2D.checkPolygons = function(polygon1,polygon2,into,flip) {
+	if(flip == null) {
+		flip = false;
+	}
+	into.shape1 = into.shape2 = null;
+	into.overlap = into.separationX = into.separationY = into.unitVectorX = into.unitVectorY = 0.0;
+	into.otherOverlap = into.otherSeparationX = into.otherSeparationY = into.otherUnitVectorX = into.otherUnitVectorY = 0.0;
+	var offset = 0.0;
+	var test1 = 0.0;
+	var test2 = 0.0;
+	var testNum = 0.0;
+	var min1 = 0.0;
+	var max1 = 0.0;
+	var min2 = 0.0;
+	var max2 = 0.0;
+	var closest = 1073741823;
+	var axisX = 0.0;
+	var axisY = 0.0;
+	var verts1 = polygon1.get_transformedVertices();
+	var verts2 = polygon2.get_transformedVertices();
+	var _g = 0;
+	var _g1 = verts1.length;
+	while(_g < _g1) {
+		var i = _g++;
+		var v2 = i >= verts1.length - 1 ? verts1[0] : verts1[i + 1];
+		axisX = -(v2.y - verts1[i].y);
+		var v21 = i >= verts1.length - 1 ? verts1[0] : verts1[i + 1];
+		axisY = v21.x - verts1[i].x;
+		var aLen = Math.sqrt(axisX * axisX + axisY * axisY);
+		var component = axisX;
+		if(aLen == 0) {
+			axisX = 0;
+		} else {
+			component /= aLen;
+			axisX = component;
+		}
+		var component1 = axisY;
+		if(aLen == 0) {
+			axisY = 0;
+		} else {
+			component1 /= aLen;
+			axisY = component1;
+		}
+		min1 = axisX * verts1[0].x + axisY * verts1[0].y;
+		max1 = min1;
+		var _g2 = 1;
+		var _g11 = verts1.length;
+		while(_g2 < _g11) {
+			var j = _g2++;
+			testNum = axisX * verts1[j].x + axisY * verts1[j].y;
+			if(testNum < min1) {
+				min1 = testNum;
+			}
+			if(testNum > max1) {
+				max1 = testNum;
+			}
+		}
+		min2 = axisX * verts2[0].x + axisY * verts2[0].y;
+		max2 = min2;
+		var _g21 = 1;
+		var _g3 = verts2.length;
+		while(_g21 < _g3) {
+			var j1 = _g21++;
+			testNum = axisX * verts2[j1].x + axisY * verts2[j1].y;
+			if(testNum < min2) {
+				min2 = testNum;
+			}
+			if(testNum > max2) {
+				max2 = testNum;
+			}
+		}
+		test1 = min1 - max2;
+		test2 = min2 - max1;
+		if(test1 > 0 || test2 > 0) {
+			return null;
+		}
+		var distMin = -(max2 - min1);
+		if(flip) {
+			distMin *= -1;
+		}
+		if(Math.abs(distMin) < closest) {
+			into.unitVectorX = axisX;
+			into.unitVectorY = axisY;
+			into.overlap = distMin;
+			closest = Math.abs(distMin);
+		}
+	}
+	into.shape1 = flip ? polygon2 : polygon1;
+	into.shape2 = flip ? polygon1 : polygon2;
+	into.separationX = -into.unitVectorX * into.overlap;
+	into.separationY = -into.unitVectorY * into.overlap;
+	if(flip) {
+		into.unitVectorX = -into.unitVectorX;
+		into.unitVectorY = -into.unitVectorY;
+	}
+	return into;
+};
+differ_sat_SAT2D.rayU = function(udelta,aX,aY,bX,bY,dX,dY) {
+	return (dX * (aY - bY) - dY * (aX - bX)) / udelta;
+};
+differ_sat_SAT2D.findNormalAxisX = function(verts,index) {
+	var v2 = index >= verts.length - 1 ? verts[0] : verts[index + 1];
+	return -(v2.y - verts[index].y);
+};
+differ_sat_SAT2D.findNormalAxisY = function(verts,index) {
+	var v2 = index >= verts.length - 1 ? verts[0] : verts[index + 1];
+	return v2.x - verts[index].x;
+};
+var differ_shapes_Shape = $hxClasses["differ.shapes.Shape"] = function(_x,_y) {
+	this._transformed = false;
+	this._scaleY = 1;
+	this._scaleX = 1;
+	this._rotation_radians = 0;
+	this._rotation = 0;
+	this.name = "shape";
+	this.active = true;
+	this.tags = new haxe_ds_StringMap();
+	this._position = new differ_math_Vector(_x,_y);
+	this._scale = new differ_math_Vector(1,1);
+	this._rotation = 0;
+	this._scaleX = 1;
+	this._scaleY = 1;
+	this._transformMatrix = new differ_math_Matrix();
+	this._transformMatrix.makeTranslation(this._position.x,this._position.y);
+};
+differ_shapes_Shape.__name__ = "differ.shapes.Shape";
+differ_shapes_Shape.prototype = {
+	active: null
+	,name: null
+	,data: null
+	,tags: null
+	,_position: null
+	,_rotation: null
+	,_rotation_radians: null
+	,_scale: null
+	,_scaleX: null
+	,_scaleY: null
+	,_transformed: null
+	,_transformMatrix: null
+	,test: function(shape,into) {
+		return null;
+	}
+	,testCircle: function(circle,into,flip) {
+		if(flip == null) {
+			flip = false;
+		}
+		return null;
+	}
+	,testPolygon: function(polygon,into,flip) {
+		if(flip == null) {
+			flip = false;
+		}
+		return null;
+	}
+	,testRay: function(ray,into) {
+		return null;
+	}
+	,destroy: function() {
+		this._position = null;
+		this._scale = null;
+		this._transformMatrix = null;
+	}
+	,refresh_transform: function() {
+		this._transformMatrix.compose(this._position,this._rotation_radians,this._scale);
+		this._transformed = false;
+	}
+	,get_position: function() {
+		return this._position;
+	}
+	,set_position: function(v) {
+		this._position = v;
+		this.refresh_transform();
+		return this._position;
+	}
+	,get_x: function() {
+		return this._position.x;
+	}
+	,set_x: function(x) {
+		this._position.x = x;
+		this.refresh_transform();
+		return this._position.x;
+	}
+	,get_y: function() {
+		return this._position.y;
+	}
+	,set_y: function(y) {
+		this._position.y = y;
+		this.refresh_transform();
+		return this._position.y;
+	}
+	,get_rotation: function() {
+		return this._rotation;
+	}
+	,set_rotation: function(v) {
+		this._rotation_radians = v * (Math.PI / 180);
+		this.refresh_transform();
+		return this._rotation = v;
+	}
+	,get_scaleX: function() {
+		return this._scaleX;
+	}
+	,set_scaleX: function(scale) {
+		this._scaleX = scale;
+		this._scale.x = this._scaleX;
+		this.refresh_transform();
+		return this._scaleX;
+	}
+	,get_scaleY: function() {
+		return this._scaleY;
+	}
+	,set_scaleY: function(scale) {
+		this._scaleY = scale;
+		this._scale.y = this._scaleY;
+		this.refresh_transform();
+		return this._scaleY;
+	}
+	,__class__: differ_shapes_Shape
+};
+var differ_shapes_Circle = $hxClasses["differ.shapes.Circle"] = function(x,y,radius) {
+	differ_shapes_Shape.call(this,x,y);
+	this._radius = radius;
+	this.name = "circle " + this._radius;
+};
+differ_shapes_Circle.__name__ = "differ.shapes.Circle";
+differ_shapes_Circle.__super__ = differ_shapes_Shape;
+differ_shapes_Circle.prototype = $extend(differ_shapes_Shape.prototype,{
+	_radius: null
+	,test: function(shape,into) {
+		return shape.testCircle(this,into,true);
+	}
+	,testCircle: function(circle,into,flip) {
+		if(flip == null) {
+			flip = false;
+		}
+		return differ_sat_SAT2D.testCircleVsCircle(this,circle,into,flip);
+	}
+	,testPolygon: function(polygon,into,flip) {
+		if(flip == null) {
+			flip = false;
+		}
+		return differ_sat_SAT2D.testCircleVsPolygon(this,polygon,into,flip);
+	}
+	,testRay: function(ray,into) {
+		return differ_sat_SAT2D.testRayVsCircle(ray,this,into);
+	}
+	,get_radius: function() {
+		return this._radius;
+	}
+	,get_transformedRadius: function() {
+		return this._radius * this.get_scaleX();
+	}
+	,__class__: differ_shapes_Circle
+});
+var differ_shapes_Polygon = $hxClasses["differ.shapes.Polygon"] = function(x,y,vertices) {
+	differ_shapes_Shape.call(this,x,y);
+	this.name = "polygon(sides:" + vertices.length + ")";
+	this._transformedVertices = [];
+	this._vertices = vertices;
+};
+differ_shapes_Polygon.__name__ = "differ.shapes.Polygon";
+differ_shapes_Polygon.create = function(x,y,sides,radius) {
+	if(radius == null) {
+		radius = 100;
+	}
+	if(sides < 3) {
+		throw new js__$Boot_HaxeError("Polygon - Needs at least 3 sides");
+	}
+	var rotation = Math.PI * 2 / sides;
+	var angle;
+	var vector;
+	var vertices = [];
+	var _g = 0;
+	var _g1 = sides;
+	while(_g < _g1) {
+		var i = _g++;
+		angle = i * rotation + (Math.PI - rotation) * 0.5;
+		vector = new differ_math_Vector();
+		vector.x = Math.cos(angle) * radius;
+		vector.y = Math.sin(angle) * radius;
+		vertices.push(vector);
+	}
+	return new differ_shapes_Polygon(x,y,vertices);
+};
+differ_shapes_Polygon.rectangle = function(x,y,width,height,centered) {
+	if(centered == null) {
+		centered = true;
+	}
+	var vertices = [];
+	if(centered) {
+		vertices.push(new differ_math_Vector(-width / 2,-height / 2));
+		vertices.push(new differ_math_Vector(width / 2,-height / 2));
+		vertices.push(new differ_math_Vector(width / 2,height / 2));
+		vertices.push(new differ_math_Vector(-width / 2,height / 2));
+	} else {
+		vertices.push(new differ_math_Vector(0,0));
+		vertices.push(new differ_math_Vector(width,0));
+		vertices.push(new differ_math_Vector(width,height));
+		vertices.push(new differ_math_Vector(0,height));
+	}
+	return new differ_shapes_Polygon(x,y,vertices);
+};
+differ_shapes_Polygon.square = function(x,y,width,centered) {
+	if(centered == null) {
+		centered = true;
+	}
+	return differ_shapes_Polygon.rectangle(x,y,width,width,centered);
+};
+differ_shapes_Polygon.triangle = function(x,y,radius) {
+	return differ_shapes_Polygon.create(x,y,3,radius);
+};
+differ_shapes_Polygon.__super__ = differ_shapes_Shape;
+differ_shapes_Polygon.prototype = $extend(differ_shapes_Shape.prototype,{
+	_transformedVertices: null
+	,_vertices: null
+	,test: function(shape,into) {
+		return shape.testPolygon(this,into,true);
+	}
+	,testCircle: function(circle,into,flip) {
+		if(flip == null) {
+			flip = false;
+		}
+		return differ_sat_SAT2D.testCircleVsPolygon(circle,this,into,!flip);
+	}
+	,testPolygon: function(polygon,into,flip) {
+		if(flip == null) {
+			flip = false;
+		}
+		return differ_sat_SAT2D.testPolygonVsPolygon(this,polygon,into,flip);
+	}
+	,testRay: function(ray,into) {
+		return differ_sat_SAT2D.testRayVsPolygon(ray,this,into);
+	}
+	,destroy: function() {
+		var _count = this._vertices.length;
+		var _g = 0;
+		var _g1 = _count;
+		while(_g < _g1) {
+			var i = _g++;
+			this._vertices[i] = null;
+		}
+		this._transformedVertices = null;
+		this._vertices = null;
+		differ_shapes_Shape.prototype.destroy.call(this);
+	}
+	,get_transformedVertices: function() {
+		if(!this._transformed) {
+			this._transformedVertices = [];
+			this._transformed = true;
+			var _count = this._vertices.length;
+			var _g = 0;
+			var _g1 = _count;
+			while(_g < _g1) {
+				var i = _g++;
+				var _this = this._vertices[i];
+				this._transformedVertices.push(new differ_math_Vector(_this.x,_this.y).transform(this._transformMatrix));
+			}
+		}
+		return this._transformedVertices;
+	}
+	,get_vertices: function() {
+		return this._vertices;
+	}
+	,__class__: differ_shapes_Polygon
+});
+var differ_shapes_Ray = $hxClasses["differ.shapes.Ray"] = function(_start,_end,_infinite) {
+	this.start = _start;
+	this.end = _end;
+	this.infinite = _infinite == null ? differ_shapes_InfiniteState.not_infinite : _infinite;
+	this.dir_cache = new differ_math_Vector(this.end.x - this.start.x,this.end.y - this.start.y);
+};
+differ_shapes_Ray.__name__ = "differ.shapes.Ray";
+differ_shapes_Ray.prototype = {
+	start: null
+	,end: null
+	,infinite: null
+	,dir_cache: null
+	,get_dir: function() {
+		this.dir_cache.x = this.end.x - this.start.x;
+		this.dir_cache.y = this.end.y - this.start.y;
+		return this.dir_cache;
+	}
+	,__class__: differ_shapes_Ray
+};
+var differ_shapes_InfiniteState = $hxEnums["differ.shapes.InfiniteState"] = { __ename__ : true, __constructs__ : ["not_infinite","infinite_from_start","infinite"]
+	,not_infinite: {_hx_index:0,__enum__:"differ.shapes.InfiniteState",toString:$estr}
+	,infinite_from_start: {_hx_index:1,__enum__:"differ.shapes.InfiniteState",toString:$estr}
+	,infinite: {_hx_index:2,__enum__:"differ.shapes.InfiniteState",toString:$estr}
+};
+differ_shapes_InfiniteState.__empty_constructs__ = [differ_shapes_InfiniteState.not_infinite,differ_shapes_InfiniteState.infinite_from_start,differ_shapes_InfiniteState.infinite];
 var game_Body = $hxClasses["game.Body"] = function() {
+	this.time = 0.;
 	var _g = new haxe_ds_EnumValueMap();
-	_g.set(game_BodyPart.NaturalHeadRight,1);
-	_g.set(game_BodyPart.NaturalHeadLeft,2);
-	_g.set(game_BodyPart.NaturalHeadDown,3);
-	_g.set(game_BodyPart.NaturalHeadUp,4);
-	_g.set(game_BodyPart.NaturalChest,0);
-	_g.set(game_BodyPart.NaturalArm,6);
-	_g.set(game_BodyPart.Knife,7);
-	_g.set(game_BodyPart.Sword,8);
-	_g.set(game_BodyPart.Axe,9);
-	_g.set(game_BodyPart.NaturalLeg,5);
-	_g.set(game_BodyPart.Boots,10);
-	this.bodyLayers = _g;
+	_g.set(game_BodyPart.NaturalHeadRight,11);
+	_g.set(game_BodyPart.NaturalHeadLeft,12);
+	_g.set(game_BodyPart.NaturalHeadDown,13);
+	_g.set(game_BodyPart.NaturalHeadUp,14);
+	this.mohawks = _g;
+	var _g1 = new haxe_ds_EnumValueMap();
+	_g1.set(game_BodyPart.NaturalHeadRight,1);
+	_g1.set(game_BodyPart.NaturalHeadLeft,2);
+	_g1.set(game_BodyPart.NaturalHeadDown,3);
+	_g1.set(game_BodyPart.NaturalHeadUp,4);
+	_g1.set(game_BodyPart.NaturalChest,0);
+	_g1.set(game_BodyPart.NaturalArm,6);
+	_g1.set(game_BodyPart.Knife,7);
+	_g1.set(game_BodyPart.Sword,8);
+	_g1.set(game_BodyPart.Axe,9);
+	_g1.set(game_BodyPart.NaturalLeg,5);
+	_g1.set(game_BodyPart.Boots,10);
+	this.bodyLayers = _g1;
+	this.friendly = true;
+	this.vy = 0;
 	this.vx = 0;
 	this.z = 0;
 	this.vz = 0;
+	this.attackCooldown = 0.;
+	this.health = 100;
 	bonsai_entity_Entity.call(this);
 	this.position = new kha_math_Vector2(-160 + 320 * Math.random(),-110 + 220 * Math.random());
+	this.targetPosition = new kha_math_Vector2(0,0);
+	this.collider = new differ_shapes_Circle(this.position.x,this.position.y,7);
+	this.friendly = Math.random() > .5;
 	this.chest = game_BodyPart.NaturalChest;
 	this.head = game_BodyPart.NaturalHeadDown;
-	this.leftArm = game_BodyPart.Knife;
-	this.rightArm = game_BodyPart.Sword;
+	this.leftArm = game_BodyPart.NaturalArm;
+	this.rightArm = this.friendly ? game_BodyPart.Axe : game_BodyPart.NaturalHead;
 	this.leftLeg = game_BodyPart.NaturalLeg;
 	this.rightLeg = game_BodyPart.NaturalLeg;
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
@@ -1349,50 +2510,137 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 	,rightArm: null
 	,leftLeg: null
 	,rightLeg: null
+	,mohawk: null
+	,health: null
+	,attackCooldown: null
 	,vz: null
 	,z: null
 	,vx: null
+	,vy: null
+	,collider: null
+	,friendly: null
 	,bodyLayers: null
+	,mohawks: null
 	,animatedSprite: null
+	,targetPosition: null
+	,time: null
 	,update: function(dt) {
-		if(Math.abs(this.vz) < .1 && this.z < 1 && Math.abs(this.vx) < .1) {
-			this.vz = 0;
-			this.vx = 0;
-			this.z = 0;
-			this.position.x = Math.round(this.position.x);
-		} else if(this.z >= 0) {
-			this.vz += 10 * dt;
-			this.z -= this.vz;
-			this.position.x += this.vx;
-		} else {
-			this.vz *= -.4;
-			this.z = 0;
-			this.vx *= .6;
+		this.attackCooldown -= dt;
+		if(this.attackCooldown < 0) {
+			this.attackCooldown = 0.;
 		}
+		this.time += dt;
+		var speed = 180 * dt;
+		var _this = this.targetPosition;
+		var vec = this.position;
+		var x = _this.x - vec.x;
+		var y = _this.y - vec.y;
+		if(y == null) {
+			y = 0;
+		}
+		if(x == null) {
+			x = 0;
+		}
+		var _this_x = x;
+		var _this_y = y;
+		var x1 = _this_x;
+		var y1 = _this_y;
+		if(y1 == null) {
+			y1 = 0;
+		}
+		if(x1 == null) {
+			x1 = 0;
+		}
+		var _this_x1 = x1;
+		var _this_y1 = y1;
+		var currentLength = Math.sqrt(_this_x1 * _this_x1 + _this_y1 * _this_y1);
+		if(currentLength != 0) {
+			var mul = 1 / currentLength;
+			_this_x1 *= mul;
+			_this_y1 *= mul;
+		}
+		var x2 = _this_x1 * speed;
+		var y2 = _this_y1 * speed;
+		if(y2 == null) {
+			y2 = 0;
+		}
+		if(x2 == null) {
+			x2 = 0;
+		}
+		var movement_x = x2;
+		var movement_y = y2;
+		var _this1 = this.position;
+		this.position = new kha_math_Vector2(_this1.x + movement_x,_this1.y + movement_y);
+		this.position.x += this.vx;
+		this.position.y += this.vy;
+		this.vx *= .9;
+		this.vy *= .9;
+		var height = 10;
+		this.z = Math.abs(Math.sin((this.time + (this.friendly ? 0 : 2)) * 10)) * height;
+		var tmp = Math.abs(this.vz) < .1 && this.z < 1 && Math.abs(this.vx) < .1;
+		this.collider.set_x(this.position.x);
+		this.collider.set_y(this.position.y);
 		bonsai_entity_Entity.prototype.update.call(this,dt);
+	}
+	,getItemDamage: function(bodyPart) {
+		if(bodyPart == game_BodyPart.NaturalArm) {
+			return 5;
+		}
+		if(bodyPart == game_BodyPart.Knife) {
+			return 10;
+		}
+		if(bodyPart == game_BodyPart.Sword) {
+			return 15;
+		}
+		if(bodyPart == game_BodyPart.Axe) {
+			return 20;
+		}
+		return 1;
+	}
+	,getDamage: function() {
+		return this.getItemDamage(this.leftArm) + this.getItemDamage(this.rightArm);
 	}
 	,render: function(graphics) {
 		if(this.chest == null || this.head == null || this.leftLeg == null || this.rightLeg == null || this.leftArm == null || this.rightArm == null) {
-			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 71, className : "game.Body", methodName : "render"});
+			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 131, className : "game.Body", methodName : "render"});
 			return;
 		}
 		var tmp = this.bodyLayers.get(this.chest);
 		this.animatedSprite.drawLayers = [tmp];
 		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
+		var drawnHead = this.head;
+		if(drawnHead == game_BodyPart.NaturalHead) {
+			if(Math.abs(this.vx) > Math.abs(this.vy)) {
+				if(this.vx > 0) {
+					drawnHead = game_BodyPart.NaturalHeadRight;
+				} else {
+					drawnHead = game_BodyPart.NaturalHeadLeft;
+				}
+			} else if(this.vy > 0) {
+				drawnHead = game_BodyPart.NaturalHeadDown;
+			} else {
+				drawnHead = game_BodyPart.NaturalHeadUp;
+			}
+		}
 		var tmp1 = this.bodyLayers.get(this.head);
 		this.animatedSprite.drawLayers = [tmp1];
 		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
-		var tmp2 = this.bodyLayers.get(this.leftLeg);
+		var tmp2 = this.mohawks.get(this.head);
 		this.animatedSprite.drawLayers = [tmp2];
+		graphics.set_color(this.friendly ? -16711936 : -65536);
 		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
-		var tmp3 = this.bodyLayers.get(this.rightLeg);
+		graphics.set_color(-1);
+		var tmp3 = this.bodyLayers.get(this.leftLeg);
 		this.animatedSprite.drawLayers = [tmp3];
-		this.animatedSprite.render(graphics,this.position.x + 5,this.position.y - this.z);
-		var tmp4 = this.bodyLayers.get(this.leftArm);
-		this.animatedSprite.drawLayers = [tmp4];
 		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
-		var tmp5 = this.bodyLayers.get(this.rightArm);
+		var tmp4 = this.bodyLayers.get(this.rightLeg);
+		this.animatedSprite.drawLayers = [tmp4];
+		this.animatedSprite.render(graphics,this.position.x + 5,this.position.y - this.z);
+		var tmp5 = this.bodyLayers.get(this.leftArm);
 		this.animatedSprite.drawLayers = [tmp5];
+		this.animatedSprite.render(graphics,this.position.x,this.position.y - this.z);
+		var tmp6 = this.bodyLayers.get(this.rightArm);
+		this.animatedSprite.drawLayers = [tmp6];
 		this.animatedSprite.render(graphics,this.position.x + 7,this.position.y - this.z);
 	}
 	,__class__: game_Body
@@ -1576,7 +2824,7 @@ var game_SummonCircle = $hxClasses["game.SummonCircle"] = function() {
 	_g.set(game_BodyPart.Boots,10);
 	this.bodyLayers = _g;
 	this.animation = new bonsai_render_AnimatedSprite();
-	this.animation.drawLayers = [0,1,2];
+	this.animation.drawLayers = [0,1];
 	this.animation.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,4]});
 	this.animation.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3,4]});
 	this.animation.play("summon");
@@ -1800,10 +3048,9 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 		}
 	});
 	var _g1 = 0;
-	while(_g1 < 1000) {
+	while(_g1 < 500) {
 		var i = _g1++;
 		var body1 = new game_Body();
-		this.add(body1);
 		this.bodies.push(body1);
 	}
 	this.bodies.sort(function(a,b) {
@@ -1844,14 +3091,51 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 			this.camera.position.y -= dt * cameraSpeed;
 		}
 		bonsai_scene_Scene.prototype.update.call(this,dt);
-		if(this.f > 50) {
-			var _g = 0;
-			var _g1 = this.bodies;
-			while(_g < _g1.length) {
-				var body = _g1[_g];
-				++_g;
-				if(Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < this.f - 50) {
-					this.explodeBody(body);
+		var _g = 0;
+		var _g1 = this.bodies;
+		while(_g < _g1.length) {
+			var body = _g1[_g];
+			++_g;
+			body.update(dt);
+		}
+		var worldMouseFast = this.camera.transformation.transformPoint(this.input.mousePosition);
+		var worldMouse = new kha_math_Vector2(worldMouseFast.x,worldMouseFast.y);
+		var _g2 = 0;
+		var _g3 = this.bodies;
+		while(_g2 < _g3.length) {
+			var body1 = _g3[_g2];
+			++_g2;
+			if(body1.friendly) {
+				body1.targetPosition = worldMouse;
+			}
+			var _g21 = 0;
+			var _g31 = this.bodies;
+			while(_g21 < _g31.length) {
+				var body2 = _g31[_g21];
+				++_g21;
+				if(body1 == body2 || Math.abs(body1.position.x - body2.position.x) > 15 || Math.abs(body1.position.y - body2.position.y) > 15) {
+					continue;
+				}
+				var collision = body1.collider.testCircle(body2.collider);
+				if(collision != null) {
+					if(body1.friendly != body2.friendly) {
+						if(body1.attackCooldown == 0) {
+							body2.health -= body1.getDamage();
+							body1.attackCooldown = .5;
+						}
+						if(body2.attackCooldown == 0) {
+							body1.health -= body2.getDamage();
+							body2.attackCooldown = .5;
+						}
+						if(body1.health < 0) {
+							this.explodeBody(body1);
+						}
+						if(body2.health < 0) {
+							this.explodeBody(body2);
+						}
+					}
+					body1.vx += collision.separationX * .1;
+					body1.vy += collision.separationY * .1;
 				}
 			}
 		}
@@ -1883,6 +3167,13 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 	,render: function(g) {
 		this.camera.apply(g);
 		bonsai_scene_Scene.prototype.render.call(this,g);
+		var _g = 0;
+		var _g1 = this.bodies;
+		while(_g < _g1.length) {
+			var body = _g1[_g];
+			++_g;
+			body.render(g);
+		}
 		this.camera.finish(g);
 		this.inventory.render(g);
 	}
@@ -4247,14 +5538,17 @@ js_lib__$ArrayBuffer_ArrayBufferCompat.sliceImpl = function(begin,end) {
 	return resultArray.buffer;
 };
 var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
-	this.names = ["bodyParts","bodyParts2","satanicCircle","tiles"];
-	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [754], original_width : 128, files : ["tiles.png"], type : "image"};
+	this.names = ["bodyParts","bodyParts2","castleTiles","satanicCircle","tiles"];
+	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [2059], original_width : 128, files : ["tiles.png"], type : "image"};
 	this.tilesName = "tiles";
 	this.tiles = null;
-	this.satanicCircleDescription = { name : "satanicCircle", original_height : 192, file_sizes : [1592], original_width : 128, files : ["satanicCircle.png"], type : "image"};
+	this.satanicCircleDescription = { name : "satanicCircle", original_height : 192, file_sizes : [2813], original_width : 320, files : ["satanicCircle.png"], type : "image"};
 	this.satanicCircleName = "satanicCircle";
 	this.satanicCircle = null;
-	this.bodyParts2Description = { name : "bodyParts2", original_height : 352, file_sizes : [961], original_width : 32, files : ["bodyParts2.png"], type : "image"};
+	this.castleTilesDescription = { name : "castleTiles", original_height : 128, file_sizes : [1528], original_width : 128, files : ["castleTiles.png"], type : "image"};
+	this.castleTilesName = "castleTiles";
+	this.castleTiles = null;
+	this.bodyParts2Description = { name : "bodyParts2", original_height : 480, file_sizes : [961], original_width : 32, files : ["bodyParts2.png"], type : "image"};
 	this.bodyParts2Name = "bodyParts2";
 	this.bodyParts2 = null;
 	this.bodyPartsDescription = { name : "bodyParts", original_height : 480, file_sizes : [856], original_width : 32, files : ["bodyParts.png"], type : "image"};
@@ -4289,6 +5583,18 @@ kha__$Assets_ImageList.prototype = {
 	,bodyParts2Unload: function() {
 		this.bodyParts2.unload();
 		this.bodyParts2 = null;
+	}
+	,castleTiles: null
+	,castleTilesName: null
+	,castleTilesDescription: null
+	,castleTilesLoad: function(done,failure) {
+		kha_Assets.loadImage("castleTiles",function(image) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 126, className : "kha._Assets.ImageList", methodName : "castleTilesLoad"});
+	}
+	,castleTilesUnload: function() {
+		this.castleTiles.unload();
+		this.castleTiles = null;
 	}
 	,satanicCircle: null
 	,satanicCircleName: null
@@ -4329,25 +5635,37 @@ kha__$Assets_SoundList.prototype = {
 	,__class__: kha__$Assets_SoundList
 };
 var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
-	this.names = ["bodyParts2_ase","bodyParts2_json","bodyParts_ase","bodyParts_json","map_tmx","satanicCircle_ase","satanicCircle_json","tiles_ase","tiles_json","tiles_tsx"];
+	this.names = ["bodyParts2_ase","bodyParts2_json","bodyParts_ase","bodyParts_json","castle1_tmx","castleTiles_ase","castleTiles_json","castleTiles_tsx","map_tmx","satanicCircle_ase","satanicCircle_json","tiles_ase","tiles_json","tiles_tsx"];
 	this.tiles_tsxDescription = { name : "tiles_tsx", file_sizes : [220], files : ["tiles.tsx"], type : "blob"};
 	this.tiles_tsxName = "tiles_tsx";
 	this.tiles_tsx = null;
 	this.tiles_jsonDescription = { name : "tiles_json", file_sizes : [538], files : ["tiles.json"], type : "blob"};
 	this.tiles_jsonName = "tiles_json";
 	this.tiles_json = null;
-	this.tiles_aseDescription = { name : "tiles_ase", file_sizes : [982], files : ["tiles.ase"], type : "blob"};
+	this.tiles_aseDescription = { name : "tiles_ase", file_sizes : [1479], files : ["tiles.ase"], type : "blob"};
 	this.tiles_aseName = "tiles_ase";
 	this.tiles_ase = null;
-	this.satanicCircle_jsonDescription = { name : "satanicCircle_json", file_sizes : [958], files : ["satanicCircle.json"], type : "blob"};
+	this.satanicCircle_jsonDescription = { name : "satanicCircle_json", file_sizes : [1685], files : ["satanicCircle.json"], type : "blob"};
 	this.satanicCircle_jsonName = "satanicCircle_json";
 	this.satanicCircle_json = null;
-	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [2283], files : ["satanicCircle.ase"], type : "blob"};
+	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [4371], files : ["satanicCircle.ase"], type : "blob"};
 	this.satanicCircle_aseName = "satanicCircle_ase";
 	this.satanicCircle_ase = null;
-	this.map_tmxDescription = { name : "map_tmx", file_sizes : [26838], files : ["map.tmx"], type : "blob"};
+	this.map_tmxDescription = { name : "map_tmx", file_sizes : [46972], files : ["map.tmx"], type : "blob"};
 	this.map_tmxName = "map_tmx";
 	this.map_tmx = null;
+	this.castleTiles_tsxDescription = { name : "castleTiles_tsx", file_sizes : [232], files : ["castleTiles.tsx"], type : "blob"};
+	this.castleTiles_tsxName = "castleTiles_tsx";
+	this.castleTiles_tsx = null;
+	this.castleTiles_jsonDescription = { name : "castleTiles_json", file_sizes : [544], files : ["castleTiles.json"], type : "blob"};
+	this.castleTiles_jsonName = "castleTiles_json";
+	this.castleTiles_json = null;
+	this.castleTiles_aseDescription = { name : "castleTiles_ase", file_sizes : [1783], files : ["castleTiles.ase"], type : "blob"};
+	this.castleTiles_aseName = "castleTiles_ase";
+	this.castleTiles_ase = null;
+	this.castle1_tmxDescription = { name : "castle1_tmx", file_sizes : [1752], files : ["castle1.tmx"], type : "blob"};
+	this.castle1_tmxName = "castle1_tmx";
+	this.castle1_tmx = null;
 	this.bodyParts_jsonDescription = { name : "bodyParts_json", file_sizes : [1439], files : ["bodyParts.json"], type : "blob"};
 	this.bodyParts_jsonName = "bodyParts_json";
 	this.bodyParts_json = null;
@@ -4413,6 +5731,54 @@ kha__$Assets_BlobList.prototype = {
 	,bodyParts_jsonUnload: function() {
 		this.bodyParts_json.unload();
 		this.bodyParts_json = null;
+	}
+	,castle1_tmx: null
+	,castle1_tmxName: null
+	,castle1_tmxDescription: null
+	,castle1_tmxLoad: function(done,failure) {
+		kha_Assets.loadBlob("castle1_tmx",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "castle1_tmxLoad"});
+	}
+	,castle1_tmxUnload: function() {
+		this.castle1_tmx.unload();
+		this.castle1_tmx = null;
+	}
+	,castleTiles_ase: null
+	,castleTiles_aseName: null
+	,castleTiles_aseDescription: null
+	,castleTiles_aseLoad: function(done,failure) {
+		kha_Assets.loadBlob("castleTiles_ase",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "castleTiles_aseLoad"});
+	}
+	,castleTiles_aseUnload: function() {
+		this.castleTiles_ase.unload();
+		this.castleTiles_ase = null;
+	}
+	,castleTiles_json: null
+	,castleTiles_jsonName: null
+	,castleTiles_jsonDescription: null
+	,castleTiles_jsonLoad: function(done,failure) {
+		kha_Assets.loadBlob("castleTiles_json",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "castleTiles_jsonLoad"});
+	}
+	,castleTiles_jsonUnload: function() {
+		this.castleTiles_json.unload();
+		this.castleTiles_json = null;
+	}
+	,castleTiles_tsx: null
+	,castleTiles_tsxName: null
+	,castleTiles_tsxDescription: null
+	,castleTiles_tsxLoad: function(done,failure) {
+		kha_Assets.loadBlob("castleTiles_tsx",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "castleTiles_tsxLoad"});
+	}
+	,castleTiles_tsxUnload: function() {
+		this.castleTiles_tsx.unload();
+		this.castleTiles_tsx = null;
 	}
 	,map_tmx: null
 	,map_tmxName: null
@@ -27141,6 +28507,8 @@ Xml.Comment = 3;
 Xml.DocType = 4;
 Xml.ProcessingInstruction = 5;
 Xml.Document = 6;
+differ_sat_SAT2D.tmp1 = new differ_data_ShapeCollision();
+differ_sat_SAT2D.tmp2 = new differ_data_ShapeCollision();
 haxe_Unserializer.DEFAULT_RESOLVER = new haxe__$Unserializer_DefaultResolver();
 haxe_Unserializer.BASE64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789%:";
 haxe_crypto_Base64.CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";

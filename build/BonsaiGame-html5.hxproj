@@ -20,10 +20,9 @@
 		<class path="../Kha/Backends/HTML5" />
 		<class path="../src" />
 		<class path="../Libraries/zui/Sources" />
-		<class path="../Libraries/differ/Sources" />
+		<class path="../Libraries/differ" />
 		<class path="../Libraries/hotml/Sources" />
 		<class path="../Libraries/zui" />
-		<class path="../Libraries/differ" />
 		<class path="../Libraries/hotml" />
 	</classpaths>
 	<!-- Build options -->

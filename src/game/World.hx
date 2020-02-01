@@ -63,9 +63,9 @@ class World extends Scene {
 
 		});
 
-		for (i in 0...1000) {
+		for (i in 0...500) {
 			var body = new Body();
-			add(body);
+			// add(body);
 			bodies.push(body);
 		}
 		bodies.sort(function (a,b) {
@@ -80,7 +80,7 @@ class World extends Scene {
 		// this.camera.shake(1, Math.min(4,Math.round(f*.03)));
 
 		var worldMousePos = camera.transformation.transformPoint(input.mousePosition);
-		
+
 		var cameraSpeed = 800;
 		if (input.isAnyKeyDown(InputBindings.left))
 			this.camera.position.x -= dt * cameraSpeed;
@@ -90,13 +90,50 @@ class World extends Scene {
 			this.camera.position.y += dt * cameraSpeed;
 		if (input.isAnyKeyDown(InputBindings.up))
 			this.camera.position.y -= dt * cameraSpeed;
-	
+
 		super.update(dt);
-		
-		if (f > 50){
-			for (body in bodies) {
-				if (Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < (f - 50)) {
-					explodeBody(body);
+		for (body in bodies)
+			body.update(dt);
+
+		// if (f > 500){
+			// for (body in bodies) {
+				// if (Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < (f - 50)) {
+					// explodeBody(body);
+				// }
+			// }
+		// }
+		var worldMouseFast = camera.transformation.transformPoint(input.mousePosition);
+		var worldMouse = new kha.math.Vector2(worldMouseFast.x,worldMouseFast.y);
+		for (body in bodies) {
+			if (body.friendly)
+				body.targetPosition = worldMouse;
+
+			for (body2 in bodies) {
+				if (body == body2 || Math.abs(body.position.x-body2.position.x) > 15 || Math.abs(body.position.y-body2.position.y) > 15) 
+					continue;
+				var collision = body.collider.testCircle(body2.collider);
+				if (collision != null) {
+					if (body.friendly != body2.friendly) {
+						// attack
+
+						if (body.attackCooldown == 0){
+							body2.health -= body.getDamage();
+							body.attackCooldown = .5;
+						}
+						if (body2.attackCooldown == 0){
+							body.health -= body2.getDamage();
+							body2.attackCooldown = .5;
+						}
+
+						if (body.health < 0)
+							explodeBody(body);
+						if (body2.health < 0)
+							explodeBody(body2);
+
+					}
+
+					body.vx += collision.separationX*.1;
+					body.vy += collision.separationY*.1;
 				}
 			}
 		}
@@ -111,7 +148,7 @@ class World extends Scene {
 				i--;
 				continue;
 			}
-				
+
 			if (Math.pow(item.x + 16 - worldMousePos.x, 2) + Math.pow(item.y + 14 - worldMousePos.y, 2) < 200) {
 				// Reorient heads to be directionless
 				if ([BodyPart.NaturalHeadUp, BodyPart.NaturalHeadDown, BodyPart.NaturalHeadRight, BodyPart.NaturalHeadLeft].indexOf(item.part) != -1)
@@ -137,6 +174,8 @@ class World extends Scene {
 	override public function render (g) {
 		camera.apply(g);
 		super.render(g);
+		for (body in bodies)
+			body.render(g);
 		camera.finish(g);
 		inventory.render(g);
 	}

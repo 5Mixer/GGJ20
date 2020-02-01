@@ -2,10 +2,9 @@
 -cp /home/mixer/projects/GGJ20/Kha/Backends/HTML5
 -cp /home/mixer/projects/GGJ20/src
 -cp /home/mixer/projects/GGJ20/Libraries/zui/Sources
--cp /home/mixer/projects/GGJ20/Libraries/differ/Sources
+-cp /home/mixer/projects/GGJ20/Libraries/differ
 -cp /home/mixer/projects/GGJ20/Libraries/hotml/Sources
 -cp /home/mixer/projects/GGJ20/Libraries/zui
--cp /home/mixer/projects/GGJ20/Libraries/differ
 -cp /home/mixer/projects/GGJ20/Libraries/hotml
 -D hxcpp_smart_strings
 -D zui

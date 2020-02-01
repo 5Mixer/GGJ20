@@ -11,7 +11,7 @@ class Main {
 		#if hotml new hotml.client.Client(); #end
 
 		engine = new Engine();
-		engine.start(onAssetLoad);
+		engine.start("skull",1200,800,onAssetLoad);
 	}
 	public static function onAssetLoad () {
 		engine.currentScene = new World(engine);

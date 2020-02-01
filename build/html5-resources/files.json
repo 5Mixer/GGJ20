@@ -92,7 +92,7 @@
 			],
 			"type": "image",
 			"original_width": 32,
-			"original_height": 352
+			"original_height": 480
 		},
 		{
 			"name": "bodyParts2_ase",
@@ -135,12 +135,64 @@
 			"type": "blob"
 		},
 		{
+			"name": "castle1_tmx",
+			"files": [
+				"castle1.tmx"
+			],
+			"file_sizes": [
+				1752
+			],
+			"type": "blob"
+		},
+		{
+			"name": "castleTiles",
+			"files": [
+				"castleTiles.png"
+			],
+			"file_sizes": [
+				1528
+			],
+			"type": "image",
+			"original_width": 128,
+			"original_height": 128
+		},
+		{
+			"name": "castleTiles_ase",
+			"files": [
+				"castleTiles.ase"
+			],
+			"file_sizes": [
+				1783
+			],
+			"type": "blob"
+		},
+		{
+			"name": "castleTiles_json",
+			"files": [
+				"castleTiles.json"
+			],
+			"file_sizes": [
+				544
+			],
+			"type": "blob"
+		},
+		{
+			"name": "castleTiles_tsx",
+			"files": [
+				"castleTiles.tsx"
+			],
+			"file_sizes": [
+				232
+			],
+			"type": "blob"
+		},
+		{
 			"name": "map_tmx",
 			"files": [
 				"map.tmx"
 			],
 			"file_sizes": [
-				26838
+				46972
 			],
 			"type": "blob"
 		},
@@ -565,10 +617,10 @@
 				"satanicCircle.png"
 			],
 			"file_sizes": [
-				1592
+				2813
 			],
 			"type": "image",
-			"original_width": 128,
+			"original_width": 320,
 			"original_height": 192
 		},
 		{
@@ -577,7 +629,7 @@
 				"satanicCircle.ase"
 			],
 			"file_sizes": [
-				2283
+				4371
 			],
 			"type": "blob"
 		},
@@ -587,7 +639,7 @@
 				"satanicCircle.json"
 			],
 			"file_sizes": [
-				958
+				1685
 			],
 			"type": "blob"
 		},
@@ -597,7 +649,7 @@
 				"tiles.png"
 			],
 			"file_sizes": [
-				754
+				2059
 			],
 			"type": "image",
 			"original_width": 128,
@@ -609,7 +661,7 @@
 				"tiles.ase"
 			],
 			"file_sizes": [
-				982
+				1479
 			],
 			"type": "blob"
 		},
