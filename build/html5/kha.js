@@ -2904,9 +2904,8 @@ var game_SummonCircle = $hxClasses["game.SummonCircle"] = function() {
 	this.animation.drawLayers = [0,1];
 	this.animation2.drawLayers = [2];
 	this.animation.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,4]});
-	this.animation.play("idle");
 	this.animation2.registerAnimation("summon",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.satanicCircle,this.width,this.height), frames : [0,1,2,3,4]});
-	this.animation2.play("summon");
+	this.animation.play("idle");
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
 	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0]});
 	this.animatedSprite.play("idle");
@@ -2961,6 +2960,8 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 		this.chest = null;
 		this.leftArm = null;
 		this.rightArm = null;
+		this.leftLeg = null;
+		this.rightLeg = null;
 	}
 	,addPart: function(part) {
 		if(this.armParts.indexOf(part) != -1) {
@@ -5706,16 +5707,16 @@ var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
 	this.castleTiles_aseDescription = { name : "castleTiles_ase", file_sizes : [5343], files : ["castleTiles.ase"], type : "blob"};
 	this.castleTiles_aseName = "castleTiles_ase";
 	this.castleTiles_ase = null;
-	this.castle4_tmxDescription = { name : "castle4_tmx", file_sizes : [6033], files : ["castle4.tmx"], type : "blob"};
+	this.castle4_tmxDescription = { name : "castle4_tmx", file_sizes : [6706], files : ["castle4.tmx"], type : "blob"};
 	this.castle4_tmxName = "castle4_tmx";
 	this.castle4_tmx = null;
-	this.castle3_tmxDescription = { name : "castle3_tmx", file_sizes : [5051], files : ["castle3.tmx"], type : "blob"};
+	this.castle3_tmxDescription = { name : "castle3_tmx", file_sizes : [5767], files : ["castle3.tmx"], type : "blob"};
 	this.castle3_tmxName = "castle3_tmx";
 	this.castle3_tmx = null;
-	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [5299], files : ["castle2.tmx"], type : "blob"};
+	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [5514], files : ["castle2.tmx"], type : "blob"};
 	this.castle2_tmxName = "castle2_tmx";
 	this.castle2_tmx = null;
-	this.castle1_tmxDescription = { name : "castle1_tmx", file_sizes : [4600], files : ["castle1.tmx"], type : "blob"};
+	this.castle1_tmxDescription = { name : "castle1_tmx", file_sizes : [5056], files : ["castle1.tmx"], type : "blob"};
 	this.castle1_tmxName = "castle1_tmx";
 	this.castle1_tmx = null;
 	this.bodyParts2_aseDescription = { name : "bodyParts2_ase", file_sizes : [4562], files : ["bodyParts2.ase"], type : "blob"};
