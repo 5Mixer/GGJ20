@@ -1135,6 +1135,7 @@ bonsai_render_Transformation.prototype = {
 	,__class__: bonsai_render_Transformation
 };
 var bonsai_resource_Tiled = $hxClasses["bonsai.resource.Tiled"] = function(data) {
+	this.polygons = [];
 	this.entities = [];
 	this.layers = new haxe_ds_StringMap();
 	this.loadRawData(data);
@@ -1145,6 +1146,7 @@ bonsai_resource_Tiled.prototype = {
 	,height: null
 	,layers: null
 	,entities: null
+	,polygons: null
 	,loadRawData: function(raw) {
 		var data = haxe_xml_Parser.parse(raw);
 		var map = data.elementsNamed("map").next();
@@ -1189,10 +1191,10 @@ bonsai_resource_Tiled.prototype = {
 		var objectlayer = map.elementsNamed("objectgroup");
 		while(objectlayer.hasNext()) {
 			var objectlayer1 = objectlayer.next();
+			var layerName = objectlayer1.get("name");
 			var object = objectlayer1.elements();
 			while(object.hasNext()) {
 				var object1 = object.next();
-				var name = object1.get("name");
 				var properties = new haxe_ds_StringMap();
 				var element = object1.elements();
 				while(element.hasNext()) {
@@ -1214,7 +1216,24 @@ bonsai_resource_Tiled.prototype = {
 						}
 					}
 				}
-				this.entities.push({ x : Math.floor(Std.parseInt(object1.get("x"))), y : Math.floor(Std.parseInt(object1.get("y"))), properties : properties});
+				var polygons = object1.elementsNamed("polygon");
+				var polygonPoints = [];
+				var xOffset = Math.floor(Std.parseInt(object1.get("x")));
+				var yOffset = Math.floor(Std.parseInt(object1.get("y")));
+				var polygon = polygons;
+				while(polygon.hasNext()) {
+					var polygon1 = polygon.next();
+					var rawPolygonData = polygon1.get("points");
+					var _g1 = [];
+					var x1 = $getIterator(rawPolygonData.split(" "));
+					while(x1.hasNext()) {
+						var x11 = x1.next();
+						_g1.push(new kha_math_Vector2(Std.parseInt(x11.split(",")[0]) + xOffset,Std.parseInt(x11.split(",")[1]) + yOffset));
+					}
+					var points = _g1;
+					polygonPoints = points;
+				}
+				this.polygons.push(polygonPoints);
 			}
 		}
 	}
@@ -2817,26 +2836,19 @@ var game_Structure = $hxClasses["game.Structure"] = function() {
 	this.tiled = new bonsai_resource_Tiled(kha_Assets.blobs.castle2_tmx.toString());
 	this.width = this.tiled.width;
 	this.height = this.tiled.height;
-	var _g = new haxe_iterators_MapKeyValueIterator(this.tiled.layers);
-	while(_g.hasNext()) {
-		var _g1 = _g.next();
-		var layerName = _g1.key;
-		var layer = _g1.value;
-		if(layerName == "wallsCollide") {
-			var _g2 = 0;
-			var _g3 = this.width;
-			while(_g2 < _g3) {
-				var y = _g2++;
-				var _g21 = 0;
-				var _g31 = this.height;
-				while(_g21 < _g31) {
-					var x = _g21++;
-					if(layer.tiles[y][x] != 0) {
-						this.colliders.push(differ_shapes_Polygon.rectangle(x * 16,y * 16,17,17,false));
-					}
-				}
-			}
+	var _g = 0;
+	var _g1 = this.tiled.polygons;
+	while(_g < _g1.length) {
+		var polygon = _g1[_g];
+		++_g;
+		var tmp = this.colliders;
+		var _g2 = [];
+		var x1 = HxOverrides.iter(polygon);
+		while(x1.hasNext()) {
+			var x11 = x1.next();
+			_g2.push(new differ_math_Vector(x11.x,x11.y));
 		}
+		tmp.push(new differ_shapes_Polygon(0,0,_g2));
 	}
 	this.spriteMap = new bonsai_render_SpriteMap(kha_Assets.images.castleTiles,16,16);
 	this.transformation = new bonsai_render_Transformation();

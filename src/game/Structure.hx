@@ -20,6 +20,14 @@ class Structure extends Entity {
 		width = tiled.width;
 		height = tiled.height;
 
+		for (polygon in tiled.polygons) {
+			colliders.push(new differ.shapes.Polygon(0,0,
+				Lambda.map(polygon, function (p) {
+					return new differ.math.Vector(p.x, p.y);
+				}))
+			);
+		}
+/*
 		for (layerName => layer in tiled.layers){
 			if (layerName == "wallsCollide") {
 				for (y in 0...width) {
@@ -31,6 +39,7 @@ class Structure extends Entity {
 				}
 			}
 		}
+		*/
 
 		spriteMap = new SpriteMap(kha.Assets.images.castleTiles, 16, 16);
 
