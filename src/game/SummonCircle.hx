@@ -4,23 +4,24 @@ import bonsai.render.AnimatedSprite;
 import bonsai.render.SpriteMap;
 
 class SummonCircle extends bonsai.entity.Entity {
-	public var width:Int = 32;
-	public var height:Int = 32;
+	public var width:Int = 64;
+	public var height:Int = 64;
 	var animation:AnimatedSprite;
 
 	override public function new () {
 		super();
 
 		this.animation = new AnimatedSprite();
+		this.animation.drawLayers = [0,1,2];
 		this.animation.registerAnimation("idle", {
-			spriteMap: new SpriteMap(kha.Assets.images.summonCircle, this.width, this.height),
+			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
 			frames:[0,1]
 		});
 		this.animation.registerAnimation("summon", {
-			spriteMap: new SpriteMap(kha.Assets.images.summonCircle, this.width, this.height),
-			frames:[0]
+			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
+			frames:[0,1,2,3]
 		});
-		this.animation.play("idle");
+		this.animation.play("summon");
 	}
 
 	override public function render (graphics:kha.graphics2.Graphics) {

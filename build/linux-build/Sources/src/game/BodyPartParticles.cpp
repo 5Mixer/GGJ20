@@ -56,7 +56,7 @@ static const int _hx_array_data_f830815c_1[] = {
 	(int)0,
 };
 HX_LOCAL_STACK_FRAME(_hx_pos_5303e04f8781ebf0_32_update,"game.BodyPartParticles","update",0x67537edb,"game.BodyPartParticles.update","game/BodyPartParticles.hx",32,0xf8f46963)
-HX_LOCAL_STACK_FRAME(_hx_pos_5303e04f8781ebf0_55_render,"game.BodyPartParticles","render",0xe5776428,"game.BodyPartParticles.render","game/BodyPartParticles.hx",55,0xf8f46963)
+HX_LOCAL_STACK_FRAME(_hx_pos_5303e04f8781ebf0_58_render,"game.BodyPartParticles","render",0xe5776428,"game.BodyPartParticles.render","game/BodyPartParticles.hx",58,0xf8f46963)
 namespace game{
 
 void BodyPartParticles_obj::__construct(){
@@ -66,7 +66,7 @@ HXLINE(  17)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSp
 HXLINE(  18)		 ::bonsai::render::AnimatedSprite _hx_tmp = this->animatedSprite;
 HXDLIN(  18)		_hx_tmp->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_f830815c_1,1))
-            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts,32,32))));
+            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts2,32,32))));
 HXLINE(  19)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
 HXLINE(  20)		 ::haxe::ds::EnumValueMap _g =  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX );
 HXDLIN(  20)		_g->set(::game::BodyPart_obj::NaturalChest_dyn(),0);
@@ -112,42 +112,45 @@ HXDLIN(  34)			::Array< ::Dynamic> _g1 = this->members;
 HXDLIN(  34)			while((_g < _g1->length)){
 HXLINE(  34)				 ::Dynamic particle = _g1->__get(_g);
 HXDLIN(  34)				_g = (_g + 1);
-HXLINE(  35)				bool _hx_tmp;
-HXDLIN(  35)				bool _hx_tmp1;
-HXDLIN(  35)				if ((::Math_obj::abs(( (Float)(particle->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) )) < ((Float).1))) {
-HXLINE(  35)					_hx_tmp1 = hx::IsLess( particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic),1 );
+HXLINE(  35)				if (hx::IsNull( particle )) {
+HXLINE(  36)					continue;
+            				}
+HXLINE(  38)				bool _hx_tmp;
+HXDLIN(  38)				bool _hx_tmp1;
+HXDLIN(  38)				if ((::Math_obj::abs(( (Float)(particle->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) )) < ((Float).1))) {
+HXLINE(  38)					_hx_tmp1 = hx::IsLess( particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic),1 );
             				}
             				else {
-HXLINE(  35)					_hx_tmp1 = false;
+HXLINE(  38)					_hx_tmp1 = false;
             				}
-HXDLIN(  35)				if (_hx_tmp1) {
-HXLINE(  35)					_hx_tmp = (::Math_obj::abs(( (Float)(particle->__Field(HX_("vx",42,67,00,00),hx::paccDynamic)) )) < ((Float).1));
-            				}
-            				else {
-HXLINE(  35)					_hx_tmp = false;
-            				}
-HXDLIN(  35)				if (_hx_tmp) {
-HXLINE(  36)					particle->__SetField(HX_("vz",44,67,00,00),0,hx::paccDynamic);
-HXLINE(  37)					particle->__SetField(HX_("vx",42,67,00,00),0,hx::paccDynamic);
-HXLINE(  38)					particle->__SetField(HX_("z",7a,00,00,00),0,hx::paccDynamic);
-HXLINE(  39)					particle->__SetField(HX_("x",78,00,00,00),::Math_obj::round(( (Float)(particle->__Field(HX_("x",78,00,00,00),hx::paccDynamic)) )),hx::paccDynamic);
-HXLINE(  40)					particle->__SetField(HX_("y",79,00,00,00),::Math_obj::round(( (Float)(particle->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) )),hx::paccDynamic);
-HXLINE(  41)					continue;
-            				}
-HXLINE(  43)				if (hx::IsGreaterEq( particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic),0 )) {
-HXLINE(  44)					 ::Dynamic particle1 = particle;
-HXDLIN(  44)					particle1->__SetField(HX_("vz",44,67,00,00),(particle1->__Field(HX_("vz",44,67,00,00),hx::paccDynamic) + (( (Float)(10) ) * delta)),hx::paccDynamic);
-HXLINE(  45)					 ::Dynamic particle2 = particle;
-HXDLIN(  45)					particle2->__SetField(HX_("z",7a,00,00,00),(( (Float)(particle2->__Field(HX_("z",7a,00,00,00),hx::paccDynamic)) ) - ( (Float)(particle->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) )),hx::paccDynamic);
-HXLINE(  46)					 ::Dynamic particle3 = particle;
-HXDLIN(  46)					particle3->__SetField(HX_("x",78,00,00,00),(particle3->__Field(HX_("x",78,00,00,00),hx::paccDynamic) + particle->__Field(HX_("vx",42,67,00,00),hx::paccDynamic)),hx::paccDynamic);
+HXDLIN(  38)				if (_hx_tmp1) {
+HXLINE(  38)					_hx_tmp = (::Math_obj::abs(( (Float)(particle->__Field(HX_("vx",42,67,00,00),hx::paccDynamic)) )) < ((Float).1));
             				}
             				else {
-HXLINE(  48)					 ::Dynamic particle4 = particle;
-HXDLIN(  48)					particle4->__SetField(HX_("vz",44,67,00,00),(( (Float)(particle4->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) ) * ((Float)-.4)),hx::paccDynamic);
-HXLINE(  49)					particle->__SetField(HX_("z",7a,00,00,00),0,hx::paccDynamic);
-HXLINE(  50)					 ::Dynamic particle5 = particle;
-HXDLIN(  50)					particle5->__SetField(HX_("vx",42,67,00,00),(( (Float)(particle5->__Field(HX_("vx",42,67,00,00),hx::paccDynamic)) ) * ((Float).6)),hx::paccDynamic);
+HXLINE(  38)					_hx_tmp = false;
+            				}
+HXDLIN(  38)				if (_hx_tmp) {
+HXLINE(  39)					particle->__SetField(HX_("vz",44,67,00,00),0,hx::paccDynamic);
+HXLINE(  40)					particle->__SetField(HX_("vx",42,67,00,00),0,hx::paccDynamic);
+HXLINE(  41)					particle->__SetField(HX_("z",7a,00,00,00),0,hx::paccDynamic);
+HXLINE(  42)					particle->__SetField(HX_("x",78,00,00,00),::Math_obj::round(( (Float)(particle->__Field(HX_("x",78,00,00,00),hx::paccDynamic)) )),hx::paccDynamic);
+HXLINE(  43)					particle->__SetField(HX_("y",79,00,00,00),::Math_obj::round(( (Float)(particle->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) )),hx::paccDynamic);
+HXLINE(  44)					continue;
+            				}
+HXLINE(  46)				if (hx::IsGreaterEq( particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic),0 )) {
+HXLINE(  47)					 ::Dynamic particle1 = particle;
+HXDLIN(  47)					particle1->__SetField(HX_("vz",44,67,00,00),(particle1->__Field(HX_("vz",44,67,00,00),hx::paccDynamic) + (( (Float)(10) ) * delta)),hx::paccDynamic);
+HXLINE(  48)					 ::Dynamic particle2 = particle;
+HXDLIN(  48)					particle2->__SetField(HX_("z",7a,00,00,00),(( (Float)(particle2->__Field(HX_("z",7a,00,00,00),hx::paccDynamic)) ) - ( (Float)(particle->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) )),hx::paccDynamic);
+HXLINE(  49)					 ::Dynamic particle3 = particle;
+HXDLIN(  49)					particle3->__SetField(HX_("x",78,00,00,00),(particle3->__Field(HX_("x",78,00,00,00),hx::paccDynamic) + particle->__Field(HX_("vx",42,67,00,00),hx::paccDynamic)),hx::paccDynamic);
+            				}
+            				else {
+HXLINE(  51)					 ::Dynamic particle4 = particle;
+HXDLIN(  51)					particle4->__SetField(HX_("vz",44,67,00,00),(( (Float)(particle4->__Field(HX_("vz",44,67,00,00),hx::paccDynamic)) ) * ((Float)-.4)),hx::paccDynamic);
+HXLINE(  52)					particle->__SetField(HX_("z",7a,00,00,00),0,hx::paccDynamic);
+HXLINE(  53)					 ::Dynamic particle5 = particle;
+HXDLIN(  53)					particle5->__SetField(HX_("vx",42,67,00,00),(( (Float)(particle5->__Field(HX_("vx",42,67,00,00),hx::paccDynamic)) ) * ((Float).6)),hx::paccDynamic);
             				}
             			}
             		}
@@ -155,17 +158,20 @@ HXDLIN(  50)					particle5->__SetField(HX_("vx",42,67,00,00),(( (Float)(particle
 
 
 void BodyPartParticles_obj::render( ::kha::graphics2::Graphics graphics){
-            	HX_GC_STACKFRAME(&_hx_pos_5303e04f8781ebf0_55_render)
-HXLINE(  56)		this->super::render(graphics);
-HXLINE(  58)		{
-HXLINE(  58)			int _g = 0;
-HXDLIN(  58)			::Array< ::Dynamic> _g1 = this->members;
-HXDLIN(  58)			while((_g < _g1->length)){
-HXLINE(  58)				 ::Dynamic particle = _g1->__get(_g);
-HXDLIN(  58)				_g = (_g + 1);
-HXLINE(  59)				 ::Dynamic _hx_tmp = this->bodyPartToLayer->get( ::Dynamic(particle->__Field(HX_("part",f3,e3,51,4a),hx::paccDynamic)));
-HXDLIN(  59)				this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp));
-HXLINE(  60)				this->animatedSprite->render(graphics,( (float)(particle->__Field(HX_("x",78,00,00,00),hx::paccDynamic)) ),( (float)((( (Float)(particle->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) ) - ( (Float)(particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic)) ))) ));
+            	HX_GC_STACKFRAME(&_hx_pos_5303e04f8781ebf0_58_render)
+HXLINE(  59)		this->super::render(graphics);
+HXLINE(  61)		{
+HXLINE(  61)			int _g = 0;
+HXDLIN(  61)			::Array< ::Dynamic> _g1 = this->members;
+HXDLIN(  61)			while((_g < _g1->length)){
+HXLINE(  61)				 ::Dynamic particle = _g1->__get(_g);
+HXDLIN(  61)				_g = (_g + 1);
+HXLINE(  62)				if (hx::IsNull( particle )) {
+HXLINE(  63)					continue;
+            				}
+HXLINE(  64)				 ::Dynamic _hx_tmp = this->bodyPartToLayer->get( ::Dynamic(particle->__Field(HX_("part",f3,e3,51,4a),hx::paccDynamic)));
+HXDLIN(  64)				this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp));
+HXLINE(  65)				this->animatedSprite->render(graphics,( (float)(particle->__Field(HX_("x",78,00,00,00),hx::paccDynamic)) ),( (float)((( (Float)(particle->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) ) - ( (Float)(particle->__Field(HX_("z",7a,00,00,00),hx::paccDynamic)) ))) ));
             			}
             		}
             	}

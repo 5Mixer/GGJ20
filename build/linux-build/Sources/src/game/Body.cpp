@@ -112,7 +112,7 @@ HXLINE(  65)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSp
 HXLINE(  66)		 ::bonsai::render::AnimatedSprite _hx_tmp = this->animatedSprite;
 HXDLIN(  66)		_hx_tmp->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_4a50d4be_1,1))
-            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts,32,32))));
+            			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts2,32,32))));
 HXLINE(  67)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
             	}
 
@@ -187,7 +187,7 @@ HXDLIN(  80)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int 
 HXLINE(  81)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
 HXLINE(  83)		 ::Dynamic _hx_tmp8 = this->legLayers->get(this->rightLeg);
 HXDLIN(  83)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp8));
-HXLINE(  84)		this->animatedSprite->render(graphics,( (float)((this->position->x + 3)) ),( (float)(this->position->y) ));
+HXLINE(  84)		this->animatedSprite->render(graphics,( (float)((this->position->x + 5)) ),( (float)(this->position->y) ));
 HXLINE(  86)		 ::Dynamic _hx_tmp9 = this->armLayers->get(this->leftArm);
 HXDLIN(  86)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp9));
 HXLINE(  87)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));

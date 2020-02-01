@@ -134,6 +134,8 @@
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/bonsai/resource/Tiled.h">
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/bonsai/scene/Camera.h">
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/bonsai/scene/Scene.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/cpp/vm/Gc.h">
@@ -154,6 +156,8 @@
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/HeadPart.h">
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Inventory.h">
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/LegPart.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Level1.h">
@@ -163,6 +167,8 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/PunchParticleSystem.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/RainParticleSystem.h">
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/SummonCircle.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/TextParticleSystem.h">
 		</Unit>
@@ -217,6 +223,8 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/haxe/io/Output.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/haxe/io/Path.h">
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/haxe/iterators/MapKeyValueIterator.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/haxe/xml/Parser.h">
 		</Unit>
@@ -648,6 +656,9 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/bonsai/resource/Tiled.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/bonsai/scene/Camera.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/bonsai/scene/Scene.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -678,6 +689,9 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/HeadPart.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Inventory.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/LegPart.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -691,6 +705,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/RainParticleSystem.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/SummonCircle.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/TextParticleSystem.cpp">
@@ -772,6 +789,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/haxe/io/Path.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/haxe/iterators/MapKeyValueIterator.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/haxe/xml/Parser.cpp">

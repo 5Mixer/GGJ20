@@ -547,6 +547,9 @@
 #ifndef INCLUDED_haxe_xml_XmlParserException
 #include <hxinc/haxe/xml/XmlParserException.h>
 #endif
+#ifndef INCLUDED_haxe_iterators_MapKeyValueIterator
+#include <hxinc/haxe/iterators/MapKeyValueIterator.h>
+#endif
 #ifndef INCLUDED_haxe_io_Path
 #include <hxinc/haxe/io/Path.h>
 #endif
@@ -613,6 +616,12 @@
 #ifndef INCLUDED_game_TileMap
 #include <hxinc/game/TileMap.h>
 #endif
+#ifndef INCLUDED_game_SummonCircle
+#include <hxinc/game/SummonCircle.h>
+#endif
+#ifndef INCLUDED_game_Inventory
+#include <hxinc/game/Inventory.h>
+#endif
 #ifndef INCLUDED_game_BodyPartParticles
 #include <hxinc/game/BodyPartParticles.h>
 #endif
@@ -624,6 +633,9 @@
 #endif
 #ifndef INCLUDED_bonsai_scene_Scene
 #include <hxinc/bonsai/scene/Scene.h>
+#endif
+#ifndef INCLUDED_bonsai_scene_Camera
+#include <hxinc/bonsai/scene/Camera.h>
 #endif
 #ifndef INCLUDED_bonsai_resource_Tiled
 #include <hxinc/bonsai/resource/Tiled.h>
@@ -871,6 +883,7 @@ hx::RegisterResources( hx::GetResources() );
 ::kha::_Assets::ImageList_obj::__register();
 ::haxe::xml::Printer_obj::__register();
 ::haxe::xml::XmlParserException_obj::__register();
+::haxe::iterators::MapKeyValueIterator_obj::__register();
 ::haxe::io::Path_obj::__register();
 ::haxe::io::FPHelper_obj::__register();
 ::haxe::io::Eof_obj::__register();
@@ -893,10 +906,13 @@ hx::RegisterResources( hx::GetResources() );
 ::haxe::IMap_obj::__register();
 ::game::World_obj::__register();
 ::game::TileMap_obj::__register();
+::game::SummonCircle_obj::__register();
+::game::Inventory_obj::__register();
 ::game::BodyPartParticles_obj::__register();
 ::game::Body_obj::__register();
 ::cpp::vm::Gc_obj::__register();
 ::bonsai::scene::Scene_obj::__register();
+::bonsai::scene::Camera_obj::__register();
 ::bonsai::resource::Tiled_obj::__register();
 ::bonsai::render::Transformation_obj::__register();
 ::bonsai::render::SpriteMap_obj::__register();

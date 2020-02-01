@@ -12,12 +12,15 @@
 HX_DECLARE_CLASS1(bonsai,Engine)
 HX_DECLARE_CLASS2(bonsai,entity,Entity)
 HX_DECLARE_CLASS2(bonsai,entity,ParticleSystem)
+HX_DECLARE_CLASS2(bonsai,input,Input)
 HX_DECLARE_CLASS2(bonsai,render,AnimatedSprite)
 HX_DECLARE_CLASS2(bonsai,render,SpriteMap)
-HX_DECLARE_CLASS2(bonsai,render,Transformation)
+HX_DECLARE_CLASS2(bonsai,scene,Camera)
 HX_DECLARE_CLASS2(bonsai,scene,Scene)
 HX_DECLARE_CLASS1(game,Body)
 HX_DECLARE_CLASS1(game,BodyPartParticles)
+HX_DECLARE_CLASS1(game,Inventory)
+HX_DECLARE_CLASS1(game,SummonCircle)
 HX_DECLARE_CLASS1(game,World)
 HX_DECLARE_CLASS1(haxe,IMap)
 HX_DECLARE_CLASS2(haxe,ds,BalancedTree)
@@ -59,8 +62,8 @@ class HXCPP_CLASS_ATTRIBUTES World_obj : public  ::bonsai::scene::Scene_obj
 		bool _hx_isInstanceOf(int inClassId);
 		::String __ToString() const { return HX_("World",32,06,92,61); }
 
-		 ::bonsai::render::Transformation transformation;
-		inline  ::bonsai::render::Transformation _hx_set_transformation(hx::StackContext *_hx_ctx, ::bonsai::render::Transformation _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return transformation=_hx_v; }
+		 ::game::Inventory inventory;
+		inline  ::game::Inventory _hx_set_inventory(hx::StackContext *_hx_ctx, ::game::Inventory _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return inventory=_hx_v; }
 		 ::game::BodyPartParticles bodyParticleSystem;
 		inline  ::game::BodyPartParticles _hx_set_bodyParticleSystem(hx::StackContext *_hx_ctx, ::game::BodyPartParticles _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodyParticleSystem=_hx_v; }
 		 ::bonsai::render::AnimatedSprite bodyAnimatedSprite;
@@ -69,6 +72,12 @@ class HXCPP_CLASS_ATTRIBUTES World_obj : public  ::bonsai::scene::Scene_obj
 		inline  ::bonsai::render::SpriteMap _hx_set_bodySpriteMap(hx::StackContext *_hx_ctx, ::bonsai::render::SpriteMap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodySpriteMap=_hx_v; }
 		::Array< ::Dynamic> bodies;
 		inline ::Array< ::Dynamic> _hx_set_bodies(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return bodies=_hx_v; }
+		 ::bonsai::input::Input input;
+		inline  ::bonsai::input::Input _hx_set_input(hx::StackContext *_hx_ctx, ::bonsai::input::Input _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return input=_hx_v; }
+		 ::bonsai::scene::Camera camera;
+		inline  ::bonsai::scene::Camera _hx_set_camera(hx::StackContext *_hx_ctx, ::bonsai::scene::Camera _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return camera=_hx_v; }
+		 ::game::SummonCircle summonCircle;
+		inline  ::game::SummonCircle _hx_set_summonCircle(hx::StackContext *_hx_ctx, ::game::SummonCircle _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return summonCircle=_hx_v; }
 		int f;
 		void update(Float dt);
 

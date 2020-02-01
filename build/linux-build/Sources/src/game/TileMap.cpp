@@ -45,23 +45,25 @@
 #endif
 
 HX_DEFINE_STACK_FRAME(_hx_pos_ff75d527b55e4390_7_new,"game.TileMap","new",0x6d50c964,"game.TileMap.new","game/TileMap.hx",7,0x1572d9cd)
-HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_30_render,"game.TileMap","render",0x7672ecd2,"game.TileMap.render","game/TileMap.hx",30,0x1572d9cd)
-HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_42_update,"game.TileMap","update",0xf84f0785,"game.TileMap.update","game/TileMap.hx",42,0x1572d9cd)
+HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_32_render,"game.TileMap","render",0x7672ecd2,"game.TileMap.render","game/TileMap.hx",32,0x1572d9cd)
+HX_LOCAL_STACK_FRAME(_hx_pos_ff75d527b55e4390_44_update,"game.TileMap","update",0xf84f0785,"game.TileMap.update","game/TileMap.hx",44,0x1572d9cd)
 namespace game{
 
 void TileMap_obj::__construct(){
             	HX_GC_STACKFRAME(&_hx_pos_ff75d527b55e4390_7_new)
 HXLINE(  11)		this->_hx_set_tiles(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
-HXLINE(   9)		this->height = 10;
-HXLINE(   8)		this->width = 10;
+HXLINE(   9)		this->height = 100;
+HXLINE(   8)		this->width = 100;
 HXLINE(  17)		super::__construct();
 HXLINE(  19)		this->_hx_set_tiled(HX_CTX,  ::bonsai::resource::Tiled_obj::__alloc( HX_CTX ,::kha::Assets_obj::blobs->map_tmx->toString()));
 HXLINE(  20)		this->width = this->tiled->width;
 HXLINE(  21)		this->height = this->tiled->height;
-HXLINE(  23)		this->_hx_set_spriteMap(HX_CTX,  ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->tiles,16,16));
-HXLINE(  25)		this->_hx_set_transformation(HX_CTX,  ::bonsai::render::Transformation_obj::__alloc( HX_CTX ));
-HXLINE(  26)		this->transformation->_hx_set_offset(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
-HXLINE(  27)		this->transformation->_hx_set_origin(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
+HXLINE(  22)		this->width = 100;
+HXLINE(  23)		this->height = 100;
+HXLINE(  25)		this->_hx_set_spriteMap(HX_CTX,  ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->tiles,16,16));
+HXLINE(  27)		this->_hx_set_transformation(HX_CTX,  ::bonsai::render::Transformation_obj::__alloc( HX_CTX ));
+HXLINE(  28)		this->transformation->_hx_set_offset(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
+HXLINE(  29)		this->transformation->_hx_set_origin(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
             	}
 
 Dynamic TileMap_obj::__CreateEmpty() { return new TileMap_obj; }
@@ -84,31 +86,31 @@ bool TileMap_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void TileMap_obj::render( ::kha::graphics2::Graphics graphics){
-            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_30_render)
-HXLINE(  31)		this->transformation->apply(graphics);
-HXLINE(  33)		{
-HXLINE(  33)			int _g = 0;
-HXDLIN(  33)			int _g1 = this->width;
-HXDLIN(  33)			while((_g < _g1)){
-HXLINE(  33)				_g = (_g + 1);
-HXDLIN(  33)				int y = (_g - 1);
-HXLINE(  34)				{
-HXLINE(  34)					int _g2 = 0;
-HXDLIN(  34)					int _g11 = this->height;
-HXDLIN(  34)					while((_g2 < _g11)){
-HXLINE(  34)						_g2 = (_g2 + 1);
-HXDLIN(  34)						int x = (_g2 - 1);
-HXLINE(  35)						this->spriteMap->render(graphics,( (float)((x * 16)) ),( (float)((y * 16)) ),(this->tiled->tiles->__get(y).StaticCast< ::Array< int > >()->__get(x) - 1));
+            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_32_render)
+HXLINE(  33)		this->transformation->apply(graphics);
+HXLINE(  35)		{
+HXLINE(  35)			int _g = 0;
+HXDLIN(  35)			int _g1 = this->width;
+HXDLIN(  35)			while((_g < _g1)){
+HXLINE(  35)				_g = (_g + 1);
+HXDLIN(  35)				int y = (_g - 1);
+HXLINE(  36)				{
+HXLINE(  36)					int _g2 = 0;
+HXDLIN(  36)					int _g11 = this->height;
+HXDLIN(  36)					while((_g2 < _g11)){
+HXLINE(  36)						_g2 = (_g2 + 1);
+HXDLIN(  36)						int x = (_g2 - 1);
+HXLINE(  37)						this->spriteMap->render(graphics,( (float)((x * 16)) ),( (float)((y * 16)) ),(this->tiled->tiles->__get(y).StaticCast< ::Array< int > >()->__get(x) - 1));
             					}
             				}
             			}
             		}
-HXLINE(  39)		this->transformation->finish(graphics);
+HXLINE(  41)		this->transformation->finish(graphics);
             	}
 
 
 void TileMap_obj::update(Float dt){
-            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_42_update)
+            	HX_STACKFRAME(&_hx_pos_ff75d527b55e4390_44_update)
             	}
 
 

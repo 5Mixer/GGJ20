@@ -13,6 +13,7 @@ HX_LOCAL_STACK_FRAME(_hx_pos_b3003e7f6f559859_61_set,"haxe.ds.IntMap","set",0x72
 HX_LOCAL_STACK_FRAME(_hx_pos_b3003e7f6f559859_65_get,"haxe.ds.IntMap","get",0x721d74ec,"haxe.ds.IntMap.get","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/IntMap.hx",65,0xeb41945c)
 HX_LOCAL_STACK_FRAME(_hx_pos_b3003e7f6f559859_69_exists,"haxe.ds.IntMap","exists",0x63ba0346,"haxe.ds.IntMap.exists","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/IntMap.hx",69,0xeb41945c)
 HX_LOCAL_STACK_FRAME(_hx_pos_b3003e7f6f559859_73_remove,"haxe.ds.IntMap","remove",0xa86281ae,"haxe.ds.IntMap.remove","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/IntMap.hx",73,0xeb41945c)
+HX_LOCAL_STACK_FRAME(_hx_pos_b3003e7f6f559859_76_keys,"haxe.ds.IntMap","keys",0x6a4db8de,"haxe.ds.IntMap.keys","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/IntMap.hx",76,0xeb41945c)
 HX_LOCAL_STACK_FRAME(_hx_pos_b3003e7f6f559859_81_iterator,"haxe.ds.IntMap","iterator",0x4dc7ddd8,"haxe.ds.IntMap.iterator","/home/mixer/projects/GGJ20/Kha/Tools/haxe/std/cpp/_std/haxe/ds/IntMap.hx",81,0xeb41945c)
 namespace haxe{
 namespace ds{
@@ -37,8 +38,13 @@ bool IntMap_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 static ::haxe::IMap_obj _hx_haxe_ds_IntMap__hx_haxe_IMap= {
+	(  ::Dynamic (hx::Object::*)( ::Dynamic))&::haxe::ds::IntMap_obj::get_dc94b8fa,
+	(  ::Dynamic (hx::Object::*)())&::haxe::ds::IntMap_obj::keys,
 };
 
+ ::Dynamic IntMap_obj::get_dc94b8fa( ::Dynamic k) {
+			return get(k);
+}
 void *IntMap_obj::_hx_getInterface(int inHash) {
 	switch(inHash) {
 		case (int)0x09c2bd39: return &_hx_haxe_ds_IntMap__hx_haxe_IMap;
@@ -81,6 +87,15 @@ HXDLIN(  73)		return  ::__int_hash_remove(this->h,key);
 
 
 HX_DEFINE_DYNAMIC_FUNC1(IntMap_obj,remove,return )
+
+ ::Dynamic IntMap_obj::keys(){
+            	HX_STACKFRAME(&_hx_pos_b3003e7f6f559859_76_keys)
+HXLINE(  77)		::Array< int > a =  ::__int_hash_keys(this->h);
+HXLINE(  78)		return a->iterator();
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC0(IntMap_obj,keys,return )
 
  ::Dynamic IntMap_obj::iterator(){
             	HX_STACKFRAME(&_hx_pos_b3003e7f6f559859_81_iterator)
@@ -131,6 +146,9 @@ hx::Val IntMap_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp
 		if (HX_FIELD_EQ(inName,"set") ) { return hx::Val( set_dyn() ); }
 		if (HX_FIELD_EQ(inName,"get") ) { return hx::Val( get_dyn() ); }
 		break;
+	case 4:
+		if (HX_FIELD_EQ(inName,"keys") ) { return hx::Val( keys_dyn() ); }
+		break;
 	case 6:
 		if (HX_FIELD_EQ(inName,"exists") ) { return hx::Val( exists_dyn() ); }
 		if (HX_FIELD_EQ(inName,"remove") ) { return hx::Val( remove_dyn() ); }
@@ -170,6 +188,7 @@ static ::String IntMap_obj_sMemberFields[] = {
 	HX_("get",96,80,4e,00),
 	HX_("exists",dc,1d,e0,bf),
 	HX_("remove",44,9c,88,04),
+	HX_("keys",f4,e1,06,47),
 	HX_("iterator",ee,49,9a,93),
 	::String(null()) };
 

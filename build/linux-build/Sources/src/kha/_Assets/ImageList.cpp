@@ -22,7 +22,7 @@
 
 HX_DEFINE_STACK_FRAME(_hx_pos_f30eae4745d61cf6_9_new,"kha._Assets.ImageList","new",0x9d995fb5,"kha._Assets.ImageList.new","kha/Assets.hx",9,0x66f27110)
 static const ::String _hx_array_data_acc06143_1[] = {
-	HX_("bodyParts",1e,bb,5d,7d),HX_("bodyParts2",54,ff,a5,34),HX_("tiles",85,fd,34,10),
+	HX_("bodyParts",1e,bb,5d,7d),HX_("bodyParts2",54,ff,a5,34),HX_("satanicCircle",1d,af,db,38),HX_("tiles",85,fd,34,10),
 };
 static const ::String _hx_array_data_acc06143_2[] = {
 	HX_("tiles.k",42,51,93,45),
@@ -31,15 +31,21 @@ static const int _hx_array_data_acc06143_3[] = {
 	(int)1,
 };
 static const ::String _hx_array_data_acc06143_4[] = {
-	HX_("bodyParts2.k",d1,a4,a3,29),
+	HX_("satanicCircle.k",da,98,7b,ea),
 };
 static const int _hx_array_data_acc06143_5[] = {
 	(int)1,
 };
 static const ::String _hx_array_data_acc06143_6[] = {
-	HX_("bodyParts.k",1b,67,99,dc),
+	HX_("bodyParts2.k",d1,a4,a3,29),
 };
 static const int _hx_array_data_acc06143_7[] = {
+	(int)1,
+};
+static const ::String _hx_array_data_acc06143_8[] = {
+	HX_("bodyParts.k",1b,67,99,dc),
+};
+static const int _hx_array_data_acc06143_9[] = {
 	(int)1,
 };
 HX_LOCAL_STACK_FRAME(_hx_pos_f30eae4745d61cf6_15_get,"kha._Assets.ImageList","get",0x9d940feb,"kha._Assets.ImageList.get","kha/Assets.hx",15,0x66f27110)
@@ -47,6 +53,8 @@ HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_bodyPartsLoad,"kha._Assets.Ima
 HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_bodyPartsUnload,"kha._Assets.ImageList","bodyPartsUnload",0xa84ab592,"kha._Assets.ImageList.bodyPartsUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_bodyParts2Load,"kha._Assets.ImageList","bodyParts2Load",0x7af13665,"kha._Assets.ImageList.bodyParts2Load","kha/internal/AssetsBuilder.hx",126,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_bodyParts2Unload,"kha._Assets.ImageList","bodyParts2Unload",0x0f950afe,"kha._Assets.ImageList.bodyParts2Unload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_satanicCircleLoad,"kha._Assets.ImageList","satanicCircleLoad",0xb8dca1f8,"kha._Assets.ImageList.satanicCircleLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
+HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_satanicCircleUnload,"kha._Assets.ImageList","satanicCircleUnload",0x2fe0c151,"kha._Assets.ImageList.satanicCircleUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_126_tilesLoad,"kha._Assets.ImageList","tilesLoad",0x0ccea760,"kha._Assets.ImageList.tilesLoad","kha/internal/AssetsBuilder.hx",126,0x6901246d)
 HX_LOCAL_STACK_FRAME(_hx_pos_163c20c569b85260_176_tilesUnload,"kha._Assets.ImageList","tilesUnload",0xe86cf0b9,"kha._Assets.ImageList.tilesUnload","kha/internal/AssetsBuilder.hx",176,0x6901246d)
 namespace kha{
@@ -54,7 +62,7 @@ namespace _Assets{
 
 void ImageList_obj::__construct(){
             	HX_GC_STACKFRAME(&_hx_pos_f30eae4745d61cf6_9_new)
-HXLINE( 191)		this->_hx_set_names(HX_CTX, ::Array_obj< ::String >::fromData( _hx_array_data_acc06143_1,3));
+HXLINE( 191)		this->_hx_set_names(HX_CTX, ::Array_obj< ::String >::fromData( _hx_array_data_acc06143_1,4));
 HXLINE( 118)		this->_hx_set_tilesDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
             			->setFixed(0,HX_("original_width",58,c4,9b,c9),40)
             			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_2,1))
@@ -64,19 +72,28 @@ HXLINE( 118)		this->_hx_set_tilesDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Cr
             			->setFixed(5,HX_("original_height",55,81,ff,54),4)));
 HXLINE( 110)		this->_hx_set_tilesName(HX_CTX, HX_("tiles",85,fd,34,10));
 HXLINE(  69)		this->_hx_set_tiles(HX_CTX, null());
-HXLINE( 118)		this->_hx_set_bodyParts2Description(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
-            			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
+HXLINE( 118)		this->_hx_set_satanicCircleDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("original_width",58,c4,9b,c9),128)
             			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_4,1))
             			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_5,1))
+            			->setFixed(3,HX_("name",4b,72,ff,48),HX_("satanicCircle",1d,af,db,38))
+            			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
+            			->setFixed(5,HX_("original_height",55,81,ff,54),192)));
+HXLINE( 110)		this->_hx_set_satanicCircleName(HX_CTX, HX_("satanicCircle",1d,af,db,38));
+HXLINE(  69)		this->_hx_set_satanicCircle(HX_CTX, null());
+HXLINE( 118)		this->_hx_set_bodyParts2Description(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
+            			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
+            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_6,1))
+            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_7,1))
             			->setFixed(3,HX_("name",4b,72,ff,48),HX_("bodyParts2",54,ff,a5,34))
             			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
-            			->setFixed(5,HX_("original_height",55,81,ff,54),352)));
+            			->setFixed(5,HX_("original_height",55,81,ff,54),480)));
 HXLINE( 110)		this->_hx_set_bodyParts2Name(HX_CTX, HX_("bodyParts2",54,ff,a5,34));
 HXLINE(  69)		this->_hx_set_bodyParts2(HX_CTX, null());
 HXLINE( 118)		this->_hx_set_bodyPartsDescription(HX_CTX,  ::Dynamic(hx::Anon_obj::Create(6)
             			->setFixed(0,HX_("original_width",58,c4,9b,c9),32)
-            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_6,1))
-            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_7,1))
+            			->setFixed(1,HX_("files",77,de,98,00),::Array_obj< ::String >::fromData( _hx_array_data_acc06143_8,1))
+            			->setFixed(2,HX_("file_sizes",4f,23,b0,24),::Array_obj< int >::fromData( _hx_array_data_acc06143_9,1))
             			->setFixed(3,HX_("name",4b,72,ff,48),HX_("bodyParts",1e,bb,5d,7d))
             			->setFixed(4,HX_("type",ba,f2,08,4d),HX_("image",5b,1f,69,bd))
             			->setFixed(5,HX_("original_height",55,81,ff,54),320)));
@@ -155,6 +172,30 @@ HXLINE( 178)		this->_hx_set_bodyParts2(HX_CTX, null());
 
 HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,bodyParts2Unload,(void))
 
+void ImageList_obj::satanicCircleLoad( ::Dynamic done, ::Dynamic failure){
+            		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
+            		void _hx_run( ::kha::Image image){
+            			HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_satanicCircleLoad)
+HXDLIN( 126)			done();
+            		}
+            		HX_END_LOCAL_FUNC1((void))
+
+            	HX_STACKFRAME(&_hx_pos_163c20c569b85260_126_satanicCircleLoad)
+HXDLIN( 126)		::kha::Assets_obj::loadImage(HX_("satanicCircle",1d,af,db,38), ::Dynamic(new _hx_Closure_0(done)),failure,hx::SourceInfo(HX_("kha/internal/AssetsBuilder.hx",6d,24,01,69),126,HX_("kha._Assets.ImageList",43,61,c0,ac),HX_("satanicCircleLoad",e3,c7,0e,47)));
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC2(ImageList_obj,satanicCircleLoad,(void))
+
+void ImageList_obj::satanicCircleUnload(){
+            	HX_GC_STACKFRAME(&_hx_pos_163c20c569b85260_176_satanicCircleUnload)
+HXLINE( 177)		this->satanicCircle->unload();
+HXLINE( 178)		this->_hx_set_satanicCircle(HX_CTX, null());
+            	}
+
+
+HX_DEFINE_DYNAMIC_FUNC0(ImageList_obj,satanicCircleUnload,(void))
+
 void ImageList_obj::tilesLoad( ::Dynamic done, ::Dynamic failure){
             		HX_BEGIN_LOCAL_FUNC_S1(hx::LocalFunc,_hx_Closure_0, ::Dynamic,done) HXARGC(1)
             		void _hx_run( ::kha::Image image){
@@ -206,6 +247,9 @@ void ImageList_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(bodyParts2,"bodyParts2");
 	HX_MARK_MEMBER_NAME(bodyParts2Name,"bodyParts2Name");
 	HX_MARK_MEMBER_NAME(bodyParts2Description,"bodyParts2Description");
+	HX_MARK_MEMBER_NAME(satanicCircle,"satanicCircle");
+	HX_MARK_MEMBER_NAME(satanicCircleName,"satanicCircleName");
+	HX_MARK_MEMBER_NAME(satanicCircleDescription,"satanicCircleDescription");
 	HX_MARK_MEMBER_NAME(tiles,"tiles");
 	HX_MARK_MEMBER_NAME(tilesName,"tilesName");
 	HX_MARK_MEMBER_NAME(tilesDescription,"tilesDescription");
@@ -221,6 +265,9 @@ void ImageList_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(bodyParts2,"bodyParts2");
 	HX_VISIT_MEMBER_NAME(bodyParts2Name,"bodyParts2Name");
 	HX_VISIT_MEMBER_NAME(bodyParts2Description,"bodyParts2Description");
+	HX_VISIT_MEMBER_NAME(satanicCircle,"satanicCircle");
+	HX_VISIT_MEMBER_NAME(satanicCircleName,"satanicCircleName");
+	HX_VISIT_MEMBER_NAME(satanicCircleDescription,"satanicCircleDescription");
 	HX_VISIT_MEMBER_NAME(tiles,"tiles");
 	HX_VISIT_MEMBER_NAME(tilesName,"tilesName");
 	HX_VISIT_MEMBER_NAME(tilesDescription,"tilesDescription");
@@ -251,6 +298,7 @@ hx::Val ImageList_obj::__Field(const ::String &inName,hx::PropertyAccess inCallP
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodyPartsName") ) { return hx::Val( bodyPartsName ); }
 		if (HX_FIELD_EQ(inName,"bodyPartsLoad") ) { return hx::Val( bodyPartsLoad_dyn() ); }
+		if (HX_FIELD_EQ(inName,"satanicCircle") ) { return hx::Val( satanicCircle ); }
 		break;
 	case 14:
 		if (HX_FIELD_EQ(inName,"bodyParts2Name") ) { return hx::Val( bodyParts2Name ); }
@@ -263,11 +311,21 @@ hx::Val ImageList_obj::__Field(const ::String &inName,hx::PropertyAccess inCallP
 		if (HX_FIELD_EQ(inName,"bodyParts2Unload") ) { return hx::Val( bodyParts2Unload_dyn() ); }
 		if (HX_FIELD_EQ(inName,"tilesDescription") ) { return hx::Val( tilesDescription ); }
 		break;
+	case 17:
+		if (HX_FIELD_EQ(inName,"satanicCircleName") ) { return hx::Val( satanicCircleName ); }
+		if (HX_FIELD_EQ(inName,"satanicCircleLoad") ) { return hx::Val( satanicCircleLoad_dyn() ); }
+		break;
+	case 19:
+		if (HX_FIELD_EQ(inName,"satanicCircleUnload") ) { return hx::Val( satanicCircleUnload_dyn() ); }
+		break;
 	case 20:
 		if (HX_FIELD_EQ(inName,"bodyPartsDescription") ) { return hx::Val( bodyPartsDescription ); }
 		break;
 	case 21:
 		if (HX_FIELD_EQ(inName,"bodyParts2Description") ) { return hx::Val( bodyParts2Description ); }
+		break;
+	case 24:
+		if (HX_FIELD_EQ(inName,"satanicCircleDescription") ) { return hx::Val( satanicCircleDescription ); }
 	}
 	return super::__Field(inName,inCallProp);
 }
@@ -288,6 +346,7 @@ hx::Val ImageList_obj::__SetField(const ::String &inName,const hx::Val &inValue,
 		break;
 	case 13:
 		if (HX_FIELD_EQ(inName,"bodyPartsName") ) { _hx_set_bodyPartsName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		if (HX_FIELD_EQ(inName,"satanicCircle") ) { _hx_set_satanicCircle(HX_CTX_GET,inValue.Cast<  ::kha::Image >()); return inValue; }
 		break;
 	case 14:
 		if (HX_FIELD_EQ(inName,"bodyParts2Name") ) { _hx_set_bodyParts2Name(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
@@ -295,11 +354,17 @@ hx::Val ImageList_obj::__SetField(const ::String &inName,const hx::Val &inValue,
 	case 16:
 		if (HX_FIELD_EQ(inName,"tilesDescription") ) { _hx_set_tilesDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 		break;
+	case 17:
+		if (HX_FIELD_EQ(inName,"satanicCircleName") ) { _hx_set_satanicCircleName(HX_CTX_GET,inValue.Cast< ::String >()); return inValue; }
+		break;
 	case 20:
 		if (HX_FIELD_EQ(inName,"bodyPartsDescription") ) { _hx_set_bodyPartsDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 		break;
 	case 21:
 		if (HX_FIELD_EQ(inName,"bodyParts2Description") ) { _hx_set_bodyParts2Description(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
+		break;
+	case 24:
+		if (HX_FIELD_EQ(inName,"satanicCircleDescription") ) { _hx_set_satanicCircleDescription(HX_CTX_GET,inValue.Cast<  ::Dynamic >()); return inValue; }
 	}
 	return super::__SetField(inName,inValue,inCallProp);
 }
@@ -312,6 +377,9 @@ void ImageList_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("bodyParts2",54,ff,a5,34));
 	outFields->push(HX_("bodyParts2Name",bf,d7,92,aa));
 	outFields->push(HX_("bodyParts2Description",08,fa,cb,77));
+	outFields->push(HX_("satanicCircle",1d,af,db,38));
+	outFields->push(HX_("satanicCircleName",08,a0,56,48));
+	outFields->push(HX_("satanicCircleDescription",df,bc,f3,20));
 	outFields->push(HX_("tiles",85,fd,34,10));
 	outFields->push(HX_("tilesName",70,42,1b,63));
 	outFields->push(HX_("tilesDescription",77,b7,65,cf));
@@ -327,6 +395,9 @@ static hx::StorageInfo ImageList_obj_sMemberStorageInfo[] = {
 	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,bodyParts2),HX_("bodyParts2",54,ff,a5,34)},
 	{hx::fsString,(int)offsetof(ImageList_obj,bodyParts2Name),HX_("bodyParts2Name",bf,d7,92,aa)},
 	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,bodyParts2Description),HX_("bodyParts2Description",08,fa,cb,77)},
+	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,satanicCircle),HX_("satanicCircle",1d,af,db,38)},
+	{hx::fsString,(int)offsetof(ImageList_obj,satanicCircleName),HX_("satanicCircleName",08,a0,56,48)},
+	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,satanicCircleDescription),HX_("satanicCircleDescription",df,bc,f3,20)},
 	{hx::fsObject /*  ::kha::Image */ ,(int)offsetof(ImageList_obj,tiles),HX_("tiles",85,fd,34,10)},
 	{hx::fsString,(int)offsetof(ImageList_obj,tilesName),HX_("tilesName",70,42,1b,63)},
 	{hx::fsObject /*  ::Dynamic */ ,(int)offsetof(ImageList_obj,tilesDescription),HX_("tilesDescription",77,b7,65,cf)},
@@ -348,6 +419,11 @@ static ::String ImageList_obj_sMemberFields[] = {
 	HX_("bodyParts2Description",08,fa,cb,77),
 	HX_("bodyParts2Load",9a,ff,4a,a9),
 	HX_("bodyParts2Unload",73,4b,db,de),
+	HX_("satanicCircle",1d,af,db,38),
+	HX_("satanicCircleName",08,a0,56,48),
+	HX_("satanicCircleDescription",df,bc,f3,20),
+	HX_("satanicCircleLoad",e3,c7,0e,47),
+	HX_("satanicCircleUnload",fc,77,58,4b),
 	HX_("tiles",85,fd,34,10),
 	HX_("tilesName",70,42,1b,63),
 	HX_("tilesDescription",77,b7,65,cf),

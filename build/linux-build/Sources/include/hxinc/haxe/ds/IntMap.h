@@ -47,6 +47,7 @@ class HXCPP_CLASS_ATTRIBUTES IntMap_obj : public hx::Object
 		void __Visit(HX_VISIT_PARAMS);
 		bool _hx_isInstanceOf(int inClassId);
 		void *_hx_getInterface(int inHash);
+		 ::Dynamic get_dc94b8fa( ::Dynamic k);
 		::String __ToString() const { return HX_("IntMap",0d,a9,08,d3); }
 
 		 ::Dynamic h;
@@ -62,6 +63,9 @@ class HXCPP_CLASS_ATTRIBUTES IntMap_obj : public hx::Object
 
 		bool remove(int key);
 		::Dynamic remove_dyn();
+
+		 ::Dynamic keys();
+		::Dynamic keys_dyn();
 
 		 ::Dynamic iterator();
 		::Dynamic iterator_dyn();

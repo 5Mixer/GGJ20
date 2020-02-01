@@ -88,7 +88,7 @@
 				"bodyParts2.png"
 			],
 			"file_sizes": [
-				939
+				961
 			],
 			"type": "image",
 			"original_width": 32,
@@ -100,7 +100,7 @@
 				"bodyParts2.ase"
 			],
 			"file_sizes": [
-				2035
+				2040
 			],
 			"type": "blob"
 		},
@@ -558,6 +558,38 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "satanicCircle",
+			"files": [
+				"satanicCircle.png"
+			],
+			"file_sizes": [
+				1592
+			],
+			"type": "image",
+			"original_width": 128,
+			"original_height": 192
+		},
+		{
+			"name": "satanicCircle_ase",
+			"files": [
+				"satanicCircle.ase"
+			],
+			"file_sizes": [
+				2283
+			],
+			"type": "blob"
+		},
+		{
+			"name": "satanicCircle_json",
+			"files": [
+				"satanicCircle.json"
+			],
+			"file_sizes": [
+				958
+			],
+			"type": "blob"
 		},
 		{
 			"name": "tiles",

@@ -8,6 +8,7 @@
 
 HX_DECLARE_CLASS2(bonsai,render,Transformation)
 HX_DECLARE_CLASS2(kha,graphics2,Graphics)
+HX_DECLARE_CLASS2(kha,math,FastVector2)
 HX_DECLARE_CLASS2(kha,math,Vector2)
 
 namespace bonsai{
@@ -58,6 +59,12 @@ class HXCPP_CLASS_ATTRIBUTES Transformation_obj : public hx::Object
 
 		void finish( ::kha::graphics2::Graphics graphics);
 		::Dynamic finish_dyn();
+
+		 ::kha::math::FastVector2 transformPoint( ::kha::math::Vector2 point);
+		::Dynamic transformPoint_dyn();
+
+		 ::kha::math::FastVector2 untransformPoint( ::kha::math::Vector2 point);
+		::Dynamic untransformPoint_dyn();
 
 };
 
