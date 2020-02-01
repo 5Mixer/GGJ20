@@ -91,7 +91,7 @@ class Body extends bonsai.entity.Entity{
 		// var height = d < 70 ? 0 : 10;
 		// var height = Math.min(15,d%1);
 		var height = 10;
-		z = Math.abs(Math.sin((time + (friendly ? 0 : 2))*10))*height;
+		// z = Math.abs(Math.sin((time + (friendly ? 0 : 2))*10))*height;
 
 
 		if (Math.abs(vz) < .1 && z < 1 && Math.abs(vx) < .1){
@@ -109,8 +109,8 @@ class Body extends bonsai.entity.Entity{
 		}
 
 
-		collider.x = position.x;
-		collider.y = position.y;
+		collider.x = position.x+8;
+		collider.y = position.y+24;
 
 		super.update(dt);
 	}

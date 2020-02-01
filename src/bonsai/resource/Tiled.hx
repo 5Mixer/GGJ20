@@ -5,11 +5,14 @@ typedef TiledEntity = {
 	var y:Int;
 	var properties:Map<String,String>;
 }
+typedef TiledLayer = {
+	var tiles:Array<Array<Int>>;
+}
 
 class Tiled {
 	public var width:Int;
 	public var height:Int;
-	public var tiles:Array<Array<Int>> = [];
+	public var layers:Map<String,TiledLayer> = [];
 	public var entities:Array<TiledEntity> = [];
 
 	public function new (data:String) {
@@ -24,19 +27,23 @@ class Tiled {
 
 		for (layer in map.elementsNamed("layer")){
 			var n = 0;
-			var layerTiles = layer.elementsNamed("data").next().firstChild().nodeValue.split(",");
-			for (tile in layerTiles){
+			var rawLayerTiles = layer.elementsNamed("data").next().firstChild().nodeValue.split(",");
+			var layerTiles:Array<Array<Int>> = [];
+			for (tile in rawLayerTiles) {
 				var x = n%width;
 				var y = Math.floor(n/width);
 
 				// Load individual tile
-				if (tiles[y] == null)
-					tiles[y] = [];
+				if (layerTiles[y] == null)
+					layerTiles[y] = [];
 
-				tiles[y][x] = Std.parseInt(tile);
+				layerTiles[y][x] = Std.parseInt(tile);
 
 				n++;
 			}
+			layers.set(layer.get("name"), {
+				tiles: layerTiles
+			});
 		}
 
 		for (objectlayer in map.elementsNamed("objectgroup")){

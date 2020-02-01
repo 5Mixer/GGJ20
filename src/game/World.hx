@@ -18,13 +18,15 @@ class World extends Scene {
 	var camera:Camera;
 
 	var summonCircle:SummonCircle;
+	var structure:Structure;
 
 	override public function new (engine) {
 		super("World Scene",engine);
 		input = engine.input;
 
 		// bodySpriteMap = new SpriteMap(kha.Assets.);
-		add(new TileMap());
+		structure = new Structure();
+		add(structure);
 		// add(new Player(10, 30, engine.input), 1);
 
 		bodyParticleSystem = new BodyPartParticles();
@@ -63,7 +65,7 @@ class World extends Scene {
 
 		});
 
-		for (i in 0...500) {
+		for (i in 0...100) {
 			var body = new Body();
 			// add(body);
 			bodies.push(body);
@@ -136,6 +138,16 @@ class World extends Scene {
 					body.vy += collision.separationY*.1;
 				}
 			}
+			for (collider in structure.colliders) {
+				var collision = collider.testCircle(body.collider);
+				if (collision != null) {
+					body.position.x -= collision.separationX;
+					body.position.y -= collision.separationY;
+					// body.vx += collision.separationX*.1;
+					// body.vy += collision.separationY*.1;
+
+				}
+			}
 		}
 		bodyParticleSystem.members.sort(function (a,b) {
 			return a.y - b.y > 0 ? 1 : -1;
@@ -176,6 +188,17 @@ class World extends Scene {
 		super.render(g);
 		for (body in bodies)
 			body.render(g);
+
+		g.color = kha.Color.Pink;
+		for (collider in structure.colliders) {
+			var verts = collider.transformedVertices;
+			var i = 0;
+			while (i < verts.length-1) {
+				g.drawLine(verts[i].x,verts[i].y,verts[i+1].x,verts[i+1].y);
+				i++;
+			}
+		}
+		g.color = kha.Color.White;
 		camera.finish(g);
 		inventory.render(g);
 	}
