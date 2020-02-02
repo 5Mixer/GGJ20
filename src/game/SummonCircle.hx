@@ -85,10 +85,9 @@ class SummonCircle extends bonsai.entity.Entity {
 		body.rightArm = BodyPart.createByName(rightArm.getName());
 		body.leftLeg = BodyPart.createByName(leftLeg.getName());
 		body.rightLeg = BodyPart.createByName(rightLeg.getName());
-<<<<<<< HEAD
-=======
+		
 		animation2.playOnce("summon");
->>>>>>> d2ff38d931d8fd5c6b31350e6dbb14f9736f4a6e
+		
 		return body;
 	}
 	public function clear () {
