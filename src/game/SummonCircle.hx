@@ -171,7 +171,7 @@ class SummonCircle extends bonsai.entity.Entity {
 	override public function update (dt:Float){
 		if (summoningProcessTimer > 0) {
 			summoningProcessTimer -= dt;
-			if (summonProcecessTimer < 0)
+			if (summoningProcessTimer < 0)
 				summoningProcessTimer = 0;
 		} else {
 			this.animation2.play("idle");
