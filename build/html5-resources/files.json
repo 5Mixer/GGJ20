@@ -98,7 +98,11 @@
 				"castle1.tmx"
 			],
 			"file_sizes": [
+<<<<<<< Updated upstream
 				4955
+=======
+				5056
+>>>>>>> Stashed changes
 			],
 			"type": "blob"
 		},
@@ -108,7 +112,11 @@
 				"castle2.tmx"
 			],
 			"file_sizes": [
+<<<<<<< Updated upstream
 				5410
+=======
+				5514
+>>>>>>> Stashed changes
 			],
 			"type": "blob"
 		},
@@ -118,7 +126,11 @@
 				"castle3.tmx"
 			],
 			"file_sizes": [
+<<<<<<< Updated upstream
 				5662
+=======
+				5767
+>>>>>>> Stashed changes
 			],
 			"type": "blob"
 		},
@@ -128,7 +140,11 @@
 				"castle4.tmx"
 			],
 			"file_sizes": [
+<<<<<<< Updated upstream
 				6601
+=======
+				6706
+>>>>>>> Stashed changes
 			],
 			"type": "blob"
 		},
@@ -160,7 +176,7 @@
 				"castleTiles.tsx"
 			],
 			"file_sizes": [
-				233
+				237
 			],
 			"type": "blob"
 		},
@@ -170,7 +186,7 @@
 				"map.tmx"
 			],
 			"file_sizes": [
-				46972
+				47184
 			],
 			"type": "blob"
 		},
@@ -178,8 +194,8 @@
 			"name": "painter_colored_frag",
 			"files": [
 				"painter-colored.frag.essl",
-				"painter-colored-relaxed.frag.essl",
-				"painter-colored-webgl2.frag.essl"
+				"painter-colored-webgl2.frag.essl",
+				"painter-colored-relaxed.frag.essl"
 			],
 			"file_sizes": [
 				1
@@ -204,8 +220,8 @@
 			"name": "painter_colored_vert",
 			"files": [
 				"painter-colored.vert.essl",
-				"painter-colored-relaxed.vert.essl",
-				"painter-colored-webgl2.vert.essl"
+				"painter-colored-webgl2.vert.essl",
+				"painter-colored-relaxed.vert.essl"
 			],
 			"file_sizes": [
 				1
@@ -269,8 +285,8 @@
 			"name": "painter_image_frag",
 			"files": [
 				"painter-image.frag.essl",
-				"painter-image-relaxed.frag.essl",
-				"painter-image-webgl2.frag.essl"
+				"painter-image-webgl2.frag.essl",
+				"painter-image-relaxed.frag.essl"
 			],
 			"file_sizes": [
 				1
@@ -304,8 +320,8 @@
 			"name": "painter_image_vert",
 			"files": [
 				"painter-image.vert.essl",
-				"painter-image-relaxed.vert.essl",
-				"painter-image-webgl2.vert.essl"
+				"painter-image-webgl2.vert.essl",
+				"painter-image-relaxed.vert.essl"
 			],
 			"file_sizes": [
 				1
@@ -377,8 +393,8 @@
 			"name": "painter_text_frag",
 			"files": [
 				"painter-text.frag.essl",
-				"painter-text-relaxed.frag.essl",
-				"painter-text-webgl2.frag.essl"
+				"painter-text-webgl2.frag.essl",
+				"painter-text-relaxed.frag.essl"
 			],
 			"file_sizes": [
 				1
@@ -412,8 +428,8 @@
 			"name": "painter_text_vert",
 			"files": [
 				"painter-text.vert.essl",
-				"painter-text-relaxed.vert.essl",
-				"painter-text-webgl2.vert.essl"
+				"painter-text-webgl2.vert.essl",
+				"painter-text-relaxed.vert.essl"
 			],
 			"file_sizes": [
 				1
@@ -485,8 +501,8 @@
 			"name": "painter_video_frag",
 			"files": [
 				"painter-video.frag.essl",
-				"painter-video-relaxed.frag.essl",
-				"painter-video-webgl2.frag.essl"
+				"painter-video-webgl2.frag.essl",
+				"painter-video-relaxed.frag.essl"
 			],
 			"file_sizes": [
 				1
@@ -520,8 +536,8 @@
 			"name": "painter_video_vert",
 			"files": [
 				"painter-video.vert.essl",
-				"painter-video-relaxed.vert.essl",
-				"painter-video-webgl2.vert.essl"
+				"painter-video-webgl2.vert.essl",
+				"painter-video-relaxed.vert.essl"
 			],
 			"file_sizes": [
 				1
@@ -595,10 +611,10 @@
 				"satanicCircle.png"
 			],
 			"file_sizes": [
-				2462
+				2563
 			],
 			"type": "image",
-			"original_width": 320,
+			"original_width": 384,
 			"original_height": 192
 		},
 		{
@@ -607,7 +623,7 @@
 				"satanicCircle.ase"
 			],
 			"file_sizes": [
-				4326
+				4699
 			],
 			"type": "blob"
 		},
@@ -617,7 +633,7 @@
 				"skeletune.sunvox"
 			],
 			"file_sizes": [
-				2884
+				3908
 			],
 			"type": "blob"
 		},
@@ -627,7 +643,7 @@
 				"tiles.png"
 			],
 			"file_sizes": [
-				2059
+				2118
 			],
 			"type": "image",
 			"original_width": 128,
@@ -644,12 +660,24 @@
 			"type": "blob"
 		},
 		{
+			"name": "tiles_export",
+			"files": [
+				"tiles-export.png"
+			],
+			"file_sizes": [
+				2118
+			],
+			"type": "image",
+			"original_width": 128,
+			"original_height": 128
+		},
+		{
 			"name": "tiles_tsx",
 			"files": [
 				"tiles.tsx"
 			],
 			"file_sizes": [
-				220
+				224
 			],
 			"type": "blob"
 		}
