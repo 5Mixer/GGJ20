@@ -99,6 +99,5 @@
  </objectgroup>
  <objectgroup id="6" name="spawn">
   <object id="28" x="32" y="48" width="139.667" height="122"/>
-  <object id="29" x="267.333" y="44.3333"/>
  </objectgroup>
 </map>

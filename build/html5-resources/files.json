@@ -71,12 +71,22 @@
 			"type": "font"
 		},
 		{
+			"name": "_2020_02_02_02_02_sunvox",
+			"files": [
+				"2020-02-02 02-02.sunvox"
+			],
+			"file_sizes": [
+				4988
+			],
+			"type": "blob"
+		},
+		{
 			"name": "bodyParts2",
 			"files": [
 				"bodyParts2.png"
 			],
 			"file_sizes": [
-				2476
+				2557
 			],
 			"type": "image",
 			"original_width": 96,
@@ -88,7 +98,7 @@
 				"bodyParts2.ase"
 			],
 			"file_sizes": [
-				4562
+				4594
 			],
 			"type": "blob"
 		},
@@ -108,7 +118,7 @@
 				"castle2.tmx"
 			],
 			"file_sizes": [
-				5514
+				5469
 			],
 			"type": "blob"
 		},
@@ -170,7 +180,7 @@
 				"map.tmx"
 			],
 			"file_sizes": [
-				47184
+				47049
 			],
 			"type": "blob"
 		},
@@ -617,7 +627,7 @@
 				"skeletune.sunvox"
 			],
 			"file_sizes": [
-				3908
+				4988
 			],
 			"type": "blob"
 		},
@@ -627,7 +637,7 @@
 				"tiles.png"
 			],
 			"file_sizes": [
-				2118
+				1003
 			],
 			"type": "image",
 			"original_width": 128,

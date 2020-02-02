@@ -110,7 +110,7 @@ Main.main = function() {
 	Main.engine.start("skull",1200,800,Main.onAssetLoad);
 };
 Main.onAssetLoad = function() {
-	Main.engine.currentScene = new game_World(Main.engine);
+	Main.engine.currentScene = new game_StartScreen(Main.engine);
 };
 var InputBindings = $hxClasses["InputBindings"] = function() { };
 InputBindings.__name__ = "InputBindings";
@@ -2945,6 +2945,32 @@ game_NoiseTilemap.prototype = $extend(bonsai_entity_Entity.prototype,{
 	}
 	,__class__: game_NoiseTilemap
 });
+var game_StartScreen = $hxClasses["game.StartScreen"] = function(engine) {
+	bonsai_scene_Scene.call(this,"Start Screen",engine);
+	this.input = engine.input;
+};
+game_StartScreen.__name__ = "game.StartScreen";
+game_StartScreen.__super__ = bonsai_scene_Scene;
+game_StartScreen.prototype = $extend(bonsai_scene_Scene.prototype,{
+	input: null
+	,render: function(g) {
+		g.set_color(kha__$Color_Color_$Impl_$.fromBytes(40,0,0));
+		g.fillRect(0,0,10000,10000);
+		g.set_color(kha__$Color_Color_$Impl_$.fromBytes(255,255,255));
+		g.set_font(kha_Assets.fonts.KenneyMiniSquare);
+		g.set_fontSize(100);
+		g.drawString("Press A to start.",25,200);
+		g.set_fontSize(60);
+		g.drawString("Skullonator",25,100);
+		bonsai_scene_Scene.prototype.render.call(this,g);
+	}
+	,update: function(dt) {
+		if(this.input.isAnyKeyDown(InputBindings.left)) {
+			this.engine.currentScene = new game_World(this.engine);
+		}
+	}
+	,__class__: game_StartScreen
+});
 var game_Structure = $hxClasses["game.Structure"] = function(tmx) {
 	this.colliders = [];
 	this.height = 100;
@@ -3085,6 +3111,7 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 		body.leftLeg = Type.createEnum(game_BodyPart,$hxEnums[e4.__enum__].__constructs__[e4._hx_index],null);
 		var e5 = this.rightLeg;
 		body.rightLeg = Type.createEnum(game_BodyPart,$hxEnums[e5.__enum__].__constructs__[e5._hx_index],null);
+		this.animation2.playOnce("summon");
 		return body;
 	}
 	,clear: function() {
@@ -5955,7 +5982,7 @@ var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
 	this.tiles_exportDescription = { name : "tiles_export", original_height : 128, file_sizes : [2118], original_width : 128, files : ["tiles-export.png"], type : "image"};
 	this.tiles_exportName = "tiles_export";
 	this.tiles_export = null;
-	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [2118], original_width : 128, files : ["tiles.png"], type : "image"};
+	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [1003], original_width : 128, files : ["tiles.png"], type : "image"};
 	this.tilesName = "tiles";
 	this.tiles = null;
 	this.satanicCircleDescription = { name : "satanicCircle", original_height : 192, file_sizes : [2563], original_width : 384, files : ["satanicCircle.png"], type : "image"};
@@ -5964,7 +5991,7 @@ var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
 	this.castleTilesDescription = { name : "castleTiles", original_height : 512, file_sizes : [5983], original_width : 128, files : ["castleTiles.png"], type : "image"};
 	this.castleTilesName = "castleTiles";
 	this.castleTiles = null;
-	this.bodyParts2Description = { name : "bodyParts2", original_height : 480, file_sizes : [2476], original_width : 96, files : ["bodyParts2.png"], type : "image"};
+	this.bodyParts2Description = { name : "bodyParts2", original_height : 480, file_sizes : [2557], original_width : 96, files : ["bodyParts2.png"], type : "image"};
 	this.bodyParts2Name = "bodyParts2";
 	this.bodyParts2 = null;
 };
@@ -6048,20 +6075,20 @@ kha__$Assets_SoundList.prototype = {
 	,__class__: kha__$Assets_SoundList
 };
 var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
-	this.names = ["bodyParts2_ase","castle1_tmx","castle2_tmx","castle3_tmx","castle4_tmx","castleTiles_ase","castleTiles_tsx","map_tmx","satanicCircle_ase","skeletune_sunvox","tiles_ase","tiles_tsx"];
+	this.names = ["_2020_02_02_02_02_sunvox","bodyParts2_ase","castle1_tmx","castle2_tmx","castle3_tmx","castle4_tmx","castleTiles_ase","castleTiles_tsx","map_tmx","satanicCircle_ase","skeletune_sunvox","tiles_ase","tiles_tsx"];
 	this.tiles_tsxDescription = { name : "tiles_tsx", file_sizes : [224], files : ["tiles.tsx"], type : "blob"};
 	this.tiles_tsxName = "tiles_tsx";
 	this.tiles_tsx = null;
 	this.tiles_aseDescription = { name : "tiles_ase", file_sizes : [1479], files : ["tiles.ase"], type : "blob"};
 	this.tiles_aseName = "tiles_ase";
 	this.tiles_ase = null;
-	this.skeletune_sunvoxDescription = { name : "skeletune_sunvox", file_sizes : [3908], files : ["skeletune.sunvox"], type : "blob"};
+	this.skeletune_sunvoxDescription = { name : "skeletune_sunvox", file_sizes : [4988], files : ["skeletune.sunvox"], type : "blob"};
 	this.skeletune_sunvoxName = "skeletune_sunvox";
 	this.skeletune_sunvox = null;
 	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [4699], files : ["satanicCircle.ase"], type : "blob"};
 	this.satanicCircle_aseName = "satanicCircle_ase";
 	this.satanicCircle_ase = null;
-	this.map_tmxDescription = { name : "map_tmx", file_sizes : [47184], files : ["map.tmx"], type : "blob"};
+	this.map_tmxDescription = { name : "map_tmx", file_sizes : [47049], files : ["map.tmx"], type : "blob"};
 	this.map_tmxName = "map_tmx";
 	this.map_tmx = null;
 	this.castleTiles_tsxDescription = { name : "castleTiles_tsx", file_sizes : [237], files : ["castleTiles.tsx"], type : "blob"};
@@ -6076,20 +6103,35 @@ var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
 	this.castle3_tmxDescription = { name : "castle3_tmx", file_sizes : [5767], files : ["castle3.tmx"], type : "blob"};
 	this.castle3_tmxName = "castle3_tmx";
 	this.castle3_tmx = null;
-	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [5514], files : ["castle2.tmx"], type : "blob"};
+	this.castle2_tmxDescription = { name : "castle2_tmx", file_sizes : [5469], files : ["castle2.tmx"], type : "blob"};
 	this.castle2_tmxName = "castle2_tmx";
 	this.castle2_tmx = null;
 	this.castle1_tmxDescription = { name : "castle1_tmx", file_sizes : [5056], files : ["castle1.tmx"], type : "blob"};
 	this.castle1_tmxName = "castle1_tmx";
 	this.castle1_tmx = null;
-	this.bodyParts2_aseDescription = { name : "bodyParts2_ase", file_sizes : [4562], files : ["bodyParts2.ase"], type : "blob"};
+	this.bodyParts2_aseDescription = { name : "bodyParts2_ase", file_sizes : [4594], files : ["bodyParts2.ase"], type : "blob"};
 	this.bodyParts2_aseName = "bodyParts2_ase";
 	this.bodyParts2_ase = null;
+	this._2020_02_02_02_02_sunvoxDescription = { name : "_2020_02_02_02_02_sunvox", file_sizes : [4988], files : ["2020-02-02 02-02.sunvox"], type : "blob"};
+	this._2020_02_02_02_02_sunvoxName = "_2020_02_02_02_02_sunvox";
+	this._2020_02_02_02_02_sunvox = null;
 };
 kha__$Assets_BlobList.__name__ = "kha._Assets.BlobList";
 kha__$Assets_BlobList.prototype = {
 	get: function(name) {
 		return Reflect.field(this,name);
+	}
+	,_2020_02_02_02_02_sunvox: null
+	,_2020_02_02_02_02_sunvoxName: null
+	,_2020_02_02_02_02_sunvoxDescription: null
+	,_2020_02_02_02_02_sunvoxLoad: function(done,failure) {
+		kha_Assets.loadBlob("_2020_02_02_02_02_sunvox",function(blob) {
+			done();
+		},failure,{ fileName : "kha/internal/AssetsBuilder.hx", lineNumber : 134, className : "kha._Assets.BlobList", methodName : "_2020_02_02_02_02_sunvoxLoad"});
+	}
+	,_2020_02_02_02_02_sunvoxUnload: function() {
+		this._2020_02_02_02_02_sunvox.unload();
+		this._2020_02_02_02_02_sunvox = null;
 	}
 	,bodyParts2_ase: null
 	,bodyParts2_aseName: null

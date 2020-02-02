@@ -14,7 +14,11 @@ class Main {
 		engine.start("skull",1200,800,onAssetLoad);
 	}
 	public static function onAssetLoad () {
-		engine.currentScene = new World(engine);
+		engine.currentScene = new StartScreen(engine);
+		//engine.currentScene = new World(engine);
+		//engine.currentScene = new WinScreen(engine);
+		//engine.currentScene = new LoseScreen(engine);
+		//engine.currentScene.add(new Music());
 	}
 }
 
