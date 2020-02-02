@@ -20,6 +20,8 @@ HX_DECLARE_CLASS2(bonsai,scene,Scene)
 HX_DECLARE_CLASS1(game,Body)
 HX_DECLARE_CLASS1(game,BodyPartParticles)
 HX_DECLARE_CLASS1(game,Inventory)
+HX_DECLARE_CLASS1(game,NoiseTilemap)
+HX_DECLARE_CLASS1(game,Structure)
 HX_DECLARE_CLASS1(game,SummonCircle)
 HX_DECLARE_CLASS1(game,World)
 HX_DECLARE_CLASS1(haxe,IMap)
@@ -78,6 +80,10 @@ class HXCPP_CLASS_ATTRIBUTES World_obj : public  ::bonsai::scene::Scene_obj
 		inline  ::bonsai::scene::Camera _hx_set_camera(hx::StackContext *_hx_ctx, ::bonsai::scene::Camera _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return camera=_hx_v; }
 		 ::game::SummonCircle summonCircle;
 		inline  ::game::SummonCircle _hx_set_summonCircle(hx::StackContext *_hx_ctx, ::game::SummonCircle _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return summonCircle=_hx_v; }
+		 ::game::NoiseTilemap map;
+		inline  ::game::NoiseTilemap _hx_set_map(hx::StackContext *_hx_ctx, ::game::NoiseTilemap _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return map=_hx_v; }
+		::Array< ::Dynamic> structures;
+		inline ::Array< ::Dynamic> _hx_set_structures(hx::StackContext *_hx_ctx,::Array< ::Dynamic> _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return structures=_hx_v; }
 		Float f;
 		void update(Float dt);
 

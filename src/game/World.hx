@@ -18,15 +18,18 @@ class World extends Scene {
 	var camera:Camera;
 
 	var summonCircle:SummonCircle;
-	var structure:Structure;
+	var map:NoiseTilemap;
+	var structures:Array<Structure> = [];
 
 	override public function new (engine) {
 		super("World Scene",engine);
 		input = engine.input;
 
+		map = new NoiseTilemap();
+		add(map);
+		var spawn = map.findSpawn();
+
 		// bodySpriteMap = new SpriteMap(kha.Assets.);
-		structure = new Structure();
-		add(structure);
 		// add(new Player(10, 30, engine.input), 1);
 
 		bodyParticleSystem = new BodyPartParticles();
@@ -34,13 +37,13 @@ class World extends Scene {
 		add(bodyParticleSystem);
 
 		camera = new Camera();
-		camera.position.x = -300;
-		camera.position.y = -300;
+		camera.position.x = spawn.x*2 - 300;
+		camera.position.y = spawn.y*2 - 300;
 		summonCircle = new SummonCircle();
+		summonCircle.position = spawn.mult(1).add(new kha.math.Vector2(30,30));
 		add(summonCircle);
 
 		inventory = new Inventory();
-		// add(inventory);
 		input.mouseUpListeners.push(function () {
 			var clickedPart = inventory.getItemClicked(input.mousePosition);
 			if (clickedPart != null) {
@@ -65,14 +68,45 @@ class World extends Scene {
 
 		});
 
+		for (i in 0...20) {
+			// Sand
+			var pos = map.tilesByBiome[1][Math.floor(Math.random() * map.tilesByBiome[1].length)];
+			summonCircle = new SummonCircle();
+			summonCircle.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
+			add(summonCircle);
+		}
+
+		for (i in 0...15) {
+			// Grass
+			var pos = map.tilesByBiome[2][Math.floor(Math.random() * map.tilesByBiome[2].length)];
+			var structure = new Structure(kha.Assets.blobs.castle1_tmx.toString());
+			structure.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
+			add(structure);
+			structures.push(structure);
+		}
+		for (i in 0...5) {
+			// Dirt
+			var pos = map.tilesByBiome[3][Math.floor(Math.random() * map.tilesByBiome[3].length)];
+			var structure = new Structure(kha.Assets.blobs.castle2_tmx.toString());
+			structure.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
+			add(structure);
+			structures.push(structure);
+		}
+		for (i in 0...2) {
+			// Stone
+			var pos = map.tilesByBiome[4][Math.floor(Math.random() * map.tilesByBiome[4].length)];
+			var structure = new Structure(kha.Assets.blobs.castle3_tmx.toString());
+			structure.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
+			add(structure);
+			structures.push(structure);
+		}
+
 		for (i in 0...100) {
 			var body = new Body();
+			body.position = spawn.add(new kha.math.Vector2(Math.random()*10,Math.random()*10));
 			// add(body);
 			bodies.push(body);
 		}
-		bodies.sort(function (a,b) {
-			return a.position.y < b.position.y ? -1 : 1;
-		});
 	}
 	var f = 0.;
 
@@ -94,24 +128,34 @@ class World extends Scene {
 			this.camera.position.y -= dt * cameraSpeed;
 
 		super.update(dt);
+		bodies.sort(function (a,b) {
+			return a.position.y < b.position.y ? -1 : 1;
+		});
+
 		for (body in bodies)
 			body.update(dt);
 
 		// if (f > 500){
-			// for (body in bodies) {
-				// if (Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < (f - 50)) {
-					// explodeBody(body);
-				// }
-			// }
+		// for (body in bodies) {
+		// if (Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < (f - 50)) {
+		// explodeBody(body);
+		// }
+		// }
 		// }
 		var worldMouseFast = camera.transformation.transformPoint(input.mousePosition);
 		var worldMouse = new kha.math.Vector2(worldMouseFast.x,worldMouseFast.y);
 		for (body in bodies) {
-			if (body.friendly)
-				body.targetPosition = worldMouse;
+			if (body.friendly) {
+				body.targetPosition = worldMouse.mult(1);
+				if (map.getTile(Math.floor(body.position.x/16), Math.floor(body.position.y/16)) == 0) {
+					body.targetPosition.x = 150*16;
+					body.targetPosition.y = 150*16;
+
+				}
+			}
 
 			for (body2 in bodies) {
-				if (body == body2 || Math.abs(body.position.x-body2.position.x) > 15 || Math.abs(body.position.y-body2.position.y) > 15) 
+				if (body == body2 || Math.abs(body.position.x-body2.position.x) >215 || Math.abs(body.position.y-body2.position.y) > 15) 
 					continue;
 				var collision = body.collider.testCircle(body2.collider);
 				if (collision != null) {
@@ -138,64 +182,74 @@ class World extends Scene {
 					body.vy += collision.separationY*.1;
 				}
 			}
-			for (collider in structure.colliders) {
-				var collision = collider.testCircle(body.collider);
-				if (collision != null) {
-					body.position.x -= collision.separationX;
-					body.position.y -= collision.separationY;
-					// body.vx += collision.separationX*.1;
-					// body.vy += collision.separationY*.1;
+			for (structure in structures) {
+				for (collider in structure.colliders) {
+					var collision = collider.testCircle(body.collider);
+					if (collision != null) {
+						body.position.x -= collision.separationX;
+						body.position.y -= collision.separationY;
+						// body.vx += collision.separationX*.1;
+						// body.vy += collision.separationY*.1;
 
+					}
 				}
 			}
-		}
-		bodyParticleSystem.members.sort(function (a,b) {
-			return a.y - b.y > 0 ? 1 : -1;
-		});
+			bodyParticleSystem.members.sort(function (a,b) {
+				return a.y - b.y > 0 ? 1 : -1;
+			});
 
-		var i = bodyParticleSystem.members.length - 1;
-		while (i >= 0) {
-			var item = bodyParticleSystem.members[i];
-			if (item == null){
-				i--;
-				continue;
+			var i = bodyParticleSystem.members.length - 1;
+			while (i >= 0) {
+				var item = bodyParticleSystem.members[i];
+				if (item == null){
+					i--;
+					continue;
+				}
+
+				if (Math.pow(item.x + 16 - worldMousePos.x, 2) + Math.pow(item.y + 14 - worldMousePos.y, 2) < 200) {
+					// Reorient heads to be directionless
+					if ([BodyPart.NaturalHeadUp, BodyPart.NaturalHeadDown, BodyPart.NaturalHeadRight, BodyPart.NaturalHeadLeft].indexOf(item.part) != -1)
+						item.part = BodyPart.NaturalHead;
+					inventory.items.set(item.part, inventory.items.get(item.part) + 1);
+					bodyParticleSystem.members.remove(item);
+					// item.vz = -4;
+				}else{
+					i--;
+				}
+
 			}
 
-			if (Math.pow(item.x + 16 - worldMousePos.x, 2) + Math.pow(item.y + 14 - worldMousePos.y, 2) < 200) {
-				// Reorient heads to be directionless
-				if ([BodyPart.NaturalHeadUp, BodyPart.NaturalHeadDown, BodyPart.NaturalHeadRight, BodyPart.NaturalHeadLeft].indexOf(item.part) != -1)
-					item.part = BodyPart.NaturalHead;
-				inventory.items.set(item.part, inventory.items.get(item.part) + 1);
-				bodyParticleSystem.members.remove(item);
-				// item.vz = -4;
-			}else{
-				i--;
-			}
-
+			/*
+			   bodyParticleSystem.spawnParticle({
+			   x: Math.random() * 230,
+			   y: Math.random() * 230,
+			   z: 16,
+			   vz: -.7,
+			   part: BodyPart.createByIndex(Math.floor(Math.random() * 4))
+			   });*/
 		}
-
-		/*
-		   bodyParticleSystem.spawnParticle({
-		   x: Math.random() * 230,
-		   y: Math.random() * 230,
-		   z: 16,
-		   vz: -.7,
-		   part: BodyPart.createByIndex(Math.floor(Math.random() * 4))
-		   });*/
 	}
-	override public function render (g) {
+	override public function render (g:kha.graphics2.Graphics) {
+		g.color = kha.Color.fromBytes(99,155,255);
+		g.fillRect(0,0,10000,10000);
+		g.color = kha.Color.White;
+
+		camera.transformation.scale.x = 2;
+		camera.transformation.scale.y = 2;
 		camera.apply(g);
 		super.render(g);
 		for (body in bodies)
 			body.render(g);
 
 		g.color = kha.Color.Pink;
-		for (collider in structure.colliders) {
-			var verts = collider.transformedVertices;
-			var i = 0;
-			while (i < verts.length-1) {
-				g.drawLine(verts[i].x,verts[i].y,verts[i+1].x,verts[i+1].y);
-				i++;
+		for (structure in structures) {
+			for (collider in structure.colliders) {
+				var verts = collider.transformedVertices;
+				var i = 0;
+				while (i < verts.length-1) {
+					g.drawLine(verts[i].x,verts[i].y,verts[i+1].x,verts[i+1].y);
+					i++;
+				}
 			}
 		}
 		g.color = kha.Color.White;

@@ -21,6 +21,7 @@
 		<class path="../src" />
 		<class path="../Libraries/zui/Sources" />
 		<class path="../Libraries/differ" />
+		<class path="../Libraries/hxNoise" />
 		<class path="../Libraries/zui" />
 	</classpaths>
 	<!-- Build options -->
@@ -30,7 +31,7 @@
 		<option noInlineOnDebug="False" />
 		<option mainClass="Main" />
 		<option enabledebug="False" />
-		<option additional="-D hxcpp_smart_strings&#xA;-D zui&#xA;-D differ&#xA;-D no-compilation&#xA;-D include-prefix=hxinc&#xA;-D HXCPP_GC_GENERATIONAL&#xA;-D sys_linux&#xA;-D sys_kore&#xA;-D sys_g1&#xA;-D sys_g2&#xA;-D sys_g3&#xA;-D sys_g4&#xA;-D sys_a1&#xA;-D sys_a2&#xA;-D kha_cpp&#xA;-D kha_linux&#xA;-D kha_linux_native&#xA;-D kha_linux_cpp&#xA;-D kha_opengl&#xA;-D kha_kore&#xA;-D kha_g1&#xA;-D kha_g2&#xA;-D kha_g3&#xA;-D kha_g4&#xA;-D kha_a1&#xA;-D kha_a2&#xA;-D kha&#xA;-D kha_version=1810&#xA;-D kha_project_name=BonsaiGame&#xA;-D kha_output=&quot;/home/mixer/projects/GGJ20/build/linux-build/Sources&quot;&#xA;" />
+		<option additional="-D hxcpp_smart_strings&#xA;-D zui&#xA;-D differ&#xA;-D hxNoise&#xA;-D no-compilation&#xA;-D include-prefix=hxinc&#xA;-D HXCPP_GC_GENERATIONAL&#xA;-D sys_linux&#xA;-D sys_kore&#xA;-D sys_g1&#xA;-D sys_g2&#xA;-D sys_g3&#xA;-D sys_g4&#xA;-D sys_a1&#xA;-D sys_a2&#xA;-D kha_cpp&#xA;-D kha_linux&#xA;-D kha_linux_native&#xA;-D kha_linux_cpp&#xA;-D kha_opengl&#xA;-D kha_kore&#xA;-D kha_g1&#xA;-D kha_g2&#xA;-D kha_g3&#xA;-D kha_g4&#xA;-D kha_a1&#xA;-D kha_a2&#xA;-D kha&#xA;-D kha_version=1810&#xA;-D kha_project_name=BonsaiGame&#xA;-D kha_output=&quot;/home/mixer/projects/GGJ20/build/linux-build/Sources&quot;&#xA;" />
 	</build>
 	<!-- haxelib libraries -->
 	<haxelib>

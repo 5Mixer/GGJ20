@@ -53,6 +53,9 @@
 #ifndef INCLUDED_kha__Assets_ImageList
 #include <hxinc/kha/_Assets/ImageList.h>
 #endif
+#ifndef INCLUDED_kha__Color_Color_Impl_
+#include <hxinc/kha/_Color/Color_Impl_.h>
+#endif
 #ifndef INCLUDED_kha_graphics2_Graphics
 #include <hxinc/kha/graphics2/Graphics.h>
 #endif
@@ -64,10 +67,10 @@ HX_DEFINE_STACK_FRAME(_hx_pos_283631fa0fa340d1_4_new,"game.Body","new",0x2a28acb
 static const int _hx_array_data_4a50d4be_1[] = {
 	(int)0,
 };
-HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_72_update,"game.Body","update",0xd9833bb9,"game.Body.update","game/Body.hx",72,0xdfd7eadf)
-HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_118_getItemDamage,"game.Body","getItemDamage",0x0ce61668,"game.Body.getItemDamage","game/Body.hx",118,0xdfd7eadf)
-HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_126_getDamage,"game.Body","getDamage",0x4bd211f5,"game.Body.getDamage","game/Body.hx",126,0xdfd7eadf)
-HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_129_render,"game.Body","render",0x57a72106,"game.Body.render","game/Body.hx",129,0xdfd7eadf)
+HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_73_update,"game.Body","update",0xd9833bb9,"game.Body.update","game/Body.hx",73,0xdfd7eadf)
+HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_137_getItemDamage,"game.Body","getItemDamage",0x0ce61668,"game.Body.getItemDamage","game/Body.hx",137,0xdfd7eadf)
+HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_145_getDamage,"game.Body","getDamage",0x4bd211f5,"game.Body.getDamage","game/Body.hx",145,0xdfd7eadf)
+HX_LOCAL_STACK_FRAME(_hx_pos_283631fa0fa340d1_148_render,"game.Body","render",0x57a72106,"game.Body.render","game/Body.hx",148,0xdfd7eadf)
 namespace game{
 
 void Body_obj::__construct(){
@@ -99,30 +102,30 @@ HXLINE(  17)		this->z = ((Float)0);
 HXLINE(  16)		this->vz = ((Float)0);
 HXLINE(  14)		this->attackCooldown = ((Float)0.);
 HXLINE(  13)		this->health = 100;
-HXLINE(  52)		super::__construct();
-HXLINE(  54)		this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,(-160 + (( (Float)(320) ) * ::Math_obj::random())),(-110 + (( (Float)(220) ) * ::Math_obj::random()))));
-HXLINE(  55)		this->_hx_set_targetPosition(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
-HXLINE(  57)		this->_hx_set_collider(HX_CTX,  ::differ::shapes::Circle_obj::__alloc( HX_CTX ,this->position->x,this->position->y,( (Float)(7) )));
-HXLINE(  59)		this->friendly = (::Math_obj::random() > ((Float).5));
-HXLINE(  61)		this->_hx_set_chest(HX_CTX, ::game::BodyPart_obj::NaturalChest_dyn());
-HXLINE(  62)		this->_hx_set_head(HX_CTX, ::game::BodyPart_obj::NaturalHeadDown_dyn());
-HXLINE(  63)		this->_hx_set_leftArm(HX_CTX, ::game::BodyPart_obj::NaturalArm_dyn());
-HXLINE(  64)		 ::game::BodyPart _hx_tmp;
-HXDLIN(  64)		if (this->friendly) {
-HXLINE(  64)			_hx_tmp = ::game::BodyPart_obj::Axe_dyn();
+HXLINE(  53)		super::__construct();
+HXLINE(  55)		this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,(-160 + (( (Float)(320) ) * ::Math_obj::random())),(-110 + (( (Float)(220) ) * ::Math_obj::random()))));
+HXLINE(  56)		this->_hx_set_targetPosition(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,0,0));
+HXLINE(  58)		this->_hx_set_collider(HX_CTX,  ::differ::shapes::Circle_obj::__alloc( HX_CTX ,this->position->x,this->position->y,( (Float)(7) )));
+HXLINE(  60)		this->friendly = true;
+HXLINE(  62)		this->_hx_set_chest(HX_CTX, ::game::BodyPart_obj::NaturalChest_dyn());
+HXLINE(  63)		this->_hx_set_head(HX_CTX, ::game::BodyPart_obj::NaturalHead_dyn());
+HXLINE(  64)		this->_hx_set_leftArm(HX_CTX, ::game::BodyPart_obj::NaturalArm_dyn());
+HXLINE(  65)		 ::game::BodyPart _hx_tmp;
+HXDLIN(  65)		if (this->friendly) {
+HXLINE(  65)			_hx_tmp = ::game::BodyPart_obj::Axe_dyn();
             		}
             		else {
-HXLINE(  64)			_hx_tmp = ::game::BodyPart_obj::NaturalHead_dyn();
+HXLINE(  65)			_hx_tmp = ::game::BodyPart_obj::NaturalHead_dyn();
             		}
-HXDLIN(  64)		this->_hx_set_rightArm(HX_CTX, _hx_tmp);
-HXLINE(  65)		this->_hx_set_leftLeg(HX_CTX, ::game::BodyPart_obj::NaturalLeg_dyn());
-HXLINE(  66)		this->_hx_set_rightLeg(HX_CTX, ::game::BodyPart_obj::NaturalLeg_dyn());
-HXLINE(  68)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
-HXLINE(  69)		 ::bonsai::render::AnimatedSprite _hx_tmp1 = this->animatedSprite;
-HXDLIN(  69)		_hx_tmp1->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
+HXDLIN(  65)		this->_hx_set_rightArm(HX_CTX, _hx_tmp);
+HXLINE(  66)		this->_hx_set_leftLeg(HX_CTX, ::game::BodyPart_obj::NaturalLeg_dyn());
+HXLINE(  67)		this->_hx_set_rightLeg(HX_CTX, ::game::BodyPart_obj::NaturalLeg_dyn());
+HXLINE(  69)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
+HXLINE(  70)		 ::bonsai::render::AnimatedSprite _hx_tmp1 = this->animatedSprite;
+HXDLIN(  70)		_hx_tmp1->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
             			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_4a50d4be_1,1))
             			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts2,32,32))));
-HXLINE(  70)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
+HXLINE(  71)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
             	}
 
 Dynamic Body_obj::__CreateEmpty() { return new Body_obj; }
@@ -145,187 +148,198 @@ bool Body_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void Body_obj::update(Float dt){
-            	HX_GC_STACKFRAME(&_hx_pos_283631fa0fa340d1_72_update)
-HXLINE(  73)		 ::game::Body _hx_tmp = hx::ObjectPtr<OBJ_>(this);
-HXDLIN(  73)		_hx_tmp->attackCooldown = (_hx_tmp->attackCooldown - dt);
-HXLINE(  74)		if ((this->attackCooldown < 0)) {
-HXLINE(  75)			this->attackCooldown = ((Float)0.);
+            	HX_GC_STACKFRAME(&_hx_pos_283631fa0fa340d1_73_update)
+HXLINE(  74)		 ::game::Body _hx_tmp = hx::ObjectPtr<OBJ_>(this);
+HXDLIN(  74)		_hx_tmp->attackCooldown = (_hx_tmp->attackCooldown - dt);
+HXLINE(  75)		if ((this->attackCooldown < 0)) {
+HXLINE(  76)			this->attackCooldown = ((Float)0.);
             		}
-HXLINE(  77)		 ::game::Body _hx_tmp1 = hx::ObjectPtr<OBJ_>(this);
-HXDLIN(  77)		_hx_tmp1->time = (_hx_tmp1->time + dt);
-HXLINE(  78)		Float speed = (( (Float)(180) ) * dt);
-HXLINE(  79)		 ::kha::math::Vector2 _this = this->targetPosition;
-HXDLIN(  79)		 ::kha::math::Vector2 vec = this->position;
-HXDLIN(  79)		Float _this_x = (_this->x - vec->x);
-HXDLIN(  79)		Float _this_y = (_this->y - vec->y);
-HXDLIN(  79)		Float _this_x1 = _this_x;
-HXDLIN(  79)		Float _this_y1 = _this_y;
-HXDLIN(  79)		Float currentLength = ::Math_obj::sqrt(((_this_x1 * _this_x1) + (_this_y1 * _this_y1)));
-HXDLIN(  79)		if ((currentLength != 0)) {
-HXLINE(  79)			Float mul = (( (Float)(1) ) / currentLength);
-HXDLIN(  79)			_this_x1 = (_this_x1 * mul);
-HXDLIN(  79)			_this_y1 = (_this_y1 * mul);
+HXLINE(  78)		 ::game::Body _hx_tmp1 = hx::ObjectPtr<OBJ_>(this);
+HXDLIN(  78)		_hx_tmp1->time = (_hx_tmp1->time + dt);
+HXLINE(  79)		Float speed = (( (Float)(180) ) * dt);
+HXLINE(  80)		Float footOffset_x = ( (Float)(16) );
+HXDLIN(  80)		Float footOffset_y = ( (Float)(32) );
+HXLINE(  81)		 ::kha::math::Vector2 _this = this->targetPosition;
+HXDLIN(  81)		 ::kha::math::Vector2 _this1 = this->position;
+HXDLIN(  81)		Float vec_x = (_this1->x + footOffset_x);
+HXDLIN(  81)		Float vec_y = (_this1->y + footOffset_y);
+HXDLIN(  81)		Float _this_x = (_this->x - vec_x);
+HXDLIN(  81)		Float _this_y = (_this->y - vec_y);
+HXDLIN(  81)		Float _this_x1 = _this_x;
+HXDLIN(  81)		Float _this_y1 = _this_y;
+HXDLIN(  81)		Float currentLength = ::Math_obj::sqrt(((_this_x1 * _this_x1) + (_this_y1 * _this_y1)));
+HXDLIN(  81)		if ((currentLength != 0)) {
+HXLINE(  81)			Float mul = (( (Float)(1) ) / currentLength);
+HXDLIN(  81)			_this_x1 = (_this_x1 * mul);
+HXDLIN(  81)			_this_y1 = (_this_y1 * mul);
             		}
-HXDLIN(  79)		Float movement_x = (_this_x1 * speed);
-HXDLIN(  79)		Float movement_y = (_this_y1 * speed);
-HXLINE(  80)		 ::kha::math::Vector2 _this1 = this->position;
-HXDLIN(  80)		this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,(_this1->x + movement_x),(_this1->y + movement_y)));
-HXLINE(  83)		 ::kha::math::Vector2 _hx_tmp2 = this->position;
-HXDLIN(  83)		_hx_tmp2->x = (_hx_tmp2->x + this->vx);
-HXLINE(  84)		 ::kha::math::Vector2 _hx_tmp3 = this->position;
-HXDLIN(  84)		_hx_tmp3->y = (_hx_tmp3->y + this->vy);
-HXLINE(  86)		 ::game::Body _hx_tmp4 = hx::ObjectPtr<OBJ_>(this);
-HXDLIN(  86)		_hx_tmp4->vx = (_hx_tmp4->vx * ((Float).9));
-HXLINE(  87)		 ::game::Body _hx_tmp5 = hx::ObjectPtr<OBJ_>(this);
-HXDLIN(  87)		_hx_tmp5->vy = (_hx_tmp5->vy * ((Float).9));
-HXLINE(  93)		int height = 10;
-HXLINE(  94)		int _hx_tmp6;
-HXDLIN(  94)		if (this->friendly) {
-HXLINE(  94)			_hx_tmp6 = 0;
+HXDLIN(  81)		Float movement_x = (_this_x1 * speed);
+HXDLIN(  81)		Float movement_y = (_this_y1 * speed);
+HXLINE(  82)		 ::kha::math::Vector2 _this2 = this->targetPosition;
+HXDLIN(  82)		 ::kha::math::Vector2 _this3 = this->position;
+HXDLIN(  82)		Float vec_x1 = (_this3->x + footOffset_x);
+HXDLIN(  82)		Float vec_y1 = (_this3->y + footOffset_y);
+HXDLIN(  82)		Float _this_x2 = (_this2->x - vec_x1);
+HXDLIN(  82)		Float _this_y2 = (_this2->y - vec_y1);
+HXDLIN(  82)		if ((::Math_obj::sqrt(((_this_x2 * _this_x2) + (_this_y2 * _this_y2))) > 10)) {
+HXLINE(  83)			 ::kha::math::Vector2 _this4 = this->position;
+HXDLIN(  83)			this->_hx_set_position(HX_CTX,  ::kha::math::Vector2_obj::__alloc( HX_CTX ,(_this4->x + movement_x),(_this4->y + movement_y)));
+            		}
+HXLINE(  86)		if (hx::IsEq( this->head,::game::BodyPart_obj::NaturalHead_dyn() )) {
+HXLINE(  87)			if ((::Math_obj::abs((this->vx + movement_x)) > ::Math_obj::abs((this->vy + movement_y)))) {
+HXLINE(  88)				if (((this->vx + movement_x) > 0)) {
+HXLINE(  89)					this->_hx_set_drawnHead(HX_CTX, ::game::BodyPart_obj::NaturalHeadRight_dyn());
+            				}
+            				else {
+HXLINE(  91)					this->_hx_set_drawnHead(HX_CTX, ::game::BodyPart_obj::NaturalHeadLeft_dyn());
+            				}
+            			}
+            			else {
+HXLINE(  93)				if (((this->vy + movement_y) > 0)) {
+HXLINE(  94)					this->_hx_set_drawnHead(HX_CTX, ::game::BodyPart_obj::NaturalHeadDown_dyn());
+            				}
+            				else {
+HXLINE(  96)					this->_hx_set_drawnHead(HX_CTX, ::game::BodyPart_obj::NaturalHeadUp_dyn());
+            				}
+            			}
+            		}
+HXLINE( 102)		 ::kha::math::Vector2 _hx_tmp2 = this->position;
+HXDLIN( 102)		_hx_tmp2->x = (_hx_tmp2->x + this->vx);
+HXLINE( 103)		 ::kha::math::Vector2 _hx_tmp3 = this->position;
+HXDLIN( 103)		_hx_tmp3->y = (_hx_tmp3->y + this->vy);
+HXLINE( 105)		 ::game::Body _hx_tmp4 = hx::ObjectPtr<OBJ_>(this);
+HXDLIN( 105)		_hx_tmp4->vx = (_hx_tmp4->vx * ((Float).9));
+HXLINE( 106)		 ::game::Body _hx_tmp5 = hx::ObjectPtr<OBJ_>(this);
+HXDLIN( 106)		_hx_tmp5->vy = (_hx_tmp5->vy * ((Float).9));
+HXLINE( 112)		int height = 5;
+HXLINE( 113)		int _hx_tmp6;
+HXDLIN( 113)		if (this->friendly) {
+HXLINE( 113)			_hx_tmp6 = 0;
             		}
             		else {
-HXLINE(  94)			_hx_tmp6 = 2;
+HXLINE( 113)			_hx_tmp6 = 2;
             		}
-HXDLIN(  94)		this->z = (::Math_obj::abs(::Math_obj::sin(((this->time + _hx_tmp6) * ( (Float)(10) )))) * ( (Float)(height) ));
-HXLINE(  97)		bool _hx_tmp7;
-HXDLIN(  97)		bool _hx_tmp8;
-HXDLIN(  97)		if ((::Math_obj::abs(this->vz) < ((Float).1))) {
-HXLINE(  97)			_hx_tmp8 = (this->z < 1);
-            		}
-            		else {
-HXLINE(  97)			_hx_tmp8 = false;
-            		}
-HXDLIN(  97)		if (_hx_tmp8) {
-HXLINE(  97)			_hx_tmp7 = (::Math_obj::abs(this->vx) < ((Float).1));
+HXDLIN( 113)		this->z = (::Math_obj::abs(::Math_obj::sin(((this->time + _hx_tmp6) * ( (Float)(10) )))) * ( (Float)(height) ));
+HXLINE( 116)		bool _hx_tmp7;
+HXDLIN( 116)		bool _hx_tmp8;
+HXDLIN( 116)		if ((::Math_obj::abs(this->vz) < ((Float).1))) {
+HXLINE( 116)			_hx_tmp8 = (this->z < 1);
             		}
             		else {
-HXLINE(  97)			_hx_tmp7 = false;
+HXLINE( 116)			_hx_tmp8 = false;
             		}
-HXLINE( 112)		this->collider->set_x(this->position->x);
-HXLINE( 113)		this->collider->set_y(this->position->y);
-HXLINE( 115)		this->super::update(dt);
+HXDLIN( 116)		if (_hx_tmp8) {
+HXLINE( 116)			_hx_tmp7 = (::Math_obj::abs(this->vx) < ((Float).1));
+            		}
+            		else {
+HXLINE( 116)			_hx_tmp7 = false;
+            		}
+HXLINE( 131)		this->collider->set_x((this->position->x + 8));
+HXLINE( 132)		this->collider->set_y((this->position->y + 24));
+HXLINE( 134)		this->super::update(dt);
             	}
 
 
 int Body_obj::getItemDamage( ::game::BodyPart bodyPart){
-            	HX_STACKFRAME(&_hx_pos_283631fa0fa340d1_118_getItemDamage)
-HXLINE( 119)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::NaturalArm_dyn() )) {
-HXLINE( 119)			return 5;
+            	HX_STACKFRAME(&_hx_pos_283631fa0fa340d1_137_getItemDamage)
+HXLINE( 138)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::NaturalArm_dyn() )) {
+HXLINE( 138)			return 5;
             		}
-HXLINE( 120)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::Knife_dyn() )) {
-HXLINE( 120)			return 10;
+HXLINE( 139)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::Knife_dyn() )) {
+HXLINE( 139)			return 10;
             		}
-HXLINE( 121)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::Sword_dyn() )) {
-HXLINE( 121)			return 15;
+HXLINE( 140)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::Sword_dyn() )) {
+HXLINE( 140)			return 15;
             		}
-HXLINE( 122)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::Axe_dyn() )) {
-HXLINE( 122)			return 20;
+HXLINE( 141)		if (hx::IsEq( bodyPart,::game::BodyPart_obj::Axe_dyn() )) {
+HXLINE( 141)			return 20;
             		}
-HXLINE( 123)		return 1;
+HXLINE( 142)		return 1;
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(Body_obj,getItemDamage,return )
 
 int Body_obj::getDamage(){
-            	HX_STACKFRAME(&_hx_pos_283631fa0fa340d1_126_getDamage)
-HXDLIN( 126)		int _hx_tmp = this->getItemDamage(this->leftArm);
-HXDLIN( 126)		return (_hx_tmp + this->getItemDamage(this->rightArm));
+            	HX_STACKFRAME(&_hx_pos_283631fa0fa340d1_145_getDamage)
+HXDLIN( 145)		int _hx_tmp = this->getItemDamage(this->leftArm);
+HXDLIN( 145)		return (_hx_tmp + this->getItemDamage(this->rightArm));
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Body_obj,getDamage,return )
 
 void Body_obj::render( ::kha::graphics2::Graphics graphics){
-            	HX_GC_STACKFRAME(&_hx_pos_283631fa0fa340d1_129_render)
-HXLINE( 130)		bool _hx_tmp;
-HXDLIN( 130)		bool _hx_tmp1;
-HXDLIN( 130)		bool _hx_tmp2;
-HXDLIN( 130)		bool _hx_tmp3;
-HXDLIN( 130)		bool _hx_tmp4;
-HXDLIN( 130)		if (hx::IsNotNull( this->chest )) {
-HXLINE( 130)			_hx_tmp4 = hx::IsNull( this->head );
+            	HX_GC_STACKFRAME(&_hx_pos_283631fa0fa340d1_148_render)
+HXLINE( 149)		bool _hx_tmp;
+HXDLIN( 149)		bool _hx_tmp1;
+HXDLIN( 149)		bool _hx_tmp2;
+HXDLIN( 149)		bool _hx_tmp3;
+HXDLIN( 149)		bool _hx_tmp4;
+HXDLIN( 149)		if (hx::IsNotNull( this->chest )) {
+HXLINE( 149)			_hx_tmp4 = hx::IsNull( this->drawnHead );
             		}
             		else {
-HXLINE( 130)			_hx_tmp4 = true;
+HXLINE( 149)			_hx_tmp4 = true;
             		}
-HXDLIN( 130)		if (!(_hx_tmp4)) {
-HXLINE( 130)			_hx_tmp3 = hx::IsNull( this->leftLeg );
-            		}
-            		else {
-HXLINE( 130)			_hx_tmp3 = true;
-            		}
-HXDLIN( 130)		if (!(_hx_tmp3)) {
-HXLINE( 130)			_hx_tmp2 = hx::IsNull( this->rightLeg );
+HXDLIN( 149)		if (!(_hx_tmp4)) {
+HXLINE( 149)			_hx_tmp3 = hx::IsNull( this->leftLeg );
             		}
             		else {
-HXLINE( 130)			_hx_tmp2 = true;
+HXLINE( 149)			_hx_tmp3 = true;
             		}
-HXDLIN( 130)		if (!(_hx_tmp2)) {
-HXLINE( 130)			_hx_tmp1 = hx::IsNull( this->leftArm );
-            		}
-            		else {
-HXLINE( 130)			_hx_tmp1 = true;
-            		}
-HXDLIN( 130)		if (!(_hx_tmp1)) {
-HXLINE( 130)			_hx_tmp = hx::IsNull( this->rightArm );
+HXDLIN( 149)		if (!(_hx_tmp3)) {
+HXLINE( 149)			_hx_tmp2 = hx::IsNull( this->rightLeg );
             		}
             		else {
-HXLINE( 130)			_hx_tmp = true;
+HXLINE( 149)			_hx_tmp2 = true;
             		}
-HXDLIN( 130)		if (_hx_tmp) {
-HXLINE( 131)			::haxe::Log_obj::trace(HX_("attempted to render a body that lacks part/s",14,a5,2b,00),hx::SourceInfo(HX_("game/Body.hx",df,ea,d7,df),131,HX_("game.Body",be,d4,50,4a),HX_("render",56,6b,29,05)));
-HXLINE( 132)			return;
-            		}
-HXLINE( 134)		 ::Dynamic _hx_tmp5 = this->bodyLayers->get(this->chest);
-HXDLIN( 134)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp5));
-HXLINE( 135)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
-HXLINE( 137)		 ::game::BodyPart drawnHead = this->head;
-HXLINE( 138)		if (hx::IsEq( drawnHead,::game::BodyPart_obj::NaturalHead_dyn() )) {
-HXLINE( 139)			if ((::Math_obj::abs(this->vx) > ::Math_obj::abs(this->vy))) {
-HXLINE( 140)				if ((this->vx > 0)) {
-HXLINE( 141)					drawnHead = ::game::BodyPart_obj::NaturalHeadRight_dyn();
-            				}
-            				else {
-HXLINE( 143)					drawnHead = ::game::BodyPart_obj::NaturalHeadLeft_dyn();
-            				}
-            			}
-            			else {
-HXLINE( 145)				if ((this->vy > 0)) {
-HXLINE( 146)					drawnHead = ::game::BodyPart_obj::NaturalHeadDown_dyn();
-            				}
-            				else {
-HXLINE( 148)					drawnHead = ::game::BodyPart_obj::NaturalHeadUp_dyn();
-            				}
-            			}
-            		}
-HXLINE( 152)		 ::Dynamic _hx_tmp6 = this->bodyLayers->get(this->head);
-HXDLIN( 152)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp6));
-HXLINE( 153)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
-HXLINE( 155)		 ::Dynamic _hx_tmp7 = this->mohawks->get(this->head);
-HXDLIN( 155)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp7));
-HXLINE( 156)		int _hx_tmp8;
-HXDLIN( 156)		if (this->friendly) {
-HXLINE( 156)			_hx_tmp8 = -16711936;
+HXDLIN( 149)		if (!(_hx_tmp2)) {
+HXLINE( 149)			_hx_tmp1 = hx::IsNull( this->leftArm );
             		}
             		else {
-HXLINE( 156)			_hx_tmp8 = -65536;
+HXLINE( 149)			_hx_tmp1 = true;
             		}
-HXDLIN( 156)		graphics->set_color(_hx_tmp8);
+HXDLIN( 149)		if (!(_hx_tmp1)) {
+HXLINE( 149)			_hx_tmp = hx::IsNull( this->rightArm );
+            		}
+            		else {
+HXLINE( 149)			_hx_tmp = true;
+            		}
+HXDLIN( 149)		if (_hx_tmp) {
+HXLINE( 150)			::haxe::Log_obj::trace(HX_("attempted to render a body that lacks part/s",14,a5,2b,00),hx::SourceInfo(HX_("game/Body.hx",df,ea,d7,df),150,HX_("game.Body",be,d4,50,4a),HX_("render",56,6b,29,05)));
+HXLINE( 151)			return;
+            		}
+HXLINE( 153)		 ::Dynamic _hx_tmp5 = this->bodyLayers->get(this->chest);
+HXDLIN( 153)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp5));
+HXLINE( 154)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
+HXLINE( 156)		 ::Dynamic _hx_tmp6 = this->bodyLayers->get(this->drawnHead);
+HXDLIN( 156)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp6));
 HXLINE( 157)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
-HXLINE( 158)		graphics->set_color(-1);
-HXLINE( 160)		 ::Dynamic _hx_tmp9 = this->bodyLayers->get(this->leftLeg);
-HXDLIN( 160)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp9));
+HXLINE( 159)		 ::Dynamic _hx_tmp7 = this->mohawks->get(this->drawnHead);
+HXDLIN( 159)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp7));
+HXLINE( 160)		int _hx_tmp8;
+HXDLIN( 160)		if (this->friendly) {
+HXLINE( 160)			_hx_tmp8 = ::kha::_Color::Color_Impl__obj::fromBytes(41,196,77,null());
+            		}
+            		else {
+HXLINE( 160)			_hx_tmp8 = -65536;
+            		}
+HXDLIN( 160)		graphics->set_color(_hx_tmp8);
 HXLINE( 161)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
-HXLINE( 163)		 ::Dynamic _hx_tmp10 = this->bodyLayers->get(this->rightLeg);
-HXDLIN( 163)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp10));
-HXLINE( 164)		this->animatedSprite->render(graphics,( (float)((this->position->x + 5)) ),( (float)((this->position->y - this->z)) ));
-HXLINE( 166)		 ::Dynamic _hx_tmp11 = this->bodyLayers->get(this->leftArm);
-HXDLIN( 166)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp11));
-HXLINE( 167)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
-HXLINE( 169)		 ::Dynamic _hx_tmp12 = this->bodyLayers->get(this->rightArm);
-HXDLIN( 169)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp12));
-HXLINE( 170)		this->animatedSprite->render(graphics,( (float)((this->position->x + 7)) ),( (float)((this->position->y - this->z)) ));
+HXLINE( 162)		graphics->set_color(-1);
+HXLINE( 164)		 ::Dynamic _hx_tmp9 = this->bodyLayers->get(this->leftLeg);
+HXDLIN( 164)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp9));
+HXLINE( 165)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
+HXLINE( 167)		 ::Dynamic _hx_tmp10 = this->bodyLayers->get(this->rightLeg);
+HXDLIN( 167)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp10));
+HXLINE( 168)		this->animatedSprite->render(graphics,( (float)((this->position->x + 5)) ),( (float)((this->position->y - this->z)) ));
+HXLINE( 170)		 ::Dynamic _hx_tmp11 = this->bodyLayers->get(this->leftArm);
+HXDLIN( 170)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp11));
+HXLINE( 171)		this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)((this->position->y - this->z)) ));
+HXLINE( 173)		 ::Dynamic _hx_tmp12 = this->bodyLayers->get(this->rightArm);
+HXDLIN( 173)		this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp12));
+HXLINE( 174)		this->animatedSprite->render(graphics,( (float)((this->position->x + 7)) ),( (float)((this->position->y - this->z)) ));
             	}
 
 
@@ -370,6 +384,7 @@ void Body_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(animatedSprite,"animatedSprite");
 	HX_MARK_MEMBER_NAME(targetPosition,"targetPosition");
 	HX_MARK_MEMBER_NAME(time,"time");
+	HX_MARK_MEMBER_NAME(drawnHead,"drawnHead");
 	 ::bonsai::entity::Entity_obj::__Mark(HX_MARK_ARG);
 	HX_MARK_END_CLASS();
 }
@@ -396,6 +411,7 @@ void Body_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(animatedSprite,"animatedSprite");
 	HX_VISIT_MEMBER_NAME(targetPosition,"targetPosition");
 	HX_VISIT_MEMBER_NAME(time,"time");
+	HX_VISIT_MEMBER_NAME(drawnHead,"drawnHead");
 	 ::bonsai::entity::Entity_obj::__Visit(HX_VISIT_ARG);
 }
 
@@ -435,6 +451,7 @@ hx::Val Body_obj::__Field(const ::String &inName,hx::PropertyAccess inCallProp)
 		if (HX_FIELD_EQ(inName,"friendly") ) { return hx::Val( friendly ); }
 		break;
 	case 9:
+		if (HX_FIELD_EQ(inName,"drawnHead") ) { return hx::Val( drawnHead ); }
 		if (HX_FIELD_EQ(inName,"getDamage") ) { return hx::Val( getDamage_dyn() ); }
 		break;
 	case 10:
@@ -484,6 +501,9 @@ hx::Val Body_obj::__SetField(const ::String &inName,const hx::Val &inValue,hx::P
 		if (HX_FIELD_EQ(inName,"collider") ) { _hx_set_collider(HX_CTX_GET,inValue.Cast<  ::differ::shapes::Circle >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"friendly") ) { friendly=inValue.Cast< bool >(); return inValue; }
 		break;
+	case 9:
+		if (HX_FIELD_EQ(inName,"drawnHead") ) { _hx_set_drawnHead(HX_CTX_GET,inValue.Cast<  ::game::BodyPart >()); return inValue; }
+		break;
 	case 10:
 		if (HX_FIELD_EQ(inName,"bodyLayers") ) { _hx_set_bodyLayers(HX_CTX_GET,inValue.Cast<  ::haxe::ds::EnumValueMap >()); return inValue; }
 		break;
@@ -517,6 +537,7 @@ void Body_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("animatedSprite",08,df,a8,cb));
 	outFields->push(HX_("targetPosition",1a,89,a6,dc));
 	outFields->push(HX_("time",0d,cc,fc,4c));
+	outFields->push(HX_("drawnHead",2a,ea,d5,ba));
 	super::__GetFields(outFields);
 };
 
@@ -542,6 +563,7 @@ static hx::StorageInfo Body_obj_sMemberStorageInfo[] = {
 	{hx::fsObject /*  ::bonsai::render::AnimatedSprite */ ,(int)offsetof(Body_obj,animatedSprite),HX_("animatedSprite",08,df,a8,cb)},
 	{hx::fsObject /*  ::kha::math::Vector2 */ ,(int)offsetof(Body_obj,targetPosition),HX_("targetPosition",1a,89,a6,dc)},
 	{hx::fsFloat,(int)offsetof(Body_obj,time),HX_("time",0d,cc,fc,4c)},
+	{hx::fsObject /*  ::game::BodyPart */ ,(int)offsetof(Body_obj,drawnHead),HX_("drawnHead",2a,ea,d5,ba)},
 	{ hx::fsUnknown, 0, null()}
 };
 static hx::StaticInfo *Body_obj_sStaticStorageInfo = 0;
@@ -568,6 +590,7 @@ static ::String Body_obj_sMemberFields[] = {
 	HX_("animatedSprite",08,df,a8,cb),
 	HX_("targetPosition",1a,89,a6,dc),
 	HX_("time",0d,cc,fc,4c),
+	HX_("drawnHead",2a,ea,d5,ba),
 	HX_("update",09,86,05,87),
 	HX_("getItemDamage",18,b6,64,68),
 	HX_("getDamage",a5,19,3b,9a),

@@ -15,4 +15,7 @@ if (fs.existsSync(path.join('Libraries/zui', 'kincfile.js')) || fs.existsSync(pa
 if (fs.existsSync(path.join('Libraries/differ', 'kincfile.js')) || fs.existsSync(path.join('Libraries/differ', 'korefile.js'))) {
 	await project.addProject('Libraries/differ');
 }
+if (fs.existsSync(path.join('Libraries/hxNoise', 'kincfile.js')) || fs.existsSync(path.join('Libraries/hxNoise', 'korefile.js'))) {
+	await project.addProject('Libraries/hxNoise');
+}
 resolve(project);

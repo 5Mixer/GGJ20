@@ -58,6 +58,8 @@ class HXCPP_CLASS_ATTRIBUTES SummonCircle_obj : public  ::bonsai::entity::Entity
 		int height;
 		 ::bonsai::render::AnimatedSprite animation;
 		inline  ::bonsai::render::AnimatedSprite _hx_set_animation(hx::StackContext *_hx_ctx, ::bonsai::render::AnimatedSprite _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return animation=_hx_v; }
+		 ::bonsai::render::AnimatedSprite animation2;
+		inline  ::bonsai::render::AnimatedSprite _hx_set_animation2(hx::StackContext *_hx_ctx, ::bonsai::render::AnimatedSprite _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return animation2=_hx_v; }
 		 ::game::BodyPart head;
 		inline  ::game::BodyPart _hx_set_head(hx::StackContext *_hx_ctx, ::game::BodyPart _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return head=_hx_v; }
 		 ::game::BodyPart chest;

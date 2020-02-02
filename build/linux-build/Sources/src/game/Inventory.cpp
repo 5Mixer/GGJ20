@@ -94,7 +94,7 @@ bool Inventory_obj::_hx_isInstanceOf(int inClassId) {
  ::game::BodyPart Inventory_obj::getItemClicked( ::kha::math::Vector2 position){
             	HX_GC_STACKFRAME(&_hx_pos_90b2490a7e87b451_11_getItemClicked)
 HXLINE(  12)		if ((position->x < 250)) {
-HXLINE(  13)			int yOffset = 0;
+HXLINE(  13)			int yOffset = 1;
 HXLINE(  14)			{
 HXLINE(  14)				 ::Dynamic _g =  ::haxe::iterators::MapKeyValueIterator_obj::__alloc( HX_CTX ,this->items);
 HXDLIN(  14)				while(( (bool)(_g->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
@@ -125,37 +125,40 @@ HX_DEFINE_DYNAMIC_FUNC1(Inventory_obj,getItemClicked,return )
 
 void Inventory_obj::render( ::kha::graphics2::Graphics graphics){
             	HX_GC_STACKFRAME(&_hx_pos_90b2490a7e87b451_25_render)
-HXLINE(  26)		int yOffset = 0;
-HXLINE(  27)		graphics->set_font(::kha::Assets_obj::fonts->KenneyMini);
-HXLINE(  28)		graphics->set_fontSize(30);
-HXLINE(  30)		int total = 0;
-HXLINE(  31)		{
-HXLINE(  31)			 ::Dynamic _g =  ::haxe::iterators::MapKeyValueIterator_obj::__alloc( HX_CTX ,this->items);
-HXDLIN(  31)			while(( (bool)(_g->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
-HXLINE(  31)				 ::Dynamic _g1 = _g->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)();
-HXDLIN(  31)				 ::game::BodyPart item = _g1->__Field(HX_("key",9f,89,51,00),hx::paccDynamic);
-HXDLIN(  31)				int quantity = ( (int)(_g1->__Field(HX_("value",71,7f,b8,31),hx::paccDynamic)) );
-HXLINE(  32)				if ((quantity > 0)) {
-HXLINE(  33)					total = (total + 1);
+HXLINE(  26)		int yOffset = 1;
+HXLINE(  27)		graphics->set_fontSize(30);
+HXLINE(  29)		int total = 1;
+HXLINE(  30)		{
+HXLINE(  30)			 ::Dynamic _g =  ::haxe::iterators::MapKeyValueIterator_obj::__alloc( HX_CTX ,this->items);
+HXDLIN(  30)			while(( (bool)(_g->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  30)				 ::Dynamic _g1 = _g->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)();
+HXDLIN(  30)				 ::game::BodyPart item = _g1->__Field(HX_("key",9f,89,51,00),hx::paccDynamic);
+HXDLIN(  30)				int quantity = ( (int)(_g1->__Field(HX_("value",71,7f,b8,31),hx::paccDynamic)) );
+HXLINE(  31)				if ((quantity > 0)) {
+HXLINE(  32)					total = (total + 1);
             				}
             			}
             		}
-HXLINE(  35)		graphics->set_color(::kha::_Color::Color_Impl__obj::fromBytes(26,24,23,null()));
-HXLINE(  36)		graphics->fillRect(( (Float)(3) ),( (Float)(3) ),( (Float)(250) ),( (Float)((total * 40)) ));
-HXLINE(  37)		graphics->set_color(-1);
-HXLINE(  39)		{
-HXLINE(  39)			 ::Dynamic _g2 =  ::haxe::iterators::MapKeyValueIterator_obj::__alloc( HX_CTX ,this->items);
-HXDLIN(  39)			while(( (bool)(_g2->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
-HXLINE(  39)				 ::Dynamic _g11 = _g2->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)();
-HXDLIN(  39)				 ::game::BodyPart item1 = _g11->__Field(HX_("key",9f,89,51,00),hx::paccDynamic);
-HXDLIN(  39)				int quantity1 = ( (int)(_g11->__Field(HX_("value",71,7f,b8,31),hx::paccDynamic)) );
-HXLINE(  40)				if ((quantity1 > 0)) {
-HXLINE(  41)					graphics->set_color(::kha::_Color::Color_Impl__obj::fromBytes(36,34,33,null()));
-HXLINE(  42)					graphics->fillRect(( (Float)(3) ),( (Float)(((yOffset * 40) - 2)) ),( (Float)(250) ),( (Float)(34) ));
-HXLINE(  43)					graphics->set_color(-1);
-HXLINE(  44)					graphics->drawString((HX_("",00,00,00,00) + quantity1),( (Float)(5) ),( (Float)((yOffset * 40)) ));
-HXLINE(  45)					graphics->drawString((HX_("",00,00,00,00) + ::Std_obj::string(item1)),( (Float)(70) ),( (Float)((yOffset * 40)) ));
-HXLINE(  47)					yOffset = (yOffset + 1);
+HXLINE(  34)		graphics->set_color(::kha::_Color::Color_Impl__obj::fromBytes(26,24,23,null()));
+HXLINE(  35)		graphics->fillRect(( (Float)(0) ),( (Float)(0) ),( (Float)(253) ),( (Float)((total * 40)) ));
+HXLINE(  37)		graphics->set_color(::kha::_Color::Color_Impl__obj::fromBytes(36,34,33,null()));
+HXLINE(  38)		graphics->set_font(::kha::Assets_obj::fonts->KenneyMiniSquare);
+HXLINE(  39)		graphics->set_color(-1);
+HXLINE(  40)		graphics->drawString(HX_("Inventory:",3e,56,a2,4d),( (Float)(5) ),( (Float)(0) ));
+HXLINE(  42)		graphics->set_font(::kha::Assets_obj::fonts->KenneyMini);
+HXLINE(  44)		{
+HXLINE(  44)			 ::Dynamic _g2 =  ::haxe::iterators::MapKeyValueIterator_obj::__alloc( HX_CTX ,this->items);
+HXDLIN(  44)			while(( (bool)(_g2->__Field(HX_("hasNext",6d,a5,46,18),hx::paccDynamic)()) )){
+HXLINE(  44)				 ::Dynamic _g11 = _g2->__Field(HX_("next",f3,84,02,49),hx::paccDynamic)();
+HXDLIN(  44)				 ::game::BodyPart item1 = _g11->__Field(HX_("key",9f,89,51,00),hx::paccDynamic);
+HXDLIN(  44)				int quantity1 = ( (int)(_g11->__Field(HX_("value",71,7f,b8,31),hx::paccDynamic)) );
+HXLINE(  45)				if ((quantity1 > 0)) {
+HXLINE(  46)					graphics->set_color(::kha::_Color::Color_Impl__obj::fromBytes(36,34,33,null()));
+HXLINE(  47)					graphics->fillRect(( (Float)(3) ),( (Float)(((yOffset * 40) - 2)) ),( (Float)(250) ),( (Float)(34) ));
+HXLINE(  48)					graphics->set_color(-1);
+HXLINE(  49)					graphics->drawString((HX_("",00,00,00,00) + quantity1),( (Float)(5) ),( (Float)((yOffset * 40)) ));
+HXLINE(  50)					graphics->drawString((HX_("",00,00,00,00) + ::Std_obj::string(item1)),( (Float)(70) ),( (Float)((yOffset * 40)) ));
+HXLINE(  52)					yOffset = (yOffset + 1);
             				}
             			}
             		}

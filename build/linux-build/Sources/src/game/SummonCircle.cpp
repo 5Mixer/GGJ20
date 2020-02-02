@@ -58,63 +58,69 @@ static const int _hx_array_data_0c65412d_1[] = {
 	(int)0,(int)1,
 };
 static const int _hx_array_data_0c65412d_2[] = {
-	(int)0,(int)4,
+	(int)2,
 };
 static const int _hx_array_data_0c65412d_3[] = {
-	(int)0,(int)1,(int)2,(int)3,(int)4,
+	(int)0,(int)4,
 };
 static const int _hx_array_data_0c65412d_4[] = {
+	(int)0,(int)1,(int)2,(int)3,(int)4,
+};
+static const int _hx_array_data_0c65412d_5[] = {
 	(int)0,
 };
-HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_65_isComplete,"game.SummonCircle","isComplete",0xffa4fc64,"game.SummonCircle.isComplete","game/SummonCircle.hx",65,0xdcab64d0)
-HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_67_getBody,"game.SummonCircle","getBody",0x342c6217,"game.SummonCircle.getBody","game/SummonCircle.hx",67,0xdcab64d0)
-HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_80_clear,"game.SummonCircle","clear",0xd557eb8c,"game.SummonCircle.clear","game/SummonCircle.hx",80,0xdcab64d0)
-HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_89_addPart,"game.SummonCircle","addPart",0xa71d5e73,"game.SummonCircle.addPart","game/SummonCircle.hx",89,0xdcab64d0)
-HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_125_render,"game.SummonCircle","render",0xd517b077,"game.SummonCircle.render","game/SummonCircle.hx",125,0xdcab64d0)
-HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_159_update,"game.SummonCircle","update",0x56f3cb2a,"game.SummonCircle.update","game/SummonCircle.hx",159,0xdcab64d0)
+HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_69_isComplete,"game.SummonCircle","isComplete",0xffa4fc64,"game.SummonCircle.isComplete","game/SummonCircle.hx",69,0xdcab64d0)
+HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_71_getBody,"game.SummonCircle","getBody",0x342c6217,"game.SummonCircle.getBody","game/SummonCircle.hx",71,0xdcab64d0)
+HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_84_clear,"game.SummonCircle","clear",0xd557eb8c,"game.SummonCircle.clear","game/SummonCircle.hx",84,0xdcab64d0)
+HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_91_addPart,"game.SummonCircle","addPart",0xa71d5e73,"game.SummonCircle.addPart","game/SummonCircle.hx",91,0xdcab64d0)
+HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_127_render,"game.SummonCircle","render",0xd517b077,"game.SummonCircle.render","game/SummonCircle.hx",127,0xdcab64d0)
+HX_LOCAL_STACK_FRAME(_hx_pos_92230940eb20a0e5_161_update,"game.SummonCircle","update",0x56f3cb2a,"game.SummonCircle.update","game/SummonCircle.hx",161,0xdcab64d0)
 namespace game{
 
 void SummonCircle_obj::__construct(){
             	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_7_new)
-HXLINE(  26)		this->_hx_set_bodyLayers(HX_CTX,  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX ));
-HXLINE(  22)		this->_hx_set_headParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(1)->init(0,::game::BodyPart_obj::NaturalHead_dyn()));
-HXLINE(  21)		this->_hx_set_chestParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(1)->init(0,::game::BodyPart_obj::NaturalChest_dyn()));
-HXLINE(  20)		this->_hx_set_legParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(2)->init(0,::game::BodyPart_obj::NaturalLeg_dyn())->init(1,::game::BodyPart_obj::Boots_dyn()));
-HXLINE(  19)		this->_hx_set_armParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(4)->init(0,::game::BodyPart_obj::NaturalArm_dyn())->init(1,::game::BodyPart_obj::Axe_dyn())->init(2,::game::BodyPart_obj::Sword_dyn())->init(3,::game::BodyPart_obj::Knife_dyn()));
+HXLINE(  27)		this->_hx_set_bodyLayers(HX_CTX,  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX ));
+HXLINE(  23)		this->_hx_set_headParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(1)->init(0,::game::BodyPart_obj::NaturalHead_dyn()));
+HXLINE(  22)		this->_hx_set_chestParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(1)->init(0,::game::BodyPart_obj::NaturalChest_dyn()));
+HXLINE(  21)		this->_hx_set_legParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(2)->init(0,::game::BodyPart_obj::NaturalLeg_dyn())->init(1,::game::BodyPart_obj::Boots_dyn()));
+HXLINE(  20)		this->_hx_set_armParts(HX_CTX, ::Array_obj< ::Dynamic>::__new(4)->init(0,::game::BodyPart_obj::NaturalArm_dyn())->init(1,::game::BodyPart_obj::Axe_dyn())->init(2,::game::BodyPart_obj::Sword_dyn())->init(3,::game::BodyPart_obj::Knife_dyn()));
 HXLINE(   9)		this->height = 64;
 HXLINE(   8)		this->width = 64;
-HXLINE(  30)		super::__construct();
-HXLINE(  32)		 ::haxe::ds::EnumValueMap _g =  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX );
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalChest_dyn(),0);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalHead_dyn(),3);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalHeadUp_dyn(),3);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalHeadDown_dyn(),2);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalHeadLeft_dyn(),1);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalHeadRight_dyn(),0);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalLeg_dyn(),5);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::NaturalArm_dyn(),6);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::Knife_dyn(),7);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::Sword_dyn(),8);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::Axe_dyn(),9);
-HXDLIN(  32)		_g->set(::game::BodyPart_obj::Boots_dyn(),10);
-HXDLIN(  32)		this->_hx_set_bodyLayers(HX_CTX, _g);
-HXLINE(  47)		this->_hx_set_animation(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
-HXLINE(  48)		this->animation->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::fromData( _hx_array_data_0c65412d_1,2));
-HXLINE(  49)		 ::bonsai::render::AnimatedSprite _hx_tmp = this->animation;
-HXDLIN(  49)		_hx_tmp->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
-            			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_0c65412d_2,2))
+HXLINE(  31)		super::__construct();
+HXLINE(  33)		 ::haxe::ds::EnumValueMap _g =  ::haxe::ds::EnumValueMap_obj::__alloc( HX_CTX );
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalChest_dyn(),0);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalHead_dyn(),3);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalHeadUp_dyn(),3);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalHeadDown_dyn(),2);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalHeadLeft_dyn(),1);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalHeadRight_dyn(),0);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalLeg_dyn(),5);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::NaturalArm_dyn(),6);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::Knife_dyn(),7);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::Sword_dyn(),8);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::Axe_dyn(),9);
+HXDLIN(  33)		_g->set(::game::BodyPart_obj::Boots_dyn(),10);
+HXDLIN(  33)		this->_hx_set_bodyLayers(HX_CTX, _g);
+HXLINE(  48)		this->_hx_set_animation(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
+HXLINE(  49)		this->_hx_set_animation2(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
+HXLINE(  50)		this->animation->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::fromData( _hx_array_data_0c65412d_1,2));
+HXLINE(  51)		this->animation2->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::fromData( _hx_array_data_0c65412d_2,1));
+HXLINE(  52)		 ::bonsai::render::AnimatedSprite _hx_tmp = this->animation;
+HXDLIN(  52)		_hx_tmp->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
+            			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_0c65412d_3,2))
             			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->satanicCircle,this->width,this->height))));
-HXLINE(  53)		 ::bonsai::render::AnimatedSprite _hx_tmp1 = this->animation;
-HXDLIN(  53)		_hx_tmp1->registerAnimation(HX_("summon",21,b6,4b,a1), ::Dynamic(hx::Anon_obj::Create(2)
-            			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_0c65412d_3,5))
+HXLINE(  56)		this->animation->play(HX_("idle",14,a7,b3,45));
+HXLINE(  57)		 ::bonsai::render::AnimatedSprite _hx_tmp1 = this->animation2;
+HXDLIN(  57)		_hx_tmp1->registerAnimation(HX_("summon",21,b6,4b,a1), ::Dynamic(hx::Anon_obj::Create(2)
+            			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_0c65412d_4,5))
             			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->satanicCircle,this->width,this->height))));
-HXLINE(  57)		this->animation->play(HX_("summon",21,b6,4b,a1));
-HXLINE(  59)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
-HXLINE(  60)		 ::bonsai::render::AnimatedSprite _hx_tmp2 = this->animatedSprite;
-HXDLIN(  60)		_hx_tmp2->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
-            			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_0c65412d_4,1))
+HXLINE(  61)		this->animation2->play(HX_("summon",21,b6,4b,a1));
+HXLINE(  63)		this->_hx_set_animatedSprite(HX_CTX,  ::bonsai::render::AnimatedSprite_obj::__alloc( HX_CTX ));
+HXLINE(  64)		 ::bonsai::render::AnimatedSprite _hx_tmp2 = this->animatedSprite;
+HXDLIN(  64)		_hx_tmp2->registerAnimation(HX_("idle",14,a7,b3,45), ::Dynamic(hx::Anon_obj::Create(2)
+            			->setFixed(0,HX_("frames",a6,af,85,ac),::Array_obj< int >::fromData( _hx_array_data_0c65412d_5,1))
             			->setFixed(1,HX_("spriteMap",97,77,04,56), ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->bodyParts2,32,32))));
-HXLINE(  61)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
+HXLINE(  65)		this->animatedSprite->play(HX_("idle",14,a7,b3,45));
             	}
 
 Dynamic SummonCircle_obj::__CreateEmpty() { return new SummonCircle_obj; }
@@ -137,164 +143,163 @@ bool SummonCircle_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 bool SummonCircle_obj::isComplete(){
-            	HX_STACKFRAME(&_hx_pos_92230940eb20a0e5_65_isComplete)
-HXDLIN(  65)		bool _hx_tmp;
-HXDLIN(  65)		bool _hx_tmp1;
-HXDLIN(  65)		bool _hx_tmp2;
-HXDLIN(  65)		bool _hx_tmp3;
-HXDLIN(  65)		if (hx::IsNotNull( this->head )) {
-HXDLIN(  65)			_hx_tmp3 = hx::IsNotNull( this->chest );
+            	HX_STACKFRAME(&_hx_pos_92230940eb20a0e5_69_isComplete)
+HXDLIN(  69)		bool _hx_tmp;
+HXDLIN(  69)		bool _hx_tmp1;
+HXDLIN(  69)		bool _hx_tmp2;
+HXDLIN(  69)		bool _hx_tmp3;
+HXDLIN(  69)		if (hx::IsNotNull( this->head )) {
+HXDLIN(  69)			_hx_tmp3 = hx::IsNotNull( this->chest );
             		}
             		else {
-HXDLIN(  65)			_hx_tmp3 = false;
+HXDLIN(  69)			_hx_tmp3 = false;
             		}
-HXDLIN(  65)		if (_hx_tmp3) {
-HXDLIN(  65)			_hx_tmp2 = hx::IsNotNull( this->leftArm );
-            		}
-            		else {
-HXDLIN(  65)			_hx_tmp2 = false;
-            		}
-HXDLIN(  65)		if (_hx_tmp2) {
-HXDLIN(  65)			_hx_tmp1 = hx::IsNotNull( this->rightArm );
+HXDLIN(  69)		if (_hx_tmp3) {
+HXDLIN(  69)			_hx_tmp2 = hx::IsNotNull( this->leftArm );
             		}
             		else {
-HXDLIN(  65)			_hx_tmp1 = false;
+HXDLIN(  69)			_hx_tmp2 = false;
             		}
-HXDLIN(  65)		if (_hx_tmp1) {
-HXDLIN(  65)			_hx_tmp = hx::IsNotNull( this->leftLeg );
-            		}
-            		else {
-HXDLIN(  65)			_hx_tmp = false;
-            		}
-HXDLIN(  65)		if (_hx_tmp) {
-HXDLIN(  65)			return hx::IsNotNull( this->rightLeg );
+HXDLIN(  69)		if (_hx_tmp2) {
+HXDLIN(  69)			_hx_tmp1 = hx::IsNotNull( this->rightArm );
             		}
             		else {
-HXDLIN(  65)			return false;
+HXDLIN(  69)			_hx_tmp1 = false;
             		}
-HXDLIN(  65)		return false;
+HXDLIN(  69)		if (_hx_tmp1) {
+HXDLIN(  69)			_hx_tmp = hx::IsNotNull( this->leftLeg );
+            		}
+            		else {
+HXDLIN(  69)			_hx_tmp = false;
+            		}
+HXDLIN(  69)		if (_hx_tmp) {
+HXDLIN(  69)			return hx::IsNotNull( this->rightLeg );
+            		}
+            		else {
+HXDLIN(  69)			return false;
+            		}
+HXDLIN(  69)		return false;
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(SummonCircle_obj,isComplete,return )
 
  ::game::Body SummonCircle_obj::getBody(){
-            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_67_getBody)
-HXLINE(  68)		 ::game::Body body =  ::game::Body_obj::__alloc( HX_CTX );
-HXLINE(  69)		if (hx::IsEq( this->head,::game::BodyPart_obj::NaturalHead_dyn() )) {
-HXLINE(  70)			this->_hx_set_head(HX_CTX, ::game::BodyPart_obj::NaturalHeadDown_dyn());
+            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_71_getBody)
+HXLINE(  72)		 ::game::Body body =  ::game::Body_obj::__alloc( HX_CTX );
+HXLINE(  73)		if (hx::IsEq( this->head,::game::BodyPart_obj::NaturalHead_dyn() )) {
+HXLINE(  74)			this->_hx_set_head(HX_CTX, ::game::BodyPart_obj::NaturalHeadDown_dyn());
             		}
-HXLINE(  72)		::cpp::VirtualArray params = null();
-HXDLIN(  72)		body->_hx_set_head(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->head),params));
-HXLINE(  73)		::cpp::VirtualArray params1 = null();
-HXDLIN(  73)		body->_hx_set_chest(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->chest),params1));
-HXLINE(  74)		::cpp::VirtualArray params2 = null();
-HXDLIN(  74)		body->_hx_set_leftArm(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->leftArm),params2));
-HXLINE(  75)		::cpp::VirtualArray params3 = null();
-HXDLIN(  75)		body->_hx_set_rightArm(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->rightArm),params3));
-HXLINE(  76)		::cpp::VirtualArray params4 = null();
-HXDLIN(  76)		body->_hx_set_leftLeg(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->leftLeg),params4));
-HXLINE(  77)		::cpp::VirtualArray params5 = null();
-HXDLIN(  77)		body->_hx_set_rightLeg(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->rightLeg),params5));
-HXLINE(  78)		return body;
+HXLINE(  76)		::cpp::VirtualArray params = null();
+HXDLIN(  76)		body->_hx_set_head(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->head),params));
+HXLINE(  77)		::cpp::VirtualArray params1 = null();
+HXDLIN(  77)		body->_hx_set_chest(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->chest),params1));
+HXLINE(  78)		::cpp::VirtualArray params2 = null();
+HXDLIN(  78)		body->_hx_set_leftArm(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->leftArm),params2));
+HXLINE(  79)		::cpp::VirtualArray params3 = null();
+HXDLIN(  79)		body->_hx_set_rightArm(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->rightArm),params3));
+HXLINE(  80)		::cpp::VirtualArray params4 = null();
+HXDLIN(  80)		body->_hx_set_leftLeg(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->leftLeg),params4));
+HXLINE(  81)		::cpp::VirtualArray params5 = null();
+HXDLIN(  81)		body->_hx_set_rightLeg(HX_CTX, ::Type_obj::createEnum(hx::ClassOf< ::game::BodyPart >(),::Type_obj::enumConstructor(this->rightLeg),params5));
+HXLINE(  82)		return body;
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(SummonCircle_obj,getBody,return )
 
 void SummonCircle_obj::clear(){
-            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_80_clear)
-HXLINE(  81)		this->_hx_set_head(HX_CTX, null());
-HXLINE(  82)		this->_hx_set_chest(HX_CTX, null());
-HXLINE(  83)		this->_hx_set_leftArm(HX_CTX, null());
-HXLINE(  84)		this->_hx_set_rightArm(HX_CTX, null());
-HXLINE(  85)		this->_hx_set_leftLeg(HX_CTX, null());
-HXLINE(  86)		this->_hx_set_rightLeg(HX_CTX, null());
+            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_84_clear)
+HXLINE(  85)		this->_hx_set_head(HX_CTX, null());
+HXLINE(  86)		this->_hx_set_chest(HX_CTX, null());
+HXLINE(  87)		this->_hx_set_leftArm(HX_CTX, null());
+HXLINE(  88)		this->_hx_set_rightArm(HX_CTX, null());
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(SummonCircle_obj,clear,(void))
 
 bool SummonCircle_obj::addPart( ::game::BodyPart part){
-            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_89_addPart)
-HXLINE(  90)		if ((this->armParts->indexOf(part,null()) != -1)) {
-HXLINE(  91)			if (hx::IsNull( this->leftArm )) {
-HXLINE(  92)				this->_hx_set_leftArm(HX_CTX, part);
-HXLINE(  93)				return true;
+            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_91_addPart)
+HXLINE(  92)		if ((this->armParts->indexOf(part,null()) != -1)) {
+HXLINE(  93)			if (hx::IsNull( this->leftArm )) {
+HXLINE(  94)				this->_hx_set_leftArm(HX_CTX, part);
+HXLINE(  95)				return true;
             			}
-HXLINE(  95)			if (hx::IsNull( this->rightArm )) {
-HXLINE(  96)				this->_hx_set_rightArm(HX_CTX, part);
-HXLINE(  97)				return true;
-            			}
-            		}
-HXLINE( 100)		if ((this->legParts->indexOf(part,null()) != -1)) {
-HXLINE( 101)			if (hx::IsNull( this->leftLeg )) {
-HXLINE( 102)				this->_hx_set_leftLeg(HX_CTX, part);
-HXLINE( 103)				return true;
-            			}
-HXLINE( 105)			if (hx::IsNull( this->rightLeg )) {
-HXLINE( 106)				this->_hx_set_rightLeg(HX_CTX, part);
-HXLINE( 107)				return true;
+HXLINE(  97)			if (hx::IsNull( this->rightArm )) {
+HXLINE(  98)				this->_hx_set_rightArm(HX_CTX, part);
+HXLINE(  99)				return true;
             			}
             		}
-HXLINE( 110)		if ((this->headParts->indexOf(part,null()) != -1)) {
-HXLINE( 111)			if (hx::IsNull( this->head )) {
-HXLINE( 112)				this->_hx_set_head(HX_CTX, part);
-HXLINE( 113)				return true;
+HXLINE( 102)		if ((this->legParts->indexOf(part,null()) != -1)) {
+HXLINE( 103)			if (hx::IsNull( this->leftLeg )) {
+HXLINE( 104)				this->_hx_set_leftLeg(HX_CTX, part);
+HXLINE( 105)				return true;
+            			}
+HXLINE( 107)			if (hx::IsNull( this->rightLeg )) {
+HXLINE( 108)				this->_hx_set_rightLeg(HX_CTX, part);
+HXLINE( 109)				return true;
             			}
             		}
-HXLINE( 116)		if ((this->chestParts->indexOf(part,null()) != -1)) {
-HXLINE( 117)			if (hx::IsNull( this->chest )) {
-HXLINE( 118)				this->_hx_set_chest(HX_CTX, part);
-HXLINE( 119)				return true;
+HXLINE( 112)		if ((this->headParts->indexOf(part,null()) != -1)) {
+HXLINE( 113)			if (hx::IsNull( this->head )) {
+HXLINE( 114)				this->_hx_set_head(HX_CTX, part);
+HXLINE( 115)				return true;
             			}
             		}
-HXLINE( 122)		return false;
+HXLINE( 118)		if ((this->chestParts->indexOf(part,null()) != -1)) {
+HXLINE( 119)			if (hx::IsNull( this->chest )) {
+HXLINE( 120)				this->_hx_set_chest(HX_CTX, part);
+HXLINE( 121)				return true;
+            			}
+            		}
+HXLINE( 124)		return false;
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC1(SummonCircle_obj,addPart,return )
 
 void SummonCircle_obj::render( ::kha::graphics2::Graphics graphics){
-            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_125_render)
-HXLINE( 126)		this->animation->render(graphics,( (float)(0) ),( (float)(0) ));
-HXLINE( 128)		if (hx::IsNotNull( this->chest )) {
-HXLINE( 129)			 ::Dynamic _hx_tmp = this->bodyLayers->get(this->chest);
-HXDLIN( 129)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp));
-HXLINE( 130)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
+            	HX_GC_STACKFRAME(&_hx_pos_92230940eb20a0e5_127_render)
+HXLINE( 128)		this->animation->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
+HXLINE( 130)		if (hx::IsNotNull( this->chest )) {
+HXLINE( 131)			 ::Dynamic _hx_tmp = this->bodyLayers->get(this->chest);
+HXDLIN( 131)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp));
+HXLINE( 132)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
             		}
-HXLINE( 133)		if (hx::IsNotNull( this->head )) {
-HXLINE( 134)			 ::Dynamic _hx_tmp1 = this->bodyLayers->get(this->head);
-HXDLIN( 134)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp1));
-HXLINE( 135)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
+HXLINE( 135)		if (hx::IsNotNull( this->head )) {
+HXLINE( 136)			 ::Dynamic _hx_tmp1 = this->bodyLayers->get(this->head);
+HXDLIN( 136)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp1));
+HXLINE( 137)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
             		}
-HXLINE( 138)		if (hx::IsNotNull( this->leftLeg )) {
-HXLINE( 139)			 ::Dynamic _hx_tmp2 = this->bodyLayers->get(this->leftLeg);
-HXDLIN( 139)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp2));
-HXLINE( 140)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
+HXLINE( 140)		if (hx::IsNotNull( this->leftLeg )) {
+HXLINE( 141)			 ::Dynamic _hx_tmp2 = this->bodyLayers->get(this->leftLeg);
+HXDLIN( 141)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp2));
+HXLINE( 142)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
             		}
-HXLINE( 143)		if (hx::IsNotNull( this->rightLeg )) {
-HXLINE( 144)			 ::Dynamic _hx_tmp3 = this->bodyLayers->get(this->rightLeg);
-HXDLIN( 144)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp3));
-HXLINE( 145)			this->animatedSprite->render(graphics,( (float)((this->position->x + 5)) ),( (float)(this->position->y) ));
+HXLINE( 145)		if (hx::IsNotNull( this->rightLeg )) {
+HXLINE( 146)			 ::Dynamic _hx_tmp3 = this->bodyLayers->get(this->rightLeg);
+HXDLIN( 146)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp3));
+HXLINE( 147)			this->animatedSprite->render(graphics,( (float)((this->position->x + 5)) ),( (float)(this->position->y) ));
             		}
-HXLINE( 148)		if (hx::IsNotNull( this->leftArm )) {
-HXLINE( 149)			 ::Dynamic _hx_tmp4 = this->bodyLayers->get(this->leftArm);
-HXDLIN( 149)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp4));
-HXLINE( 150)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
+HXLINE( 150)		if (hx::IsNotNull( this->leftArm )) {
+HXLINE( 151)			 ::Dynamic _hx_tmp4 = this->bodyLayers->get(this->leftArm);
+HXDLIN( 151)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp4));
+HXLINE( 152)			this->animatedSprite->render(graphics,( (float)(this->position->x) ),( (float)(this->position->y) ));
             		}
-HXLINE( 153)		if (hx::IsNotNull( this->rightArm )) {
-HXLINE( 154)			 ::Dynamic _hx_tmp5 = this->bodyLayers->get(this->rightArm);
-HXDLIN( 154)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp5));
-HXLINE( 155)			this->animatedSprite->render(graphics,( (float)((this->position->x + 7)) ),( (float)(this->position->y) ));
+HXLINE( 155)		if (hx::IsNotNull( this->rightArm )) {
+HXLINE( 156)			 ::Dynamic _hx_tmp5 = this->bodyLayers->get(this->rightArm);
+HXDLIN( 156)			this->animatedSprite->_hx_set_drawLayers(HX_CTX, ::Array_obj< int >::__new(1)->init(0,_hx_tmp5));
+HXLINE( 157)			this->animatedSprite->render(graphics,( (float)((this->position->x + 7)) ),( (float)(this->position->y) ));
             		}
             	}
 
 
 void SummonCircle_obj::update(Float dt){
-            	HX_STACKFRAME(&_hx_pos_92230940eb20a0e5_159_update)
-HXLINE( 160)		this->animation->update(dt);
-HXLINE( 161)		this->super::update(dt);
+            	HX_STACKFRAME(&_hx_pos_92230940eb20a0e5_161_update)
+HXLINE( 162)		this->animation2->update(dt);
+HXLINE( 163)		this->animation->update(dt);
+HXLINE( 164)		this->super::update(dt);
             	}
 
 
@@ -322,6 +327,7 @@ void SummonCircle_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(width,"width");
 	HX_MARK_MEMBER_NAME(height,"height");
 	HX_MARK_MEMBER_NAME(animation,"animation");
+	HX_MARK_MEMBER_NAME(animation2,"animation2");
 	HX_MARK_MEMBER_NAME(head,"head");
 	HX_MARK_MEMBER_NAME(chest,"chest");
 	HX_MARK_MEMBER_NAME(leftArm,"leftArm");
@@ -343,6 +349,7 @@ void SummonCircle_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(width,"width");
 	HX_VISIT_MEMBER_NAME(height,"height");
 	HX_VISIT_MEMBER_NAME(animation,"animation");
+	HX_VISIT_MEMBER_NAME(animation2,"animation2");
 	HX_VISIT_MEMBER_NAME(head,"head");
 	HX_VISIT_MEMBER_NAME(chest,"chest");
 	HX_VISIT_MEMBER_NAME(leftArm,"leftArm");
@@ -391,6 +398,7 @@ hx::Val SummonCircle_obj::__Field(const ::String &inName,hx::PropertyAccess inCa
 		if (HX_FIELD_EQ(inName,"headParts") ) { return hx::Val( headParts ); }
 		break;
 	case 10:
+		if (HX_FIELD_EQ(inName,"animation2") ) { return hx::Val( animation2 ); }
 		if (HX_FIELD_EQ(inName,"chestParts") ) { return hx::Val( chestParts ); }
 		if (HX_FIELD_EQ(inName,"bodyLayers") ) { return hx::Val( bodyLayers ); }
 		if (HX_FIELD_EQ(inName,"isComplete") ) { return hx::Val( isComplete_dyn() ); }
@@ -429,6 +437,7 @@ hx::Val SummonCircle_obj::__SetField(const ::String &inName,const hx::Val &inVal
 		if (HX_FIELD_EQ(inName,"headParts") ) { _hx_set_headParts(HX_CTX_GET,inValue.Cast< ::Array< ::Dynamic> >()); return inValue; }
 		break;
 	case 10:
+		if (HX_FIELD_EQ(inName,"animation2") ) { _hx_set_animation2(HX_CTX_GET,inValue.Cast<  ::bonsai::render::AnimatedSprite >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"chestParts") ) { _hx_set_chestParts(HX_CTX_GET,inValue.Cast< ::Array< ::Dynamic> >()); return inValue; }
 		if (HX_FIELD_EQ(inName,"bodyLayers") ) { _hx_set_bodyLayers(HX_CTX_GET,inValue.Cast<  ::haxe::ds::EnumValueMap >()); return inValue; }
 		break;
@@ -443,6 +452,7 @@ void SummonCircle_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("width",06,b6,62,ca));
 	outFields->push(HX_("height",e7,07,4c,02));
 	outFields->push(HX_("animation",04,ef,34,4b));
+	outFields->push(HX_("animation2",ae,34,1c,83));
 	outFields->push(HX_("head",20,29,0b,45));
 	outFields->push(HX_("chest",c1,a6,b6,45));
 	outFields->push(HX_("leftArm",95,2c,d7,f4));
@@ -463,6 +473,7 @@ static hx::StorageInfo SummonCircle_obj_sMemberStorageInfo[] = {
 	{hx::fsInt,(int)offsetof(SummonCircle_obj,width),HX_("width",06,b6,62,ca)},
 	{hx::fsInt,(int)offsetof(SummonCircle_obj,height),HX_("height",e7,07,4c,02)},
 	{hx::fsObject /*  ::bonsai::render::AnimatedSprite */ ,(int)offsetof(SummonCircle_obj,animation),HX_("animation",04,ef,34,4b)},
+	{hx::fsObject /*  ::bonsai::render::AnimatedSprite */ ,(int)offsetof(SummonCircle_obj,animation2),HX_("animation2",ae,34,1c,83)},
 	{hx::fsObject /*  ::game::BodyPart */ ,(int)offsetof(SummonCircle_obj,head),HX_("head",20,29,0b,45)},
 	{hx::fsObject /*  ::game::BodyPart */ ,(int)offsetof(SummonCircle_obj,chest),HX_("chest",c1,a6,b6,45)},
 	{hx::fsObject /*  ::game::BodyPart */ ,(int)offsetof(SummonCircle_obj,leftArm),HX_("leftArm",95,2c,d7,f4)},
@@ -484,6 +495,7 @@ static ::String SummonCircle_obj_sMemberFields[] = {
 	HX_("width",06,b6,62,ca),
 	HX_("height",e7,07,4c,02),
 	HX_("animation",04,ef,34,4b),
+	HX_("animation2",ae,34,1c,83),
 	HX_("head",20,29,0b,45),
 	HX_("chest",c1,a6,b6,45),
 	HX_("leftArm",95,2c,d7,f4),

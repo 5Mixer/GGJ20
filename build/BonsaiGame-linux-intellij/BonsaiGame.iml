@@ -20,6 +20,7 @@
       <sourceFolder url="file:///home/mixer/projects/GGJ20/src" isTestSource="false" />
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/zui/Sources" isTestSource="false" />
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/differ" isTestSource="false" />
+      <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/hxNoise" isTestSource="false" />
 
     </content>
     <content url="file://Libraries/zui">
@@ -27,6 +28,9 @@
     </content>
     <content url="file://Libraries/differ">
       <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/differ" isTestSource="false" />
+    </content>
+    <content url="file://Libraries/hxNoise">
+      <sourceFolder url="file:///home/mixer/projects/GGJ20/Libraries/hxNoise" isTestSource="false" />
     </content>
     
     <orderEntry type="jdk" jdkName="Haxe 3.2.0" jdkType="Haxe toolkit" />

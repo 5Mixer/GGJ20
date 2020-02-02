@@ -170,9 +170,11 @@
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Inventory.h">
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/SummonCircle.h">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/NoiseTilemap.h">
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/TileMap.h">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/Structure.h">
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/SummonCircle.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/game/World.h">
 		</Unit>
@@ -231,6 +233,8 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/haxe/xml/Printer.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/haxe/xml/XmlParserException.h">
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/hxnoise/Perlin.h">
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/include/hxinc/kha/AlignedQuad.h">
 		</Unit>
@@ -704,10 +708,13 @@
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Inventory.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/SummonCircle.cpp">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/NoiseTilemap.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/TileMap.cpp">
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/Structure.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/SummonCircle.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/game/World.cpp">
@@ -795,6 +802,9 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/haxe/xml/XmlParserException.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/hxnoise/Perlin.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="/home/mixer/projects/GGJ20/build/linux-build/Sources/src/kha/AlignedQuad.cpp">

@@ -127,8 +127,7 @@ class SummonCircle extends bonsai.entity.Entity {
 	}
 
 	override public function render (graphics:kha.graphics2.Graphics) {
-		this.animation.render(graphics, 0, 0);
-		this.animation2.render(graphics, 0, 0);
+		this.animation.render(graphics, position.x, position.y);
 
 		if (chest != null) {
 			animatedSprite.drawLayers = [bodyLayers[chest]];

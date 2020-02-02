@@ -13,13 +13,25 @@ class Structure extends Entity {
 	var spriteMap:bonsai.render.SpriteMap;
 	public var colliders:Array<differ.shapes.Polygon> = [];
 
-	override public function new () {
+	override public function new (tmx) {
 		super();
 
-		tiled = new bonsai.resource.Tiled(kha.Assets.blobs.castle2_tmx.toString());
+		tiled = new bonsai.resource.Tiled(tmx);
 		width = tiled.width;
 		height = tiled.height;
 
+		for (polygon in tiled.polygons) {
+			// colliders.push(new differ.shapes.Polygon(0,0,
+			// 	Lambda.map(polygon, function (p) {
+			// 		return new differ.math.Vector(p.x, p.y);
+			// 	}))
+			// );
+		}
+		for (rectangle in tiled.rectangles) {
+			colliders.push(differ.shapes.Polygon.rectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height,false));
+
+		}
+/*
 		for (layerName => layer in tiled.layers){
 			if (layerName == "wallsCollide") {
 				for (y in 0...width) {
@@ -31,6 +43,7 @@ class Structure extends Entity {
 				}
 			}
 		}
+		*/
 
 		spriteMap = new SpriteMap(kha.Assets.images.castleTiles, 16, 16);
 
@@ -43,7 +56,7 @@ class Structure extends Entity {
 		for (layerName => layer in tiled.layers){
 			for (y in 0...width) {
 				for (x in 0...height) {
-					spriteMap.render(graphics, x*16, y*16, layer.tiles[y][x] - 1);
+					spriteMap.render(graphics, position.x + x*16, position.y + y*16, layer.tiles[y][x] - 1);
 				}
 			}
 		}
