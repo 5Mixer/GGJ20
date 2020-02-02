@@ -43,17 +43,11 @@
 #ifndef INCLUDED_kha_Resource
 #include <hxinc/kha/Resource.h>
 #endif
-#ifndef INCLUDED_kha__Assets_BlobList
-#include <hxinc/kha/_Assets/BlobList.h>
-#endif
 #ifndef INCLUDED_kha__Assets_ImageList
 #include <hxinc/kha/_Assets/ImageList.h>
 #endif
 #ifndef INCLUDED_kha_graphics2_Graphics
 #include <hxinc/kha/graphics2/Graphics.h>
-#endif
-#ifndef INCLUDED_kha_internal_BytesBlob
-#include <hxinc/kha/internal/BytesBlob.h>
 #endif
 #ifndef INCLUDED_kha_math_Vector2
 #include <hxinc/kha/math/Vector2.h>
@@ -64,13 +58,13 @@ HX_LOCAL_STACK_FRAME(_hx_pos_e44038689cab253e_54_render,"game.Structure","render
 HX_LOCAL_STACK_FRAME(_hx_pos_e44038689cab253e_67_update,"game.Structure","update",0x94d2d900,"game.Structure.update","game/Structure.hx",67,0x991da408)
 namespace game{
 
-void Structure_obj::__construct(){
+void Structure_obj::__construct(::String tmx){
             	HX_GC_STACKFRAME(&_hx_pos_e44038689cab253e_7_new)
 HXLINE(  14)		this->_hx_set_colliders(HX_CTX, ::Array_obj< ::Dynamic>::__new(0));
 HXLINE(   9)		this->height = 100;
 HXLINE(   8)		this->width = 100;
 HXLINE(  17)		super::__construct();
-HXLINE(  19)		this->_hx_set_tiled(HX_CTX,  ::bonsai::resource::Tiled_obj::__alloc( HX_CTX ,::kha::Assets_obj::blobs->castle2_tmx->toString()));
+HXLINE(  19)		this->_hx_set_tiled(HX_CTX,  ::bonsai::resource::Tiled_obj::__alloc( HX_CTX ,tmx));
 HXLINE(  20)		this->width = this->tiled->width;
 HXLINE(  21)		this->height = this->tiled->height;
 HXLINE(  23)		{
@@ -88,7 +82,7 @@ HXDLIN(  30)			while((_g2 < _g3->length)){
 HXLINE(  30)				 ::Dynamic rectangle = _g3->__get(_g2);
 HXDLIN(  30)				_g2 = (_g2 + 1);
 HXLINE(  31)				::Array< ::Dynamic> _hx_tmp = this->colliders;
-HXDLIN(  31)				_hx_tmp->push(::differ::shapes::Polygon_obj::rectangle(( (Float)(rectangle->__Field(HX_("x",78,00,00,00),hx::paccDynamic)) ),( (Float)(rectangle->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) ),( (Float)(rectangle->__Field(HX_("width",06,b6,62,ca),hx::paccDynamic)) ),( (Float)(rectangle->__Field(HX_("height",e7,07,4c,02),hx::paccDynamic)) ),null()));
+HXDLIN(  31)				_hx_tmp->push(::differ::shapes::Polygon_obj::rectangle(( (Float)(rectangle->__Field(HX_("x",78,00,00,00),hx::paccDynamic)) ),( (Float)(rectangle->__Field(HX_("y",79,00,00,00),hx::paccDynamic)) ),( (Float)(rectangle->__Field(HX_("width",06,b6,62,ca),hx::paccDynamic)) ),( (Float)(rectangle->__Field(HX_("height",e7,07,4c,02),hx::paccDynamic)) ),false));
             			}
             		}
 HXLINE(  48)		this->_hx_set_spriteMap(HX_CTX,  ::bonsai::render::SpriteMap_obj::__alloc( HX_CTX ,::kha::Assets_obj::images->castleTiles,16,16));
@@ -103,7 +97,7 @@ void *Structure_obj::_hx_vtable = 0;
 Dynamic Structure_obj::__Create(hx::DynamicArray inArgs)
 {
 	hx::ObjectPtr< Structure_obj > _hx_result = new Structure_obj();
-	_hx_result->__construct();
+	_hx_result->__construct(inArgs[0]);
 	return _hx_result;
 }
 
@@ -136,7 +130,7 @@ HXDLIN(  58)							int _g31 = this->height;
 HXDLIN(  58)							while((_g21 < _g31)){
 HXLINE(  58)								_g21 = (_g21 + 1);
 HXDLIN(  58)								int x = (_g21 - 1);
-HXLINE(  59)								this->spriteMap->render(graphics,( (float)((x * 16)) ),( (float)((y * 16)) ),(( (int)( ::Dynamic(layer->__Field(HX_("tiles",85,fd,34,10),hx::paccDynamic))->__GetItem(y)->__GetItem(x)) ) - 1));
+HXLINE(  59)								this->spriteMap->render(graphics,( (float)((this->position->x + (x * 16))) ),( (float)((this->position->y + (y * 16))) ),(( (int)( ::Dynamic(layer->__Field(HX_("tiles",85,fd,34,10),hx::paccDynamic))->__GetItem(y)->__GetItem(x)) ) - 1));
             							}
             						}
             					}
@@ -153,16 +147,16 @@ void Structure_obj::update(Float dt){
 
 
 
-hx::ObjectPtr< Structure_obj > Structure_obj::__new() {
+hx::ObjectPtr< Structure_obj > Structure_obj::__new(::String tmx) {
 	hx::ObjectPtr< Structure_obj > __this = new Structure_obj();
-	__this->__construct();
+	__this->__construct(tmx);
 	return __this;
 }
 
-hx::ObjectPtr< Structure_obj > Structure_obj::__alloc(hx::Ctx *_hx_ctx) {
+hx::ObjectPtr< Structure_obj > Structure_obj::__alloc(hx::Ctx *_hx_ctx,::String tmx) {
 	Structure_obj *__this = (Structure_obj*)(hx::Ctx::alloc(_hx_ctx, sizeof(Structure_obj), true, "game.Structure"));
 	*(void **)__this = Structure_obj::_hx_vtable;
-	__this->__construct();
+	__this->__construct(tmx);
 	return __this;
 }
 

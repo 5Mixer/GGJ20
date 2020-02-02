@@ -8,6 +8,7 @@ class SummonCircle extends bonsai.entity.Entity {
 	public var width:Int = 64;
 	public var height:Int = 64;
 	public var animation:AnimatedSprite;
+	public var animation2:AnimatedSprite;
 
 	public var head:BodyPart;
 	public var chest:BodyPart;
@@ -45,22 +46,25 @@ class SummonCircle extends bonsai.entity.Entity {
 		];
 
 		this.animation = new AnimatedSprite();
+		this.animation2 = new AnimatedSprite();
 		this.animation.drawLayers = [0,1];
+		this.animation2.drawLayers = [2];
 		this.animation.registerAnimation("idle", {
 			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
 			frames:[0,4]
 		});
-		this.animation.registerAnimation("summon", {
+		this.animation.play("idle");
+		this.animation2.registerAnimation("summon", {
 			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
 			frames:[0,1,2,3,4]
 		});
-		this.animation.play("summon");
+		this.animation2.play("summon");
 
 		this.animatedSprite = new bonsai.render.AnimatedSprite();
 		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0] });
 		this.animatedSprite.play("idle");
 	}
-	
+
 	public function isComplete () {
 		return head != null && chest != null && leftArm != null && rightArm != null && leftLeg != null && rightLeg != null;
 	}
@@ -82,8 +86,6 @@ class SummonCircle extends bonsai.entity.Entity {
 		chest = null;
 		leftArm = null;
 		rightArm = null;
-		leftLeg = null;
-		rightLeg = null;
 	}
 
 	public function addPart (part:BodyPart) {
@@ -157,6 +159,7 @@ class SummonCircle extends bonsai.entity.Entity {
 	}
 
 	override public function update (dt:Float){
+		this.animation2.update(dt);
 		this.animation.update(dt);
 		super.update(dt);
 	}

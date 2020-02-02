@@ -87,6 +87,8 @@ class HXCPP_CLASS_ATTRIBUTES Body_obj : public  ::bonsai::entity::Entity_obj
 		 ::kha::math::Vector2 targetPosition;
 		inline  ::kha::math::Vector2 _hx_set_targetPosition(hx::StackContext *_hx_ctx, ::kha::math::Vector2 _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return targetPosition=_hx_v; }
 		Float time;
+		 ::game::BodyPart drawnHead;
+		inline  ::game::BodyPart _hx_set_drawnHead(hx::StackContext *_hx_ctx, ::game::BodyPart _hx_v) { HX_OBJ_WB(this,_hx_v.mPtr) return drawnHead=_hx_v; }
 		void update(Float dt);
 
 		int getItemDamage( ::game::BodyPart bodyPart);

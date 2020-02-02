@@ -160,6 +160,9 @@
 #ifndef INCLUDED_kha_Assets
 #include <hxinc/kha/Assets.h>
 #endif
+#ifndef INCLUDED_hxnoise_Perlin
+#include <hxinc/hxnoise/Perlin.h>
+#endif
 #ifndef INCLUDED_haxe_xml_Parser
 #include <hxinc/haxe/xml/Parser.h>
 #endif
@@ -613,6 +616,9 @@
 #ifndef INCLUDED_game_Structure
 #include <hxinc/game/Structure.h>
 #endif
+#ifndef INCLUDED_game_NoiseTilemap
+#include <hxinc/game/NoiseTilemap.h>
+#endif
 #ifndef INCLUDED_game_Inventory
 #include <hxinc/game/Inventory.h>
 #endif
@@ -781,6 +787,7 @@ hx::RegisterResources( hx::GetResources() );
 ::kha::Display_obj::__register();
 ::kha::_Color::Color_Impl__obj::__register();
 ::kha::Assets_obj::__register();
+::hxnoise::Perlin_obj::__register();
 ::haxe::xml::Parser_obj::__register();
 ::haxe::Unserializer_obj::__register();
 ::haxe::Log_obj::__register();
@@ -932,6 +939,7 @@ hx::RegisterResources( hx::GetResources() );
 ::game::World_obj::__register();
 ::game::SummonCircle_obj::__register();
 ::game::Structure_obj::__register();
+::game::NoiseTilemap_obj::__register();
 ::game::Inventory_obj::__register();
 ::game::BodyPartParticles_obj::__register();
 ::game::Body_obj::__register();
@@ -984,6 +992,7 @@ hx::RegisterResources( hx::GetResources() );
 ::differ::sat::SAT2D_obj::__boot();
 ::haxe::Unserializer_obj::__boot();
 ::haxe::xml::Parser_obj::__boot();
+::hxnoise::Perlin_obj::__boot();
 ::kha::Assets_obj::__boot();
 ::kha::_Color::Color_Impl__obj::__boot();
 ::kha::Display_obj::__boot();

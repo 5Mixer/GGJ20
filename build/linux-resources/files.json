@@ -583,12 +583,22 @@
 			],
 			"type": "image",
 			"original_width": 320,
-			"original_height": 64
+			"original_height": 192
 		},
 		{
 			"name": "satanicCircle_ase",
 			"files": [
 				"satanicCircle.ase"
+			],
+			"file_sizes": [
+				1
+			],
+			"type": "blob"
+		},
+		{
+			"name": "skeletune_sunvox",
+			"files": [
+				"skeletune.sunvox"
 			],
 			"file_sizes": [
 				1
