@@ -86,14 +86,14 @@ class Body extends bonsai.entity.Entity{
 		if (head == BodyPart.NaturalHead) {
 			if (Math.abs(this.vx + movement.x) > Math.abs(this.vy+movement.y)) {
 				if (vx+movement.x > 0)
-					drawnHead = BodyPart.NaturalHeadLeft;
-				else
 					drawnHead = BodyPart.NaturalHeadRight;
+				else
+					drawnHead = BodyPart.NaturalHeadLeft;
 			}else{
 				if (vy+movement.y > 0)
-					drawnHead = BodyPart.NaturalHeadUp;
-				else
 					drawnHead = BodyPart.NaturalHeadDown;
+				else
+					drawnHead = BodyPart.NaturalHeadUp;
 			}
 
 		}

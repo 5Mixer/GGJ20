@@ -13,10 +13,10 @@ class Structure extends Entity {
 	var spriteMap:bonsai.render.SpriteMap;
 	public var colliders:Array<differ.shapes.Polygon> = [];
 
-	override public function new () {
+	override public function new (tmx) {
 		super();
 
-		tiled = new bonsai.resource.Tiled(kha.Assets.blobs.castle2_tmx.toString());
+		tiled = new bonsai.resource.Tiled(tmx);
 		width = tiled.width;
 		height = tiled.height;
 
@@ -56,7 +56,7 @@ class Structure extends Entity {
 		for (layerName => layer in tiled.layers){
 			for (y in 0...width) {
 				for (x in 0...height) {
-					spriteMap.render(graphics, x*16, y*16, layer.tiles[y][x] - 1);
+					spriteMap.render(graphics, position.x + x*16, position.y + y*16, layer.tiles[y][x] - 1);
 				}
 			}
 		}

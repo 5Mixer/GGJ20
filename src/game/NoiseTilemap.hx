@@ -12,6 +12,9 @@ class NoiseTilemap extends Entity {
 	var spriteMap:bonsai.render.SpriteMap;
 	public var colliders:Array<differ.shapes.Polygon> = [];
 
+	public var baseTiles:Array<Array<Int>> = [];
+	public var tilesByBiome:Array<Array<{x:Int,y:Int}>> = [[],[],[],[],[],[]];
+
 	var perlin : Perlin;
 	var seed = 0.;
 	var seaLevel = -.75;
@@ -22,10 +25,14 @@ class NoiseTilemap extends Entity {
 		spriteMap = new SpriteMap(kha.Assets.images.tiles, 16, 16);
 
 		perlin = new Perlin();
-		for(x in 0...width)
-		{
-		}
 		seed = Math.random() * 30000;
+		for (y in 0...width) {
+			baseTiles[y] = [];
+			for (x in 0...height) {
+				baseTiles[y][x] = getTile(x,y);
+				tilesByBiome[getTile(x,y)].push({x:x,y:y});
+			}
+		}
 	}
 
 	public function findSpawn () {
@@ -37,17 +44,17 @@ class NoiseTilemap extends Entity {
 		spawnx += 4;
 		return new kha.math.Vector2(spawnx * 16, spawny*16);
 	}
-	public function getTile (x,y) {
+	public function getTile (x,y):Int {
 		var offset = Math.max(0,(Math.pow(x-150,2)+Math.pow(y-150, 2))/5000 + seaLevel);
 		var c = Math.min(5,perlin.OctavePerlin(x / 16, y / 16, seed, 5, 0.5, 0.25)*8 - offset);
 
-		return Math.round(c) - 1;
+		return Math.round(Math.max(0,Math.min(5,c - 1)));
 	}
 
 	override public function render (graphics:kha.graphics2.Graphics) {
 		for (y in 0...width) {
 			for (x in 0...height) {
-				spriteMap.renderCell(graphics, x*16, y*16, 0,getTile(x,y));
+				spriteMap.renderCell(graphics, x*16, y*16, 0,baseTiles[y][x]);
 			}
 		}
 
