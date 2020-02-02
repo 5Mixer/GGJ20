@@ -8,10 +8,12 @@ class Structure extends Entity {
 	public var width:Int = 100;
 	public var height:Int = 100;
 	var transformation:Transformation;
+	public var tier = 0;
 
 	var tiled:bonsai.resource.Tiled;
 	var spriteMap:bonsai.render.SpriteMap;
 	public var colliders:Array<differ.shapes.Polygon> = [];
+	public var spawnRegions:Array<{x:Int,y:Int,width:Int,height:Int}> = [];
 
 	override public function new (tmx) {
 		super();
@@ -28,22 +30,13 @@ class Structure extends Entity {
 			// );
 		}
 		for (rectangle in tiled.rectangles) {
-			colliders.push(differ.shapes.Polygon.rectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height,false));
-
-		}
-/*
-		for (layerName => layer in tiled.layers){
-			if (layerName == "wallsCollide") {
-				for (y in 0...width) {
-					for (x in 0...height) {
-						if (layer.tiles[y][x] != 0)
-							colliders.push(differ.shapes.Polygon.rectangle(x*16, y*16,17,17,false));
-
-					}
-				}
+			if (rectangle.layer == "collide") {
+				colliders.push(differ.shapes.Polygon.rectangle(rectangle.x+position.x,rectangle.y+position.y,rectangle.width,rectangle.height,false));
+			}
+			if (rectangle.layer == "spawn") {
+				spawnRegions.push({x:rectangle.x,y:rectangle.y,width:rectangle.width, height: rectangle.height});
 			}
 		}
-		*/
 
 		spriteMap = new SpriteMap(kha.Assets.images.castleTiles, 16, 16);
 

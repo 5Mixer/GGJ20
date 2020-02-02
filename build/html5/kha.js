@@ -298,6 +298,13 @@ Type.createEnum = function(e,constr,params) {
 	}
 	return f;
 };
+Type.createEnumIndex = function(e,index,params) {
+	var c = e.__constructs__[index];
+	if(c == null) {
+		throw new js__$Boot_HaxeError(index + " is not a valid enum constructor index");
+	}
+	return Type.createEnum(e,c,params);
+};
 Type.getInstanceFields = function(c) {
 	var a = [];
 	for(var i in c.prototype) a.push(i);
@@ -1222,7 +1229,7 @@ bonsai_resource_Tiled.prototype = {
 				var polygonPoints = [];
 				var xOffset = Math.floor(Std.parseInt(object1.get("x")));
 				var yOffset = Math.floor(Std.parseInt(object1.get("y")));
-				this.rectangles.push({ x : Std.parseInt(object1.get("x")), y : Std.parseInt(object1.get("y")), width : Std.parseInt(object1.get("width")), height : Std.parseInt(object1.get("height"))});
+				this.rectangles.push({ layer : layerName, x : Std.parseInt(object1.get("x")), y : Std.parseInt(object1.get("y")), width : Std.parseInt(object1.get("width")), height : Std.parseInt(object1.get("height"))});
 				var polygon = polygons;
 				while(polygon.hasNext()) {
 					var polygon1 = polygon.next();
@@ -2489,7 +2496,14 @@ var differ_shapes_InfiniteState = $hxEnums["differ.shapes.InfiniteState"] = { __
 	,infinite: {_hx_index:2,__enum__:"differ.shapes.InfiniteState",toString:$estr}
 };
 differ_shapes_InfiniteState.__empty_constructs__ = [differ_shapes_InfiniteState.not_infinite,differ_shapes_InfiniteState.infinite_from_start,differ_shapes_InfiniteState.infinite];
+var game_Behaviour = $hxEnums["game.Behaviour"] = { __ename__ : true, __constructs__ : ["Idle","Chase","Return"]
+	,Idle: {_hx_index:0,__enum__:"game.Behaviour",toString:$estr}
+	,Chase: {_hx_index:1,__enum__:"game.Behaviour",toString:$estr}
+	,Return: {_hx_index:2,__enum__:"game.Behaviour",toString:$estr}
+};
+game_Behaviour.__empty_constructs__ = [game_Behaviour.Idle,game_Behaviour.Chase,game_Behaviour.Return];
 var game_Body = $hxClasses["game.Body"] = function() {
+	this.speed = 150;
 	this.time = 0.;
 	var _g = new haxe_ds_EnumValueMap();
 	_g.set(game_BodyPart.NaturalHeadRight,11);
@@ -2510,6 +2524,7 @@ var game_Body = $hxClasses["game.Body"] = function() {
 	_g1.set(game_BodyPart.NaturalLeg,5);
 	_g1.set(game_BodyPart.Boots,10);
 	this.bodyLayers = _g1;
+	this.enemyBehaviour = game_Behaviour.Idle;
 	this.friendly = true;
 	this.vy = 0;
 	this.vx = 0;
@@ -2518,18 +2533,20 @@ var game_Body = $hxClasses["game.Body"] = function() {
 	this.attackCooldown = 0.;
 	this.health = 100;
 	bonsai_entity_Entity.call(this);
-	this.position = new kha_math_Vector2(-160 + 320 * Math.random(),-110 + 220 * Math.random());
+	this.position = new kha_math_Vector2(0,0);
 	this.targetPosition = new kha_math_Vector2(0,0);
+	this.homePoint = new kha_math_Vector2(0,0);
 	this.collider = new differ_shapes_Circle(this.position.x,this.position.y,7);
 	this.friendly = true;
 	this.chest = game_BodyPart.NaturalChest;
 	this.head = game_BodyPart.NaturalHead;
 	this.leftArm = game_BodyPart.NaturalArm;
-	this.rightArm = this.friendly ? game_BodyPart.Axe : game_BodyPart.NaturalHead;
+	this.rightArm = this.friendly ? game_BodyPart.Knife : game_BodyPart.NaturalArm;
 	this.leftLeg = game_BodyPart.NaturalLeg;
 	this.rightLeg = game_BodyPart.NaturalLeg;
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
 	this.animatedSprite.registerAnimation("idle",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0]});
+	this.animatedSprite.registerAnimation("attack",{ spriteMap : new bonsai_render_SpriteMap(kha_Assets.images.bodyParts2,32,32), frames : [0,1,2]});
 	this.animatedSprite.play("idle");
 };
 game_Body.__name__ = "game.Body";
@@ -2550,100 +2567,84 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 	,vy: null
 	,collider: null
 	,friendly: null
+	,enemyBehaviour: null
+	,homePoint: null
 	,bodyLayers: null
 	,mohawks: null
 	,animatedSprite: null
 	,targetPosition: null
 	,time: null
 	,drawnHead: null
+	,speed: null
 	,update: function(dt) {
 		this.attackCooldown -= dt;
 		if(this.attackCooldown < 0) {
 			this.attackCooldown = 0.;
 		}
 		this.time += dt;
-		var speed = 180 * dt;
-		var x = 16;
-		var y = 32;
+		this.animatedSprite.update(dt);
+		if(!this.friendly) {
+			if(this.enemyBehaviour == game_Behaviour.Idle) {
+				var _this = this.position;
+				this.targetPosition = new kha_math_Vector2(_this.x,_this.y);
+			}
+			if(this.enemyBehaviour == game_Behaviour.Return) {
+				var _this1 = this.homePoint;
+				this.targetPosition = new kha_math_Vector2(_this1.x,_this1.y);
+			}
+		}
+		var _this2 = this.targetPosition;
+		var vec = this.position;
+		var x = _this2.x - vec.x;
+		var y = _this2.y - vec.y;
 		if(y == null) {
 			y = 0;
 		}
 		if(x == null) {
 			x = 0;
 		}
-		var footOffset_x = x;
-		var footOffset_y = y;
-		var _this = this.targetPosition;
-		var _this1 = this.position;
-		var x1 = _this1.x + footOffset_x;
-		var y1 = _this1.y + footOffset_y;
+		var _this_x = x;
+		var _this_y = y;
+		var x1 = _this_x;
+		var y1 = _this_y;
 		if(y1 == null) {
 			y1 = 0;
 		}
 		if(x1 == null) {
 			x1 = 0;
 		}
-		var vec_x = x1;
-		var vec_y = y1;
-		var x2 = _this.x - vec_x;
-		var y2 = _this.y - vec_y;
-		if(y2 == null) {
-			y2 = 0;
-		}
-		if(x2 == null) {
-			x2 = 0;
-		}
-		var _this_x = x2;
-		var _this_y = y2;
-		var x3 = _this_x;
-		var y3 = _this_y;
-		if(y3 == null) {
-			y3 = 0;
-		}
-		if(x3 == null) {
-			x3 = 0;
-		}
-		var _this_x1 = x3;
-		var _this_y1 = y3;
+		var _this_x1 = x1;
+		var _this_y1 = y1;
 		var currentLength = Math.sqrt(_this_x1 * _this_x1 + _this_y1 * _this_y1);
 		if(currentLength != 0) {
 			var mul = 1 / currentLength;
 			_this_x1 *= mul;
 			_this_y1 *= mul;
 		}
-		var x4 = _this_x1 * speed;
-		var y4 = _this_y1 * speed;
-		if(y4 == null) {
-			y4 = 0;
+		var value = this.speed * dt * (this.friendly ? 1.5 : 1);
+		var x2 = _this_x1 * value;
+		var y2 = _this_y1 * value;
+		if(y2 == null) {
+			y2 = 0;
 		}
-		if(x4 == null) {
-			x4 = 0;
+		if(x2 == null) {
+			x2 = 0;
 		}
-		var movement_x = x4;
-		var movement_y = y4;
-		var _this2 = this.targetPosition;
-		var _this3 = this.position;
-		var x5 = _this3.x + footOffset_x;
-		var y5 = _this3.y + footOffset_y;
-		if(y5 == null) {
-			y5 = 0;
+		var movement_x = x2;
+		var movement_y = y2;
+		var _this3 = this.targetPosition;
+		var vec1 = this.position;
+		var x3 = _this3.x - vec1.x;
+		var y3 = _this3.y - vec1.y;
+		if(y3 == null) {
+			y3 = 0;
 		}
-		if(x5 == null) {
-			x5 = 0;
+		if(x3 == null) {
+			x3 = 0;
 		}
-		var vec_x1 = x5;
-		var vec_y1 = y5;
-		var x6 = _this2.x - vec_x1;
-		var y6 = _this2.y - vec_y1;
-		if(y6 == null) {
-			y6 = 0;
-		}
-		if(x6 == null) {
-			x6 = 0;
-		}
-		var _this_x2 = x6;
-		var _this_y2 = y6;
-		if(Math.sqrt(_this_x2 * _this_x2 + _this_y2 * _this_y2) > 10) {
+		var _this_x2 = x3;
+		var _this_y2 = y3;
+		if(Math.sqrt(_this_x2 * _this_x2 + _this_y2 * _this_y2) > 5) {
 			var _this4 = this.position;
 			this.position = new kha_math_Vector2(_this4.x + movement_x,_this4.y + movement_y);
 		}
@@ -2691,7 +2692,7 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 	}
 	,render: function(graphics) {
 		if(this.chest == null || this.drawnHead == null || this.leftLeg == null || this.rightLeg == null || this.leftArm == null || this.rightArm == null) {
-			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 150, className : "game.Body", methodName : "render"});
+			haxe_Log.trace("attempted to render a body that lacks part/s",{ fileName : "game/Body.hx", lineNumber : 164, className : "game.Body", methodName : "render"});
 			return;
 		}
 		var tmp = this.bodyLayers.get(this.chest);
@@ -2720,21 +2721,21 @@ game_Body.prototype = $extend(bonsai_entity_Entity.prototype,{
 	}
 	,__class__: game_Body
 });
-var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs__ : ["NaturalHead","NaturalHeadRight","NaturalHeadLeft","NaturalHeadDown","NaturalHeadUp","NaturalChest","NaturalArm","NaturalLeg","Boots","Axe","Sword","Knife"]
+var game_BodyPart = $hxEnums["game.BodyPart"] = { __ename__ : true, __constructs__ : ["NaturalHead","NaturalChest","NaturalArm","NaturalLeg","Boots","Axe","Sword","Knife","NaturalHeadRight","NaturalHeadLeft","NaturalHeadDown","NaturalHeadUp"]
 	,NaturalHead: {_hx_index:0,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalHeadRight: {_hx_index:1,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalHeadLeft: {_hx_index:2,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalHeadDown: {_hx_index:3,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalHeadUp: {_hx_index:4,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalChest: {_hx_index:5,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalArm: {_hx_index:6,__enum__:"game.BodyPart",toString:$estr}
-	,NaturalLeg: {_hx_index:7,__enum__:"game.BodyPart",toString:$estr}
-	,Boots: {_hx_index:8,__enum__:"game.BodyPart",toString:$estr}
-	,Axe: {_hx_index:9,__enum__:"game.BodyPart",toString:$estr}
-	,Sword: {_hx_index:10,__enum__:"game.BodyPart",toString:$estr}
-	,Knife: {_hx_index:11,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalChest: {_hx_index:1,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalArm: {_hx_index:2,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalLeg: {_hx_index:3,__enum__:"game.BodyPart",toString:$estr}
+	,Boots: {_hx_index:4,__enum__:"game.BodyPart",toString:$estr}
+	,Axe: {_hx_index:5,__enum__:"game.BodyPart",toString:$estr}
+	,Sword: {_hx_index:6,__enum__:"game.BodyPart",toString:$estr}
+	,Knife: {_hx_index:7,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadRight: {_hx_index:8,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadLeft: {_hx_index:9,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadDown: {_hx_index:10,__enum__:"game.BodyPart",toString:$estr}
+	,NaturalHeadUp: {_hx_index:11,__enum__:"game.BodyPart",toString:$estr}
 };
-game_BodyPart.__empty_constructs__ = [game_BodyPart.NaturalHead,game_BodyPart.NaturalHeadRight,game_BodyPart.NaturalHeadLeft,game_BodyPart.NaturalHeadDown,game_BodyPart.NaturalHeadUp,game_BodyPart.NaturalChest,game_BodyPart.NaturalArm,game_BodyPart.NaturalLeg,game_BodyPart.Boots,game_BodyPart.Axe,game_BodyPart.Sword,game_BodyPart.Knife];
+game_BodyPart.__empty_constructs__ = [game_BodyPart.NaturalHead,game_BodyPart.NaturalChest,game_BodyPart.NaturalArm,game_BodyPart.NaturalLeg,game_BodyPart.Boots,game_BodyPart.Axe,game_BodyPart.Sword,game_BodyPart.Knife,game_BodyPart.NaturalHeadRight,game_BodyPart.NaturalHeadLeft,game_BodyPart.NaturalHeadDown,game_BodyPart.NaturalHeadUp];
 var game_BodyPartParticles = $hxClasses["game.BodyPartParticles"] = function() {
 	bonsai_entity_ParticleSystem.call(this,400);
 	this.animatedSprite = new bonsai_render_AnimatedSprite();
@@ -2972,7 +2973,9 @@ game_StartScreen.prototype = $extend(bonsai_scene_Scene.prototype,{
 	,__class__: game_StartScreen
 });
 var game_Structure = $hxClasses["game.Structure"] = function(tmx) {
+	this.spawnRegions = [];
 	this.colliders = [];
+	this.tier = 0;
 	this.height = 100;
 	this.width = 100;
 	bonsai_entity_Entity.call(this);
@@ -2990,7 +2993,12 @@ var game_Structure = $hxClasses["game.Structure"] = function(tmx) {
 	while(_g2 < _g3.length) {
 		var rectangle = _g3[_g2];
 		++_g2;
-		this.colliders.push(differ_shapes_Polygon.rectangle(rectangle.x,rectangle.y,rectangle.width,rectangle.height,false));
+		if(rectangle.layer == "collide") {
+			this.colliders.push(differ_shapes_Polygon.rectangle(rectangle.x + this.position.x,rectangle.y + this.position.y,rectangle.width,rectangle.height,false));
+		}
+		if(rectangle.layer == "spawn") {
+			this.spawnRegions.push({ x : rectangle.x, y : rectangle.y, width : rectangle.width, height : rectangle.height});
+		}
 	}
 	this.spriteMap = new bonsai_render_SpriteMap(kha_Assets.images.castleTiles,16,16);
 	this.transformation = new bonsai_render_Transformation();
@@ -3002,9 +3010,11 @@ game_Structure.prototype = $extend(bonsai_entity_Entity.prototype,{
 	width: null
 	,height: null
 	,transformation: null
+	,tier: null
 	,tiled: null
 	,spriteMap: null
 	,colliders: null
+	,spawnRegions: null
 	,render: function(graphics) {
 		this.transformation.apply(graphics);
 		var _g = new haxe_iterators_MapKeyValueIterator(this.tiled.layers);
@@ -3097,7 +3107,7 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 	,getBody: function() {
 		var body = new game_Body();
 		if(this.head == game_BodyPart.NaturalHead) {
-			this.head = game_BodyPart.NaturalHeadDown;
+			this.head = game_BodyPart.NaturalHead;
 		}
 		var e = this.head;
 		body.head = Type.createEnum(game_BodyPart,$hxEnums[e.__enum__].__constructs__[e._hx_index],null);
@@ -3119,6 +3129,8 @@ game_SummonCircle.prototype = $extend(bonsai_entity_Entity.prototype,{
 		this.chest = null;
 		this.leftArm = null;
 		this.rightArm = null;
+		this.leftLeg = null;
+		this.rightLeg = null;
 	}
 	,addPart: function(part) {
 		if(this.armParts.indexOf(part) != -1) {
@@ -3215,6 +3227,7 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	_g.set(game_BodyPart.Sword,2);
 	_g.set(game_BodyPart.Knife,9);
 	this.zOffset = _g;
+	this.cameraSpeed = 400;
 	this.f = 0.;
 	this.structures = [];
 	this.bodies = [];
@@ -3226,34 +3239,9 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 	var spawn = this.map.findSpawn();
 	this.bodyParticleSystem = new game_BodyPartParticles();
 	this.bodyParticleSystem.poolMaximum = 6000;
-	this.add(this.bodyParticleSystem);
 	this.camera = new bonsai_scene_Camera();
 	this.camera.position.x = spawn.x * 2 - 300;
 	this.camera.position.y = spawn.y * 2 - 300;
-	this.summonCircle = new game_SummonCircle();
-	var x = spawn.x;
-	var y = spawn.y;
-	if(y == null) {
-		y = 0;
-	}
-	if(x == null) {
-		x = 0;
-	}
-	var _this_x = x;
-	var _this_y = y;
-	var x1 = 30;
-	var y1 = 30;
-	if(y1 == null) {
-		y1 = 0;
-	}
-	if(x1 == null) {
-		x1 = 0;
-	}
-	var vec_x = x1;
-	var vec_y = y1;
-	var tmp = new kha_math_Vector2(_this_x + vec_x,_this_y + vec_y);
-	this.summonCircle.position = tmp;
-	this.add(this.summonCircle);
 	this.inventory = new game_Inventory();
 	this.input.mouseUpListeners.push(function() {
 		var clickedPart = _gthis.inventory.getItemClicked(_gthis.input.mousePosition);
@@ -3267,83 +3255,129 @@ var game_World = $hxClasses["game.World"] = function(engine) {
 					body.position = new kha_math_Vector2(_this.x,_this.y);
 					body.vz = -4;
 					body.vx = -1 + Math.random() * 2;
-					_gthis.add(body);
+					_gthis.bodies.push(body);
 					_gthis.summonCircle.clear();
-					_gthis.summonCircle.animation.playOnce("summon");
+					_gthis.summonCircle.summoningProcessTimer = 2;
+					_gthis.summonCircle.animation2.playOnce("summon");
 					_gthis.camera.shake(1,6);
 				}
 			}
 		}
 	});
+	this.summonCircle = new game_SummonCircle();
+	this.summonCircle.position = new kha_math_Vector2(spawn.x + 100,spawn.y);
 	var _g1 = 0;
-	while(_g1 < 20) {
+	while(_g1 < 15) {
 		var i = _g1++;
-		var pos = this.map.tilesByBiome[1][Math.floor(Math.random() * this.map.tilesByBiome[1].length)];
-		this.summonCircle = new game_SummonCircle();
-		this.summonCircle.position = new kha_math_Vector2(pos.x * 16,pos.y * 16);
-		this.add(this.summonCircle);
-	}
-	var _g11 = 0;
-	while(_g11 < 15) {
-		var i1 = _g11++;
-		var pos1 = this.map.tilesByBiome[2][Math.floor(Math.random() * this.map.tilesByBiome[2].length)];
+		var pos = this.map.tilesByBiome[2][Math.floor(Math.random() * this.map.tilesByBiome[2].length)];
 		var structure = new game_Structure(kha_Assets.blobs.castle1_tmx.toString());
-		structure.position = new kha_math_Vector2(pos1.x * 16,pos1.y * 16);
+		structure.tier = 1;
+		structure.position = new kha_math_Vector2(pos.x * 16,pos.y * 16);
 		this.add(structure);
 		this.structures.push(structure);
 	}
-	var pos2 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
+	var pos1 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
 	var structure1 = new game_Structure(kha_Assets.blobs.castle2_tmx.toString());
-	structure1.position = new kha_math_Vector2(pos2.x * 16,pos2.y * 16);
+	structure1.tier = 2;
+	structure1.position = new kha_math_Vector2(pos1.x * 16,pos1.y * 16);
 	this.add(structure1);
 	this.structures.push(structure1);
-	var pos3 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
+	var pos2 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
 	var structure2 = new game_Structure(kha_Assets.blobs.castle2_tmx.toString());
-	structure2.position = new kha_math_Vector2(pos3.x * 16,pos3.y * 16);
+	structure2.tier = 2;
+	structure2.position = new kha_math_Vector2(pos2.x * 16,pos2.y * 16);
 	this.add(structure2);
 	this.structures.push(structure2);
-	var pos4 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
+	var pos3 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
 	var structure3 = new game_Structure(kha_Assets.blobs.castle2_tmx.toString());
-	structure3.position = new kha_math_Vector2(pos4.x * 16,pos4.y * 16);
+	structure3.tier = 2;
+	structure3.position = new kha_math_Vector2(pos3.x * 16,pos3.y * 16);
 	this.add(structure3);
 	this.structures.push(structure3);
-	var pos5 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
+	var pos4 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
 	var structure4 = new game_Structure(kha_Assets.blobs.castle2_tmx.toString());
-	structure4.position = new kha_math_Vector2(pos5.x * 16,pos5.y * 16);
+	structure4.tier = 2;
+	structure4.position = new kha_math_Vector2(pos4.x * 16,pos4.y * 16);
 	this.add(structure4);
 	this.structures.push(structure4);
-	var pos6 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
+	var pos5 = this.map.tilesByBiome[3][Math.floor(Math.random() * this.map.tilesByBiome[3].length)];
 	var structure5 = new game_Structure(kha_Assets.blobs.castle2_tmx.toString());
-	structure5.position = new kha_math_Vector2(pos6.x * 16,pos6.y * 16);
+	structure5.tier = 2;
+	structure5.position = new kha_math_Vector2(pos5.x * 16,pos5.y * 16);
 	this.add(structure5);
 	this.structures.push(structure5);
-	var pos7 = this.map.tilesByBiome[4][Math.floor(Math.random() * this.map.tilesByBiome[4].length)];
+	var pos6 = this.map.tilesByBiome[4][Math.floor(Math.random() * this.map.tilesByBiome[4].length)];
 	var structure6 = new game_Structure(kha_Assets.blobs.castle3_tmx.toString());
-	structure6.position = new kha_math_Vector2(pos7.x * 16,pos7.y * 16);
+	structure6.tier = 3;
+	structure6.position = new kha_math_Vector2(pos6.x * 16,pos6.y * 16);
 	this.add(structure6);
 	this.structures.push(structure6);
-	var pos8 = this.map.tilesByBiome[4][Math.floor(Math.random() * this.map.tilesByBiome[4].length)];
+	var pos7 = this.map.tilesByBiome[4][Math.floor(Math.random() * this.map.tilesByBiome[4].length)];
 	var structure7 = new game_Structure(kha_Assets.blobs.castle3_tmx.toString());
-	structure7.position = new kha_math_Vector2(pos8.x * 16,pos8.y * 16);
+	structure7.tier = 3;
+	structure7.position = new kha_math_Vector2(pos7.x * 16,pos7.y * 16);
 	this.add(structure7);
 	this.structures.push(structure7);
-	var _g2 = 0;
-	while(_g2 < 100) {
-		var i2 = _g2++;
-		var body1 = new game_Body();
-		var x2 = Math.random() * 10;
-		var y2 = Math.random() * 10;
-		if(y2 == null) {
-			y2 = 0;
+	var structure8 = new game_Structure(kha_Assets.blobs.castle4_tmx.toString());
+	structure8.tier = 4;
+	structure8.position = new kha_math_Vector2(2400,2400);
+	this.add(structure8);
+	this.structures.push(structure8);
+	var enemyCount = [3,7,10,50];
+	var _g11 = 0;
+	var _g2 = this.structures;
+	while(_g11 < _g2.length) {
+		var structure9 = _g2[_g11];
+		++_g11;
+		var _g111 = 0;
+		var _g21 = structure9.spawnRegions;
+		while(_g111 < _g21.length) {
+			var spawnRegion = _g21[_g111];
+			++_g111;
+			var _g12 = 0;
+			var _g22 = enemyCount[structure9.tier - 1];
+			while(_g12 < _g22) {
+				var i1 = _g12++;
+				var body1 = new game_Body();
+				body1.position = new kha_math_Vector2(Math.random() * spawnRegion.width + spawnRegion.x + structure9.position.x,Math.random() * spawnRegion.height + spawnRegion.y + structure9.position.y);
+				body1.friendly = false;
+				var _this1 = body1.position;
+				body1.targetPosition = new kha_math_Vector2(_this1.x,_this1.y);
+				var _this2 = body1.position;
+				body1.homePoint = new kha_math_Vector2(_this2.x,_this2.y);
+				this.bodies.push(body1);
+			}
 		}
-		if(x2 == null) {
-			x2 = 0;
-		}
-		var vec_x1 = x2;
-		var vec_y1 = y2;
-		body1.position = new kha_math_Vector2(spawn.x + vec_x1,spawn.y + vec_y1);
-		this.bodies.push(body1);
 	}
+	var _g3 = 0;
+	while(_g3 < 350) {
+		var i2 = _g3++;
+		var pos8 = this.map.tilesByBiome[1][Math.floor(Math.random() * this.map.tilesByBiome[1].length)];
+		this.bodyParticleSystem.spawnParticle({ x : pos8.x * 16, y : pos8.y * 16, z : 0, vx : 0, vz : 0, part : Type.createEnumIndex(game_BodyPart,Math.floor(Math.random() * 4),null)});
+	}
+	var _g4 = 0;
+	while(_g4 < 350) {
+		var i3 = _g4++;
+		var pos9 = this.map.tilesByBiome[2][Math.floor(Math.random() * this.map.tilesByBiome[1].length)];
+		this.bodyParticleSystem.spawnParticle({ x : pos9.x * 16, y : pos9.y * 16, z : 0, vx : 0, vz : 0, part : Type.createEnumIndex(game_BodyPart,Math.floor(Math.random() * 8),null)});
+	}
+	this.add(this.bodyParticleSystem);
+	var body2 = new game_Body();
+	body2.leftArm = game_BodyPart.Axe;
+	body2.rightArm = game_BodyPart.Axe;
+	var x = Math.random() * 10;
+	var y = Math.random() * 10;
+	if(y == null) {
+		y = 0;
+	}
+	if(x == null) {
+		x = 0;
+	}
+	var vec_x = x;
+	var vec_y = y;
+	body2.position = new kha_math_Vector2(spawn.x + vec_x,spawn.y + vec_y);
+	this.bodies.push(body2);
+	this.add(this.summonCircle);
 };
 game_World.__name__ = "game.World";
 game_World.__super__ = bonsai_scene_Scene;
@@ -3359,22 +3393,23 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 	,map: null
 	,structures: null
 	,f: null
+	,worldMousePos: null
+	,cameraSpeed: null
 	,update: function(dt) {
 		this.f++;
 		this.camera.update(dt);
-		var worldMousePos = this.camera.transformation.transformPoint(this.input.mousePosition);
-		var cameraSpeed = 800;
+		this.worldMousePos = this.camera.transformation.transformPoint(this.input.mousePosition);
 		if(this.input.isAnyKeyDown(InputBindings.left)) {
-			this.camera.position.x -= dt * cameraSpeed;
+			this.camera.position.x -= dt * this.cameraSpeed;
 		}
 		if(this.input.isAnyKeyDown(InputBindings.right)) {
-			this.camera.position.x += dt * cameraSpeed;
+			this.camera.position.x += dt * this.cameraSpeed;
 		}
 		if(this.input.isAnyKeyDown(InputBindings.down)) {
-			this.camera.position.y += dt * cameraSpeed;
+			this.camera.position.y += dt * this.cameraSpeed;
 		}
 		if(this.input.isAnyKeyDown(InputBindings.up)) {
-			this.camera.position.y -= dt * cameraSpeed;
+			this.camera.position.y -= dt * this.cameraSpeed;
 		}
 		bonsai_scene_Scene.prototype.update.call(this,dt);
 		this.bodies.sort(function(a,b) {
@@ -3392,8 +3427,8 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 			body.update(dt);
 		}
 		var worldMouseFast = this.camera.transformation.transformPoint(this.input.mousePosition);
-		var x = worldMouseFast.x;
-		var y = worldMouseFast.y;
+		var x = worldMouseFast.x - 16;
+		var y = worldMouseFast.y - 32;
 		if(y == null) {
 			y = 0;
 		}
@@ -3407,6 +3442,7 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 		while(_g2 < _g3.length) {
 			var body1 = _g3[_g2];
 			++_g2;
+			body1.animatedSprite.play("idle");
 			if(body1.friendly) {
 				body1.targetPosition = new kha_math_Vector2(worldMouse_x,worldMouse_y);
 				if(this.map.getTile(Math.floor(body1.position.x / 16),Math.floor(body1.position.y / 16)) == 0) {
@@ -3419,17 +3455,40 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 			while(_g21 < _g31.length) {
 				var body2 = _g31[_g21];
 				++_g21;
-				if(body1 == body2 || Math.abs(body1.position.x - body2.position.x) > 215 || Math.abs(body1.position.y - body2.position.y) > 15) {
+				if(!body1.friendly && body2.friendly) {
+					var _this = body1.position;
+					var vec = body2.position;
+					var x1 = _this.x - vec.x;
+					var y1 = _this.y - vec.y;
+					if(y1 == null) {
+						y1 = 0;
+					}
+					if(x1 == null) {
+						x1 = 0;
+					}
+					var _this_x = x1;
+					var _this_y = y1;
+					if(Math.sqrt(_this_x * _this_x + _this_y * _this_y) < 150) {
+						body1.enemyBehaviour = game_Behaviour.Chase;
+						var _this1 = body2.position;
+						body1.targetPosition = new kha_math_Vector2(_this1.x,_this1.y);
+					} else if(body1.enemyBehaviour == game_Behaviour.Chase) {
+						body1.enemyBehaviour = game_Behaviour.Return;
+					}
+				}
+				if(body1 == body2 || Math.abs(body1.position.x - body2.position.x) > 15 || Math.abs(body1.position.y - body2.position.y) > 15) {
 					continue;
 				}
 				var collision = body1.collider.testCircle(body2.collider);
 				if(collision != null) {
 					if(body1.friendly != body2.friendly) {
 						if(body1.attackCooldown == 0) {
+							body1.animatedSprite.play("attack");
 							body2.health -= body1.getDamage();
 							body1.attackCooldown = .5;
 						}
 						if(body2.attackCooldown == 0) {
+							body2.animatedSprite.play("attack");
 							body1.health -= body2.getDamage();
 							body2.attackCooldown = .5;
 						}
@@ -3461,13 +3520,6 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 					}
 				}
 			}
-			this.bodyParticleSystem.members.sort(function(a1,b1) {
-				if(a1.y - b1.y > 0) {
-					return 1;
-				} else {
-					return -1;
-				}
-			});
 			var i = this.bodyParticleSystem.members.length - 1;
 			while(i >= 0) {
 				var item = this.bodyParticleSystem.members[i];
@@ -3475,7 +3527,7 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 					--i;
 					continue;
 				}
-				if(Math.pow(item.x + 16 - worldMousePos.x,2) + Math.pow(item.y + 14 - worldMousePos.y,2) < 200) {
+				if(Math.pow(item.x + 16 - this.worldMousePos.x,2) + Math.pow(item.y + 14 - this.worldMousePos.y,2) < 200) {
 					if([game_BodyPart.NaturalHeadUp,game_BodyPart.NaturalHeadDown,game_BodyPart.NaturalHeadRight,game_BodyPart.NaturalHeadLeft].indexOf(item.part) != -1) {
 						item.part = game_BodyPart.NaturalHead;
 					}
@@ -3488,12 +3540,12 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 		}
 	}
 	,render: function(g) {
-		g.set_color(kha__$Color_Color_$Impl_$.fromBytes(99,155,255));
-		g.fillRect(0,0,10000,10000);
 		g.set_color(-1);
 		this.camera.transformation.scale.x = 2;
 		this.camera.transformation.scale.y = 2;
 		this.camera.apply(g);
+		var camWorld = this.camera.transformation.transformPoint(new kha_math_Vector2(0,0));
+		this.summonCircle.position = new kha_math_Vector2(camWorld.x + 150,camWorld.y);
 		bonsai_scene_Scene.prototype.render.call(this,g);
 		var _g = 0;
 		var _g1 = this.bodies;
@@ -3539,7 +3591,7 @@ game_World.prototype = $extend(bonsai_scene_Scene.prototype,{
 		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.leftLeg), z : offset + this.zOffset.get(body.leftLeg), vz : vz, vx : Math.random() - .5, part : body.leftLeg});
 		this.bodyParticleSystem.spawnParticle({ x : body.position.x, y : body.position.y + this.zOffset.get(body.rightLeg), z : offset + this.zOffset.get(body.rightLeg), vz : vz, vx : Math.random() - .5, part : body.rightLeg});
 		HxOverrides.remove(this.bodies,body);
-		this.remove(body);
+		body = null;
 	}
 	,__class__: game_World
 });
@@ -5982,10 +6034,17 @@ var kha__$Assets_ImageList = $hxClasses["kha._Assets.ImageList"] = function() {
 	this.tiles_exportDescription = { name : "tiles_export", original_height : 128, file_sizes : [2118], original_width : 128, files : ["tiles-export.png"], type : "image"};
 	this.tiles_exportName = "tiles_export";
 	this.tiles_export = null;
+<<<<<<< HEAD
 	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [1003], original_width : 128, files : ["tiles.png"], type : "image"};
 	this.tilesName = "tiles";
 	this.tiles = null;
 	this.satanicCircleDescription = { name : "satanicCircle", original_height : 192, file_sizes : [2563], original_width : 384, files : ["satanicCircle.png"], type : "image"};
+=======
+	this.tilesDescription = { name : "tiles", original_height : 128, file_sizes : [2118], original_width : 128, files : ["tiles.png"], type : "image"};
+	this.tilesName = "tiles";
+	this.tiles = null;
+	this.satanicCircleDescription = { name : "satanicCircle", original_height : 192, file_sizes : [2563], original_width : 320, files : ["satanicCircle.png"], type : "image"};
+>>>>>>> master
 	this.satanicCircleName = "satanicCircle";
 	this.satanicCircle = null;
 	this.castleTilesDescription = { name : "castleTiles", original_height : 512, file_sizes : [5983], original_width : 128, files : ["castleTiles.png"], type : "image"};
@@ -6082,7 +6141,11 @@ var kha__$Assets_BlobList = $hxClasses["kha._Assets.BlobList"] = function() {
 	this.tiles_aseDescription = { name : "tiles_ase", file_sizes : [1479], files : ["tiles.ase"], type : "blob"};
 	this.tiles_aseName = "tiles_ase";
 	this.tiles_ase = null;
+<<<<<<< HEAD
 	this.skeletune_sunvoxDescription = { name : "skeletune_sunvox", file_sizes : [4988], files : ["skeletune.sunvox"], type : "blob"};
+=======
+	this.skeletune_sunvoxDescription = { name : "skeletune_sunvox", file_sizes : [3908], files : ["skeletune.sunvox"], type : "blob"};
+>>>>>>> master
 	this.skeletune_sunvoxName = "skeletune_sunvox";
 	this.skeletune_sunvox = null;
 	this.satanicCircle_aseDescription = { name : "satanicCircle_ase", file_sizes : [4699], files : ["satanicCircle.ase"], type : "blob"};

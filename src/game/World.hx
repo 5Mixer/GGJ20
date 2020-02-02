@@ -29,19 +29,12 @@ class World extends Scene {
 		add(map);
 		var spawn = map.findSpawn();
 
-		// bodySpriteMap = new SpriteMap(kha.Assets.);
-		// add(new Player(10, 30, engine.input), 1);
-
 		bodyParticleSystem = new BodyPartParticles();
 		bodyParticleSystem.poolMaximum = 6000;
-		add(bodyParticleSystem);
 
 		camera = new Camera();
 		camera.position.x = spawn.x*2 - 300;
 		camera.position.y = spawn.y*2 - 300;
-		summonCircle = new SummonCircle();
-		summonCircle.position = spawn.mult(1).add(new kha.math.Vector2(30,30));
-		add(summonCircle);
 
 		inventory = new Inventory();
 		input.mouseUpListeners.push(function () {
@@ -57,9 +50,12 @@ class World extends Scene {
 						body.position = summonCircle.position.mult(1);
 						body.vz = -4;
 						body.vx = -1 + Math.random() * 2;
-						add(body);
+
+						bodies.push(body);
+
 						summonCircle.clear();
-						summonCircle.animation.playOnce("summon");
+						summonCircle.summoningProcessTimer = 2;
+						summonCircle.animation2.playOnce("summon");
 						camera.shake(1,6);
 
 					}
@@ -68,18 +64,18 @@ class World extends Scene {
 
 		});
 
-		for (i in 0...20) {
+		// for (i in 0...10) {
 			// Sand
-			var pos = map.tilesByBiome[1][Math.floor(Math.random() * map.tilesByBiome[1].length)];
+			// var pos = map.tilesByBiome[1][Math.floor(Math.random() * map.tilesByBiome[1].length)];
 			summonCircle = new SummonCircle();
-			summonCircle.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
-			add(summonCircle);
-		}
+			summonCircle.position = new kha.math.Vector2(spawn.x+100, spawn.y);
+		// }
 
 		for (i in 0...15) {
 			// Grass
 			var pos = map.tilesByBiome[2][Math.floor(Math.random() * map.tilesByBiome[2].length)];
 			var structure = new Structure(kha.Assets.blobs.castle1_tmx.toString());
+			structure.tier = 1;
 			structure.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
 			add(structure);
 			structures.push(structure);
@@ -88,6 +84,7 @@ class World extends Scene {
 			// Dirt
 			var pos = map.tilesByBiome[3][Math.floor(Math.random() * map.tilesByBiome[3].length)];
 			var structure = new Structure(kha.Assets.blobs.castle2_tmx.toString());
+			structure.tier = 2;
 			structure.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
 			add(structure);
 			structures.push(structure);
@@ -96,28 +93,69 @@ class World extends Scene {
 			// Stone
 			var pos = map.tilesByBiome[4][Math.floor(Math.random() * map.tilesByBiome[4].length)];
 			var structure = new Structure(kha.Assets.blobs.castle3_tmx.toString());
+			structure.tier = 3;
 			structure.position = new kha.math.Vector2(pos.x * 16, pos.y * 16);
 			add(structure);
 			structures.push(structure);
 		}
+			// Kingdom
+			var structure = new Structure(kha.Assets.blobs.castle4_tmx.toString());
+			structure.tier = 4;
+			structure.position = new kha.math.Vector2(150 * 16, 150 * 16);
+			add(structure);
+			structures.push(structure);
 
-		for (i in 0...100) {
+		var enemyCount = [3,7,10,50];
+
+		for (structure in structures)
+			for (spawnRegion in structure.spawnRegions)
+				for (i in 0...enemyCount[structure.tier - 1]) {
+					var body = new Body();
+					body.position = new kha.math.Vector2(Math.random()*spawnRegion.width + spawnRegion.x + structure.position.x,Math.random()*spawnRegion.height + spawnRegion.y + structure.position.y);
+					body.friendly = false;
+					body.targetPosition = body.position.mult(1);
+					body.homePoint = body.position.mult(1);
+					bodies.push(body);
+				}
+
+
+		for (i in 0...350) {
+			var pos = map.tilesByBiome[1][Math.floor(Math.random() * map.tilesByBiome[1].length)];
+
+			bodyParticleSystem.spawnParticle({ x: pos.x * 16, y: pos.y * 16, z: 0, vx: 0, vz: 0,
+				part: BodyPart.createByIndex(Math.floor(Math.random()*4))
+			});
+		}
+		for (i in 0...350) {
+			var pos = map.tilesByBiome[2][Math.floor(Math.random() * map.tilesByBiome[1].length)];
+
+			bodyParticleSystem.spawnParticle({ x: pos.x * 16, y: pos.y * 16, z: 0, vx: 0, vz: 0,
+				part: BodyPart.createByIndex(Math.floor(Math.random()*8))
+			});
+		}
+
+		add(bodyParticleSystem);
+
+		for (i in 0...1) {
 			var body = new Body();
+			body.leftArm = BodyPart.Axe;
+			body.rightArm = BodyPart.Axe;
 			body.position = spawn.add(new kha.math.Vector2(Math.random()*10,Math.random()*10));
-			// add(body);
 			bodies.push(body);
 		}
+		add(summonCircle);
 	}
 	var f = 0.;
+	var worldMousePos:kha.math.FastVector2;
+	var cameraSpeed = 400;
 
 	override public function update (dt:Float) {
 		f++;
 		this.camera.update(dt);
-		// this.camera.shake(1, Math.min(4,Math.round(f*.03)));
 
-		var worldMousePos = camera.transformation.transformPoint(input.mousePosition);
+		worldMousePos = camera.transformation.transformPoint(input.mousePosition);
+		
 
-		var cameraSpeed = 800;
 		if (input.isAnyKeyDown(InputBindings.left))
 			this.camera.position.x -= dt * cameraSpeed;
 		if (input.isAnyKeyDown(InputBindings.right))
@@ -128,6 +166,7 @@ class World extends Scene {
 			this.camera.position.y -= dt * cameraSpeed;
 
 		super.update(dt);
+
 		bodies.sort(function (a,b) {
 			return a.position.y < b.position.y ? -1 : 1;
 		});
@@ -135,16 +174,10 @@ class World extends Scene {
 		for (body in bodies)
 			body.update(dt);
 
-		// if (f > 500){
-		// for (body in bodies) {
-		// if (Math.sqrt(Math.pow(body.position.x,2) + Math.pow(body.position.y,2)) < (f - 50)) {
-		// explodeBody(body);
-		// }
-		// }
-		// }
 		var worldMouseFast = camera.transformation.transformPoint(input.mousePosition);
-		var worldMouse = new kha.math.Vector2(worldMouseFast.x,worldMouseFast.y);
+		var worldMouse = new kha.math.Vector2(worldMouseFast.x - 16,worldMouseFast.y - 32);
 		for (body in bodies) {
+			body.animatedSprite.play("idle");
 			if (body.friendly) {
 				body.targetPosition = worldMouse.mult(1);
 				if (map.getTile(Math.floor(body.position.x/16), Math.floor(body.position.y/16)) == 0) {
@@ -155,18 +188,31 @@ class World extends Scene {
 			}
 
 			for (body2 in bodies) {
-				if (body == body2 || Math.abs(body.position.x-body2.position.x) >215 || Math.abs(body.position.y-body2.position.y) > 15) 
+				if (!body.friendly && body2.friendly) {
+					if (body.position.sub(body2.position).length < 150) {
+						body.enemyBehaviour = Body.Behaviour.Chase;
+						body.targetPosition = body2.position.mult(1);
+					}else {
+						if (body.enemyBehaviour == Body.Behaviour.Chase)
+							body.enemyBehaviour = Body.Behaviour.Return;
+					}
+
+				}
+
+
+				if (body == body2 || Math.abs(body.position.x-body2.position.x) >15 || Math.abs(body.position.y-body2.position.y) > 15) 
 					continue;
 				var collision = body.collider.testCircle(body2.collider);
 				if (collision != null) {
 					if (body.friendly != body2.friendly) {
 						// attack
-
 						if (body.attackCooldown == 0){
+							body.animatedSprite.play("attack");
 							body2.health -= body.getDamage();
 							body.attackCooldown = .5;
 						}
 						if (body2.attackCooldown == 0){
+							body2.animatedSprite.play("attack");
 							body.health -= body2.getDamage();
 							body2.attackCooldown = .5;
 						}
@@ -188,15 +234,12 @@ class World extends Scene {
 					if (collision != null) {
 						body.position.x -= collision.separationX;
 						body.position.y -= collision.separationY;
-						// body.vx += collision.separationX*.1;
-						// body.vy += collision.separationY*.1;
-
 					}
 				}
 			}
-			bodyParticleSystem.members.sort(function (a,b) {
-				return a.y - b.y > 0 ? 1 : -1;
-			});
+			// bodyParticleSystem.members.sort(function (a,b) {
+				// return a.y - b.y > 0 ? 1 : -1;
+			// });
 
 			var i = bodyParticleSystem.members.length - 1;
 			while (i >= 0) {
@@ -219,28 +262,22 @@ class World extends Scene {
 
 			}
 
-			/*
-			   bodyParticleSystem.spawnParticle({
-			   x: Math.random() * 230,
-			   y: Math.random() * 230,
-			   z: 16,
-			   vz: -.7,
-			   part: BodyPart.createByIndex(Math.floor(Math.random() * 4))
-			   });*/
 		}
 	}
 	override public function render (g:kha.graphics2.Graphics) {
-		g.color = kha.Color.fromBytes(99,155,255);
-		g.fillRect(0,0,10000,10000);
+		// g.color = kha.Color.fromBytes(99,155,255);
+		// g.fillRect(0,0,000,1000);
 		g.color = kha.Color.White;
 
 		camera.transformation.scale.x = 2;
 		camera.transformation.scale.y = 2;
 		camera.apply(g);
+		var camWorld = camera.transformation.transformPoint(new kha.math.Vector2(0,0));
+		summonCircle.position = new kha.math.Vector2(camWorld.x+150, camWorld.y);
 		super.render(g);
 		for (body in bodies)
 			body.render(g);
-
+		
 		g.color = kha.Color.Pink;
 		for (structure in structures) {
 			for (collider in structure.colliders) {
@@ -320,6 +357,6 @@ class World extends Scene {
 			part: body.rightLeg
 		});
 		bodies.remove(body);
-		remove(body);
+		body = null;
 	}
 }

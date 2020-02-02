@@ -627,7 +627,11 @@
 				"skeletune.sunvox"
 			],
 			"file_sizes": [
+<<<<<<< HEAD
 				4988
+=======
+				3908
+>>>>>>> master
 			],
 			"type": "blob"
 		},
@@ -637,7 +641,11 @@
 				"tiles.png"
 			],
 			"file_sizes": [
+<<<<<<< HEAD
 				1003
+=======
+				2118
+>>>>>>> master
 			],
 			"type": "image",
 			"original_width": 128,
