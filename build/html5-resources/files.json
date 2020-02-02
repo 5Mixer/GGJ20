@@ -98,7 +98,11 @@
 				"castle1.tmx"
 			],
 			"file_sizes": [
+<<<<<<< HEAD
 				4955
+=======
+				5056
+>>>>>>> f2ce3ec260e97248f4402d4d9fa5c554c3da9b91
 			],
 			"type": "blob"
 		},
@@ -108,7 +112,11 @@
 				"castle2.tmx"
 			],
 			"file_sizes": [
+<<<<<<< HEAD
 				5410
+=======
+				5514
+>>>>>>> f2ce3ec260e97248f4402d4d9fa5c554c3da9b91
 			],
 			"type": "blob"
 		},
@@ -118,7 +126,11 @@
 				"castle3.tmx"
 			],
 			"file_sizes": [
+<<<<<<< HEAD
 				5662
+=======
+				5767
+>>>>>>> f2ce3ec260e97248f4402d4d9fa5c554c3da9b91
 			],
 			"type": "blob"
 		},
@@ -128,7 +140,11 @@
 				"castle4.tmx"
 			],
 			"file_sizes": [
+<<<<<<< HEAD
 				6601
+=======
+				6706
+>>>>>>> f2ce3ec260e97248f4402d4d9fa5c554c3da9b91
 			],
 			"type": "blob"
 		},
