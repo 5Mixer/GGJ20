@@ -27,6 +27,8 @@ class SummonCircle extends bonsai.entity.Entity {
 	var bodyLayers:Map<BodyPart,Int> = [
 	];
 
+	var summoningProcessTimer = 0.;
+
 	override public function new () {
 		super();
 
@@ -53,11 +55,16 @@ class SummonCircle extends bonsai.entity.Entity {
 			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
 			frames:[0,4]
 		});
+		this.animation.play("idle");
+		this.animation2.registerAnimation("idle", {
+			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
+			frames:[5]
+		});
 		this.animation2.registerAnimation("summon", {
 			spriteMap: new SpriteMap(kha.Assets.images.satanicCircle, this.width, this.height),
 			frames:[0,1,2,3,4]
 		});
-		this.animation.play("idle");
+		this.animation2.playOnce("idle");
 
 		this.animatedSprite = new bonsai.render.AnimatedSprite();
 		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0] });
@@ -79,15 +86,12 @@ class SummonCircle extends bonsai.entity.Entity {
 		body.leftLeg = BodyPart.createByName(leftLeg.getName());
 		body.rightLeg = BodyPart.createByName(rightLeg.getName());
 		return body;
-		animation2.playOnce("summon");
 	}
 	public function clear () {
 		head = null;
 		chest = null;
 		leftArm = null;
 		rightArm = null;
-		leftLeg = null;
-		rightLeg = null;
 	}
 
 	public function addPart (part:BodyPart) {
@@ -128,6 +132,7 @@ class SummonCircle extends bonsai.entity.Entity {
 
 	override public function render (graphics:kha.graphics2.Graphics) {
 		this.animation.render(graphics, position.x, position.y);
+		this.animation2.render(graphics, position.x, position.y);
 
 		if (chest != null) {
 			animatedSprite.drawLayers = [bodyLayers[chest]];
@@ -161,6 +166,14 @@ class SummonCircle extends bonsai.entity.Entity {
 	}
 
 	override public function update (dt:Float){
+		if (summoningProcessTimer > 0) {
+			summoningProcessTimer -= dt;
+			if (summonProcecessTimer < 0)
+				summoningProcessTimer = 0;
+		} else {
+			this.animation2.play("idle");
+		}
+
 		this.animation2.update(dt);
 		this.animation.update(dt);
 		super.update(dt);
