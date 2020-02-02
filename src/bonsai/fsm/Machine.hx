@@ -20,6 +20,6 @@ class Machine<MachineStateIdentifier> {
 		this.currentState.onLoad(payload);
 	}
 	public function update () {
-		this.currentState.update()
+		this.currentState.update();
 	}
 }

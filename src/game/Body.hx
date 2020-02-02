@@ -1,5 +1,10 @@
 package game;
 
+enum Behaviour {
+	Idle;
+	Chase;
+	Return;
+}
 
 class Body extends bonsai.entity.Entity{
 	public var head:BodyPart;
@@ -21,6 +26,9 @@ class Body extends bonsai.entity.Entity{
 	public var collider:differ.shapes.Circle;
 
 	public var friendly=true;
+	public var enemyBehaviour:Behaviour = Behaviour.Idle;
+
+	public var homePoint:kha.math.Vector2;
 
 	var bodyLayers:Map<BodyPart,Int> = [
 		BodyPart.NaturalHeadRight => 1,
@@ -44,7 +52,7 @@ class Body extends bonsai.entity.Entity{
 	];
 
 
-	var animatedSprite:bonsai.render.AnimatedSprite;
+	public var animatedSprite:bonsai.render.AnimatedSprite;
 	public var targetPosition:kha.math.Vector2;
 	var time:Float = 0.;
 	var drawnHead:BodyPart;
@@ -52,8 +60,9 @@ class Body extends bonsai.entity.Entity{
 	override public function new () {
 		super();
 
-		position = new kha.math.Vector2(-160 + 320 * Math.random(), -110 + 220*Math.random());
+		position = new kha.math.Vector2(0,0);
 		targetPosition = new kha.math.Vector2(0,0);
+		homePoint = new kha.math.Vector2(0,0);
 
 		collider = new differ.shapes.Circle(position.x, position.y, 7);
 
@@ -62,26 +71,36 @@ class Body extends bonsai.entity.Entity{
 		chest = BodyPart.NaturalChest;
 		head = BodyPart.NaturalHead;
 		leftArm = BodyPart.NaturalArm;
-		rightArm = friendly ? BodyPart.Axe : BodyPart.NaturalHead;
+		rightArm = friendly ? BodyPart.Knife : BodyPart.NaturalArm;
 		leftLeg = BodyPart.NaturalLeg;
 		rightLeg = BodyPart.NaturalLeg;
 
 		this.animatedSprite = new bonsai.render.AnimatedSprite();
 		this.animatedSprite.registerAnimation("idle", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0] });
+		this.animatedSprite.registerAnimation("attack", { spriteMap: new bonsai.render.SpriteMap(kha.Assets.images.bodyParts2, 32, 32), frames: [0,1,2] });
 		this.animatedSprite.play("idle");
 	}
+	var speed = 150;
 	override public function update (dt:Float) {
 		attackCooldown -= dt;
 		if (attackCooldown < 0)
 			attackCooldown = 0.;
 
 		time+=dt;
-		var speed = 180 * dt;
-		var footOffset = new kha.math.Vector2(16,32);
-		var movement = targetPosition.sub(position.add(footOffset)).normalized().mult(speed);
-		if (targetPosition.sub(position.add(footOffset)).length > 10) {
-			position = position.add(movement);
+		this.animatedSprite.update(dt);
+		
+		if (!friendly) {
+			if (this.enemyBehaviour == Behaviour.Idle) {
+				this.targetPosition = this.position.mult(1);
+			}
+			if (this.enemyBehaviour == Behaviour.Return) {
+				this.targetPosition = this.homePoint.mult(1);
+			}
+		}
 
+		var movement = targetPosition.sub(position).normalized().mult(speed * dt * (friendly ? 1.5 : 1));
+		if (targetPosition.sub(position).length > 5) {
+			position = position.add(movement);
 		}
 		if (head == BodyPart.NaturalHead) {
 			if (Math.abs(this.vx + movement.x) > Math.abs(this.vy+movement.y)) {
@@ -98,17 +117,12 @@ class Body extends bonsai.entity.Entity{
 
 		}
 
-
 		position.x += vx;
 		position.y += vy;
 
 		vx *= .9;
 		vy *= .9;
 
-		// var v = Math.sqrt(Math.pow(vx,2)+Math.pow(vy,2));
-		// var d = targetPosition.sub(position).length/4;
-		// var height = d < 70 ? 0 : 10;
-		// var height = Math.min(15,d%1);
 		var height = 5;
 		z = Math.abs(Math.sin((time + (friendly ? 0 : 2))*10))*height;
 

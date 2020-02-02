@@ -2,12 +2,6 @@ package game;
 
 enum BodyPart {
 	NaturalHead;
-
-	NaturalHeadRight;
-	NaturalHeadLeft;
-	NaturalHeadDown;
-	NaturalHeadUp;
-	
 	NaturalChest;
 	NaturalArm;
 	NaturalLeg;
@@ -15,4 +9,10 @@ enum BodyPart {
 	Axe;
 	Sword;
 	Knife;
+	
+	NaturalHeadRight;
+	NaturalHeadLeft;
+	NaturalHeadDown;
+	NaturalHeadUp;
+	
 }

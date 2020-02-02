@@ -27,7 +27,7 @@ class SummonCircle extends bonsai.entity.Entity {
 	var bodyLayers:Map<BodyPart,Int> = [
 	];
 
-	var summoningProcessTimer = 0.;
+	public var summoningProcessTimer = 0.;
 
 	override public function new () {
 		super();
@@ -77,7 +77,7 @@ class SummonCircle extends bonsai.entity.Entity {
 	public function getBody () {
 		var body = new Body();
 		if (head == BodyPart.NaturalHead)
-			head = BodyPart.NaturalHeadDown;
+			head = BodyPart.NaturalHead;
 		
 		body.head = BodyPart.createByName(head.getName());
 		body.chest =  BodyPart.createByName(chest.getName());
@@ -95,6 +95,8 @@ class SummonCircle extends bonsai.entity.Entity {
 		chest = null;
 		leftArm = null;
 		rightArm = null;
+		leftLeg = null;
+		rightLeg = null;
 	}
 
 	public function addPart (part:BodyPart) {
@@ -171,7 +173,7 @@ class SummonCircle extends bonsai.entity.Entity {
 	override public function update (dt:Float){
 		if (summoningProcessTimer > 0) {
 			summoningProcessTimer -= dt;
-			if (summonProcecessTimer < 0)
+			if (summoningProcessTimer < 0)
 				summoningProcessTimer = 0;
 		} else {
 			this.animation2.play("idle");

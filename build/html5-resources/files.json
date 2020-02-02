@@ -595,7 +595,7 @@
 				"satanicCircle.png"
 			],
 			"file_sizes": [
-				2462
+				2563
 			],
 			"type": "image",
 			"original_width": 320,
@@ -607,7 +607,7 @@
 				"satanicCircle.ase"
 			],
 			"file_sizes": [
-				4326
+				4699
 			],
 			"type": "blob"
 		},
@@ -617,7 +617,7 @@
 				"skeletune.sunvox"
 			],
 			"file_sizes": [
-				2884
+				3908
 			],
 			"type": "blob"
 		},
@@ -627,7 +627,7 @@
 				"tiles.png"
 			],
 			"file_sizes": [
-				2059
+				2118
 			],
 			"type": "image",
 			"original_width": 128,
@@ -642,6 +642,18 @@
 				1479
 			],
 			"type": "blob"
+		},
+		{
+			"name": "tiles_export",
+			"files": [
+				"tiles-export.png"
+			],
+			"file_sizes": [
+				2118
+			],
+			"type": "image",
+			"original_width": 128,
+			"original_height": 128
 		},
 		{
 			"name": "tiles_tsx",
